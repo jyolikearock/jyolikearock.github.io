@@ -1,34 +1,94 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/basic-grey.css" media="screen" />
+        <title>Mundos Stone Optimizer</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/basic-grey.css"/>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
     </head>
-    <body>
+    <body onload='hideResult()'>
         <center>
-            <form action="" method="post" class="basic-grey">
-                <h1>Test Form
-                    <span>Test description.</span>
+            <form action="" method="post" class="basic-grey" id="mundosform" onSubmit="return optimizeMundosStone()">
+                <h1>Mundos Stone Optimizer
+                    <span>Assumes that you are VR16 because I could find any values for Mundos Stone buffs at lower levels</span>
+                    <span>The following values should correspond to your stats when you have <b>no</b> Mundos Stone applied</span>
                 </h1>
                 <label>
-                    <span>Test Input :</span>
-                    <input id="name" type="text" name="name" placeholder="Test placeholder" />
+                    <span>Magicka :</span>
+                    <input id="magicka" type="text" name="magicka" placeholder="40000"/>
                 </label>
-            
                 <label>
-                    <span>Test Text Area :</span>
-                    <textarea id="message" name="message" placeholder="Test placeholder"></textarea>
+                    <span>Spell Damage :</span>
+                    <input id="spelldamage" type="text" name="spelldamage" placeholder="3000"/>
                 </label>
-                 <label>
-                    <span>Test Select :</span><select name="selection">
-                        <option value="Option 1">Option 1</option>
-                        <option value="Option 2">Option 2</option>
-                    </select>
+                <label>
+                    <span>Crit Chance (%):</span>
+                    <input id="critchance" type="text" name="critchance" placeholder="50"/>
                 </label>
-                 <label>
+                <label>
+                    <span>Crit Damage (%):</span>
+                    <input id="critdamage" type="text" name="critdamage" placeholder="50"/>
+                </label>
+                <label>
+                    <span>Note that crit damage is additive and the base is 50%. So, for example, if you have 27 Champion points in Elfborn, which increases your crit damage by 10%, then your total crit damage is 60%.</span>
+                <label>
                     <span>&nbsp;</span>
-                    <input type="button" class="button" value="Test Submit" />
+                    <input type="button" class="button" value="Optimize" />
                 </label>
             </form>
+
+            <div id="result">
+                You should use <b>The <span id="beststone"></span></b>
+            </div>
         </center>
+
+        <script>
+            var mageBonus = 1280;
+            var apprenticeBonus = 166;
+            var thiefBonus = 0.11;
+            var shadowBonus = 0.12;
+
+            var spellDamageCoef = 10.46;
+
+            function optimizeMundosStone() {
+                var mundosForm = document.form["mundosform"];
+                var bestStone = "";
+
+                var magicka = parseInt(mundosForm.elements["magicka"]);
+                var spellDamage = parseInt(mundosForm.elements["spelldamage"]);
+                var critChance = parseInt(mundosForm.elements["critchance"]) / 100.0;
+                var critDamage = parseInt(mundosForm.elements["critdamage"]) / 100.0;
+
+                var deltaMage = mageBonus * (1 + critDamage * critChance);
+                var deltaApprentice = spellDamageCoef * apprenticeBonus * (1 + critDamage * critChance);
+                var deltaThief = (magicka + spellDamageCoef * spellDamage) * (critDamage * thiefBonus);
+                var deltaShadow = (magicka + spellDamageCoef * spellDamage) * (shadowBonus * critChance);
+
+                if (deltaMage > deltaApprentice
+                        && deltaMage > deltaThief
+                        && deltaMage > deltaShadow)
+                    bestStone = "Mage";
+                else if (deltaApprentice > deltaThief
+                        && deltaApprentice > deltaShadow)
+                    bestStone = "Apprentice";
+                else if (deltaThief > deltaShadow)
+                    bestStone = "Thief";
+                else
+                    bestStone = "Shadow";
+
+                var spanObj = document.getElementById('beststone');
+                spanObj.innerHTML = bestStone;
+                showResult();
+            }
+
+            function showResult() {
+                var divObj = document.getElementById('result');
+                divObj.style.display='block';
+            }
+
+            function hideResult() {
+                var divObj = document.getElementById('result');
+                divObj.style.display='none';
+            }
+        </script>
     </body>
 </html>
