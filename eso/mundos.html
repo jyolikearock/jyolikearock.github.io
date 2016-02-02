@@ -5,9 +5,9 @@
         <link rel="stylesheet" type="text/css" href="/stylesheets/basic-grey.css"/>
         <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
     </head>
-    <body onload='hideResult()'>
-        <center>
-            <form action="" method="post" class="basic-grey" id="mundosform" onSubmit="return optimizeMundosStone()">
+    <body onload='hideResult(); hideMath()'>
+        <header>
+            <form action="" method="post" class="basic-grey" id="mundosform">
                 <h1>Mundos Stone Optimizer
                     <span>Which Mundos Stone should I use?</span>
                 </h1>
@@ -29,14 +29,25 @@
                 </label>
                 <label>
                     <span>&nbsp;</span>
-                    <input type="button" class="button" value="Optimize" />
+                    <input type="button" class="button" value="Optimize" onclick="optimizeMundosStone()"/>
                 </label>
             </form>
-
+        </header>
+        
+        <section>
             <div id="result">
-                You should use <b>The <span id="beststone"></span></b>
+                <h3>
+                    You should use <b>The <span id="beststone"></span></b>
+                </h3>
+                <input type="button" class="basic-grey.button" value="Show the math" onclick="showMath()"/>
             </div>
-        </center>
+            <div id="themath">
+                <p>
+                    The math
+                    <input type="button" class="basic-grey.button" value="Hide" onclick="hideMath()"/>
+                </p>
+            </div>
+        </section>
 
         <script>
             var mageBonus = 1280;
@@ -50,10 +61,10 @@
                 var mundosForm = document.form["mundosform"];
                 var bestStone = "";
 
-                var magicka = parseInt(mundosForm.elements["magicka"]);
-                var spellDamage = parseInt(mundosForm.elements["spelldamage"]);
-                var critChance = parseInt(mundosForm.elements["critchance"]) / 100.0;
-                var critDamage = parseInt(mundosForm.elements["critdamage"]) / 100.0;
+                var magicka = parseInt(mundosForm.elements["magicka"].value);
+                var spellDamage = parseInt(mundosForm.elements["spelldamage"].value);
+                var critChance = parseInt(mundosForm.elements["critchance"].value) / 100.0;
+                var critDamage = parseInt(mundosForm.elements["critdamage"].value) / 100.0;
 
                 var deltaMage = mageBonus * (1 + critDamage * critChance);
                 var deltaApprentice = spellDamageCoef * apprenticeBonus * (1 + critDamage * critChance);
@@ -84,6 +95,16 @@
 
             function hideResult() {
                 var divObj = document.getElementById('result');
+                divObj.style.display='none';
+            }
+
+            function showMath() {
+                var divObj = document.getElementById('themath');
+                divObj.style.display='block';
+            }
+
+            function hideMath() {
+                var divObj = document.getElementById('themath');
                 divObj.style.display='none';
             }
         </script>
