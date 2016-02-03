@@ -78,3 +78,20 @@
 .mundos-button:focus {
   outline: 0;
 }
+.mundos-button::-moz-focus-inner {
+  border: 0;
+}
+
+.mundos-div {
+  display: block;
+  width: 550px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+}
+
+.mundos-math {
+  font-size: 11px;
+  font-family: "Lucida Console", Monaco, monospace
+}
