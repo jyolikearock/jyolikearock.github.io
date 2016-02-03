@@ -82,7 +82,7 @@ function populateMath() {
 "</br>Mundus Stone Bonus: Buff * (1 + <b>D</b>ivines) * (1 + <b>P</b>ercent<b>I</b>ncrease)" +
 "</br>" +
 "</br><b>The Mage</b>" +
-"</br>At VR16, The Mage provides <b>" + mage Magicka</b>" +
+"</br>At VR16, The Mage provides <b>" + mage + " Magicka</b>" +
 "</br>For you: " + mage + " * (1 + " + d + ") * (1 + " + mb + ") = <b>" + b1 + "</b>" +
 "</br>New damage: (" + m + " + " + b1 + " + 10.46 * " + sd + ") * (1 + " + cd + " * " + cc + ") = <b>" + bd1 + "</b>" +
 "</br>Damage difference: " + bd1 + " - " + bd + " = <b>" + d1 + "</b>" +
