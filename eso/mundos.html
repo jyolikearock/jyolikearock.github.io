@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
     <head>
-        <script src="/javascripts/mundos.js"></script>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/mundos.css">
+        <script src="/javascripts/mundus.js"></script>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/mundus.css">
         <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
     </head>
     
@@ -10,7 +10,7 @@
         <div class="wrapper">
             <header>
                 <h1>
-                    Mundos Stone Optimizer
+                    Mundus Stone Optimizer
                 </h1>
                 <p>
                     (for Magicka users)
@@ -19,70 +19,70 @@
             </header>
 
             <section>
-                <form id="mundosform" class="mundos-form">
-                    <input type="text" class="mundos-input-left" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
+                <form id="mundusform" class="mundus-form">
+                    <input type="text" class="mundus-input-left" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
-                            Your max Magicka with no Mundos Stones applied
+                            Your max Magicka with no Mundus Stones applied
                         </p>
                     </div>
-                    <input type="text" class="mundos-input-right" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
+                    <input type="text" class="mundus-input-right" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
                             The percentage increase to your Magicka due to buffs or passives. Examples: Altmer passive "Gift of Magnus" (10%), Magelight (5%), Bound Aegis (8%), Mage's Guild passive "Magicka Controller" (1% per Mage's Guild ability), Necropotence 5-set effect (10%).
                         </p>
                     </div>
-                    <input type="text" class="mundos-input-left" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
+                    <input type="text" class="mundus-input-left" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
-                            Your total Spell Damage with no Mundos Stones applied
+                            Your total Spell Damage with no Mundus Stones applied
                         </p>
                     </div>
-                    <input type="text" class="mundos-input-right" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
+                    <input type="text" class="mundus-input-right" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
                             The percentage increase to your Spell Damage due to buffs or passives. Examples: Storm Calling passive "Expert Mage" (2% per Sorcerer ability), Power Surge (20%).
                         </p>
                     </div>
-                    <input type="text" class="mundos-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
+                    <input type="text" class="mundus-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
-                            Your spell critical strike chance with no Mundos Stones applied, as a percentage (e.g. '49' if it appears as '49%' in your character sheet)
+                            Your spell critical strike chance with no Mundus Stones applied, as a percentage (e.g. '49' if it appears as '49%' in your character sheet)
                         </p>
                     </div>
-                    <input type="text" class="mundos-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
+                    <input type="text" class="mundus-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
-                            Your spell critical strike damage with no Mundos Stones applied, as a percentage. The base is 50 and any bonus crit damage is additive. For example, if you have 27 points in the Elfborn star of the Apprentice constellation (10% additional Spell Crit Damage), then your total crit damage is 60.
+                            Your spell critical strike damage with no Mundus Stones applied, as a percentage. The base is 50 and any bonus crit damage is additive. For example, if you have 27 points in the Elfborn star of the Apprentice constellation (10% additional Spell Crit Damage), then your total crit damage is 60.
                         </p>
                     </div>
-                    <input type="text" class="mundos-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
+                    <input type="text" class="mundus-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
                     <div class="help-tip">
                         <b>?</b>
                         <p>
                             The total value of your 'Divines' traits as a percentage.
                         </p>
                     </div>
-                    <input type="button" class="mundos-button" onclick="optimizeMundosStone()" value="Optimize"/>
+                    <input type="button" class="mundus-button" onclick="optimizeMundusStone()" value="Optimize"/>
                 </form>
                 
                 <p></p>
                 
-                <div id="result" class="mundos-div">
+                <div id="result" class="mundus-div">
                     You should use <b>The <span id="beststone"></span></b>
-                    <input type="button" class="mundos-button" onclick="showMath()" value="Show the math"/>
+                    <input type="button" class="mundus-button" onclick="showMath()" value="Show the math"/>
                     
                     <p></p>
                     
-                    <div id="math" class="mundos-math">
+                    <div id="math" class="mundus-math">
                         <span id="mathcontents"></span>
-                        <input type="button" class="mundos-button" onclick="hideMath()" value="Hide"/>
+                        <input type="button" class="mundus-button" onclick="hideMath()" value="Hide"/>
                     </div>
                 </div>
             </section>

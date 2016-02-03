@@ -1,7 +1,7 @@
-var mageBonus = 1452;
-var apprenticeBonus = 167;
-var thiefBonus = 0.11;
-var shadowBonus = 0.12;
+var mage = 1320;
+var appr = 167;
+var thief = 0.11;
+var shad = 0.12;
 
 var m, mb, sd, sdb, cc, cd, d;
 var bd;
@@ -82,26 +82,26 @@ function populateMath() {
 "</br>Mundos Stone Bonus: Buff * (1 + <b>D</b>ivines) * (1 + <b>P</b>ercent<b>I</b>ncrease)" +
 "</br>" +
 "</br><b>The Mage</b>" +
-"</br>At VR16, The Mage provides <b>1452 Magicka</b>" +
-"</br>For you: 1452 * (1 + " + d + ") * (1 + " + mb + ") = <b>" + b1 + "</b>" +
+"</br>At VR16, The Mage provides <b>" + mage Magicka</b>" +
+"</br>For you: " + mage + " * (1 + " + d + ") * (1 + " + mb + ") = <b>" + b1 + "</b>" +
 "</br>New damage: (" + m + " + " + b1 + " + 10.46 * " + sd + ") * (1 + " + cd + " * " + cc + ") = <b>" + bd1 + "</b>" +
 "</br>Damage difference: " + bd1 + " - " + bd + " = <b>" + d1 + "</b>" +
 "</br>" +
 "</br><b>The Apprentice</b>" +
-"</br>At VR16, The Apprentice provides <b>167 Spell Damage</b>" +
-"</br>For you: 166 * (1 + " + d + ") * (1 + " + sdb + ") = <b>" + b2 + "</b>" +
+"</br>At VR16, The Apprentice provides <b>" + appr + " Spell Damage</b>" +
+"</br>For you: " + appr + " * (1 + " + d + ") * (1 + " + sdb + ") = <b>" + b2 + "</b>" +
 "</br>New damage: (" + m + " + 10.46 * (" + sd + " + " + b2 + ")) * (1 + " + cd + " * " + cc + ") = <b>" + bd2 + "</b>" +
 "</br>Damage difference: " + bd2 + " - " + bd + " = <b>" + d2 + "</b>" +
 "</br>" +
 "</br><b>The Thief</b>" +
-"</br>At VR16, The Thief provides <b>11% Crit Chance</b>" +
-"</br>For you: 11 * (1 + " + d + ") = <b>" + roundTo2(b3 * 100) + "%</b>" +
+"</br>At VR16, The Thief provides <b>" + roundTo2(thief * 100) + "% Crit Chance</b>" +
+"</br>For you: " + roundTo2(thief * 100) + " * (1 + " + d + ") = <b>" + roundTo2(b3 * 100) + "%</b>" +
 "</br>New damage: (" + m + " + 10.46 * " + sd + ") * (1 + " + cd + " * (" + cc + " + " + b3 + ")) = <b>" + bd3 + "</b>" +
 "</br>Damage difference: " + bd3 + " - " + bd + " = <b>" + d3 + "</b>" +
 "</br>" +
 "</br><b>The Shadow</b>" +
-"</br>At VR16, The Shadow provides <b>12% Crit Damage</b>" +
-"</br>For you: 12 * (1 + " + d + ") = <b>" + roundTo2(b4 * 100) + "%</b>" +
+"</br>At VR16, The Shadow provides <b>" + roundTo2(shad * 100) + "% Crit Damage</b>" +
+"</br>For you: " + roundTo2(shad * 100) + " * (1 + " + d + ") = <b>" + roundTo2(b4 * 100) + "%</b>" +
 "</br>New damage: (" + m + " + 10.46 * " + sd + ") * (1 + (" + cd + " + " + b4 + ") * " + cc + ") = <b>" + bd4 + "</b>" +
 "</br>Damage difference: " + bd4 + " - " + bd + " = <b>" + d4 + "</b>";
     
