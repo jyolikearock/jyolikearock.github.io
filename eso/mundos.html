@@ -21,12 +21,54 @@
             <section>
                 <form id="mundosform" class="mundos-form">
                     <input type="text" class="mundos-input-left" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            Your max Magicka with no Mundos Stones applied
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input-right" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            The percentage increase to your Magicka due to buffs or passives. Examples: Altmer passive "Gift of Magnus" (10%), Magelight (5%), Bound Aegis (8%), Mage's Guild passive "Magicka Controller" (1% per Mage's Guild ability), Necropotence 5-set effect (10%).
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input-left" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            Your total Spell Damage with no Mundos Stones applied
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input-right" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            The percentage increase to your Spell Damage due to buffs or passives. Examples: Storm Calling passive "Expert Mage" (2% per Sorcerer ability), Power Surge (20%).
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            Your critical strike chance as a percentage (e.g. '49' if it appears as '49%' in your character sheet)
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            Your critical strike damage as a percentage. The base is 50 and any bonus crit damage is additive. For example, if you have 27 points in the Elfborn star of the Apprentice constellation (10% additional Spell Crit Damage), then your total crit damage is 60.
+                        </p>
+                    </div>
                     <input type="text" class="mundos-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
+                    <div class="help-tip">
+                        <b>?</b>
+                        <p>
+                            The total value of your 'Divines' traits as a percentage.
+                        </p>
+                    </div>
                     <input type="button" class="mundos-button" onclick="optimizeMundosStone()" value="Optimize"/>
                 </form>
                 
