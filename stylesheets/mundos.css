@@ -64,6 +64,10 @@
   outline: 0;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .mundos-div {
   display: block;
   width: 550px;
