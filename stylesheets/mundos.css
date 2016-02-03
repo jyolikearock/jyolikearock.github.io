@@ -64,7 +64,7 @@
   outline: 0;
 }
 
-button::-moz-focus-inner {
+.mundos-button::-moz-focus-inner {
   border: 0;
 }
 
