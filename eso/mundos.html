@@ -1,47 +1,49 @@
 <!doctype html>
 <html>
     <head>
-        <script src="/javascripts/mundos-form.js"></script>
+        <script src="/javascripts/mundos.js"></script>
         <link rel="stylesheet" type="text/css" href="/stylesheets/mundos.css">
         <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
     </head>
     
     <body onload='hideResult(); hideMath()'>
-        <header>
-            <h1>
-                Mundos Stone Optimizer
-            </h1>
-            <p>
-                (for Magicka users)
-                <br/>by @jyolikearock
-            </p>
-        </header>
+        <div class="wrapper">
+            <header>
+                <h1>
+                    Mundos Stone Optimizer
+                </h1>
+                <p>
+                    (for Magicka users)
+                    <br/>by @jyolikearock
+                </p>
+            </header>
 
-        <section>
-            <form id="mundosform" class="mundos-form">
-                <input type="text" class="mundos-input-half" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
-                <input type="text" class="mundos-input-half" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
-                <input type="text" class="mundos-input-half" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
-                <input type="text" class="mundos-input-half" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
-                <input type="text" class="mundos-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
-                <input type="text" class="mundos-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
-                <input type="text" class="mundos-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
-                <input type="button" class="mundos-button" onclick="optimizeMundosStone()" value="Optimize"/>
-            </form>
-            
-            <p></p>
-            
-            <div id="result" class="mundos-div">
-                You should use <b>The <span id="beststone"></span></b>
-                <input type="button" class="mundos-button" onclick="showMath()" value="Show the math"/>
+            <section>
+                <form id="mundosform" class="mundos-form">
+                    <input type="text" class="mundos-input-half" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
+                    <input type="text" class="mundos-input-half" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
+                    <input type="text" class="mundos-input-half" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
+                    <input type="text" class="mundos-input-half" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
+                    <input type="text" class="mundos-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
+                    <input type="text" class="mundos-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
+                    <input type="text" class="mundos-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
+                    <input type="button" class="mundos-button" onclick="optimizeMundosStone()" value="Optimize"/>
+                </form>
                 
                 <p></p>
                 
-                <div id="math" class="mundos-math">
-                    <span id="mathcontents"></span>
-                    <input type="button" class="mundos-button" onclick="hideMath()" value="Hide"/>
+                <div id="result" class="mundos-div">
+                    You should use <b>The <span id="beststone"></span></b>
+                    <input type="button" class="mundos-button" onclick="showMath()" value="Show the math"/>
+                    
+                    <p></p>
+                    
+                    <div id="math" class="mundos-math">
+                        <span id="mathcontents"></span>
+                        <input type="button" class="mundos-button" onclick="hideMath()" value="Hide"/>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </body>
 </html>
