@@ -1,5 +1,5 @@
-var mageBonus = 1280;
-var apprenticeBonus = 166;
+var mageBonus = 1452;
+var apprenticeBonus = 167;
 var thiefBonus = 0.11;
 var shadowBonus = 0.12;
 
