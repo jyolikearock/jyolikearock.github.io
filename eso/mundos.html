@@ -3,89 +3,45 @@
     <head>
         <script src="/javascripts/mundos-form.js"></script>
         <link rel="stylesheet" type="text/css" href="/stylesheets/mundos.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
     </head>
     
-    <body>
-        <div class="form">
+    <body onload='hideResult(); hideMath()'>
+        <header>
+            <h1>
+                Mundos Stone Optimizer
+            </h1>
+            <p>
+                (for Magicka users)
+                <br/>by @jyolikearock
+            </p>
+        </header>
 
-            <ul class="tab-group">
-                <li class="tab active"><a href="#signup">Sign Up</a></li>
-                <li class="tab"><a href="#login">Log In</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div id="signup">
-                    <h1>Sign Up for Free</h1>
-
-                    <form action="/" method="post">
-
-                        <div class="top-row">
-                            <div class="field-wrap">
-                                <label>
-                                    First Name<span class="req">*</span>
-                                </label>
-                                <input type="text" required autocomplete="off" />
-                            </div>
-
-                            <div class="field-wrap">
-                                <label>
-                                    Last Name<span class="req">*</span>
-                                </label>
-                                <input type="text" required autocomplete="off" />
-                            </div>
-                        </div>
-
-                        <div class="field-wrap">
-                            <label>
-                                Email Address<span class="req">*</span>
-                            </label>
-                            <input type="email" required autocomplete="off" />
-                        </div>
-
-                        <div class="field-wrap">
-                            <label>
-                                Set A Password<span class="req">*</span>
-                            </label>
-                            <input type="password" required autocomplete="off" />
-                        </div>
-
-                        <button type="submit" class="button button-block" >Get Started</button>
-
-                    </form>
-
+        <section>
+            <form id="mundosform" class="mundos-form">
+                <input type="text" class="mundos-input-half" id="magicka" name="magicka" autocomplete="off" placeholder="Max Magicka"/>
+                <input type="text" class="mundos-input-half" id="magickabuff" name="magickabuff" autocomplete="off" placeholder="% Magicka Increase"/>
+                <input type="text" class="mundos-input-half" id="spelldamage" name="spelldamage" autocomplete="off" placeholder="Spell Damage"/>
+                <input type="text" class="mundos-input-half" id="spelldamagebuff" name="spelldamagebuff" autocomplete="off" placeholder="% Spell Damage Increase"/>
+                <input type="text" class="mundos-input" id="critchance" name="critchance" autocomplete="off" placeholder="% Spell Critical"/>
+                <input type="text" class="mundos-input" id="critdamage" name="critdamage" autocomplete="off" placeholder="% Crit Damage"/>
+                <input type="text" class="mundos-input" id="divines" name="divines" autocomplete="off" placeholder="% Divines Trait Bonus"/>
+                <input type="button" class="mundos-button" onclick="optimizeMundosStone()" value="Optimize"/>
+            </form>
+            
+            <p></p>
+            
+            <div id="result" class="mundos-div">
+                You should use <b>The <span id="beststone"></span></b>
+                <input type="button" class="mundos-button" onclick="showMath()" value="Show the math"/>
+                
+                <p></p>
+                
+                <div id="math" class="mundos-math">
+                    <span id="mathcontents"></span>
+                    <input type="button" class="mundos-button" onclick="hideMath()" value="Hide"/>
                 </div>
-
-                <div id="login">
-                    <h1>Welcome Back!</h1>
-
-                    <form action="/" method="post">
-
-                        <div class="field-wrap">
-                            <label>
-                                Email Address<span class="req">*</span>
-                            </label>
-                            <input type="email" required autocomplete="off" />
-                        </div>
-
-                        <div class="field-wrap">
-                            <label>
-                                Password<span class="req">*</span>
-                            </label>
-                            <input type="password" required autocomplete="off" />
-                        </div>
-
-                        <p class="forgot"><a href="#">Forgot Password?</a></p>
-
-                        <button class="button button-block" >Log In</button>
-
-                    </form>
-
-                </div>
-
             </div>
-            <!-- tab-content -->
-
-        </div>
-        <!-- /form -->
+        </section>
     </body>
 </html>
