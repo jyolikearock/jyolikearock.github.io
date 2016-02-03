@@ -23,10 +23,10 @@ function optimizeMundusStone() {
     
     bd = calculateDamage(m, sd, cc, cd);
     
-    b1 = roundTo2(mageBonus * (1 + d) * (1 + mb));
-    b2 = roundTo2(apprenticeBonus * (1 + d) * (1 + sdb));
-    b3 = roundTo2(thiefBonus * (1 + d));
-    b4 = roundTo2(shadowBonus * (1 + d));
+    b1 = roundTo2(mage * (1 + d) * (1 + mb));
+    b2 = roundTo2(appr * (1 + d) * (1 + sdb));
+    b3 = roundTo2(thief * (1 + d));
+    b4 = roundTo2(shad * (1 + d));
     
     bd1 = calculateDamage(m + b1, sd, cc, cd);
     bd2 = calculateDamage(m, sd + b2, cc, cd);
