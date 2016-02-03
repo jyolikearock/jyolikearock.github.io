@@ -9,17 +9,17 @@ var b1, b2, b3, b4;
 var bd1, bd2, bd3, bd4;
 var d1, d2, d3, d4;
 
-function optimizeMundosStone() {
-    var mundosForm = document.forms["mundosform"];
+function optimizeMundusStone() {
+    var mundusForm = document.forms["mundusform"];
     var bestStone = "";
 
-    m = parseInt(mundosForm.elements["magicka"].value) || 0;
-    mb = parseInt(mundosForm.elements["magickabuff"].value) / 100 || 0;
-    sd = parseInt(mundosForm.elements["spelldamage"].value) || 0;
-    sdb = parseInt(mundosForm.elements["spelldamagebuff"].value) / 100 || 0;
-    cc = parseInt(mundosForm.elements["critchance"].value) / 100 || 0;
-    cd = parseInt(mundosForm.elements["critdamage"].value) / 100 || 0;
-    d = parseInt(mundosForm.elements["divines"].value) / 100 || 0;
+    m = parseInt(mundusForm.elements["magicka"].value) || 0;
+    mb = parseInt(mundusForm.elements["magickabuff"].value) / 100 || 0;
+    sd = parseInt(mundusForm.elements["spelldamage"].value) || 0;
+    sdb = parseInt(mundusForm.elements["spelldamagebuff"].value) / 100 || 0;
+    cc = parseInt(mundusForm.elements["critchance"].value) / 100 || 0;
+    cd = parseInt(mundusForm.elements["critdamage"].value) / 100 || 0;
+    d = parseInt(mundusForm.elements["divines"].value) / 100 || 0;
     
     bd = calculateDamage(m, sd, cc, cd);
     
@@ -79,7 +79,7 @@ function populateMath() {
 "<br/>Modified with crit: (M + 10.46 * SD) * (1 + <b>C</b>rit<b>D</b>amage * <b>C</b>rit<b>C</b>hance)" +
 "<br/><br/>Your base damage: (" + m + " + 10.46 * " + sd + ") * (1 + " + cd + " * " + cc + ") = <b>" + bd+"</b>" +
 "</br>" +
-"</br>Mundos Stone Bonus: Buff * (1 + <b>D</b>ivines) * (1 + <b>P</b>ercent<b>I</b>ncrease)" +
+"</br>Mundus Stone Bonus: Buff * (1 + <b>D</b>ivines) * (1 + <b>P</b>ercent<b>I</b>ncrease)" +
 "</br>" +
 "</br><b>The Mage</b>" +
 "</br>At VR16, The Mage provides <b>" + mage Magicka</b>" +
