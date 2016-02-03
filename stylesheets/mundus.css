@@ -1,4 +1,4 @@
-.mundos-form {
+.mundus-form {
   margin: 0 auto;
   width: 550px;
   padding: 20px;
@@ -7,7 +7,7 @@
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.mundos-input {
+.mundus-input {
   display: inline;
   width: 94%;
   height: 38px;
@@ -17,7 +17,7 @@
   border: 0;
   border-bottom: 1px solid #d8d8d8;
 }
-.mundos-input-left {
+.mundus-input-left {
   display: inline;
   width: 40%;
   height: 38px;
@@ -28,7 +28,7 @@
   border: 0;
   border-bottom: 1px solid #d8d8d8;
 }
-.mundos-input-right {
+.mundus-input-right {
   display: inline;
   width: 40%;
   height: 38px;
@@ -39,20 +39,20 @@
   border: 0;
   border-bottom: 1px solid #d8d8d8;
 }
-.mundos-input:focus {
+.mundus-input:focus {
   border-color: #1f1f2e;
   outline: 0;
 }
-.mundos-input-left:focus {
+.mundus-input-left:focus {
   border-color: #1f1f2e;
   outline: 0;
 }
-.mundos-input-right:focus {
+.mundus-input-right:focus {
   border-color: #1f1f2e;
   outline: 0;
 }
 
-.mundos-button {
+.mundus-button {
   display: block;
   width: 100%;
   height: 38px;
@@ -66,23 +66,23 @@
   border-color: #1f1f2e;
   cursor: pointer;
 }
-.mundos-button:hover {
+.mundus-button:hover {
   background: #1E2021;
   color: #ffffff;
 }
-.mundos-button:active {
+.mundus-button:active {
   background: #0a0a0f;
   color: #ffffff;
   padding:0px;
 }
-.mundos-button:focus {
+.mundus-button:focus {
   outline: 0;
 }
-.mundos-button::-moz-focus-inner {
+.mundus-button::-moz-focus-inner {
   border: 0;
 }
 
-.mundos-div {
+.mundus-div {
   display: block;
   width: 550px;
   padding: 20px;
@@ -91,7 +91,7 @@
   font-size: 18px;
 }
 
-.mundos-math {
+.mundus-math {
   font-size: 11px;
   font-family: "Lucida Console", Monaco, monospace
 }
