@@ -17,6 +17,16 @@
   border: 0;
   border-bottom: 1px solid #d8d8d8;
 }
+.mundus-input-level {
+  display: inline;
+  width: 86%;
+  height: 38px;
+  margin-top: 2px;
+  font-weight: 500;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #d8d8d8;
+}
 .mundus-input-left {
   display: inline;
   width: 40%;
@@ -39,15 +49,10 @@
   border: 0;
   border-bottom: 1px solid #d8d8d8;
 }
-.mundus-input:focus {
-  border-color: #1f1f2e;
-  outline: 0;
-}
-.mundus-input-left:focus {
-  border-color: #1f1f2e;
-  outline: 0;
-}
-.mundus-input-right:focus {
+.mundus-input:focus, 
+.mundus-input-left:focus, 
+.mundus-input-right:focus, 
+.mundus-input-level:focus {
   border-color: #1f1f2e;
   outline: 0;
 }
@@ -96,6 +101,7 @@
   font-family: "Lucida Console", Monaco, monospace
 }
 
+/* Thanks to tutorialzine http://tutorialzine.com/2014/07/css-inline-help-tips/ */
 .help-tip{
   display: inline-block;
   text-align: center;
@@ -130,4 +136,55 @@
   line-height: 1.4;
   font: 12px;
   font-weight: bold;
+}
+
+/* Thanks to callmenick http://callmenick.com/post/css-toggle-switch-examples */
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.cmn-toggle-round + label {
+  padding: 2px;
+  width: 40px;
+  height: 20px;
+  background-color: #dddddd;
+  border-radius: 20px;
+  top: 7px;
+}
+input.cmn-toggle-round + label:before,
+input.cmn-toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+input.cmn-toggle-round + label:before {
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round + label:after {
+  width: 20px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: margin 0.4s;
+}
+input.cmn-toggle-round:checked + label:before {
+  background-color: #1E2021;
+}
+input.cmn-toggle-round:checked + label:after {
+  margin-left: 22px;
 }
