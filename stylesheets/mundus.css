@@ -125,10 +125,9 @@
   background-color: #1E2021;
   padding: 20px;
   width: 300px;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  margin-left: -455px;
+  position: fixed;
+  top: 200px;
+  right: 60%;
   border-radius: 3px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   color: #FFF;
