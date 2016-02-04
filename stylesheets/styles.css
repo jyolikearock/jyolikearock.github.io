@@ -138,6 +138,10 @@ table {
     border-collapse:collapse;
 }
 
+tr {
+    cursor: default;
+}
+
 th, td {
     text-align:left;
     padding:5px 10px;
