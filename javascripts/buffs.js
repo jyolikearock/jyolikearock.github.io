@@ -163,6 +163,14 @@ function populateDetails() {
     document.getElementById('buffsdetails').innerHTML = details;
 }
 
+function hideDetailsWrapper() {
+	document.getElementById('buffsdetailswrapper').style.display = 'none';
+}
+
+function showDetailsWrapper() {
+	document.getElementById('buffsdetailswrapper').style.display = 'block';
+}
+
 function hideDetails() {
 	document.getElementById('buffsdetails').style.display = 'none';
 }

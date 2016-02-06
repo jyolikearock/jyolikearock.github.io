@@ -7,7 +7,7 @@
         <script type="text/javascript" src="/javascripts/buffs.js"></script>
     </head>
     
-    <body onload='hideDetails();'>
+    <body onload='hideDetailsWrapper();'>
         <div class="wrapper">
             <header>
                 <h1>
@@ -211,7 +211,7 @@
                         </center>
                     </form>
                 </div>
-                <div class="buffs-div" style="min-height: 900px;">
+                <div id="buffsdetailswrapper" class="buffs-div" style="min-height: 900px;">
                     <input type="button" value="Details" onclick="showDetails()"/>
                     <div id="buffsdetails" class="math">
                     </div>
