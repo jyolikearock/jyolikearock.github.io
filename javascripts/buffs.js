@@ -161,6 +161,7 @@ function populateDetails() {
     }
     details += "<input type='button' value='Hide' onclick='hideDetails()'/>";
     document.getElementById('buffsdetails').innerHTML = details;
+    showDetailsWrapper();
 }
 
 function hideDetailsWrapper() {
