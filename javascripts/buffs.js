@@ -1,4 +1,10 @@
 var buffs = ['aegis', 'surge', 'entropy', 'light'];
+var formalNames = {
+	aegis: "Bound Aegis",
+    surge: "Power Surge",
+    entropy: "Structured Entropy",
+    light: "Inner Light"
+};
 var map = {
 	aegis: function(b) {
     	return [b[0] + 0.08, b[1] + 0.02, b[2] + 0.00];
@@ -16,7 +22,7 @@ var map = {
 
 var numBuffs;
 var m, s, c, d;
-var base;
+var baseDamage;
 var buffed;
 var deltas;
 
@@ -25,13 +31,14 @@ var buffsToUse;
 var bonuses;
 
 function optimizeBuffs() {
-	numBuffs = 0;
+	numBuffs = 1;
+    baseDamage = 0;
     buffsToTry = [];
     buffsToUse = [];
     
 	uncheckAll();
     parseValues();
-    base = calculateDamage(m, s, c, d);
+    baseDamage = calculateDamage(m, s, c, d);
     
     var index = 0;
     if (numBuffs == 4)
@@ -61,6 +68,7 @@ function optimizeBuffs() {
         }
     }
     tryBuffs();
+    populateDetails();
     selectBuffs();
 }
 
@@ -79,10 +87,14 @@ function parseValues() {
             break;
         }
     }
-    m = form.elements["magicka"].value || 0;
-    s = form.elements["spelldamage"].value || 0;
-    c = form.elements["critchance"].value / 100 || 0.0;
-    d = form.elements["critdamage"].value / 100 || 0.0;
+    m = parseInt(form.elements["magicka"].value) || 25000;
+    s = parseInt(form.elements["spelldamage"].value) || 1500;
+    c = parseInt(form.elements["critchance"].value) / 100 || 0.3;
+    d = parseInt(form.elements["critdamage"].value) / 100 || 0.5;
+}
+
+function calculateDamage(m, s, c, d) {
+	return Math.floor((m + 10.46 * s) * (1 + c * d));
 }
 
 function tryBuffs() {
@@ -105,7 +117,7 @@ function tryBuffs() {
         bc = c + bonuses[2];
         
         buffedDamage = calculateDamage(bm, bs, bc, d);
-        delta = buffedDamage - base;
+        delta = buffedDamage - baseDamage;
         buffed[i] = buffedDamage;
         deltas[i] = delta;
         
@@ -115,10 +127,6 @@ function tryBuffs() {
             buffsToUse = buffsToApply;
         }
     }
-}
-
-function calculateDamage(m, s, c, d) {
-	return Math.floor((m + 10.46 * s) * (1 + c * d));
 }
 
 function selectBuffs() {
@@ -133,4 +141,32 @@ function selectBuffs() {
 	for (var i = 0; i < buffsToUse.length; i++) {
     	document.getElementById(buffsToUse[i]).checked = true;
     }
+}
+
+function populateDetails() {
+	var details = "<p><b>Base Damage :</b> " + baseDamage + "</p>";
+	for (var i = 0; i < buffsToTry.length; i++) {
+    	details += "<p><b>";
+    	var buffsToApply = buffsToTry[i];
+        var delimiter = "";
+        for (var j = 0; j < buffsToApply.length; j++) {
+        	var buffName = formalNames[buffsToApply[j]];
+            details += delimiter + buffName;
+            delimiter = ", ";
+        }
+        details += "</b>";
+        details += "<br>Buffed Damage : " + buffed[i];
+        details += "<br>Difference : " + deltas[i];
+        details += "</p>"
+    }
+    details += "<input type='button' value='Hide' onclick='hideDetails()'/>";
+    document.getElementById('buffsdetails').innerHTML = details;
+}
+
+function hideDetails() {
+	document.getElementById('buffsdetails').style.display = 'none';
+}
+
+function showDetails() {
+	document.getElementById('buffsdetails').style.display = 'block';
 }

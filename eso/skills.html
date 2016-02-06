@@ -7,7 +7,7 @@
         <script type="text/javascript" src="/javascripts/buffs.js"></script>
     </head>
     
-    <body>
+    <body onload="hideDetails()">
         <div class="wrapper">
             <header>
                 <h1>
@@ -161,7 +161,7 @@
                 </p> 
                 
                 <!-- buff optimizer tool -->
-                <div id="optimizer" style="min-height:900px;">
+                <div id="optimizer">
                     <h3>
                         Buff Optimizer
                     </h3>
@@ -186,16 +186,16 @@
                         </center>
                         
                         <label class="buff-label">
-                            Base Magicka : <input type="text" id="magicka" placeholder="Max Magicka with additive buffs, but with no % buffs"/>
+                            Base Magicka : <input type="text" id="magicka" autocomplete="off" placeholder="Max Magicka with additive buffs, but with no % buffs"/>
                         </label>
                         <label class="buff-label">
-                            Base Spell Damage : <input type="text" id="spelldamage" placeholder="Spell Damage with additive buffs, but with no % buffs"/>
+                            Base Spell Damage : <input type="text" id="spelldamage" autocomplete="off" placeholder="Spell Damage with additive buffs, but with no % buffs"/>
                         </label>
                         <label class="buff-label">
-                            Crit Chance % : <input type="text" id="critchance" placeholder="Total Spell Critical Chance as a percentage"/>
+                            Crit Chance % : <input type="text" id="critchance" autocomplete="off" placeholder="Total Spell Critical Chance as a percentage (without Inner Light)"/>
                         </label>
                         <label class="buff-label">
-                            Crit Damage % : <input type="text" id="critdamage" placeholder="Total Spell Critical Damage as a percentage"/>
+                            Crit Damage % : <input type="text" id="critdamage" autocomplete="off" placeholder="Total Spell Critical Damage as a percentage"/>
                         </label>
                         <div style="height: 20px;"></div>
                         <center>
@@ -210,6 +210,11 @@
                             <input type="button" value="Optimize" onclick="optimizeBuffs()"/>
                         </center>
                     </form>
+                </div>
+                <div class="buffs-div" style="min-height: 900px;">
+                    <input type="button" value="Details" onclick="showDetails()"/>
+                    <div id="buffsdetails" class="math">
+                    </div>
                 </div>
             </section>
             

@@ -66,24 +66,30 @@ input.square-radio + label:hover,
     text-align: right;
     font-weight: bold;
 }
-.buff-form input[type=button] {
+input[type=button] {
     border: solid 1px;
     background: transparent;
     height: 36px;
     width: 100%;
 }
-.buff-form input[type=button]:hover {
+input[type=button]:hover {
   background: #1E2021;
   color: #ffffff;
 }
-.buff-form input[type=button]:active {
+input[type=button]:active {
   background: #0a0a0f;
   color: #ffffff;
   padding:0px;
 }
-.buff-form input[type=button]:focus {
+input[type=button]:focus {
   outline: 0;
 }
-.buff-form input[type=button]::-moz-focus-inner {
+input[type=button]::-moz-focus-inner {
   border: 0;
+}
+
+.buffs-div {
+    margin: 0 auto;
+    width: 550px;
+    padding: 20px;
 }
