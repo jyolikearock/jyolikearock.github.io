@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ESO Skills</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/skills.css">
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>
+                    Skills
+                </h1>
+                <p>
+                    <a href="#buffs">Magicka Sorcerer Buff Analysis</a>
+                </p>
+            </header>
+            
+            <!-- magicka sorcerer buff analysis -->
+            <section id="buffs">
+                <h2>
+                    Magicka Sorcerer Buff Analysis
+                </h2>
+                For a Magicka Sorcerer, there are really just 4 buffs that stand out and get a lot of attention on a number of builds:
+                <table>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Line</th>
+                        <th>Unmorphed</th>
+                        <th>Effects</th>
+                    </tr>
+                    <tr>
+                        <td>Bound Aegis</td>
+                        <td>Daedric Summoning</td>
+                        <td>Bound Armor</td>
+                        <td><code>+8% Magicka, +2% Spell Damage</code></td>
+                    </tr>
+                    <tr>
+                        <td>Power Surge</td>
+                        <td>Storm Calling</td>
+                        <td>Surge</td>
+                        <td><code>+20% Spell Damage, +2% Spell Damage</code></td>
+                    </tr>
+                    <tr>
+                        <td>Structured Entropy</td>
+                        <td>Mage's Guild</td>
+                        <td>Entropy</td>
+                        <td><code>+20% Spell Damage, +2% Magicka</code></td>
+                    </tr>
+                    <tr>
+                        <td>Inner Light</td>
+                        <td>Mage's Guild</td>
+                        <td>Magelight</td>
+                        <td><code>+10% Crit Chance, +5% Magicka, +2% Magicka</code></td>
+                    </tr>
+                </table>
+                <br>
+                The values above and the calculations that follow assume a very developed late-game Sorcerer, namely one which makes use of the following passives:
+                <ul>
+                    <li>Storm Calling passive <b>'Expert Mage'</b> (<code>+2% Spell Damage</code> for each Sorc ability slotted)</li>
+                    <li>Mage's Guild passive <b>'Magicka Controller'</b> (<code>+2% Magicka</code> for each Mage's Guild ability slotted)</li>
+                </ul>
+                <p>
+                    <a href="#optimizer">Skip the math</a>
+                </p>
+                
+                <!-- the math -->
+                <h3>
+                    The Math
+                </h3>
+                The unmitigated damage dealt by a skill can be determined by the following:
+                <pre>
+        Skill Damage = SkillCoefficient * (Magicka + 10.46 * SpellDamage)
+                </pre>
+                With a crit modifier:
+                <pre>
+        Effective Damage = K * (M + 10.46 * S) * (1 + CritChance * CritDamage)
+                </pre>
+                For the sake of simplicity, we will drop the skill coefficient and just refer to the <code>'10.46'</code> as some constant <code>A</code>, giving us this formula for 'base damage':
+                <pre>
+        Base Damage = (M + AS) * (1 + CD)
+                </pre>
+                <br>
+                For starters, we will look at just 3 of the buffs, excluding Inner Light because its crit chance buff complicates the math considerably. Let's apply these buffs and see how they affect the base damage expression:
+                <p>
+                    <b>Aegis</b>
+                </p>
+                <pre>
+        New Base Damage = (M + 0.08M + A * (S + 0.02S)) * (1 + CD)
+                        = (M + AS + 0.08M + 0.02S) * (1 + CD)
+                        
+        Difference      = (0.08M + 0.02AS) * (1 + CD)
+                </pre>
+                <p>
+                    <b>Surge</b>
+                </p>
+                <pre>
+        New Base Damage = (M + A * (S + 0.22S)) * (1 + CD)
+                        = (M + AS + 0.22S) * (1 + CD)
+                        
+        Difference      = 0.22AS * (1 + CD)
+                </pre>
+                <p>
+                    <b>Entropy</b>
+                </p>
+                <pre>
+        New Base Damage = (M + 0.02M + A * (S + 0.20S)) * (1 + CD)
+                        = (M + AS + 0.02M + 0.20S) * (1 + CD)
+                        
+        Difference      = (0.02M + 0.20AS) * (1 + CD)
+                </pre>
+                
+                In the context of comparison, we can ignore the crit modifier <code>(1 + CD)</code> since all 3 buffs have it. Moving foward with this simplification, let's start by comparing <b>Aegis</b> and <b>Surge</b>. Recall that <code>A = 10.46</code> from above.
+                <pre>
+        Aegis > Surge if:   0.08M + 0.02AS >  0.22AS
+                            0.08M          >  0.20AS
+                                M / AS     >  0.20 / 0.08
+                                M / AS     >  2.5
+                                M /  S     > 26.15
+                </pre>
+                In other words, 
+                <h3 class="important">
+                    Bound Aegis provides a greater damage increase than Power Surge if the ratio of base Magicka to base Spell Damage is at least <code>26.15</code>
+                </h3> 
+                Here, 'base' Magicka is the amount of Magicka <b>with</b> all additive buffs (e.g. enchantments, Mundus Stones, etc.), but <b>without</b> multiplicative buffs (e.g. skills, racial passives, etc.). The same applies for Spell Damage.
+                <p>
+                    To put this <code>26.15</code> ratio into perspective, let's say we have <code>1500</code> base Spell Damage. In order for Bound Aegis to be favored over Power Surge, we would need <code>39,225</code> base Magicka, which is quite a lot compared to how low <code>1500</code> Spell Damage is.
+                </p>
+                <p>
+                    Let's repeat this exercise for Bound Aegis and Entropy:
+                </p>
+                <pre>
+        Aegis > Entropy if: 0.08M + 0.02AS >  0.02M + 0.20AS
+                            0.06M          >          0.18AS
+                                M / AS     >          0.18 / 0.06
+                                M / AS     >          3.0
+                                M /  S     >         31.38
+                </pre>
+                Compared to Structured Entropy, Bound Aegis is even worse! At 1500 base Spell Base, we would need <code>47,070</code> base Magicka to favor Bound Aegis over Structured Entropy, which is an astronomical amount. To formalize our findings: 
+                <h3 class="important">
+                    Bound Aegis provides a greater damage increase than Structured Entropy if the ratio of base Magicka to base Spell Damage is at least <code>31.38</code>
+                </h3>
+                
+                Based on these ratios, we can already start to guess which is the better of the two between Entropy and Surge. But let's do the math to get a better idea:
+                <pre>
+        Surge > Entropy if:         0.22AS >  0.02M + 0.20AS
+                                    0.02AS >  0.02M
+                             0.02 / 0.02   >      M / AS
+                                    1.0    >      M / AS
+                                   10.46   >      M /  S
+                </pre>
+                Most players will find that their base Magicka to Spell Damage does exceed this ratio, mostly because Magicka has benefits that Spell Damage does not offer (e.g. providing a larger resource pool, increased shield strength) and should be prioritized as such. As a result, Structured Entropy will provide a greater a damage increase than Power Surge in a majority of cases.
+                <h3 class="important">
+                    Power Surge provides a greater damage increase than Structured Entropy if the ratio of base Magicka to base Spell Damage is less than <code>10.46</code>
+                </h3>
+                
+                <p>
+                    All the analysis that we've done up to this point only considered the 3 buffs which do not affect any critical stats, which in turn allowed us to ignore half of the base damage formula presented in the beginning. If we bring <b>Inner Light</b> into the picture, the complexity of the comparisons grows considerably due to the fact that we are now parameterizing 4 variables, as opposed to 2. In light of this, the rest of the math is more easily determined by means of simulation rather than variable manipulation, at which time I defer to the <b>Buff Optimizer</b>.
+                </p>
+            </section>
+            
+            <footer>
+                <p>
+                    <small>by @jyolikearock</small>
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
