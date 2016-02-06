@@ -113,7 +113,7 @@ function tryBuffs() {
         }
         
         bm = m * (1 + bonuses[0]);
-        bs = s * (1 + Math.min(bonuses[1], 0.2));
+        bs = s * (1 + Math.min(bonuses[1], 0.22));
         bc = c + bonuses[2];
         
         buffedDamage = calculateDamage(bm, bs, bc, d);
