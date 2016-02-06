@@ -71,15 +71,15 @@
                 </h3>
                 The unmitigated damage dealt by a skill can be determined by the following:
                 <pre>
-        Skill Damage = SkillCoefficient * (Magicka + 10.46 * SpellDamage)
+    Skill Damage = SkillCoefficient * (Magicka + 10.46 * SpellDamage)
                 </pre>
                 With a crit modifier:
                 <pre>
-        Effective Damage = K * (M + 10.46 * S) * (1 + CritChance * CritDamage)
+    Effective Damage = K * (M + 10.46 * S) * (1 + CritChance * CritDamage)
                 </pre>
                 For the sake of simplicity, we will drop the skill coefficient and just refer to the <code>'10.46'</code> as some constant <code>A</code>, giving us this formula for 'base damage':
                 <pre>
-        Base Damage = (M + AS) * (1 + CD)
+    Base Damage = (M + AS) * (1 + CD)
                 </pre>
                 <br>
                 For starters, we will look at just 3 of the buffs, excluding Inner Light because its crit chance buff complicates the math considerably. Let's apply these buffs and see how they affect the base damage expression:
@@ -87,37 +87,37 @@
                     <b>Aegis</b>
                 </p>
                 <pre>
-        New Base Damage = (M + 0.08M + A * (S + 0.02S)) * (1 + CD)
-                        = (M + AS + 0.08M + 0.02S) * (1 + CD)
-                        
-        Difference      = (0.08M + 0.02AS) * (1 + CD)
+    New Base Damage = (M + 0.08M + A * (S + 0.02S)) * (1 + CD)
+                    = (M + AS + 0.08M + 0.02S) * (1 + CD)
+                    
+    Difference      = (0.08M + 0.02AS) * (1 + CD)
                 </pre>
                 <p>
                     <b>Surge</b>
                 </p>
                 <pre>
-        New Base Damage = (M + A * (S + 0.22S)) * (1 + CD)
-                        = (M + AS + 0.22S) * (1 + CD)
-                        
-        Difference      = 0.22AS * (1 + CD)
+    New Base Damage = (M + A * (S + 0.22S)) * (1 + CD)
+                    = (M + AS + 0.22S) * (1 + CD)
+                    
+    Difference      = 0.22AS * (1 + CD)
                 </pre>
                 <p>
                     <b>Entropy</b>
                 </p>
                 <pre>
-        New Base Damage = (M + 0.02M + A * (S + 0.20S)) * (1 + CD)
-                        = (M + AS + 0.02M + 0.20S) * (1 + CD)
-                        
-        Difference      = (0.02M + 0.20AS) * (1 + CD)
+    New Base Damage = (M + 0.02M + A * (S + 0.20S)) * (1 + CD)
+                    = (M + AS + 0.02M + 0.20S) * (1 + CD)
+                    
+    Difference      = (0.02M + 0.20AS) * (1 + CD)
                 </pre>
                 
                 In the context of comparison, we can ignore the crit modifier <code>(1 + CD)</code> since all 3 buffs have it. Moving foward with this simplification, let's start by comparing <b>Aegis</b> and <b>Surge</b>. Recall that <code>A = 10.46</code> from above.
                 <pre>
-        Aegis > Surge if:   0.08M + 0.02AS >  0.22AS
-                            0.08M          >  0.20AS
-                                M / AS     >  0.20 / 0.08
-                                M / AS     >  2.5
-                                M /  S     > 26.15
+    Aegis > Surge if:   0.08M + 0.02AS >  0.22AS
+                        0.08M          >  0.20AS
+                            M / AS     >  0.20 / 0.08
+                            M / AS     >  2.5
+                            M /  S     > 26.15
                 </pre>
                 In other words, 
                 <h3 class="important">
@@ -131,11 +131,11 @@
                     Let's repeat this exercise for Bound Aegis and Entropy:
                 </p>
                 <pre>
-        Aegis > Entropy if: 0.08M + 0.02AS >  0.02M + 0.20AS
-                            0.06M          >          0.18AS
-                                M / AS     >          0.18 / 0.06
-                                M / AS     >          3.0
-                                M /  S     >         31.38
+    Aegis > Entropy if: 0.08M + 0.02AS >  0.02M + 0.20AS
+                        0.06M          >          0.18AS
+                            M / AS     >          0.18 / 0.06
+                            M / AS     >          3.0
+                            M /  S     >         31.38
                 </pre>
                 Compared to Structured Entropy, Bound Aegis is even worse! At 1500 base Spell Base, we would need <code>47,070</code> base Magicka to favor Bound Aegis over Structured Entropy, which is an astronomical amount. To formalize our findings: 
                 <h3 class="important">
@@ -144,11 +144,11 @@
                 
                 Based on these ratios, we can already start to guess which is the better of the two between Entropy and Surge. But let's do the math to get a better idea:
                 <pre>
-        Surge > Entropy if:         0.22AS >  0.02M + 0.20AS
-                                    0.02AS >  0.02M
-                             0.02 / 0.02   >      M / AS
-                                    1.0    >      M / AS
-                                   10.46   >      M /  S
+    Surge > Entropy if:         0.22AS >  0.02M + 0.20AS
+                                0.02AS >  0.02M
+                         0.02 / 0.02   >      M / AS
+                                1.0    >      M / AS
+                               10.46   >      M /  S
                 </pre>
                 Most players will find that their base Magicka to Spell Damage does exceed this ratio, mostly because Magicka has benefits that Spell Damage does not offer (e.g. providing a larger resource pool, increased shield strength) and should be prioritized as such. As a result, Structured Entropy will provide a greater a damage increase than Power Surge in a majority of cases.
                 <h3 class="important">
