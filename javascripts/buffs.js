@@ -87,10 +87,10 @@ function parseValues() {
             break;
         }
     }
-    m = parseInt(form.elements["magicka"].value) || 25000;
-    s = parseInt(form.elements["spelldamage"].value) || 1500;
-    c = parseInt(form.elements["critchance"].value) / 100 || 0.3;
-    d = parseInt(form.elements["critdamage"].value) / 100 || 0.5;
+    m = parseInt(form.elements["magicka"].value) || 0;
+    s = parseInt(form.elements["spelldamage"].value) || 0;
+    c = parseInt(form.elements["critchance"].value) / 100 || 0.0;
+    d = parseInt(form.elements["critdamage"].value) / 100 || 0.0;
 }
 
 function calculateDamage(m, s, c, d) {
@@ -144,7 +144,7 @@ function selectBuffs() {
 }
 
 function populateDetails() {
-	var details = "<p><b>Base Damage :</b> " + baseDamage + "</p>";
+	var details = "<br><p><b>Base Damage :</b> " + baseDamage + "</p>";
 	for (var i = 0; i < buffsToTry.length; i++) {
     	details += "<p><b>";
     	var buffsToApply = buffsToTry[i];
