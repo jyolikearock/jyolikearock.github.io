@@ -157,7 +157,59 @@
                 
                 <p>
                     All the analysis that we've done up to this point only considered the 3 buffs which do not affect any critical stats, which in turn allowed us to ignore half of the base damage formula presented in the beginning. If we bring <b>Inner Light</b> into the picture, the complexity of the comparisons grows considerably due to the fact that we are now parameterizing 4 variables, as opposed to 2. In light of this, the rest of the math is more easily determined by means of simulation rather than variable manipulation, at which time I defer to the <b>Buff Optimizer</b>.
-                </p>
+                </p> 
+                
+                <!-- buff optimizer tool -->
+                <div id="optimizer" style="min-height:900px;">
+                    <h3>
+                        Buff Optimizer
+                    </h3>
+                    <form id="buffsform" class="buff-form">
+                        <center>
+                            <p>
+                                How many abilities on your bar are you willing to assign to buffs?
+                            </p>
+                            <input type="radio" class="square-radio" name="numbuffs" id="1buff">
+                            <label id="1bufflabel" for="1buff">1</label>
+                            <input type="radio" class="square-radio" name="numbuffs" id="2buff">
+                            <label id="2bufflabel" for="2buff">2</label>
+                            <input type="radio" class="square-radio" name="numbuffs" id="3buff">
+                            <label id="3bufflabel" for="3buff">3</label>
+                            <input type="radio" class="square-radio" name="numbuffs" id="4buff">
+                            <label id="4bufflabel" for="4buff">4</label>
+                            <input type="radio" class="square-radio" name="numbuffs" id="5buff" onclick="this.checked=false">
+                            <label>5</label>
+                            <span style="min-width: 20px; display:inline-block;"></span>
+                            <input type="radio" class="square-radio" name="numbuffs" id="ult" onclick="this.checked=false">
+                            <label>U</label>
+                        </center>
+                        
+                        <label class="buff-label">
+                            Base Magicka : <input type="text" id="magicka" placeholder="Max Magicka with additive buffs, but with no % buffs"/>
+                        </label>
+                        <label class="buff-label">
+                            Base Spell Damage : <input type="text" id="spelldamage" placeholder="Spell Damage with additive buffs, but with no % buffs"/>
+                        </label>
+                        <label class="buff-label">
+                            Crit Chance % : <input type="text" id="critchance" placeholder="Total Spell Critical Chance as a percentage"/>
+                        </label>
+                        <label class="buff-label">
+                            Crit Damage % : <input type="text" id="critdamage" placeholder="Total Spell Critical Damage as a percentage"/>
+                        </label>
+                        <div style="height: 20px;"></div>
+                        <center>
+                            <input type="checkbox" name="buffs" id="aegis" onclick="return false">
+                            <label for="aegis">BA</label>
+                            <input type="checkbox" name="buffs" id="surge" onclick="return false">
+                            <label for="surge">PS</label>
+                            <input type="checkbox" name="buffs" id="entropy" onclick="return false">
+                            <label for="entropy">SE</label>
+                            <input type="checkbox" name="buffs" id="light" onclick="return false">
+                            <label for="light">IL</label>
+                            <input type="button" value="Optimize" onclick="optimizeBuffs()"/>
+                        </center>
+                    </form>
+                </div>
             </section>
             
             <footer>
