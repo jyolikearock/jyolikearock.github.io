@@ -1,0 +1,147 @@
+<script src="/bdo/enhancement.js"></script>
+<link rel="stylesheet" type="text/css" href="/bdo/enhancement.css">
+<div class="container">
+    <h1><center>
+        Black Desert Online Enhancement Helper
+    </center></h1>
+    <form>
+        <table>
+            <tr>
+                <td colspan="2">Current Enhancement Level:</td>
+                <td colspan="2">Current Failstacks:</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="currentUpgrades">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7" selected="true">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">PRI (I)</option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" class="small-button" onclick="decCurrentUpgrades()">-</button>
+                    <button type="button" class="small-button" onclick="incCurrentUpgrades()">+</button>
+                </td>
+                <td>
+                    <input type="text" id="failstacks" value=0>
+                </td>
+                <td>
+                    <button type="button" class="small-button" onclick="decFailstacks()">-</button>
+                    <button type="button" class="small-button" onclick="incFailstacks()">+</button>
+                    <button type="button" class="small-button" onclick="zeroFailstacks()">0</button>
+                    <button type="button" class="small-button" onclick="maxFailstacks()">max</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    Cost of Blackstone:
+                    <br><font size=2>For Enhancements</font>
+                </td>
+                <td>
+                    Cost of Blackstone:
+                    <br><font size=2>For Building Failstacks</font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="blackstoneCost" value=250000>
+                </td>
+                <td>
+                    <input type="text" id="blackstoneCostFailstack" value=200000>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Cost of Repairing 10 Max Durability:
+                    <br><font size=2>Item Being Enhanced</font>
+                </td>
+                <td>
+                    Cost of Repairing 10 Max Durability:
+                    <br><font size=2>Item Being Used to Build Failstacks</font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="repairCost" value=7500000>
+                </td>
+                <td>
+                    <input type="text" id="repairCostFailstack" value=50000>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Using Durable Option For Building Failstacks?
+                </td>
+                <td>
+                    Weapon or Armor?
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" id="durableOnButton" onclick="durableOn()" class="medium-button pressed-button">
+                        Yes
+                    </button>
+                    <button type="button" id="durableOffButton" onclick="durableOff()" class="medium-button">
+                        No
+                    </button>
+                </td>
+                <td>
+                    <button type="button" id="useWeapon" onclick="useWeaponData()" class="medium-button pressed-button">
+                        Weapon
+                    </button>
+                    <button type="button" id="useArmor" onclick="useArmorData()" class="medium-button">
+                        Armor
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="button" onclick="run()">
+            Optimize
+        </button>
+    </form>
+
+    <div class="results">
+
+        Expected Silver Cost:
+        <div class="results">
+            <span id="expectedCost">0</span>
+        </div>
+    
+        Start Enhancing After You Have This Many Failstacks:
+        <div class="results">
+            <span id="targetFailstacks">0</span>
+        </div>
+        
+        Expected Number of Ehancement Attempts:
+        <div class="results">
+            <span id="expectedAttempts">0</span>
+        </div>
+
+        Expected Durability Loss (Item Being Enhanced):
+        <div class="results">
+            <span id="expectedDurabilityLoss">0</span>
+        </div>
+        
+        Success Probability of First Enhancement Attempt:
+        <div class="results">
+            <span id="successProb">0</span>
+        </div>
+    </div>
+</div>
