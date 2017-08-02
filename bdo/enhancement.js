@@ -192,7 +192,7 @@ function decCurrentUpgrades() {
 
 function incCurrentUpgrades() {
 	var currentUpgrades = get("currentUpgrades");
-    if (currentUpgrades.selectedIndex < 16) {
+    if (currentUpgrades.selectedIndex < 19) {
     	currentUpgrades.selectedIndex++;
     	run();
     }
