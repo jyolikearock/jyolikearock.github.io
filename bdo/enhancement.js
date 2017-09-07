@@ -75,11 +75,11 @@ function run() {
         
         var totalBlackstoneCost = numExpectedAttempts * blackstoneCost;
         var totalRepairCost = (numExpectedAttempts - 1) * 5 / 10 * repairCost;
-    	var failstackCost = getFailstackCost(numFailstacks, targetFailstacks, blackstoneCostFailstack, repairCostFailstack);
+        var failstackCost = getFailstackCost(numFailstacks, targetFailstacks, blackstoneCostFailstack, repairCostFailstack);
         
         var totalCost = totalBlackstoneCost + totalRepairCost + failstackCost;
         if (totalCost < bestCost) {
-        	bestCost = totalCost;
+            bestCost = totalCost;
             bestTargetFailstacks = targetFailstacks;
             bestNumExpectedAttempts = numExpectedAttempts;
         }
@@ -99,9 +99,9 @@ function run() {
 }
 
 function getFailstackCost(currentFailstacks, targetFailstacks, blackstoneCost, repairCostFailstack) {
-	var durabilityLossPerFailstack = 5;
+    var durabilityLossPerFailstack = 5;
     if (useDurable) {
-    	durabilityLossPerFailstack = 4;
+        durabilityLossPerFailstack = 4;
     }
     
     var diff = targetFailstacks - currentFailstacks;
@@ -122,7 +122,7 @@ function getExpectedNumAttempts(numTargetUpgrades, numFailstacks) {
 }
 
 function getSuccessProbs(numTargetUpgrades, numFailstacks) {
-    var NUM_ITERATIONS = 200;
+    var NUM_ITERATIONS = 50;
 
     var probs = [];
     var cumProbs = [];
@@ -133,9 +133,17 @@ function getSuccessProbs(numTargetUpgrades, numFailstacks) {
     var increasePerFailstack = row[1];
     var maxFailstacks = row[2];
 
+    // PRI+ gains more than 1 failstack per attempt
+    var numFailstacksPerFail = 1;
+    if (numTargetUpgrades > 15) {
+        numFailstacksPerFail = numTargetUpgrades - 14;
+    }
+
     // populate independent probabilities of success per attempt
     for (var i = 0; i < NUM_ITERATIONS; i++) {
-        probs[i] = baseSuccessProb + Math.min(i + numFailstacks, maxFailstacks) * increasePerFailstack;
+        probs[i] = baseSuccessProb
+                + Math.min(i * numFailstacksPerFail + numFailstacks, maxFailstacks)
+                * increasePerFailstack;
     }
 
     // calculate cumulative probability of succeeding on a given attempt
@@ -159,70 +167,70 @@ function getSuccessProbs(numTargetUpgrades, numFailstacks) {
 // button functions
 
 function useWeaponData() {
-	upgradeData = upgradeDataWeapon;
+    upgradeData = upgradeDataWeapon;
     get("useArmor").classList.remove("pressed-button");
     get("useWeapon").classList.add("pressed-button");
 }
 
 function useArmorData() {
-	upgradeData = upgradeDataArmor;
+    upgradeData = upgradeDataArmor;
     get("useWeapon").classList.remove("pressed-button");
     get("useArmor").classList.add("pressed-button");
 }
 
 function durableOn() {
-	useDurable = true;
+    useDurable = true;
     get("durableOffButton").classList.remove("pressed-button");
     get("durableOnButton").classList.add("pressed-button");
 }
 
 function durableOff() {
-	useDurable = false;
+    useDurable = false;
     get("durableOnButton").classList.remove("pressed-button");
     get("durableOffButton").classList.add("pressed-button");
 }
 
 function decCurrentUpgrades() {
-	var currentUpgrades = get("currentUpgrades");
+    var currentUpgrades = get("currentUpgrades");
     if (currentUpgrades.selectedIndex > 0) {
-    	currentUpgrades.selectedIndex--;
-    	run();
+        currentUpgrades.selectedIndex--;
+        run();
     }
 }
 
 function incCurrentUpgrades() {
-	var currentUpgrades = get("currentUpgrades");
+    var currentUpgrades = get("currentUpgrades");
     if (currentUpgrades.selectedIndex < 19) {
-    	currentUpgrades.selectedIndex++;
-    	run();
+        currentUpgrades.selectedIndex++;
+        run();
     }
 }
 
 function decFailstacks() {
-	var failstacks = get("failstacks");
+    var failstacks = get("failstacks");
     var numFailstacks = parseInt(failstacks.value);
-   	failstacks.value = Math.max(0, numFailstacks - 1);
+    failstacks.value = Math.max(0, numFailstacks - 1);
     run();
 }
 
 function incFailstacks() {
-	var failstacks = get("failstacks");
+    var failstacks = get("failstacks");
     var numFailstacks = parseInt(failstacks.value);
     var numCurrentUpgrades = parseInt(get("currentUpgrades").value);
     var maxFailstacks = upgradeData[numCurrentUpgrades + 1][2];
-   	failstacks.value = Math.min(maxFailstacks, numFailstacks + 1);
+    failstacks.value = Math.min(maxFailstacks, numFailstacks + 1);
     run();
 }
 
 function zeroFailstacks() {
-	get("failstacks").value = 0;
+    get("failstacks").value = 0;
     run();
 }
 
 function maxFailstacks() {
     var numCurrentUpgrades = parseInt(get("currentUpgrades").value);
     var maxFailstacks = upgradeData[numCurrentUpgrades + 1][2];
-   	get("failstacks").value = maxFailstacks;
+    get("failstacks").value = maxFailstacks;
     run();
 }
 
@@ -237,5 +245,5 @@ function commaSeparate(x) {
 }
 
 function toPercent(x) {
-	return parseFloat(Math.round(x * 10000) / 100).toFixed(2);
+    return parseFloat(Math.round(x * 10000) / 100).toFixed(2);
 }
