@@ -7,11 +7,11 @@
 }
 
 .st-sort-ascent:before{
-  content: '\25B2';
+  content: '\25BC ';
 }
 
 .st-sort-descent:before{
-  content: '\25BC';
+  content: '\25B2 ';
 }
 
 td {
