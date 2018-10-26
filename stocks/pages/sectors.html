@@ -1,12 +1,12 @@
 <h4 class="display-4">Sectors</h4>
 <span class="lead">{{sector}}</span>
-<table class="table">
+<table class="table" st-table="displayedSectors" st-safe-src="sectors">
   <thead>
     <tr>
-      <th>Symbol</th>
-      <th>Company Name</th>
-      <th>Last Price</th>
-      <th>Percent Change</th>
+      <th st-sort="symbol">Symbol</th>
+      <th st-sort="companyName">Company Name</th>
+      <th st-sort="price">Last Price</th>
+      <th st-sort="change">Percent Change</th>
     </tr>
   </thead>
   <tbody>
@@ -17,4 +17,11 @@
       <td>{{symbol.change | number: 2}}</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" class="text-center">
+        <div st-pagination="" st-items-by-page="25" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+  </tfoot>
 </table>
