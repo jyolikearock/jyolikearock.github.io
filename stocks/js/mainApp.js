@@ -4,10 +4,14 @@ var app = angular.module("mainApp", ["ngRoute"]);
 
 app.config(["$routeProvider", function ($routeProvider) {
   $routeProvider
-    .when("/home", {
-      templateUrl: "./pages/home.html"
+    .when("/sectors/", {
+      templateUrl: "./pages/sectors.html"
+    })
+    .when("/sectors/:sector", {
+      templateUrl: "./pages/sectors.html"
     })
     .otherwise({
-      templateUrl: "./pages/hello.html"
+      templateUrl: "./pages/home.html"
     });
 }]);
+
