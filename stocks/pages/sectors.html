@@ -1,1 +1,19 @@
-<h4 class="display-4">Coming Soon!</h4>
+<h4 class="display-4">Sectors</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Company Name</th>
+      <th>Last Price</th>
+      <th>Percent Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="symbol in symbols">
+      <td>{{symbol.symbol}}</td>
+      <td>{{symbol.companyName}}</td>
+      <td>{{symbol.price}}</td>
+      <td>{{symbol.change | number: 2}}</td>
+    </tr>
+  </tbody>
+</table>
