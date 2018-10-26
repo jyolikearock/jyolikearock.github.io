@@ -1,13 +1,19 @@
 <!doctype html>
 <html ng-app>
-  <head>
+  <head ng-app="mainApp">
     <title>Stocks</title>
-
+    
+    <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-
-    <link rel="stylesheet" href="./css/main.css">
+    
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <!-- main app module -->
+    <script src="./js/mainApp.js"></script>
   </head>
   <body>
 
@@ -24,51 +30,25 @@
         <div class="col-3 border-right">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Active</a>
+              <a class="nav-link" href="#/home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Nothing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Nothing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Nothing</a>
             </li>
           </ul>
         </div>
-
-        <!-- content -->
-        <div class="col-6">
-          <h4 class="display-4">Stocks</h4>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Jiyong</td>
-                <td>Shim</td>
-              </tr>
-              <tr>
-                <td>Jiyong</td>
-                <td>Shim</td>
-              </tr>
-              <tr>
-                <td>Jiyong</td>
-                <td>Shim</td>
-              </tr>
-              <tr>
-                <td>Jiyong</td>
-                <td>Shim</td>
-              </tr>
-            </tbody>
-          </table>
+    
+        <!-- content body populated by angular -->
+        <div ng-view>
+        
         </div>
-
+        
       </div>
     </div>
   </body>
