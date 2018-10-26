@@ -22,7 +22,7 @@ app.service("stockMarketService", function($http, $q) {
   };
 
   // list symbols for sector
-  this.getSymbols = function(sector) {
+  this.listSymbols = function(sector) {
     var response = httpGet(listSymbolsUrl + sector).then(
       function(resp) {
         console.log("Got response from listSymbols call: ", resp);
