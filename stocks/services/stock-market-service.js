@@ -5,7 +5,7 @@ app.service("stockMarketService", function($http, $q) {
 
   // stock market api
   this.listSectors = function() {
-    httpGet(listSectorsUrl).then(
+    var response = httpGet(listSectorsUrl).then(
       function(resp) {
         console.log("Got response from listSectors call: ", resp);
         var sectors = [];
@@ -18,6 +18,8 @@ app.service("stockMarketService", function($http, $q) {
       function(error) {
         console.log("Got error from listSectors call: ", error);
       });
+
+    return $q.when(response);
   };
 
   // utility methods
