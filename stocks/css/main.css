@@ -1,3 +1,19 @@
 .navbar-dark {
   color: white;
 }
+
+.pagination {
+  justify-content: center;
+}
+
+.st-sort-ascent:before{
+  content: '\25B2';
+}
+
+.st-sort-descent:before{
+  content: '\25BC';
+}
+
+.td, .th {
+  cursor: default;
+}
