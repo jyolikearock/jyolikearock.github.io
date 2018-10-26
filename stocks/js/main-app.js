@@ -2,6 +2,7 @@ console.log("Loading main app");
 
 var app = angular.module("mainApp", ["ngRoute"]);
 
+// router
 app.config(["$routeProvider", function ($routeProvider) {
   $routeProvider
     .when("/sectors/", {
@@ -11,7 +12,12 @@ app.config(["$routeProvider", function ($routeProvider) {
       templateUrl: "./pages/sectors.html"
     })
     .otherwise({
-      templateUrl: "./pages/home.html"
+      templateUrl: "./pages/home.html",
+      controller: "mainController"
     });
 }]);
+
+// populate sectors
+
+
 

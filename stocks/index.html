@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="mainApp">
+<html>
   <head>
     <title>Stocks</title>
 
@@ -14,9 +14,15 @@
     <link rel="stylesheet" href="./css/main.css">
 
     <!-- main app module -->
-    <script src="./js/mainApp.js"></script>
+    <script src="./js/main-app.js"></script>
+
+    <!-- main controller -->
+    <script src="./controllers/main-controller.js"></script>
+
+    <!-- services -->
+    <script src="./services/stock-market-service.js"></script>
   </head>
-  <body>
+  <body ng-app="mainApp" ng-controller="mainController">
 
     <!-- header / main nav bar -->
     <header class="navbar navbar-expand bg-dark navbar-dark fixed-top position-sticky">
