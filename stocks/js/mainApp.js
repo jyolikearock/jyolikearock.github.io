@@ -7,5 +7,7 @@ app.config(["$routeProvider", function ($routeProvider) {
     .when("/home", {
       templateUrl: "./pages/home.html"
     })
-    .otherwise({ redirectTo: "./pages/hello.html" });
+    .otherwise({
+      templateUrl: "./pages/hello.html"
+    });
 }]);
