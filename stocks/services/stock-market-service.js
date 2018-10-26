@@ -1,4 +1,4 @@
-app.service("stockMarketService", function($http) {
+app.service("stockMarketService", function($http, $q) {
 
   var baseEndpoint = "https://api.iextrading.com/1.0/stock/";
   var listSectorsUrl = baseEndpoint + "market/sector-performance";
@@ -16,7 +16,8 @@ app.service("stockMarketService", function($http) {
 
   // utility methods
   function httpGet(url) {
-    $http.get(url).then(successCallBack, errorCallBack);
+    var response = $http.get(url).then(successCallBack, errorCallBack);
+    return $q.when(response);
   }
 
   function successCallBack(resp) {
