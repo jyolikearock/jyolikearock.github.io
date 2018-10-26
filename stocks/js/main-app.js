@@ -1,6 +1,6 @@
 console.log("Loading main app");
 
-var app = angular.module("mainApp", ["ngRoute"]);
+var app = angular.module("mainApp", ["ngRoute", "smart-table"]);
 
 // router
 app.config(["$routeProvider", function ($routeProvider) {
