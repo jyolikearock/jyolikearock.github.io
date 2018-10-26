@@ -14,6 +14,10 @@
   content: '\25BC';
 }
 
-.td, .th {
+td {
   cursor: default;
+}
+
+th {
+  cursor: pointer;
 }

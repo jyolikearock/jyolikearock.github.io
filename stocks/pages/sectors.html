@@ -6,13 +6,13 @@
       <th st-sort="symbol">Symbol</th>
       <th st-sort="companyName">Company Name</th>
       <th st-sort="price">Last Price</th>
-      <th st-sort="change">Percent Change</th>
+      <th st-sort="change">% Change</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="symbol in displayedSymbols">
       <td>{{symbol.symbol}}</td>
-      <td>{{symbol.companyName}}</td>
+      <td>{{symbol.companyName | limitTo: 25}}<span ng-show="symbol.companyName.length > 25">...</span></td>
       <td>{{symbol.price}}</td>
       <td><span ng-show="symbol.change > 0">+</span>{{symbol.change | number: 2}}</td>
     </tr>
@@ -20,7 +20,7 @@
   <tfoot>
     <tr>
       <td colspan="4" class="text-center">
-        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+        <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
       </td>
     </tr>
   </tfoot>
