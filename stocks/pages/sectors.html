@@ -1,6 +1,6 @@
 <h4 class="display-4">Sectors</h4>
 <span class="lead">{{sector}}</span>
-<table class="table" st-table="displayedSectors" st-safe-src="sectors">
+<table class="table" st-table="displayedSymbols" st-safe-src="symbols">
   <thead>
     <tr>
       <th st-sort="symbol">Symbol</th>
@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="symbol in symbols">
+    <tr ng-repeat="symbol in displayedSymbols">
       <td>{{symbol.symbol}}</td>
       <td>{{symbol.companyName}}</td>
       <td>{{symbol.price}}</td>
