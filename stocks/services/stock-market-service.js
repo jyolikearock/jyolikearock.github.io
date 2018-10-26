@@ -10,7 +10,7 @@ app.service("stockMarketService", function($http, $q) {
         console.log("Got response from listSectors call: ", resp);
         var sectors = [];
         resp.data.forEach(function(e) {
-          sectors.push(e);
+          sectors.push(e.name);
         });
 
         return sectors;
