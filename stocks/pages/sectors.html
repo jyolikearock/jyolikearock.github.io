@@ -14,7 +14,7 @@
       <td>{{symbol.symbol}}</td>
       <td>{{symbol.companyName}}</td>
       <td>{{symbol.price}}</td>
-      <td>{{symbol.change | number: 2}}</td>
+      <td><span ng-show="symbol.change > 0">+</span>{{symbol.change | number: 2}}</td>
     </tr>
   </tbody>
   <tfoot>
