@@ -39,6 +39,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Home</a>
             </li>
+            <li class="nav-item">
+              <span class="nav-link">Sectors</span>
+            </li>
+            <li class="nav-item" ng-repeat="sector in sectors">
+              <a class="nav-link" href="#/sectors/{{sector}}">{{sector}}</a>
+            </li>
           </ul>
         </div>
 

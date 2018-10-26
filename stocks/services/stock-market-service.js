@@ -8,6 +8,12 @@ app.service("stockMarketService", function($http, $q) {
     httpGet(listSectorsUrl).then(
       function(resp) {
         console.log("Got response from listSectors call: ", resp);
+        var sectors = [];
+        resp.data.forEach(function(e) {
+          sectors.push(e);
+        });
+
+        return sectors;
       },
       function(error) {
         console.log("Got error from listSectors call: ", error);
@@ -21,12 +27,10 @@ app.service("stockMarketService", function($http, $q) {
   }
 
   function successCallBack(resp) {
-    console.log("Got response from server: ", resp);
     return resp;
   }
 
   function errorCallBack(error) {
-    console.log("Got error from server: ", error);
     return error;
   }
 
