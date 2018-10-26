@@ -12,8 +12,7 @@ app.config(["$routeProvider", function ($routeProvider) {
       templateUrl: "./pages/sectors.html"
     })
     .otherwise({
-      templateUrl: "./pages/home.html",
-      controller: "mainController"
+      templateUrl: "./pages/home.html"
     });
 }]);
 
