@@ -61,7 +61,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
           callsCompleted++;
           // continue to next step if all sectors have been processed
           if (callsCompleted == sectorsToGet.length) {
-            getChartsForSymbols();
+            getDataForSymbols();
             console.log("Got all symbols; proceed to get symbol data");
           }
         }
@@ -70,7 +70,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   }
 
   // get charts for every symbol
-  function getChartsForSymbols() {
+  function getDataForSymbols() {
 
     var callsCompleted = 0;
     var chartsGathered = 0;
@@ -84,7 +84,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
 
       // once batch fills up, make the call, then reset batch
       if (batch.length == batchSize || i == symbols.length - 1) {
-        stockMarketService.getChartsForSymbols(batch.slice()).then(
+        stockMarketService.getDataForSymbols(batch.slice()).then(
           function(resp) {
 
             // pick out each symbol's chart and store it

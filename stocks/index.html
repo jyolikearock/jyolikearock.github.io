@@ -14,21 +14,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="./js/smart-table.min.js"></script>
     <script src="./js/angular-chart.js"></script>
+    <script src="./js/ui-bootstrap-modal-2.5.0.js"></script>
 
     <!-- custom css -->
     <link rel="stylesheet" href="./css/main.css">
 
-    <!-- main app module -->
-    <script src="./js/main-app.js"></script>
+    <!-- services -->
+    <script src="./services/stock-market-service.js"></script>
 
     <!-- controllers -->
-    <script src="./controllers/main-controller.js"></script>
     <script src="./controllers/symbols-controller.js"></script>
     <script src="./controllers/rankings-controller.js"></script>
     <script src="./controllers/sectors-controller.js"></script>
+    <script src="./controllers/main-controller.js"></script>
 
-    <!-- services -->
-    <script src="./services/stock-market-service.js"></script>
+    <!-- main app module -->
+    <script src="./js/main-app.js"></script>
   </head>
 
   <body ng-app="mainApp" ng-controller="mainController">
@@ -39,7 +40,7 @@
     </header>
 
     <!-- body -->
-    <div class="container mt-4">
+    <div class="container mt-4" ng-show="isLoadingFinished">
       <div class="row">
 
         <!-- page nav bar -->

@@ -1,23 +1,3 @@
-console.log("Loading main app");
-
-// shared across the entire application
-var sectors = [
-  "Communication Services",
-  "Consumer Discretionary",
-  "Consumer Staples",
-  "Energy",
-  "Financials",
-  "Health Care",
-  "Industrials",
-  "Materials",
-  "Real Estate",
-  "Utilities",
-  "Technology"
-];
-var symbolsBySector = {};
-var symbolDataCache = {};
-var symbolChartCache = {};
-
 var app = angular.module("mainApp", ["ngRoute", "smart-table", "chart.js"]);
 
 // router
