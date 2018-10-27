@@ -12,7 +12,7 @@
   <tbody>
     <tr ng-repeat="symbol in displayedSymbols">
       <td>{{symbol.symbol}}</td>
-      <td>{{symbol.companyName | limitTo: 25}}<span ng-show="symbol.companyName.length > 25">...</span></td>
+      <td>{{symbol.companyName | limitTo: 30}}<span ng-show="symbol.companyName.length > 30">...</span></td>
       <td>{{symbol.price | number: 2}}</td>
       <td><span ng-show="symbol.change > 0">+</span>{{symbol.change | number: 2}}</td>
     </tr>

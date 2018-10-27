@@ -6,7 +6,12 @@ app.controller("mainController", function($scope, stockMarketService) {
 
   stockMarketService.listSectors().then(
     function(resp) {
-      $scope.sectors = resp;
+      var sectors = [];
+      resp.data.forEach(function(e) {
+        sectors.push(e.name);
+      });
+
+      $scope.sectors = sectors;
       console.log("Loaded market sectors: " + $scope.sectors);
     });
 

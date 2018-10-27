@@ -10,12 +10,7 @@ app.service("stockMarketService", function($http, $q) {
     var response = httpGet(listSectorsUrl).then(
       function(resp) {
         console.log("Got response from listSectors call: ", resp);
-        var sectors = [];
-        resp.data.forEach(function(e) {
-          sectors.push(e.name);
-        });
-
-        return sectors;
+        return resp;
       });
 
     return $q.when(response);
@@ -26,18 +21,7 @@ app.service("stockMarketService", function($http, $q) {
     var response = httpGet(listSymbolsUrl + sector).then(
       function(resp) {
         console.log("Got response from listSymbols call: ", resp);
-        var symbols = [];
-        resp.data.forEach(function(e) {
-          var symbol = {};
-          symbol.symbol = e.symbol;
-          symbol.companyName = e.companyName;
-          symbol.price = e.close;
-          symbol.change = e.changePercent * 100;
-
-          symbols.push(symbol);
-        });
-
-        return symbols;
+        return resp;
       });
 
     return $q.when(response);
