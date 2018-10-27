@@ -11,7 +11,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
 
   // get all symbols
   $scope.allSymbols = [];
-  function getAllSymbols() = {
+  function getAllSymbols() {
 
     // determine which sectors haven't been queried yet
     var sectorsToGet = [];
