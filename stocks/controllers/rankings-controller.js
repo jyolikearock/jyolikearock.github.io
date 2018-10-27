@@ -83,16 +83,15 @@ app.controller("rankingsController", function($scope, stockMarketService) {
 
       // once batch fills up, make the call, then reset batch
       if (batch.length == batchSize || i == symbols.length - 1) {
-        var batchCopy = batch.slice();
-        stockMarketService.getChartsForSymbols(batchCopy).then(
+        stockMarketService.getChartsForSymbols(batch.slice()).then(
           function(resp) {
 
             // pick out each symbol's chart and store it
-            batchCopy.forEach(function(symbol) {
+            Object.keys(resp).forEach(function(symbol) {
               $scope.charts[symbol] = resp[symbol].chart;
+              callsCompleted++;
             });
 
-            callsCompleted += batchCopy.length;
             // continue to next step if all charts have been gathered
             if (callsCompleted == symbols.length) {
               // TODO
