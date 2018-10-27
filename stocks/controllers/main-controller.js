@@ -27,7 +27,7 @@ app.controller("mainController", function($scope, stockMarketService) {
     pageInfo.currentPage = "Home";
   }
 
-  $scope.isLoadingFinished = true;
+  $scope.isLoadingFinished = false;
 
   getSymbolsForSectors();
 
@@ -42,11 +42,53 @@ app.controller("mainController", function($scope, stockMarketService) {
           numSectorsProcessed++;
           if (numSectorsProcessed == sectors.length) {
             console.log("Loaded symbols for all sectors");
-            // TODO
-            $scope.isLoadingFinished = false;
           }
         }
       )
+    });
+  }
+
+  function getDataForSymbols() {
+    var numSectorsProcessed = 0;
+
+    sectors.forEach(function(sector) {
+      var symbols = symbolsBySector[sector];
+
+      // split symbols into batches of 100
+      var batch = [];
+      var batchSize = 100;
+      var numBatches = Math.ceil(symbols.length * 1.0 / batchSize);
+      var numBatchesProcessed = 0;
+
+      for (var i = 0; i < symbols.length; i++) {
+        batch.push(symbol);
+
+        // if batch is filled up, make request and clear the batch
+        if (batch.length == batchSize || i = symbols.length + 1) {
+          stockMarketService.getDataForSymbols(batch.slice()).then(
+            function(resp) {
+              Object.keys(resp).forEach(
+                function(key) {
+                  symbolData[key] = resp[key];
+                }
+              )
+              numBatchesProcessed++;
+
+              if (numBatchesProcessed == numBatches) {
+                console.log("Loaded data for all symbols in sector: ", sector);
+                numSectorsProcessed++;
+
+                if (numSectorsProcessed == sectors.length) {
+                  console.log("Loaded data for all symbols in all sectors");
+                  $scope.isLoadingFinished = true;
+                }
+              }
+            }
+          )
+
+          batch = [];
+        }
+      }
     });
   }
 
