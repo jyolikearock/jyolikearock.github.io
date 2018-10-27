@@ -27,7 +27,9 @@ app.controller("mainController", function($scope, stockMarketService) {
     pageInfo.currentPage = "Home";
   }
 
-  $scope.isLoading = true;
+  $scope.isLoadingFinished = true;
+
+  getSymbolsForSectors();
 
   // get symbols for each market sector
   function getSymbolsForSectors() {
@@ -41,6 +43,7 @@ app.controller("mainController", function($scope, stockMarketService) {
           if (numSectorsProcessed == sectors.length) {
             console.log("Loaded symbols for all sectors");
             // TODO
+            $scope.isLoadingFinished = false;
           }
         }
       )
