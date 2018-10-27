@@ -61,15 +61,17 @@ app.controller("mainController", function($scope, stockMarketService) {
       var numBatchesProcessed = 0;
 
       for (var i = 0; i < symbols.length; i++) {
-        batch.push(symbol);
+        batch.push(symbols[i]);
 
         // if batch is filled up, make request and clear the batch
         if (batch.length == batchSize || i = symbols.length + 1) {
           stockMarketService.getDataForSymbols(batch.slice()).then(
             function(resp) {
+
+              // resp is map of symbol --> symbol data
               Object.keys(resp).forEach(
-                function(key) {
-                  symbolData[key] = resp[key];
+                function(symbol) {
+                  symbolData[symbol] = resp[symbol];
                 }
               )
               numBatchesProcessed++;
