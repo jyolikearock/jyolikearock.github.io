@@ -4,7 +4,7 @@ console.log("Loading main app");
 var symbolsBySector = {};
 var symbolData = {};
 
-var app = angular.module("mainApp", ["ngRoute", "smart-table"]);
+var app = angular.module("mainApp", ["ngRoute", "smart-table", "chart.js"]);
 
 // router
 app.config(["$routeProvider", function ($routeProvider) {

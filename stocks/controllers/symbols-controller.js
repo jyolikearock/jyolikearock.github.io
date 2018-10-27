@@ -33,15 +33,26 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
           var dataPoint = {};
           dataPoint.date          = e.date;
           dataPoint.close         = e.close;
-          dataPoint.changePercent = e.changePercent;
           symbolData.chart.push(dataPoint);
         });
 
+        generateChart(symbolData.chart);
         $scope.symbolData = symbolData;
 
         console.log("Extracted key data for symbol: ", symbol);
       }
     );
+  }
+
+  function generateChart(chart) {
+    var dates = [];
+    var prices = [];
+    chart.forEach(function(e) {
+      dates.push(e.date);
+      prices.push(e.close);
+    });
+    $scope.dates = dates;
+    $scope.prices = prices;
   }
 
 });
