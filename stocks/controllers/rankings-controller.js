@@ -76,9 +76,9 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     var symbols = $scope.allSymbols;
 
     // split symbols into batches of 100
+    var batch = [];
     var batchSize = 100;
     for (var i = 0; i < symbols.length; i++) {
-      var batch = [];
       batch.push(symbols[i].symbol);
 
       // once batch fills up, make the call, then reset batch
