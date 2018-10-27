@@ -3,8 +3,8 @@ app.service("stockMarketService", function($http, $q) {
   var baseEndpoint = "https://api.iextrading.com/1.0/stock/";
   var listSectorsUrl = baseEndpoint + "market/sector-performance";
   var listSymbolsUrl = baseEndpoint + "market/collection/sector?collectionName=";
-  var getSymbolUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=5&symbols=";
-  var getSymbolsUrl = baseEndpoint + "market/batch?types=chart&range=1y&chartInterval=5&symbols=";
+  var getSymbolDataUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=5&symbols=";
+  var getChartsUrl = baseEndpoint + "market/batch?types=chart&range=1y&chartInterval=5&symbols=";
 
   // stock market api
   // list sectors
@@ -32,7 +32,7 @@ app.service("stockMarketService", function($http, $q) {
   // get data for a symbol
   this.getDataForSymbol = function(symbol) {
 
-    var response = httpGet(getSymbolUrl + symbol).then(
+    var response = httpGet(getSymbolDataUrl + symbol).then(
       function(resp) {
         console.log("Got response from getDataForSymbol call: ", resp);
         return resp[symbol];
@@ -42,8 +42,8 @@ app.service("stockMarketService", function($http, $q) {
     return $q.when(response);
   }
 
-  // get data for up to 100 symbols
-  this.getDataForSymbols = function(symbols) {
+  // get charts for up to 100 symbols
+  this.getChartsForSymbols = function(symbols) {
 
     // convert input from array to comma-delimited string
     var symbolsAsString = "";
@@ -53,9 +53,9 @@ app.service("stockMarketService", function($http, $q) {
       delimiter = ",";
     });
 
-    var response = httpGet(getSymbolsUrl + symbolsAsString).then(
+    var response = httpGet(getChartsUrl + symbolsAsString).then(
       function(resp) {
-        console.log("Got response from getDataForSymbols call: ", resp);
+        console.log("Got response from getChartsForSymbols call: ", resp);
         return resp;
       }
     );
