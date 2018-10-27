@@ -1,2 +1,40 @@
 <h4 class="display-4">Symbols</h4>
 <span class="lead">{{symbol}}</span>
+<table class="table">
+  <tr>
+    <th>Company Name</th>
+    <td>{{symbolData.companyName}}</td>
+  </tr>
+  <tr>
+    <th>Primary Exchange</th>
+    <td>{{symbolData.primaryExchange}}</td>
+  </tr>
+  <tr>
+    <th>Sector</th>
+    <td>{{symbolData.sector}}</td>
+  </tr>
+  <tr>
+    <th>Open Price</th>
+    <td>{{symbolData.open | number: 2}}</td>
+  </tr>
+  <tr>
+    <th>Closing Price</th>
+    <td>{{symbolData.close | number: 2}}</td>
+  </tr>
+  <tr>
+    <th>Today's High</th>
+    <td>{{symbolData.high | number: 2}}</td>
+  </tr>
+  <tr>
+    <th>Today's Low</th>
+    <td>{{symbolData.low | number: 2}}</td>
+  </tr>
+  <tr>
+    <th>Price Change</th>
+    <td>{{symbolData.change | number: 2}}</td>
+  </tr>
+  <tr>
+    <th>Price Change (%)</th>
+    <td>{{symbolData.changePercent | number: 2}}</td>
+  </tr>
+</table>

@@ -2,6 +2,7 @@ console.log("Loading main app");
 
 // shared across the entire application
 var symbolsBySector = {};
+var symbolData = {};
 
 var app = angular.module("mainApp", ["ngRoute", "smart-table"]);
 

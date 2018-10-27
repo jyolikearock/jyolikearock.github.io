@@ -5,7 +5,7 @@ app.controller("sectorsController", function($scope, $routeParams, stockMarketSe
   if ($scope.sector) {
 
     // for coloring nav bar
-    $scope.currentPage = $scope.sector;
+    pageInfo.currentPage = $scope.sector;
 
     // if symbols for this sector was previously loaded, just re-use that data
     if (symbolsBySector[$scope.sector]) {
@@ -27,7 +27,7 @@ app.controller("sectorsController", function($scope, $routeParams, stockMarketSe
         var symbols = [];
 
         // extract key data for each symbol
-        resp.data.forEach(function(e) {
+        resp.forEach(function(e) {
           var symbol = {};
           symbol.symbol       = e.symbol;
           symbol.companyName  = e.companyName;

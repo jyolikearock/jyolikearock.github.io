@@ -1,4 +1,8 @@
+var pageInfo = {};
+
 app.controller("mainController", function($scope, stockMarketService) {
+
+  $scope.pageInfo = pageInfo;
 
   // populate sectors
   console.log("Getting market sectors");
@@ -7,7 +11,7 @@ app.controller("mainController", function($scope, stockMarketService) {
   stockMarketService.listSectors().then(
     function(resp) {
       var sectors = [];
-      resp.data.forEach(function(e) {
+      resp.forEach(function(e) {
         sectors.push(e.name);
       });
 
