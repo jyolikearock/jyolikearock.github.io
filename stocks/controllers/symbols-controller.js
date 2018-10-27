@@ -36,6 +36,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
 
           generateChart(symbolData.chart);
           $scope.symbolData = symbolData;
+          $scope.error = false;
 
           console.log("Extracted key data for symbol: ", symbol);
         }
