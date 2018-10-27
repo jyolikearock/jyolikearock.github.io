@@ -24,6 +24,7 @@
 
     <!-- controllers -->
     <script src="./controllers/sectors-controller.js"></script>
+    <script src="./controllers/symbols-controller.js"></script>
 
     <!-- services -->
     <script src="./services/stock-market-service.js"></script>
@@ -42,15 +43,28 @@
 
         <!-- page nav bar -->
         <div class="col-3 border-right">
-          <ul class="nav flex-column">
+          <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">
+                Home
+              </a>
             </li>
             <li class="nav-item">
-              <span class="nav-link">Sectors</span>
+              <a class="nav-link" href="#/symbols"
+                 ng-class="active: currentPage == 'Symbols'">
+                Symbols
+              </a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link">
+                Sectors
+              </span>
             </li>
             <li class="nav-item" ng-repeat="sector in sectors">
-              <a class="nav-link" href="#/sectors/{{sector}}">{{sector}}</a>
+              <a class="nav-link" href="#/sectors/{{sector}}"
+                 ng-class="active: currentPage == sector">
+                {{sector}}
+              </a>
             </li>
           </ul>
         </div>

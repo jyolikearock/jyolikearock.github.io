@@ -3,9 +3,13 @@ app.controller("sectorsController", function($scope, $routeParams, stockMarketSe
   $scope.sector = $routeParams.sector;
 
   if ($scope.sector) {
+
+    // for coloring nav bar
+    $scope.currentPage = $scope.sector;
+
     // if symbols for this sector was previously loaded, just re-use that data
     if (symbolsBySector[$scope.sector]) {
-      console.log("Fetching symbols from cache for sector: " + $scope.sector);
+      console.log("Re-using symbols from cache for sector: " + $scope.sector);
       $scope.symbols = symbolsBySector[$scope.sector].slice();
     }
 

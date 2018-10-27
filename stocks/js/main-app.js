@@ -17,17 +17,14 @@ app.config(["$routeProvider", function ($routeProvider) {
       controller: "sectorsController"
     })
     .when("/symbols", {
-      templateUrl: "./pages/symbols.html"
+      templateUrl: "./pages/symbols.html",
+      controller: "symbolsController"
     })
     .when("/symbols/:symbol", {
-      templateUrl: "./pages/symbols.html"
+      templateUrl: "./pages/symbols.html",
+      controller: "symbolsController"
     })
     .otherwise({
       templateUrl: "./pages/home.html"
     });
 }]);
-
-// populate sectors
-
-
-
