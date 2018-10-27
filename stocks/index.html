@@ -45,7 +45,9 @@
         <div class="col-3 border-right">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="#"
+                 ng-click="resetCurrentPage()"
+                 ng-class="{'active': pageInfo.currentPage == 'Home'}">
                 Home
               </a>
             </li>
