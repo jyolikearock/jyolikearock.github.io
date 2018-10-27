@@ -2,7 +2,8 @@ console.log("Loading main app");
 
 // shared across the entire application
 var symbolsBySector = {};
-var symbolData = {};
+var symbolDataCache = {};
+var symbolChartCache = {};
 
 var app = angular.module("mainApp", ["ngRoute", "smart-table", "chart.js"]);
 

@@ -5,7 +5,25 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
   // for coloring nav bar
   pageInfo.currentPage = "Symbols";
 
-  $scope.getDataForSymbol = function(symbol) {
+  if ($scope.symbol) {
+
+    $scope.symbol = $scope.symbol.toUpperCase();
+    var symbol = $scope.symbol;
+
+    // check cache first
+    if (symbolDataCache[symbol] && symbolChartCache[symbol]) {
+      $scope.symbolData = Object.assign({}, symbolDataCache[symbol]);
+      generateChart(symbolChartCache[symbol]);
+    }
+
+    // if not in cache, call the service
+    else {
+      console.log("Loading data for symbol: ", symbol);
+      $scope.getDataForSymbol(symbol);
+    }
+  }
+
+  function getDataForSymbol(symbol) {
 
     $scope.buttonDisabled = true;
 
@@ -26,17 +44,21 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
           symbolData.changePercent    = quote.changePercent * 100;
 
           // extract prices from chart
-          symbolData.chart = [];
+          symbolChart = [];
           resp.chart.forEach(function(e) {
             var dataPoint = {};
-            dataPoint.date          = e.date;
-            dataPoint.close         = e.close;
-            symbolData.chart.push(dataPoint);
+            dataPoint.date  = e.date;
+            dataPoint.close = e.close;
+            symbolChart.push(dataPoint);
           });
 
-          generateChart(symbolData.chart);
+          generateChart(symbolChart);
           $scope.symbolData = symbolData;
           $scope.error = false;
+
+          // cache data
+          symbolDataCache[symbol] = Object.assign({}, symbolData);
+          symbolChartCache[symbol] = symbolChart.slice();
 
           console.log("Extracted key data for symbol: ", symbol);
         }
@@ -50,11 +72,6 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
         $scope.buttonDisabled = false;
       }
     );
-  }
-
-  if ($scope.symbol) {
-    console.log("Loading data for symbol: ", $scope.symbol);
-    $scope.getDataForSymbol($scope.symbol);
   }
 
   function generateChart(chart) {
