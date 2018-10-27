@@ -92,6 +92,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
               callsCompleted++;
             });
 
+            console.log(callsCompleted + " of " + symbols.length + " charts gathered");
             // continue to next step if all charts have been gathered
             if (callsCompleted == symbols.length) {
               // TODO
