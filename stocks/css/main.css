@@ -14,12 +14,12 @@
   content: '\25B2\ ';
 }
 
-td {
-  cursor: default;
+.sortable {
+  cursor: pointer;
 }
 
-th {
-  cursor: pointer;
+td, th {
+  cursor: default;
 }
 
 a:hover {

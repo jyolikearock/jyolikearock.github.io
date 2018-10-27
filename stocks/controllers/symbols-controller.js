@@ -13,8 +13,10 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
   function getDataForSymbol(symbol) {
     stockMarketService.getDataForSymbol(symbol).then(
       function(resp) {
+        respData = resp[symbol];
+
         // extract key data from quote
-        var quote = resp.quote;
+        var quote = respData.quote;
         var symbolData = {};
         symbolData.companyName      = quote.companyName;
         symbolData.primaryExchange  = quote.primaryExchange;
@@ -28,7 +30,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
 
         // extract prices from chart
         symbolData.chart = [];
-        resp.chart.forEach(function(e) {
+        respData.chart.forEach(function(e) {
           var dataPoint = {};
           dataPoint.date          = e.date;
           dataPoint.close         = e.close;
