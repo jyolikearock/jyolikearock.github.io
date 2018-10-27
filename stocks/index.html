@@ -23,8 +23,9 @@
 
     <!-- controllers -->
     <script src="./controllers/main-controller.js"></script>
-    <script src="./controllers/sectors-controller.js"></script>
     <script src="./controllers/symbols-controller.js"></script>
+    <script src="./controllers/rankings-controller.js"></script>
+    <script src="./controllers/sectors-controller.js"></script>
 
     <!-- services -->
     <script src="./services/stock-market-service.js"></script>
@@ -55,6 +56,12 @@
               <a class="nav-link" href="#/symbols"
                  ng-class="{'active': pageInfo.currentPage == 'Symbols'}">
                 Symbols
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#/rankings"
+                 ng-class="{'active': pageInfo.currentPage == 'Rankings'}">
+                Rankings
               </a>
             </li>
             <li class="nav-item">

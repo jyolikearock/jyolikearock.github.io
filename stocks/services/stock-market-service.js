@@ -4,6 +4,7 @@ app.service("stockMarketService", function($http, $q) {
   var listSectorsUrl = baseEndpoint + "market/sector-performance";
   var listSymbolsUrl = baseEndpoint + "market/collection/sector?collectionName=";
   var getSymbolUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=5&symbols=";
+  var getSymbolsUrl = baseEndpoint + "market/batch?types=chart&range=1y&chartInterval=5&symbols=";
 
   // stock market api
   // list sectors
@@ -52,7 +53,7 @@ app.service("stockMarketService", function($http, $q) {
       delimiter = ",";
     });
 
-    var response = httpGet(getSymbolUrl + symbolsAsString).then(
+    var response = httpGet(getSymbolsUrl + symbolsAsString).then(
       function(resp) {
         console.log("Got response from getDataForSymbols call: ", resp);
         return resp;

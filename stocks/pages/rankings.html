@@ -1,0 +1,28 @@
+<h4 class="display-4">Rankings</h4>
+<div class="mt-3">
+  <table class="table" st-table="displayedSymbols" st-safe-src="allSymbols">
+    <thead>
+      <tr>
+        <th class="sortable" st-sort="symbol">Symbol</th>
+        <th class="sortable">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="symbol in displayedSymbols">
+        <td>
+          <a href="#/symbols/{{symbol}}">{{symbol}}</a>
+        </td>
+        <td>
+          Coming Soon!
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="text-center">
+          <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -12,6 +12,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
 
     // check cache first
     if (symbolDataCache[symbol] && symbolChartCache[symbol]) {
+      console.log("Re-using data in cache for symbol: " + symbol);
       $scope.symbolData = Object.assign({}, symbolDataCache[symbol]);
       generateChart(symbolChartCache[symbol]);
     }
