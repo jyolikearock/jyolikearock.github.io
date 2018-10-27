@@ -3,6 +3,8 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   // for coloring nav bar
   pageInfo.currentPage = "Rankings";
 
+  $scope.allSymbols = [];
+
   // kick off the process with the first step
   getAllSymbols();
   // --> get data for each symbol
@@ -10,7 +12,6 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   // --> store results
 
   // get all symbols
-  $scope.allSymbols = [];
   function getAllSymbols() {
 
     // determine which sectors haven't been queried yet
