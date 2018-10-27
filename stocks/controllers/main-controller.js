@@ -64,7 +64,7 @@ app.controller("mainController", function($scope, stockMarketService) {
         batch.push(symbols[i]);
 
         // if batch is filled up, make request and clear the batch
-        if (batch.length == batchSize || i = symbols.length + 1) {
+        if (batch.length == batchSize || i == symbols.length + 1) {
           stockMarketService.getDataForSymbols(batch.slice()).then(
             function(resp) {
 
