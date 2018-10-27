@@ -1,5 +1,7 @@
 <h4 class="display-4">Sectors</h4>
-<span class="lead">{{sector}}</span>
+<div class="mb-3">
+  <span class="lead">{{sector}}</span>
+</div>
 <table class="table" st-table="displayedSymbols" st-safe-src="symbols">
   <thead>
     <tr>
@@ -22,8 +24,7 @@
         {{symbol.price | number: 2}}
       </td>
       <td>
-        <span ng-show="symbol.change > 0">+</span>
-        {{symbol.change | number: 2}}
+        <span ng-show="symbol.change > 0">+</span>{{symbol.change | number: 2}}
       </td>
     </tr>
   </tbody>

@@ -19,7 +19,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
     // if not in cache, call the service
     else {
       console.log("Loading data for symbol: ", symbol);
-      $scope.getDataForSymbol(symbol);
+      getDataForSymbol(symbol);
     }
   }
 
