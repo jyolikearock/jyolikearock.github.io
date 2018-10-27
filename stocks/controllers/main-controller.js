@@ -42,6 +42,7 @@ app.controller("mainController", function($scope, stockMarketService) {
           numSectorsProcessed++;
           if (numSectorsProcessed == sectors.length) {
             console.log("Loaded symbols for all sectors");
+            getDataForSymbols();
           }
         }
       )
