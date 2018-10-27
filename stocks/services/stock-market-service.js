@@ -34,7 +34,7 @@ app.service("stockMarketService", function($http, $q) {
     var response = httpGet(getSymbolUrl + symbol).then(
       function(resp) {
         console.log("Got response from getDataForSymbol call: ", resp);
-        return resp;
+        return resp[symbol];
       }
     );
 
