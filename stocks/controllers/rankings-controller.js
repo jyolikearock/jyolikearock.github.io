@@ -73,6 +73,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   function getChartsForSymbols() {
 
     var callsCompleted = 0;
+    var chartsGathered = 0;
     var symbols = $scope.allSymbols;
 
     // split symbols into batches of 100
@@ -89,12 +90,14 @@ app.controller("rankingsController", function($scope, stockMarketService) {
             // pick out each symbol's chart and store it
             Object.keys(resp).forEach(function(symbol) {
               $scope.charts[symbol] = resp[symbol].chart;
-              callsCompleted++;
+              chartsGathered++;
             });
 
-            console.log(callsCompleted + " of " + symbols.length + " charts gathered");
+            callsCompleted++;
+            console.log(chartsGathered + " of " + symbols.length + " charts gathered");
+            console.log("Calls completed: ", callsCompleted);
             // continue to next step if all charts have been gathered
-            if (callsCompleted == symbols.length) {
+            if (chartsGathered == symbols.length) {
               // TODO
               console.log("Got charts for all symbols: ", symbols.length);
             }
