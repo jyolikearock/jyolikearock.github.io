@@ -1,48 +1,73 @@
 <h4 class="display-4">Symbols</h4>
-<span class="lead">{{symbol}}</span>
-<table class="table">
-  <tr>
-    <th>Company Name</th>
-    <td>{{symbolData.companyName}}</td>
-  </tr>
-  <tr>
-    <th>Primary Exchange</th>
-    <td>{{symbolData.primaryExchange}}</td>
-  </tr>
-  <tr>
-    <th>Sector</th>
-    <td>{{symbolData.sector}}</td>
-  </tr>
-  <tr>
-    <th>Open Price</th>
-    <td>{{symbolData.open | number: 2}}</td>
-  </tr>
-  <tr>
-    <th>Closing Price</th>
-    <td>{{symbolData.close | number: 2}}</td>
-  </tr>
-  <tr>
-    <th>Today's High</th>
-    <td>{{symbolData.high | number: 2}}</td>
-  </tr>
-  <tr>
-    <th>Today's Low</th>
-    <td>{{symbolData.low | number: 2}}</td>
-  </tr>
-  <tr>
-    <th>Price Change</th>
-    <td>
-      <span ng-show="symbolData.change > 0">+</span>
-      {{symbolData.change | number: 2}}
-    </td>
-  </tr>
-  <tr>
-    <th>Price Change (%)</th>
-    <td>
-      <span ng-show="symbolData.changePercent > 0">+</span>
-      {{symbolData.changePercent | number: 2}}
-    </td>
-  </tr>
-</table>
-<canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
-</canvas>
+
+<form>
+  <div class="row">
+    <div class="col-10">
+      <input class="form-control" type="text" ng-model="symbol"
+             placeholder="Stock symbol (e.g. AMZN)">
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary"
+              ng-disabled="buttonDisabled"
+              ng-click="getDataForSymbol(symbol)">
+        Search
+      </button>
+    </div>
+  </div>
+</form>
+
+<div ng-show="error">
+  <p>{{error}}</p>
+</div>
+
+<div ng-show="symbolData">
+  <span class="lead">{{symbol}}</span>
+  <table class="table">
+    <tr>
+      <th>Company Name</th>
+      <td>{{symbolData.companyName}}</td>
+    </tr>
+    <tr>
+      <th>Primary Exchange</th>
+      <td>{{symbolData.primaryExchange}}</td>
+    </tr>
+    <tr>
+      <th>Sector</th>
+      <td>
+        <a href="#/sectors/{{symbolData.sector}}">{{symbolData.sector}}</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Open Price</th>
+      <td>{{symbolData.open | number: 2}}</td>
+    </tr>
+    <tr>
+      <th>Closing Price</th>
+      <td>{{symbolData.close | number: 2}}</td>
+    </tr>
+    <tr>
+      <th>Today's High</th>
+      <td>{{symbolData.high | number: 2}}</td>
+    </tr>
+    <tr>
+      <th>Today's Low</th>
+      <td>{{symbolData.low | number: 2}}</td>
+    </tr>
+    <tr>
+      <th>Price Change</th>
+      <td>
+        <span ng-show="symbolData.change > 0">+</span>
+        {{symbolData.change | number: 2}}
+      </td>
+    </tr>
+    <tr>
+      <th>Price Change (%)</th>
+      <td>
+        <span ng-show="symbolData.changePercent > 0">+</span>
+        {{symbolData.changePercent | number: 2}}
+      </td>
+    </tr>
+  </table>
+  <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
+  </canvas>
+</div>
