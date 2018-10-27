@@ -3,7 +3,10 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   // for coloring nav bar
   pageInfo.currentPage = "Rankings";
 
+  // array of objects: {symbol, growthRating, consistencyRating, overallRating}
   $scope.allSymbols = [];
+
+  // map of symbol --> chart (array)
   $scope.charts = {};
 
   // kick off the process with the first step
@@ -19,8 +22,8 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     var sectorsToGet = [];
     sectors.forEach(function(sector) {
       if (symbolsBySector[sector]) {
-        symbolsBySector[sector].forEach(function(symbol) {
-          $scope.allSymbols.push({"symbol": symbol});
+        symbolsBySector[sector].forEach(function(e) {
+          $scope.allSymbols.push({"symbol": e.symbol});
         });
       }
       else {
@@ -37,13 +40,19 @@ app.controller("rankingsController", function($scope, stockMarketService) {
 
           // extract symbol name
           resp.forEach(function(e) {
-            symbols.push(e.symbol);
+            var symbol = {};
+            symbol.symbol       = e.symbol;
+            symbol.companyName  = e.companyName;
+            symbol.price        = e.close;
+            symbol.change       = e.changePercent * 100;
+
+            symbols.push(symbol);
           });
           console.log("Got symbols for sector: " + sector);
 
           // append to list of all symbols
-          symbols.forEach(function(symbol) {
-            $scope.allSymbols.push({"symbol": symbol});
+          symbols.forEach(function(e) {
+            $scope.allSymbols.push({"symbol": e.symbol});
           });
 
           // store results in global cache
