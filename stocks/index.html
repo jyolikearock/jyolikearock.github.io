@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#/symbols"
-                 ng-class="active: currentPage == 'Symbols'">
+                 ng-class="{'active': currentPage == 'Symbols'}">
                 Symbols
               </a>
             </li>
@@ -62,7 +62,7 @@
             </li>
             <li class="nav-item" ng-repeat="sector in sectors">
               <a class="nav-link" href="#/sectors/{{sector}}"
-                 ng-class="active: currentPage == sector">
+                 ng-class="{'active': currentPage == sector}">
                 {{sector}}
               </a>
             </li>
