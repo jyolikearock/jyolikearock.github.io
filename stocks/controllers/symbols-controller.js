@@ -42,7 +42,8 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
 
         // no data for that symbol found
         else {
-          $scope.error = "Could not find stock symbol " + $scope.symbol;
+          $scope.symbolData = false;
+          $scope.error = "Couldn't find that stock symbol";
         }
 
         $scope.buttonDisabled = false;
