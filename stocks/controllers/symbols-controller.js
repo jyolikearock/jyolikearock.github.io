@@ -5,7 +5,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
   // for coloring nav bar
   pageInfo.currentPage = "Symbols";
 
-  this.getDataForSymbol = function(symbol) {
+  $scope.getDataForSymbol = function(symbol) {
 
     $scope.buttonDisabled = true;
 
@@ -52,7 +52,7 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
 
   if ($scope.symbol) {
     console.log("Loading data for symbol: ", $scope.symbol);
-    getDataForSymbol($scope.symbol);
+    $scope.getDataForSymbol($scope.symbol);
   }
 
   function generateChart(chart) {
