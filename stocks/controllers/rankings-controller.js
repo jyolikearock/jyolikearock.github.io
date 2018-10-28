@@ -7,7 +7,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   loadData.then(
     function(resp) {
 
-      if (ratings) {
+      if (ratings.length > 0) {
         console.log("Re-using symbol ratings saved in cache");
       }
       else {
