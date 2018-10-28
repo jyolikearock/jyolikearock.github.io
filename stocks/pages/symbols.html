@@ -6,7 +6,7 @@
       <div class="col-10">
         <input class="form-control" type="text" placeholder="Stock symbol (e.g. AMZN)"
                ng-model="symbol"
-               uib-typeahead="symbol in allSymbols">
+               uib-typeahead="symbol for symbol in allSymbols | filter: $viewValue | limitTo: 5">
       </div>
       <div class="col-2">
         <a class="btn btn-primary"

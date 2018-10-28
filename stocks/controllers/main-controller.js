@@ -27,6 +27,8 @@ app.controller("mainController", function($scope, cacheService) {
 
   $scope.isLoadingFinished = false;
 
+  $scope.loadProgress = cacheService.getLoadProgress();
+
   // load data
   cacheService.loadDataIfNeeded().then(
     function(resp) {

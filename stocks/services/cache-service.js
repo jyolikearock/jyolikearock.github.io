@@ -1,6 +1,13 @@
 // service that manages global values shared across the entire app
 app.service("cacheService", function($http, $q, stockMarketService) {
 
+  var loadProgress = {};
+  loadProgress.numSymbolsLoaded = 0;
+
+  this.getLoadProgress = function() {
+    return loadProgress;
+  }
+
   this.loadDataIfNeeded = function() {
     if (Object.keys(symbolData) == 0) {
       console.log("Loading data from server");
@@ -71,6 +78,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
               function(symbol) {
                 convertDeltaToPercentage(resp[symbol].quote);
                 symbolData[symbol] = resp[symbol];
+                loadProgress.numSymbolsLoaded++;
               }
             );
 
