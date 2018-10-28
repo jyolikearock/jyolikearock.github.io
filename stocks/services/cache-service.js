@@ -35,18 +35,10 @@ app.service("cacheService", function($http, $q, stockMarketService) {
   function getSymbolsForSector(sector) {
     return stockMarketService.listSymbols(sector).then(
       function(resp) {
-        var symbols = [];
-
-        // resp is an array of symbol data - extract just the symbol name
-        resp.forEach(
-          function(data) {
-            symbols.push(data.symbol);
-          }
-        )
-        symbolsBySector[sector] = symbols;
+        symbolsBySector[sector] = resp;
         console.log("Loaded symbols for sector: ", sector);
 
-        return getDataForSymbols(symbols);
+        return getDataForSymbols(resp);
       }
     );
   }
@@ -63,7 +55,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
     var numBatchesProcessed = 0;
 
     for (var i = 0; i < symbols.length; i++) {
-      batch.push(symbols[i]);
+      batch.push(symbols[i].symbol);
 
       // if batch is filled up, make request and clear the batch
       if (batch.length == batchSize || i == symbols.length - 1) {
