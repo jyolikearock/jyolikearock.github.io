@@ -6,9 +6,14 @@
     'use strict';
 
 ng.module('smart-table', []).run(['$templateCache', function ($templateCache) {
+    // @jyolikearock: add first, last, prev, and next buttons to pagination template
     $templateCache.put('template/smart-table/pagination.html',
         '<nav ng-if="numPages && pages.length >= 2"><ul class="pagination">' +
+        '<li ng-class="{active: page==currentPage}"><a href="#" ng-click="selectPage(0); $event.preventDefault(); $event.stopPropagation();">&laquo;</a></li>' +
+        '<li ng-class="{active: page==currentPage}"><a href="#" ng-click="selectPage(currentPage - 1); $event.preventDefault(); $event.stopPropagation();">&lsaquo;</a></li>' +
         '<li ng-repeat="page in pages" ng-class="{active: page==currentPage}"><a href="#" ng-click="selectPage(page); $event.preventDefault(); $event.stopPropagation();">{{page}}</a></li>' +
+        '<li ng-class="{active: page==currentPage}"><a href="#" ng-click="selectPage(currentPage + 1); $event.preventDefault(); $event.stopPropagation();">&rsaquo;</a></li>' +
+        '<li ng-class="{active: page==currentPage}"><a href="#" ng-click="selectPage(pages.length - 1); $event.preventDefault(); $event.stopPropagation();">&raquo;</a></li>' +
         '</ul></nav>');
 }]);
 
@@ -143,7 +148,8 @@ ng.module('smart-table').controller('stTableController', [
         delete tableState.sort.functionName;
       }
 
-      tableState.pagination.start = 0;
+      // @jyolikearock: do not reset page to 0 after sorting
+      // tableState.pagination.start = 0;
       return this.pipe();
     };
 

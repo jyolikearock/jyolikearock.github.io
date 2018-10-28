@@ -7,13 +7,17 @@
   background-color: #343a40;
 }
 
-.pagination {
-  justify-content: center;
+.page-link {
+  color: #343a40;
 }
 
 .page-item.active .page-link {
   background-color: #343a40;
   border-color: #343a40;
+}
+
+.pagination {
+  justify-content: center;
 }
 
 /* add up / down arrows when columns are sorted */
