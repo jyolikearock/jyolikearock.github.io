@@ -2,7 +2,10 @@
 <div class="mb-3">
   <span class="lead">{{sector}}</span>
 </div>
-<table class="table" st-table="displayedSymbols" st-safe-src="symbols" st-persist="sectorsTable">
+<table class="table table-hover"
+       st-table="displayedSymbols"
+       st-safe-src="symbols"
+       st-persist="sectorsTable">
   <thead>
     <tr>
       <th class="sortable" st-sort="symbol">Symbol</th>
@@ -20,9 +23,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="symbol in displayedSymbols">
+    <tr ng-repeat="symbol in displayedSymbols"
+        ng-href="#/symbols/symbol.symbol">
       <td>
-        <a href="#/symbols/{{symbol.symbol}}">{{symbol.symbol}}</a>
+        {{symbol.symbol}}
       </td>
       <td>
         {{symbol.companyName | limitTo: 30}}
