@@ -1,7 +1,11 @@
-app.controller("rankingsController", function($scope, stockMarketService) {
+app.controller("rankingsController", function($scope, $location, stockMarketService) {
 
   // for coloring nav bar
   pageInfo.currentPage = "Rankings";
+
+  $scope.goToSymbol = function(symbol) {
+    $location.path("#/symbols/" + symbol);
+  }
 
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
