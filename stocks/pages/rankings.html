@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="rating in displayedRatings track by rating.symbol"
-          href="#/symbols/rating.symbol">
+          href="#/symbols/{{rating.symbol}}">
         <td>
           {{rating.symbol}}
         </td>
