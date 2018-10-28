@@ -1,26 +1,9 @@
 // service that manages global values shared across the entire app
 app.service("cacheService", function($http, $q, stockMarketService) {
 
-  this.pageInfo = {};
-  this.sectors = [
-    "Communication Services",
-    "Consumer Discretionary",
-    "Consumer Staples",
-    "Energy",
-    "Financials",
-    "Health Care",
-    "Industrials",
-    "Materials",
-    "Real Estate",
-    "Utilities",
-    "Technology"
-  ];
-  this.symbolsBySector = {};
-  this.symbolData = {};
-
   this.loadDataIfNeeded = function() {
-    if (Object.keys(this.symbolData) == 0) {
-      console.log("Loading data from sever");
+    if (Object.keys(symbolData) == 0) {
+      console.log("Loading data from server");
       return getSymbolsForSectors();
     }
     else {
@@ -34,7 +17,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
     var promises = [];
 
     // make a request for each sector
-    this.sectors.forEach(
+    sectors.forEach(
       function(sector) {
         promises.push(getSymbolsForSector(sector));
       }
@@ -52,7 +35,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
   function getSymbolsForSector(sector) {
     return stockMarketService.listSymbols(sector).then(
       function(resp) {
-        this.symbolsBySector[sector] = resp;
+        symbolsBySector[sector] = resp;
         console.log("Loaded symbols for sector: ", sector);
 
         return getDataForSymbols(resp)

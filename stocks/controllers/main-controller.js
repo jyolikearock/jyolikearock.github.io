@@ -1,10 +1,27 @@
+var pageInfo = {};
+var sectors = [
+  "Communication Services",
+  "Consumer Discretionary",
+  "Consumer Staples",
+  "Energy",
+  "Financials",
+  "Health Care",
+  "Industrials",
+  "Materials",
+  "Real Estate",
+  "Utilities",
+  "Technology"
+];
+var symbolsBySector = {};
+var symbolData = {};
+
 app.controller("mainController", function($scope, cacheService) {
 
-  $scope.pageInfo = cacheService.pageInfo;
-  $scope.sectors = cacheService.sectors;
+  $scope.pageInfo = pageInfo;
+  $scope.sectors = sectors;
 
   $scope.resetCurrentPage = function() {
-    cacheService.pageInfo.currentPage = "Home";
+    pageInfo.currentPage = "Home";
   }
 
   $scope.isLoadingFinished = false;
