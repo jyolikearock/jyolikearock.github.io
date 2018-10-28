@@ -35,10 +35,18 @@ app.service("cacheService", function($http, $q, stockMarketService) {
   function getSymbolsForSector(sector) {
     return stockMarketService.listSymbols(sector).then(
       function(resp) {
-        symbolsBySector[sector] = resp;
+        var symbols = [];
+
+        // resp is an array of symbol data - extract just the symbol name
+        resp.forEach(
+          function(data) {
+            symbols.push(data.symbol);
+          }
+        )
+        symbolsBySector[sector] = symbols;
         console.log("Loaded symbols for sector: ", sector);
 
-        return getDataForSymbols(resp)
+        return getDataForSymbols(symbols);
       }
     );
   }
