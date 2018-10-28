@@ -35,6 +35,9 @@ app.service("cacheService", function($http, $q, stockMarketService) {
   function getSymbolsForSector(sector) {
     return stockMarketService.listSymbols(sector).then(
       function(resp) {
+        resp.forEach(function(symbolData) {
+          convertDeltaToPercentage(symbolData);
+        });
         symbolsBySector[sector] = resp;
         console.log("Loaded symbols for sector: ", sector);
 
@@ -65,6 +68,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
             // resp is map of symbol --> symbol data
             Object.keys(resp).forEach(
               function(symbol) {
+                convertDeltaToPercentage(symbol.quote);
                 symbolData[symbol] = resp[symbol];
               }
             );
@@ -84,6 +88,10 @@ app.service("cacheService", function($http, $q, stockMarketService) {
         return true;
       }
     );
+  }
+
+  function convertDeltaToPercentage(symbolData) {
+    symbolData.changePercent = symbolData.changePercent * 100;
   }
 
 });
