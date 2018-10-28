@@ -105,7 +105,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     // assign percentiles to values
     let numBuckets = 99;
 
-    let dataPointsPerBucket = ratings.length / numBuckets;
+    let dataPointsPerBucket = Math.floor(ratings.length / numBuckets);
     for (let p = 0; p <= numBuckets; p++) {
       for (let i = 0; i < dataPointsPerBucket; i++) {
         let index = p * dataPointsPerBucket + i;
