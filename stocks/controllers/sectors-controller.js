@@ -29,10 +29,10 @@ app.controller("sectorsController", function($scope, $routeParams, stockMarketSe
         // extract key data for each symbol
         resp.forEach(function(e) {
           var symbol = {};
-          symbol.symbol       = e.symbol;
-          symbol.companyName  = e.companyName;
-          symbol.price        = e.close;
-          symbol.change       = e.changePercent * 100;
+          symbol.symbol         = e.symbol;
+          symbol.companyName    = e.companyName;
+          symbol.close          = e.close;
+          symbol.changePercent  = e.changePercent * 100;
 
           symbols.push(symbol);
         });

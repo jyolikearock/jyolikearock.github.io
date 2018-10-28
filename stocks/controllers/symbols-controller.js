@@ -6,27 +6,32 @@ app.controller("symbolsController", function($scope, $routeParams) {
   // for coloring nav bar
   pageInfo.currentPage = "Symbols";
 
-  if ($scope.symbol) {
+  // wrap logic inside a callback so that page loads only after data is loaded
+  loadData.then(
+    function(resp) {
+      if ($scope.symbol) {
 
-    $scope.symbol = $scope.symbol.toUpperCase();
-    var symbol = $scope.symbol;
+        $scope.symbol = $scope.symbol.toUpperCase();
+        var symbol = $scope.symbol;
 
-    // load symbol data from cache
-    if (symbolData[symbol]) {
-      console.log("Loading data in cache for symbol: " + symbol);
-      $scope.error = false;
+        // load symbol data from cache
+        if (symbolData[symbol]) {
+          console.log("Loading data in cache for symbol: " + symbol);
+          $scope.error = false;
 
-      var data = symbolData[symbol];
-      $scope.symbolData = Object.assign({}, data.quote);
-      generateChart(data.chart);
+          var data = symbolData[symbol];
+          $scope.symbolData = Object.assign({}, data.quote);
+          generateChart(data.chart);
+        }
+
+        // if not in cache, display error message
+        else {
+          console.log("Loading data for symbol: ", symbol);
+          $scope.error = "Couldn't find that symbol";
+        }
+      }
     }
-
-    // if not in cache, display error message
-    else {
-      console.log("Loading data for symbol: ", symbol);
-      $scope.error = "Couldn't find that symbol";
-    }
-  }
+  );
 
   function generateChart(chart) {
     var dates = [];

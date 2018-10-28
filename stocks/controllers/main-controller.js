@@ -16,6 +16,9 @@ var symbolsBySector = {};
 var allSymbols = [];
 var symbolData = {};
 
+// a promise that resolves when all server data has been loaded
+var loadData = undefined;
+
 app.controller("mainController", function($scope, cacheService) {
 
   $scope.pageInfo = pageInfo;
@@ -30,10 +33,12 @@ app.controller("mainController", function($scope, cacheService) {
   $scope.loadProgress = cacheService.getLoadProgress();
 
   // load data
-  cacheService.loadDataIfNeeded().then(
+  loadData = cacheService.loadDataIfNeeded().then(
     function(resp) {
       if (resp) {
+        console.log("Finished loading data");
         $scope.isLoadingFinished = true;
+        return true;
       }
     }
   )
