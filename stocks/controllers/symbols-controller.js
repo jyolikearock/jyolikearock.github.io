@@ -15,9 +15,9 @@ app.controller("symbolsController", function($scope, $routeParams) {
       console.log("Loading data in cache for symbol: " + symbol);
       $scope.error = false;
 
-      var symbolData = symbolData[symbol];
-      $scope.quote = Object.assign({}, symbolData.quote);
-      generateChart(symbolData.chart);
+      var data = symbolData[symbol];
+      $scope.symbolData = Object.assign({}, data.quote);
+      generateChart(data.chart);
     }
 
     // if not in cache, display error message
