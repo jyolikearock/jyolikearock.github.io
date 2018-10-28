@@ -47,22 +47,47 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   function evaluateConsistency(chart) {
     var rating = 0;
 
-    var slope = (chart[chart.length - 1].close - chart[0].close) / chart.length;
+    var linearRegression = applyLinearRegression(chart);
+    var slope = linearRegression.slope;
+    var offset = linearRegression.offset;
 
     for (var i = 0; i < chart.length; i++) {
 
       // use a simple squared error against a linear fit
-      let expectedPrice = chart[0].close + i * slope;
+      let expectedPrice = offset + i * slope;
       let actualPrice = chart[i].close;
 
       let diff = getPercentDiff(expectedPrice, actualPrice);
       let squaredError = diff * diff;
 
-      // if diff is greater than 10%, starts losing points
+      // if diff is 0, consistency goes up by 100 points (arbitrary)
+      // if diff is greater than 10%, consistency goes down
       rating += (100 - squaredError);
     }
 
     return rating;
+  }
+
+  function applyLinearRegression(chart) {
+    var sumX = 0;
+    var sumY = 0;
+    var sumXX = 0;
+    var sumXY = 0;
+    var count = chart.length
+
+    for (var i = 0; i < count; i++) {
+      let x = i;
+      let y = chart[i].close;
+      sumX += x;
+      sumY += y;
+      sumXX += x * x;
+      sumXY += x * y;
+    }
+
+    var slope = (count * sumXY - sumX * sumY) / (count * sumXX - sumX * sumX);
+    var offset = (sumY - slope * sumX) / count;
+
+    return {"slope": slope, "offset": offset};
   }
 
   function evaluateGrowth(chart) {
