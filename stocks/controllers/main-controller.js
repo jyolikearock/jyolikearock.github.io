@@ -13,6 +13,7 @@ var sectors = [
   "Technology"
 ];
 var symbolsBySector = {};
+var allSymbols = [];
 var symbolData = {};
 
 app.controller("mainController", function($scope, cacheService) {

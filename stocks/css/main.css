@@ -26,6 +26,10 @@ a:hover {
   text-decoration: none;
 }
 
+[uib-typeahead-popup].dropdown-menu {
+  display: block;
+}
+
 .uib-position-measure {
   display: block !important;
   visibility: hidden !important;

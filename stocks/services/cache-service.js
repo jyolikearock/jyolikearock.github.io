@@ -62,6 +62,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
 
       // if batch is filled up, make request and clear the batch
       if (batch.length == batchSize || i == symbols.length - 1) {
+        allSymbols = allSymbols.concat(batch);
         var promise = stockMarketService.getDataForSymbols(batch.slice()).then(
           function(resp) {
 

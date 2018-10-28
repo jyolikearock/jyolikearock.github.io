@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="./js/smart-table.min.js"></script>
     <script src="./js/angular-chart.js"></script>
-    <script src="./js/ui-bootstrap-modal-2.5.0.js"></script>
+    <script src="./js/ui-bootstrap-2.5.0.js"></script>
 
     <!-- custom css -->
     <link rel="stylesheet" href="./css/main.css">
@@ -40,9 +40,18 @@
       <span class="navbar-brand">jyolikearock</span>
     </header>
 
+
+
     <!-- body -->
-    <div class="container mt-4" ng-show="isLoadingFinished">
-      <div class="row">
+    <div class="container mt-4">
+
+      <!-- loading screen -->
+      <div class="jumbotron" ng-hide="isLoadingFinished">
+        <h1 class="display-4">Welcome</h1>
+        <p class="lead">Loading stock market data from server...</p>
+      </div>
+
+      <div class="row" ng-show="isLoadingFinished">
 
         <!-- page nav bar -->
         <div class="col-3 border-right">

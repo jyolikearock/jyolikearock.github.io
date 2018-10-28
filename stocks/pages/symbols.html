@@ -4,8 +4,9 @@
   <form>
     <div class="row">
       <div class="col-10">
-        <input class="form-control" type="text" ng-model="symbol"
-               placeholder="Stock symbol (e.g. AMZN)">
+        <input class="form-control" type="text" placeholder="Stock symbol (e.g. AMZN)"
+               ng-model="symbol"
+               uib-typeahead="symbol in allSymbols">
       </div>
       <div class="col-2">
         <a class="btn btn-primary"
@@ -27,10 +28,6 @@
     <tr>
       <th>Company Name</th>
       <td>{{symbolData.companyName}}</td>
-    </tr>
-    <tr>
-      <th>Primary Exchange</th>
-      <td>{{symbolData.primaryExchange}}</td>
     </tr>
     <tr>
       <th>Sector</th>
