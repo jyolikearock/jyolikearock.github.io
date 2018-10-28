@@ -45,7 +45,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   }
 
   function evaluateConsistency(chart) {
-    var rating = 1000;
+    var rating = 0;
 
     var previousPrice = undefined;
     var previousGrowth = undefined;
@@ -64,7 +64,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
         }
 
         let diffInGrowth = Math.abs(growth - previousGrowth);
-        rating = rating - diffInGrowth;
+        rating = rating + (100 - diffInGrowth);
 
         previousPrice = price;
         previousGrowth = growth;
@@ -103,17 +103,9 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     });
 
     // assign percentiles to values
-    let numBuckets = 99;
-
-    let dataPointsPerBucket = Math.floor(ratings.length / numBuckets);
-    for (let p = 0; p <= numBuckets; p++) {
-      for (let i = 0; i < dataPointsPerBucket; i++) {
-        let index = p * dataPointsPerBucket + i;
-        if (index >= ratings.length) {
-          break;
-        }
-        ratings[index][fieldName] = (p + 1);
-      }
+    for (let i = 0; i < ratings.length; i++) {
+      let rating = ratings[i];
+      rating[fieldName] = (i * 1.0 / ratings.length) * 100;
     }
   }
 
