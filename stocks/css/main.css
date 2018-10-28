@@ -2,8 +2,18 @@
   color: white;
 }
 
+/* override bootstrap's default nav link color */
+.nav-link.active {
+  background-color: #343a40;
+}
+
 .pagination {
   justify-content: center;
+}
+
+.page-item.active .page-link {
+  background-color: #343a40;
+  border-color: #343a40;
 }
 
 /* add up / down arrows when columns are sorted */
