@@ -7,15 +7,18 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   loadData.then(
     function(resp) {
 
-      // array of objects: {symbol, consistency, growth, overall}
-      var ratings = [];
+      if (ratings) {
+        console.log("Re-using symbol ratings saved in cache");
+      }
+      else {
+        console.log("Calculating ratings for all symbols");
+        Object.keys(symbolData).forEach(function(symbol) {
+          let chart = symbolData[symbol].chart;
+          ratings.push(evaluate(symbol, chart));
+        });
+        console.log("Evaluated all symbols");
+      }
 
-      Object.keys(symbolData).forEach(function(symbol) {
-        let chart = symbolData[symbol].chart;
-        ratings.push(evaluate(symbol, chart));
-      });
-
-      console.log("Evaluated all symbols");
       $scope.ratings = ratings;
 
     }

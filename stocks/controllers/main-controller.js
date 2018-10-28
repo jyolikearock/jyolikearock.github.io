@@ -22,6 +22,9 @@ var allSymbols = [];
 // map of symbol --> {quote, chart}
 var symbolData = {};
 
+// array of {symbol, consistency, growth, overall}
+var ratings = [];
+
 // a promise that resolves when all server data has been loaded
 var loadData = undefined;
 
