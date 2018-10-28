@@ -47,29 +47,20 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   function evaluateConsistency(chart) {
     var rating = 0;
 
-    var previousPrice = undefined;
-    var previousGrowth = undefined;
-    chart.forEach(
-      function(dataPoint) {
-        let price = dataPoint.close;
-        if (previousPrice === undefined) {
-          previousPrice = price;
-          return;
-        }
+    var slope = (chart[chart.length - 1].close - chart[0].close) / chart.length;
 
-        let growth = getPercentDiff(previousPrice, price);
-        if (previousGrowth === undefined) {
-          previousGrowth = growth;
-          return;
-        }
+    for (var i = 0; i < chart.length; i++) {
 
-        let diffInGrowth = Math.abs(growth - previousGrowth);
-        rating = rating + (100 - diffInGrowth);
+      // use a simple squared error against a linear fit
+      let expectedPrice = chart[0].close + i * slope;
+      let actualPrice = chart[i].close;
 
-        previousPrice = price;
-        previousGrowth = growth;
-      }
-    );
+      let diff = getPercentDiff(expectedPrice, actualPrice);
+      let squaredError = diff * diff;
+
+      // if diff is greater than 10%, starts losing points
+      rating += (100 - squaredError);
+    }
 
     return rating;
   }
