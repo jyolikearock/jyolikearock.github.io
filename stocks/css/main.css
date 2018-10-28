@@ -6,6 +6,7 @@
   justify-content: center;
 }
 
+/* add up / down arrows when columns are sorted */
 .st-sort-ascent:before{
   content: '\25BC\ ';
 }
@@ -18,16 +19,34 @@
   cursor: pointer;
 }
 
+/* prevent cursor from turning into i-bar */
 td, th {
   cursor: default;
 }
 
+/* remove underline from hyperlinks */
 a:hover {
   text-decoration: none;
 }
 
+/* add padding to typeahead dropdown options */
 [uib-typeahead-popup].dropdown-menu {
   display: block;
+  padding: .375rem .75rem;
+}
+
+[uib-typeahead-popup].dropdown-menu>li {
+  padding: .25rem 0;
+}
+
+/* highlight typeahead dropdown options */
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
 }
 
 .uib-position-measure {

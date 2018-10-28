@@ -30,6 +30,8 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     rating.consistency = evaluateConsistency(chart);
     rating.growth = evaluateGrowth(chart);
     rating.overall = rating.consistency + rating.growth;
+
+    return rating;
   }
 
   function evaluateConsistency(chart) {
