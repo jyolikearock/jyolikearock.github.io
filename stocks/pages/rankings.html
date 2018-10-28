@@ -8,6 +8,11 @@
         <th class="sortable" st-sort="growth">Growth</th>
         <th class="sortable" st-sort="overall">Overall</th>
       </tr>
+      <tr>
+        <th colspan="4">
+          <input st-search="symbol" placeholder="Search symbols" class="form-control" type="search"/>
+        </th>
+      </tr>
     </thead>
     <tbody>
       <tr ng-repeat="rating in displayedRatings track by rating.symbol">

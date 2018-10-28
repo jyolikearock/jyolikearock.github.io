@@ -14,7 +14,12 @@ app.controller("rankingsController", function($scope, stockMarketService) {
         console.log("Calculating ratings for all symbols");
         Object.keys(symbolData).forEach(function(symbol) {
           let chart = symbolData[symbol].chart;
-          ratings.push(evaluate(symbol, chart));
+          if (chart) {
+            ratings.push(evaluate(symbol, chart));
+          }
+        });
+        ratings.sort(function(a, b) {
+          return b.overall - a.overall;
         });
         console.log("Evaluated all symbols");
       }
