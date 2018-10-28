@@ -103,16 +103,16 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     });
 
     // assign percentiles to values
-    let numBuckets = 1000;
+    let numBuckets = 99;
 
-    let dataPointsPerBucket = Math.ceil(ratings.length * 1.0 / numBuckets);
-    for (let p = 0; p < numBuckets; p++) {
+    let dataPointsPerBucket = ratings.length / numBuckets);
+    for (let p = 0; p <= numBuckets; p++) {
       for (let i = 0; i < dataPointsPerBucket; i++) {
         let index = p * dataPointsPerBucket + i;
         if (index >= ratings.length) {
           break;
         }
-        ratings[index][fieldName] = (p + 1) / 10.0;
+        ratings[index][fieldName] = (p + 1);
       }
     }
   }
