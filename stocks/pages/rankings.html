@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="rating in displayedRatings">
+      <tr ng-repeat="rating in displayedRatings track by rating.symbol">
         <td>
           <a href="#/symbols/{{rating.symbol}}">{{rating.symbol}}</a>
         </td>

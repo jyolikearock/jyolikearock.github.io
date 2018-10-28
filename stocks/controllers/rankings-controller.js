@@ -15,6 +15,7 @@ app.controller("rankingsController", function($scope, stockMarketService) {
         ratings.push(evaluate(symbol, chart));
       });
 
+      console.log("Evaluated all symbols");
       $scope.ratings = ratings;
 
     }
