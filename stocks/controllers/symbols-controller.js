@@ -1,6 +1,14 @@
+var lastViewedSymbol = "";
+
 app.controller("symbolsController", function($scope, $routeParams) {
 
-  $scope.symbol = $routeParams.symbol;
+  if ($routeParams.symbol) {
+    $scope.symbol = $routeParams.symbol;
+    lastViewedSymbol = $routeParams.symbol;
+  }
+  else if (lastViewedSymbol) {
+    $scope.symbol = lastViewedSymbol;
+  }
 
   // for coloring nav bar
   pageInfo.currentPage = "Symbols";
