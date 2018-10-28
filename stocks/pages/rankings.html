@@ -1,25 +1,33 @@
 <h4 class="display-4">Rankings</h4>
 <div class="mt-3">
-  <table class="table" st-table="displayedData" st-safe-src="symbolRatings">
+  <table class="table" st-table="displayedRatings" st-safe-src="ratings">
     <thead>
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
-        <th class="sortable">Rating</th>
+        <th class="sortable" st-sort="consistency">Consistency</th>
+        <th class="sortable" st-sort="growth">Growth</th>
+        <th class="sortable" st-sort="overall">Overall</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="e in displayedData">
+      <tr ng-repeat="rating in displayedRatings">
         <td>
-          <a href="#/symbols/{{e.symbol}}">{{e.symbol}}</a>
+          <a href="#/symbols/{{rating.symbol}}">{{rating.symbol}}</a>
         </td>
         <td>
-          Coming Soon!
+          {{rating.consistency}}
+        </td>
+        <td>
+          {{rating.growth}}
+        </td>
+        <td>
+          {{rating.overall}}
         </td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="2" class="text-center">
+        <td colspan="4" class="text-center">
           <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
         </td>
       </tr>

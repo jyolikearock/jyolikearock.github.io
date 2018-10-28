@@ -1,4 +1,5 @@
-var app = angular.module("mainApp", ["ngRoute", "smart-table", "chart.js"]);
+var app = angular.module("mainApp",
+  ["ngRoute", "smart-table", "chart.js", "ui.bootstrap"]);
 
 // router
 app.config(["$routeProvider", function ($routeProvider) {

@@ -12,8 +12,14 @@ var sectors = [
   "Utilities",
   "Technology"
 ];
+
+// map of sector --> symbolData
 var symbolsBySector = {};
+
+// array of all symbols
 var allSymbols = [];
+
+// map of symbol --> {quote, chart}
 var symbolData = {};
 
 // a promise that resolves when all server data has been loaded

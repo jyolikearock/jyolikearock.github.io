@@ -1,7 +1,6 @@
 app.controller("symbolsController", function($scope, $routeParams) {
 
   $scope.symbol = $routeParams.symbol;
-  $scope.allSymbols = allSymbols;
 
   // for coloring nav bar
   pageInfo.currentPage = "Symbols";
@@ -9,6 +8,10 @@ app.controller("symbolsController", function($scope, $routeParams) {
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
     function(resp) {
+
+      // used to populate typeahead dropdown
+      $scope.allSymbols = allSymbols;
+
       if ($scope.symbol) {
 
         $scope.symbol = $scope.symbol.toUpperCase();
