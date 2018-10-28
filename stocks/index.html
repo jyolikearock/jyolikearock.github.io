@@ -49,7 +49,10 @@
       <!-- loading screen -->
       <div class="jumbotron" ng-hide="isLoadingFinished">
         <h1 class="display-4">Welcome</h1>
-        <p class="lead">Loading stock market data from server...</p>
+        <p class="lead">
+          Loading stock market data from
+          <a href="https://iextrading.com/developer/">IEX</a> server...
+        </p>
         <hr class="my-4">
         <p>Loaded data for {{loadProgress.numSymbolsLoaded}} stock symbols</p>
       </div>

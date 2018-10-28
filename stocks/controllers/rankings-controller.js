@@ -84,10 +84,10 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   function normalize(ratings) {
 
     // normalize consistency
-    normalizeField("consistency");
+    normalizeField(ratings, "consistency");
 
     // normalize growth
-    normalizeField("growth");
+    normalizeField(ratings, "growth");
 
     // average the two to compute overall rating
     ratings.forEach(function(rating) {
