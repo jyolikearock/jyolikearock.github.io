@@ -1,6 +1,6 @@
 <h4 class="display-4">Rankings</h4>
 <div class="mt-3">
-  <table class="table" st-table="displayedSymbols" st-safe-src="allSymbols">
+  <table class="table" st-table="displayedData" st-safe-src="symbolRatings">
     <thead>
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
@@ -8,9 +8,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="symbol in displayedSymbols">
+      <tr ng-repeat="e in displayedData">
         <td>
-          <a href="#/symbols/{{symbol.symbol}}">{{symbol.symbol}}</a>
+          <a href="#/symbols/{{e.symbol}}">{{e.symbol}}</a>
         </td>
         <td>
           Coming Soon!

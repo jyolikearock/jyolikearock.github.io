@@ -11,10 +11,11 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
     var symbol = $scope.symbol;
 
     // check cache first
-    if (symbolDataCache[symbol] && symbolChartCache[symbol]) {
+    if (symbolData[symbol]) {
       console.log("Re-using data in cache for symbol: " + symbol);
-      $scope.symbolData = Object.assign({}, symbolDataCache[symbol]);
-      generateChart(symbolChartCache[symbol]);
+      var symbolData = symbolData[symbol];
+      $scope.quote = Object.assign({}, symbolData.quote);
+      generateChart(symbolData.chart);
     }
 
     // if not in cache, call the service
@@ -32,34 +33,29 @@ app.controller("symbolsController", function($scope, $routeParams, stockMarketSe
       function(resp) {
         if (resp) {
           // extract key data from quote
-          var quote = resp.quote;
-          var symbolData = {};
-          symbolData.companyName      = quote.companyName;
-          symbolData.primaryExchange  = quote.primaryExchange;
-          symbolData.sector           = quote.sector;
-          symbolData.open             = quote.open;
-          symbolData.close            = quote.close;
-          symbolData.high             = quote.high;
-          symbolData.low              = quote.low;
-          symbolData.change           = quote.change;
-          symbolData.changePercent    = quote.changePercent * 100;
+          var quote = {};
+          quote.companyName      = resp.quote.companyName;
+          quote.primaryExchange  = resp.quote.primaryExchange;
+          quote.sector           = resp.quote.sector;
+          quote.open             = resp.quote.open;
+          quote.close            = resp.quote.close;
+          quote.high             = resp.quote.high;
+          quote.low              = resp.quote.low;
+          quote.change           = resp.quote.change;
+          quote.changePercent    = resp.quote.changePercent * 100;
 
           // extract prices from chart
-          symbolChart = [];
+          chart = [];
           resp.chart.forEach(function(e) {
             var dataPoint = {};
             dataPoint.date  = e.date;
             dataPoint.close = e.close;
-            symbolChart.push(dataPoint);
+            chart.push(dataPoint);
           });
 
-          generateChart(symbolChart);
-          $scope.symbolData = symbolData;
+          generateChart(chart);
+          $scope.quote = quote;
           $scope.error = false;
-
-          // cache data
-          symbolDataCache[symbol] = Object.assign({}, symbolData);
-          symbolChartCache[symbol] = symbolChart.slice();
 
           console.log("Extracted key data for symbol: ", symbol);
         }
