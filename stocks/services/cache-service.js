@@ -68,7 +68,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
             // resp is map of symbol --> symbol data
             Object.keys(resp).forEach(
               function(symbol) {
-                convertDeltaToPercentage(symbol.quote);
+                convertDeltaToPercentage(resp[symbol].quote);
                 symbolData[symbol] = resp[symbol];
               }
             );
