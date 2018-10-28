@@ -41,14 +41,12 @@ app.controller("rankingsController", function($scope, stockMarketService) {
     chart.forEach(
       function(dataPoint) {
         let price = dataPoint.close;
-        if (previousPrice < 0) {
-          previousPrice = price;
-        }
-        else {
+        if (previousPrice >= 0) {
           if (price > previousPrice) {
             rating++;
           }
         }
+        previousPrice = price;
       }
     );
 
@@ -56,8 +54,8 @@ app.controller("rankingsController", function($scope, stockMarketService) {
   }
 
   function evaluateGrowth(chart) {
-    var start = chart[0];
-    var end = chart[chart.length - 1];
+    var start = chart[0].close;
+    var end = chart[chart.length - 1].close;
 
     return (end / start - 1) * 100;
   }
