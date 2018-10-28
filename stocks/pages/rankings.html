@@ -20,13 +20,13 @@
           <a href="#/symbols/{{rating.symbol}}">{{rating.symbol}}</a>
         </td>
         <td>
-          {{rating.consistency}}
+          {{rating.consistency | number: 1}}
         </td>
         <td>
-          {{rating.growth | number: 2}}
+          {{rating.growth | number: 1}}
         </td>
         <td>
-          {{rating.overall | number: 2}}
+          {{rating.overall | number: 1}}
         </td>
       </tr>
     </tbody>

@@ -104,8 +104,11 @@ app.controller("rankingsController", function($scope, stockMarketService) {
 
     let dataPointsPerPercentile = Math.ceil(ratings.length * 1.0 / 1000);
     for (let p = 0; p < 1000; p++) {
-      for (let i = p * dataPointsPerPercentile; i < dataPointsPerPercentile; i++) {
-        ratings[i][fieldName] = (p + 1) / 10.0;
+      for (let i = 0; i < dataPointsPerPercentile; i++) {
+        if (i * p >= ratings.length) {
+          break;
+        }
+        ratings[i * p][fieldName] = (p + 1) / 10.0;
       }
     }
   }
