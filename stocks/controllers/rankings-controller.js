@@ -4,7 +4,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   pageInfo.currentPage = "Rankings";
 
   $scope.goToSymbol = function(symbol) {
-    $location.path("#/symbols/" + symbol);
+    $location.path("/symbols/" + symbol);
   }
 
   // wrap logic inside a callback so that page loads only after data is loaded

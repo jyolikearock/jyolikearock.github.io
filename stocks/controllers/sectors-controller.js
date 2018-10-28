@@ -7,7 +7,7 @@ app.controller("sectorsController",
     pageInfo.currentPage = $scope.sector;
 
     $scope.goToSymbol = function(symbol) {
-      $location.path("#/symbols/" + symbol);
+      $location.path("/symbols/" + symbol);
     }
 
     // wrap logic inside a callback so that page loads only after data is loaded
