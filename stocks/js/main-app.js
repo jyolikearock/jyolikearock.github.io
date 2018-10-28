@@ -29,7 +29,7 @@ app.config(["$routeProvider", function ($routeProvider) {
     });
 }]);
 
-// custom directive for persisting data in smart tables
+// custom directive for persisting table view
 app.directive('stPersist', function () {
   return {
     require: '^stTable',
