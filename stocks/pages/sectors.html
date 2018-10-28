@@ -8,7 +8,7 @@
       <th class="sortable" st-sort="symbol">Symbol</th>
       <th class="sortable" st-sort="companyName">Company Name</th>
       <th class="sortable" st-sort="close">Last Price</th>
-      <th class="sortable" st-sort="changePercent">% Change</th>
+      <th class="sortable" st-sort="changePercent">Change</th>
     </tr>
     <tr>
       <th colspan="2">
@@ -31,8 +31,10 @@
       <td>
         {{symbol.close | number: 2}}
       </td>
-      <td>
-        <span ng-show="symbol.changePercent > 0">+</span>{{symbol.changePercent | number: 2}}
+      <td ng-class="{
+        'red': symbol.changePercent < 0,
+        'green': symbol.changePercent >= 0}">
+        <span ng-show="symbol.changePercent > 0">+</span>{{symbol.changePercent | number: 2}}%
       </td>
     </tr>
   </tbody>

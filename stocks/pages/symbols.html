@@ -53,14 +53,18 @@
     </tr>
     <tr>
       <th>Price Change</th>
-      <td>
+      <td ng-class="{
+        'red': symbolData.change < 0,
+        'green': symbolData.change >= 0}">
         <span ng-show="symbolData.change > 0">+</span>{{symbolData.change | number: 2}}
       </td>
     </tr>
     <tr>
       <th>Price Change (%)</th>
-      <td>
-        <span ng-show="symbolData.changePercent > 0">+</span>{{symbolData.changePercent | number: 2}}
+      <td ng-class="{
+        'red': symbolData.changePercent < 0,
+        'green': symbolData.changePercent >= 0}">
+        <span ng-show="symbolData.changePercent > 0">+</span>{{symbolData.changePercent | number: 2}}%
       </td>
     </tr>
   </table>
