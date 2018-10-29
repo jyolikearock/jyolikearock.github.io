@@ -120,7 +120,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
     var chart = [];
     symbolData.chart.forEach(
       function(dataPoint) {
-        if (dataPoint.date < oneYearAgo) {
+        if (Date.parse(dataPoint.date) < oneYearAgo) {
           trainingData.push(dataPoint);
         }
         else {

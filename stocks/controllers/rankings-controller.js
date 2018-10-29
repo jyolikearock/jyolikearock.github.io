@@ -198,7 +198,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   function evaluateRecentGrowth(chart) {
     var start = -1;
     for (var i = chart.length - 1; i >= 0; i--) {
-      if (chart[i].date <= oneMonthAgo) {
+      if (Date.parse(chart[i].date) <= oneMonthAgo) {
         start = chart[i].close;
         break;
       }
