@@ -131,9 +131,9 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         else if (diff < 0) {
           weights[i] = weights[i] + wFeatures[i] * (diff / 1000.0);
         }
-
-        normalize(weights);
       }
+
+      normalize(weights);
     });
 
     console.log("Finished processing training data; weights: ", weights);
