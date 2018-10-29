@@ -103,7 +103,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     return getPercentDiff(start, end);
   }
 
-  var oneMonthAgo = Date();
+  var oneMonthAgo = new Date();
   oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
   // growth over 1 month

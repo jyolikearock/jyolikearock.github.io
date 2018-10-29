@@ -109,7 +109,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
     symbolData.changePercent = symbolData.changePercent * 100;
   }
 
-  var oneYearAgo = Date();
+  var oneYearAgo = new Date();
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
   function extractTrainingData(symbolData) {
