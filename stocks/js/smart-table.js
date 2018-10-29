@@ -184,28 +184,32 @@ ng.module('smart-table').controller('stTableController', [
     this.pipe = function pipe() {
       var pagination = tableState.pagination;
       var output;
-      filtered = tableState.search.predicateObject
-        ? filter(safeCopy, tableState.search.predicateObject)
-        : safeCopy;
-      if (tableState.sort.predicate) {
-        filtered = orderBy(
-          filtered,
-          tableState.sort.predicate,
-          tableState.sort.reverse
-        );
-      }
-      pagination.totalItemCount = filtered.length;
-      if (pagination.number !== undefined) {
-        pagination.numberOfPages = filtered.length > 0
-          ? Math.ceil(filtered.length / pagination.number)
-          : 1;
-        pagination.start = pagination.start >= filtered.length
-          ? (pagination.numberOfPages - 1) * pagination.number
-          : pagination.start;
-        output = filtered.slice(
-          pagination.start,
-          pagination.start + parseInt(pagination.number)
-        );
+
+      // @jyolikearock: apply filter and sort only if safe copy of table is not empty
+      if (safeCopy.length > 0) {
+        filtered = tableState.search.predicateObject
+          ? filter(safeCopy, tableState.search.predicateObject)
+          : safeCopy;
+        if (tableState.sort.predicate) {
+          filtered = orderBy(
+            filtered,
+            tableState.sort.predicate,
+            tableState.sort.reverse
+          );
+        }
+        pagination.totalItemCount = filtered.length;
+        if (pagination.number !== undefined) {
+          pagination.numberOfPages = filtered.length > 0
+            ? Math.ceil(filtered.length / pagination.number)
+            : 1;
+          pagination.start = pagination.start >= filtered.length
+            ? (pagination.numberOfPages - 1) * pagination.number
+            : pagination.start;
+          output = filtered.slice(
+            pagination.start,
+            pagination.start + parseInt(pagination.number)
+          );
+        }
       }
       displaySetter($scope, output || filtered);
     };
