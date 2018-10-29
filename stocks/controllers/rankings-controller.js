@@ -109,7 +109,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         weighted[i] = weight * featureValue;
       }
 
-      let computedGrowth = sum(weighted);
+      let computedGrowth = sumArray(weighted);
       rating.weighted = weighted;
       rating.computedGrowth = computedGrowth;
     }
@@ -236,14 +236,14 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   }
 
   function normalize(array) {
-    var sum = sum(array);
+    var sum = sumArray(array);
 
     for (var i = 0; i < array.length; i++) {
       array[i] = array[i] / sum;
     }
   }
 
-  function sum(array) {
+  function sumArray(array) {
     return array.reduce(function(total, e) {
       return total + e;
     });
