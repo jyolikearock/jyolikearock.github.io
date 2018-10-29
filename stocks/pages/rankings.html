@@ -8,7 +8,8 @@
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
         <th class="sortable" st-sort="consistency">Consistency</th>
-        <th class="sortable" st-sort="growth">Growth</th>
+        <th class="sortable" st-sort="historicalGrowth">Historical Growth</th>
+        <th class="sortable" st-sort="recentGrowth">Recent Growth</th>
         <th class="sortable" st-sort="overall">Overall</th>
       </tr>
       <tr>
@@ -27,7 +28,10 @@
           {{rating.consistency | number: 1}}
         </td>
         <td>
-          {{rating.growth | number: 1}}
+          {{rating.historicalGrowth | number: 1}}
+        </td>
+        <td>
+          {{rating.recentGrowth | number: 1}}
         </td>
         <td>
           {{rating.overall | number: 1}}
@@ -36,7 +40,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4" class="text-center">
+        <td colspan="5" class="text-center">
           <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
         </td>
       </tr>

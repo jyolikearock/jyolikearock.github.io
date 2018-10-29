@@ -47,6 +47,7 @@ app.controller("symbolsController", function($scope, $routeParams) {
   function generateChart(chart) {
     var dates = [];
     var prices = [];
+
     chart.forEach(function(e) {
       dates.push(e.date);
       prices.push(e.close);

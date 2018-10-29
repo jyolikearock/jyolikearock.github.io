@@ -22,7 +22,7 @@ var allSymbols = [];
 // map of symbol --> {quote, chart}
 var symbolData = {};
 
-// array of {symbol, consistency, growth, overall}
+// array of {symbol, consistency, historicalGrowth, recentGrowth, overall}
 var ratings = [];
 
 // a promise that resolves when all server data has been loaded

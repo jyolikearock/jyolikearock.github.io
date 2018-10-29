@@ -43,7 +43,8 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     var rating = {};
     rating.symbol = symbol;
     rating.consistency = evaluateConsistency(chart);
-    rating.growth = evaluateGrowth(chart);
+    rating.historicalGrowth = evaluateHistoricalGrowth(chart);
+    rating.recentGrowth = evaluateRecentGrowth(chart);
 
     return rating;
   }
@@ -94,8 +95,26 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     return {"slope": slope, "offset": offset};
   }
 
-  function evaluateGrowth(chart) {
+  // growth over 1 year
+  function evaluateHistoricalGrowth(chart) {
     var start = chart[0].close;
+    var end = chart[chart.length - 1].close;
+
+    return getPercentDiff(start, end);
+  }
+
+  var oneMonthAgo = Date();
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+  // growth over 1 month
+  function evaluateRecentGrowth(chart) {
+    var start = -1;
+    for (var i = chart.length - 1; i >= 0; i--) {
+      if (chart[i].date <= oneMonthAgo) {
+        start = chart[i].close;
+        break;
+      }
+    }
     var end = chart[chart.length - 1].close;
 
     return getPercentDiff(start, end);
@@ -106,12 +125,15 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     // normalize consistency
     normalizeField(ratings, "consistency");
 
-    // normalize growth
-    normalizeField(ratings, "growth");
+    // normalize historical growth
+    normalizeField(ratings, "historicalGrowth");
+
+    // normalize recent growth
+    normalizeField(ratings, "recentGrowth");
 
     // average the two to compute overall rating
     ratings.forEach(function(rating) {
-      rating.overall = (rating.consistency + rating.growth) / 2;
+      rating.overall = (rating.consistency + rating.historicalGrowth + rating.recentGrowth) / 3;
     });
   }
 

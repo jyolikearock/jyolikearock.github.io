@@ -76,9 +76,15 @@ app.service("cacheService", function($http, $q, stockMarketService) {
             // resp is map of symbol --> symbol data
             Object.keys(resp).forEach(
               function(symbol) {
-                convertDeltaToPercentage(resp[symbol].quote);
-                symbolData[symbol] = resp[symbol];
-                loadProgress.numSymbolsLoaded++;
+                var data = resp[symbol];
+                // if a chart has fewer than 48 data points in the last 2 years,
+                // discard it
+                if (data.chart.length >= 48) {
+                  convertDeltaToPercentage(data.quote);
+                  extractTrainingData(data);
+                  symbolData[symbol] = data;
+                  loadProgress.numSymbolsLoaded++;
+                }
               }
             );
 
@@ -101,6 +107,30 @@ app.service("cacheService", function($http, $q, stockMarketService) {
 
   function convertDeltaToPercentage(symbolData) {
     symbolData.changePercent = symbolData.changePercent * 100;
+  }
+
+  var oneYearAgo = Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+  function extractTrainingData(symbolData) {
+    // data from 2y ago to 1y ago is training data
+    var trainingData = [];
+
+    // data from 1y ago to now is considered live data
+    var chart = [];
+    symbolData.chart.forEach(
+      function(dataPoint) {
+        if (dataPoint.date < oneYearAgo) {
+          trainingData.push(dataPoint);
+        }
+        else {
+          chart.push(dataPoint);
+        }
+      }
+    );
+
+    symbolData.trainingData = trainingData;
+    symbolData.chart = chart;
   }
 
 });
