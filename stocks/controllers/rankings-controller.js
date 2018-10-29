@@ -103,10 +103,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       let rating = trainingDataRatings[i];
       let weighted = [];
       for (var j = 0; j < features.length; j++) {
-        let feature = features[i];
+        let feature = features[j];
         let featureValue = rating[feature];
-        let weight = weights[i];
-        weighted[i] = weight * featureValue;
+        let weight = weights[j];
+        weighted[j] = weight * featureValue;
       }
 
       let computedGrowth = sumArray(weighted);
