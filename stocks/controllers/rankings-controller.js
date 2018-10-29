@@ -39,6 +39,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
           let trainingData = symbolData[symbol].trainingData;
 
           if (chart.length >= 2) {
+            console.log("Evaluating rating for symbol: ", symbol);
             // rating to be used to evaluate symbol
             let rating = evaluate(chart);
             rating.symbol = symbol;
@@ -46,6 +47,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
             // rating from 2y ago used to train algorithm
             if (trainingData.length >= 2) {
+              console.log("Evaluating training data for symbol: ", symbol);
               let trainingDataRating = evaluate(trainingData);
               trainingDataRating.actualGrowth = getPercentDiff(chart[0], chart[chart.length - 1]);
               trainingDataRatings.push(trainingDataRating);
@@ -57,6 +59,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         });
 
         // normalize values for fields
+        console.log("Normalizing fields");
         features.forEach(
           function(feature) {
             normalizeField(ratings, feature);
@@ -65,10 +68,12 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         );
         normalizeField(trainingDataRatings, "actualGrowth");
 
+        console.log("Computing weighted sums for training data");
         computeWeightedSums(trainingDataRatings, weights);
         normalizeField(trainingDataRatings, "computedGrowth");
 
         // process training data to adjust feature weights
+        console.log("Adjusting weights based on training data");
         processTrainingData(trainingDataRatings, weights);
 
         // take weighted sum of the different fields to generate overall rating
