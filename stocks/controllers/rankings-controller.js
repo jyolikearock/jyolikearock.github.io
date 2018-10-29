@@ -39,7 +39,6 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
           let trainingData = symbolData[symbol].trainingData;
 
           if (chart.length >= 2) {
-            console.log("Evaluating rating for symbol: ", symbol);
             // rating to be used to evaluate symbol
             let rating = evaluate(chart);
             rating.symbol = symbol;
@@ -47,9 +46,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
             // rating from 2y ago used to train algorithm
             if (trainingData.length >= 2) {
-              console.log("Evaluating training data for symbol: ", symbol);
               let trainingDataRating = evaluate(trainingData);
-              trainingDataRating.actualGrowth = getPercentDiff(chart[0], chart[chart.length - 1]);
+              trainingDataRating.actualGrowth = getPercentDiff(
+                  chart[0].close,
+                  chart[chart.length - 1].close);
               trainingDataRatings.push(trainingDataRating);
             }
           }
@@ -99,6 +99,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
   function computeWeightedSums(trainingDataRatings, weights) {
     for (var i = 0; i < trainingDataRatings.length; i++) {
+      console.log("Computing weighted sum for: ", i);
       let rating = trainingDataRatings[i];
       let weighted = [];
       for (var i = 0; i < features.length; i++) {
