@@ -214,6 +214,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         break;
       }
     }
+
+    // last month's data was not found
+    if (start < 0) {
+      return 0;
+    }
     var end = chart[chart.length - 1].close;
 
     return getPercentDiff(start, end);
