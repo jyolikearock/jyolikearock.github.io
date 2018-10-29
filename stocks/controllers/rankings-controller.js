@@ -45,9 +45,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
             ratings.push(rating);
 
             // rating from 2y ago used to train algorithm
-            let trainingDataRating = evaluate(trainingData);
-            trainingDataRating.actualGrowth = getPercentDiff(chart[0], chart[chart.length - 1]);
-            trainingDataRatings.push(trainingDataRating);
+            if (trainingData.length >= 2) {
+              let trainingDataRating = evaluate(trainingData);
+              trainingDataRating.actualGrowth = getPercentDiff(chart[0], chart[chart.length - 1]);
+              trainingDataRatings.push(trainingDataRating);
+            }
           }
           else {
             console.log("No valid chart found for symbol: ", symbol);
