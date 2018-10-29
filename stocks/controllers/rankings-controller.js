@@ -99,7 +99,6 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
   function computeWeightedSums(trainingDataRatings, weights) {
     for (var i = 0; i < trainingDataRatings.length; i++) {
-      console.log("Computing weighted sum for: ", i);
       let rating = trainingDataRatings[i];
       let weighted = [];
       for (var j = 0; j < features.length; j++) {
