@@ -7,6 +7,12 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     $location.path("/symbols/" + symbol);
   }
 
+  var features = [
+    "consistency",
+    "historicalGrowth",
+    "recentGrowth"
+  ];
+
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
     function(resp) {
@@ -15,18 +21,63 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         console.log("Re-using symbol ratings saved in cache");
       }
       else {
+
+        // initialize feature weights
+        var weights = [];
+        features.forEach(
+          function(feature) {
+            weights.push(1.0 / features.length);
+          }
+        );
+
+        var trainingDataRatings = [];
+
         console.log("Calculating ratings for all symbols");
         Object.keys(symbolData).forEach(function(symbol) {
+
           let chart = symbolData[symbol].chart;
-          if (chart.length > 0) {
-            ratings.push(evaluate(symbol, chart));
+          let trainingData = symbolData[symbol].trainingData;
+
+          if (chart.length >= 2) {
+            // rating to be used to evaluate symbol
+            let rating = evaluate(chart);
+            rating.symbol = symbol;
+            ratings.push(rating);
+
+            // rating from 2y ago used to train algorithm
+            let trainingDataRating = evaluate(trainingData);
+            trainingDataRating.actualGrowth = getPercentDiff(chart[0], chart[chart.length - 1]);
+            trainingDataRatings.push(trainingDataRating);
           }
           else {
             console.log("No valid chart found for symbol: ", symbol);
           }
         });
 
-        normalize(ratings);
+        // normalize values for fields
+        features.forEach(
+          function(feature) {
+            normalizeField(ratings, feature);
+            normalizeField(trainingDataRatings, feature);
+          }
+        );
+        normalizeField(trainingDataRatings, "actualGrowth");
+
+        computeWeightedSums(trainingDataRatings, weights);
+        normalizeField(trainingDataRatings, "computedGrowth");
+
+        // process training data to adjust feature weights
+        processTrainingData(trainingDataRatings, weights);
+
+        // take weighted sum of the different fields to generate overall rating
+        ratings.forEach(function(rating) {
+          let score = 0;
+          for (var i = 0; i < features.length; i++) {
+            let feature = features[i];
+            score += rating[feature] * weights[i];
+          }
+          rating.overall = score;
+        });
 
         ratings.sort(function(a, b) {
           return b.overall - a.overall;
@@ -39,9 +90,46 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     }
   );
 
-  function evaluate(symbol, chart) {
+  function computeWeightedSums(trainingDataRatings, weights) {
+    for (var i = 0; i < trainingDataRatings.length; i++) {
+      let rating = trainingDataRatings[i];
+      let weighted = [];
+      for (var i = 0; i < features.length; i++) {
+        let feature = features[i];
+        let featureValue = rating[feature];
+        let weight = weights[i];
+        weighted[i] = weight * featureValue;
+      }
+
+      let computedGrowth = sum(weighted);
+      rating.weighted = weighted;
+      rating.computedGrowth = computedGrowth;
+    }
+  }
+
+  function processTrainingData(trainingDataRatings, weights) {
+    trainingDataRatings.forEach(function(rating) {
+      let diff = rating.computedGrowth - rating.actualGrowth;
+      let normalizedWeighted = normalize(rating.weighted);
+
+      for (let i = 0; i < weights.length; i++) {
+        // if computed growth is higher than the actual,
+        // decrease the weights proportionally to the magnitude of the features
+        if (diff > 0) {
+          weights[i] = weights[i] - normalizedWeighted[i] * (diff / 1000);
+        }
+        // if computed growth is lower than the actual, increase the weights
+        else if (diff < 0) {
+          weights[i] = weights[i] + normalizedWeighted[i] * (diff / 1000);
+        }
+      }
+    });
+
+    console.log("Finished processing training data; weights: ", weights);
+  }
+
+  function evaluate(chart) {
     var rating = {};
-    rating.symbol = symbol;
     rating.consistency = evaluateConsistency(chart);
     rating.historicalGrowth = evaluateHistoricalGrowth(chart);
     rating.recentGrowth = evaluateRecentGrowth(chart);
@@ -120,23 +208,6 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     return getPercentDiff(start, end);
   }
 
-  function normalize(ratings) {
-
-    // normalize consistency
-    normalizeField(ratings, "consistency");
-
-    // normalize historical growth
-    normalizeField(ratings, "historicalGrowth");
-
-    // normalize recent growth
-    normalizeField(ratings, "recentGrowth");
-
-    // average the two to compute overall rating
-    ratings.forEach(function(rating) {
-      rating.overall = (rating.consistency + rating.historicalGrowth + rating.recentGrowth) / 3;
-    });
-  }
-
   function normalizeField(ratings, fieldName) {
 
     // sort field in ascending order
@@ -151,8 +222,23 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     }
   }
 
+  // utility methods
   function getPercentDiff(a, b) {
     return (b * 1.0 / a - 1) * 100;
+  }
+
+  function normalize(array) {
+    var sum = sum(array);
+
+    for (var i = 0; i < array.length; i++) {
+      array[i] = array[i] / sum;
+    }
+  }
+
+  function sum(array) {
+    return array.reduce(function(total, e) {
+      return total + e;
+    });
   }
 
 });
