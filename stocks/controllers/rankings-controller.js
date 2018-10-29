@@ -97,6 +97,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     }
   );
 
+  // dot product weights x features
   function computeWeightedSums(trainingDataRatings, weights) {
     for (var i = 0; i < trainingDataRatings.length; i++) {
       let rating = trainingDataRatings[i];
@@ -114,21 +115,24 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     }
   }
 
+  // adjust weights based on how much the computed growth differs from the actual
   function processTrainingData(trainingDataRatings, weights) {
     trainingDataRatings.forEach(function(rating) {
       let diff = rating.computedGrowth - rating.actualGrowth;
-      let normalizedWeighted = normalize(rating.weighted);
+      let wFeatures = normalize(rating.weighted);
 
       for (let i = 0; i < weights.length; i++) {
         // if computed growth is higher than the actual,
         // decrease the weights proportionally to the magnitude of the features
         if (diff > 0) {
-          weights[i] = weights[i] - normalizedWeighted[i] * (diff / 1000);
+          weights[i] = Math.max(0, weights[i] - wFeatures[i] * (diff / 1000));
         }
         // if computed growth is lower than the actual, increase the weights
         else if (diff < 0) {
-          weights[i] = weights[i] + normalizedWeighted[i] * (diff / 1000);
+          weights[i] = weights[i] + wFeatures[i] * (diff / 1000);
         }
+
+        normalize(weights);
       }
     });
 
