@@ -131,14 +131,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       let wFeatures = normalize(rating.weightedFeatures);
 
       for (let i = 0; i < weights.length; i++) {
-        // if computed growth is higher than the actual,
-        // decrease the weights proportionally to the magnitude of the features
-        if (diff > 0) {
+        // if computed growth is too high, decrease the weights of the significant features
+        // if computed growth is too low, increase the weights of the significant features
+        if (diff != 0) {
           weights[i] = Math.max(0, weights[i] - wFeatures[i] * (diff / 10000.0));
-        }
-        // if computed growth is lower than the actual, increase the weights
-        else if (diff < 0) {
-          weights[i] = Math.max(0, weights[i] + wFeatures[i] * (diff / 10000.0));
         }
       }
 
@@ -252,7 +248,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   }
 
   function normalize(array) {
-    var sum = magnitude(array);
+    var sum = sumArray(array);
 
     if (sum != 0) {
       for (var i = 0; i < array.length; i++) {
@@ -261,12 +257,6 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     }
 
     return array;
-  }
-
-  function magnitude(array) {
-    return array.reduce(function(total, e) {
-      return total + Math.abs(e);
-    });
   }
 
   function sumArray(array) {
