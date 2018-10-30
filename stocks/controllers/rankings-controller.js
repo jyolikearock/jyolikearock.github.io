@@ -160,8 +160,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     var rating = 0;
 
     var linearRegression = applyLinearRegression(chart);
-    var slope = linearRegression.slope;
     var offset = linearRegression.offset;
+    var slope = linearRegression.slope;
+    if (slope < 0) {
+      slope = 0;
+    }
 
     for (var i = 0; i < chart.length; i++) {
 
@@ -170,10 +173,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       let actualPrice = chart[i].close;
 
       let diff = getPercentDiff(expectedPrice, actualPrice);
+      let squaredError = diff * diff;
 
-      // if diff is 0, consistency goes up by 10 points (arbitrary)
+      // if diff is 0, consistency goes up by 100 points (arbitrary)
       // if diff is greater than 10%, consistency goes down
-      rating += (10 - diff);
+      rating += (100 - squaredError);
     }
 
     return rating;
@@ -224,17 +228,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       return a[fieldName] - b[fieldName];
     });
 
-    var min = ratings[0][fieldName];
-    var range = ratings[ratings.length - 1][fieldName] - min;
-    if (range == 0) {
-      range = 1;
-    }
-
     // offset and scale values to be between 0 and 100
     for (let i = 0; i < ratings.length; i++) {
       let rating = ratings[i];
-      let score = rating[fieldName];
-      rating[fieldName] = (score - min) * 1.0 / range * 100;
+      rating[fieldName] = i * 1.0 / ratings.length * 100;
     }
   }
 
