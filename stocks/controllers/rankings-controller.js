@@ -210,23 +210,9 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     return getPercentDiff(start, end);
   }
 
-  var oneMonthAgo = new Date();
-  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-
   // growth over 1 month
   function evaluateRecentGrowth(chart) {
-    var start = -1;
-    for (var i = chart.length - 1; i >= 0; i--) {
-      if (Date.parse(chart[i].date) <= oneMonthAgo) {
-        start = chart[i].close;
-        break;
-      }
-    }
-
-    // last month's data was not found
-    if (start < 0) {
-      return 0;
-    }
+    var start = chart[chart.length - 5].close;
     var end = chart[chart.length - 1].close;
 
     return getPercentDiff(start, end);
@@ -241,6 +227,9 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
     var min = ratings[0];
     var range = ratings[ratings.length - 1] - min;
+    if (range == 0) {
+      range = 1;
+    }
 
     // offset and scale values to be between 0 and 100
     for (let i = 0; i < ratings.length; i++) {
