@@ -170,11 +170,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       let actualPrice = chart[i].close;
 
       let diff = getPercentDiff(expectedPrice, actualPrice);
-      let squaredError = diff * diff;
 
-      // if diff is 0, consistency goes up by 100 points (arbitrary)
+      // if diff is 0, consistency goes up by 10 points (arbitrary)
       // if diff is greater than 10%, consistency goes down
-      rating += (100 - squaredError);
+      rating += (10 - diff);
     }
 
     return rating;
@@ -225,8 +224,8 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       return a[fieldName] - b[fieldName];
     });
 
-    var min = ratings[0];
-    var range = ratings[ratings.length - 1] - min;
+    var min = ratings[0][fieldName];
+    var range = ratings[ratings.length - 1][fieldName] - min;
     if (range == 0) {
       range = 1;
     }
