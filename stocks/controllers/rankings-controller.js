@@ -99,27 +99,30 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
   // dot product weights x features
   function computeWeightedSums(trainingDataRatings, weights) {
-    for (var i = 0; i < trainingDataRatings.length; i++) {
-      let rating = trainingDataRatings[i];
-      let weighted = [];
-      for (var j = 0; j < features.length; j++) {
-        let feature = features[j];
+    trainingDataRatings.forEach(function(rating) {
+      let weightedFeatures = [];
+      for (var i = 0; i < features.length; i++) {
+        let feature = features[i];
         let featureValue = rating[feature];
-        let weight = weights[j];
-        weighted[j] = weight * featureValue;
+        let weight = weights[i];
+        weightedFeatures[i] = weight * featureValue;
       }
 
-      let computedGrowth = sumArray(weighted);
-      rating.weighted = weighted;
+      let computedGrowth = sumArray(weightedFeatures);
+      rating.weightedFeatures = weightedFeatures;
       rating.computedGrowth = computedGrowth;
-    }
+    });
   }
 
   // adjust weights based on how much the computed growth differs from the actual
   function processTrainingData(trainingDataRatings, weights) {
+    $scope.trials = [];
+    $scope.errors = [];
+
+    var numTrials = 0;
     trainingDataRatings.forEach(function(rating) {
       let diff = rating.computedGrowth - rating.actualGrowth;
-      let wFeatures = normalize(rating.weighted);
+      let wFeatures = normalize(rating.weightedFeatures);
 
       for (let i = 0; i < weights.length; i++) {
         // if computed growth is higher than the actual,
@@ -134,6 +137,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       }
 
       normalize(weights);
+
+      $scope.trials.push(numTrials);
+      $scope.errors.push(diff);
+
+      numTrials++;
     });
 
     console.log("Finished processing training data; weights: ", weights);
@@ -231,10 +239,14 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       return a[fieldName] - b[fieldName];
     });
 
-    // assign percentiles to values
+    var min = ratings[0];
+    var range = ratings[ratings.length - 1] - min;
+
+    // offset and scale values to be between 0 and 100
     for (let i = 0; i < ratings.length; i++) {
       let rating = ratings[i];
-      rating[fieldName] = (i * 1.0 / ratings.length) * 100;
+      let score = rating[fieldName];
+      rating[fieldName] = (score - min) * 1.0 / range * 100;
     }
   }
 
