@@ -150,7 +150,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
       if (numTrials % 10 == 0) {
         $scope.trials.push(numTrials);
-        $scope.errors.push(diff);
+        $scope.errors.push(Math.abs(diff));
       }
 
       numTrials++;
