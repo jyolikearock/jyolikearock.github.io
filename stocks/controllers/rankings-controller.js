@@ -13,6 +13,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
     "recentGrowth"
   ];
 
+  var trainingFeatures = [
+    "historicalGrowth",
+    "recentGrowth"
+  ];
+
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
     function(resp) {
@@ -24,9 +29,9 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
         // initialize feature weights
         var weights = [];
-        features.forEach(
+        trainingFeatures.forEach(
           function(feature) {
-            weights.push(1.0 / features.length);
+            weights.push(1.0 / trainingFeatures.length);
           }
         );
 
@@ -80,8 +85,8 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         // take weighted sum of the different fields to generate overall rating
         ratings.forEach(function(rating) {
           let score = 0;
-          for (var i = 0; i < features.length; i++) {
-            let feature = features[i];
+          for (var i = 0; i < trainingFeatures.length; i++) {
+            let feature = trainingFeatures[i];
             score += rating[feature] * weights[i];
           }
           rating.overall = score;
@@ -102,8 +107,8 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   function computeWeightedSums(trainingDataRatings, weights) {
     trainingDataRatings.forEach(function(rating) {
       let weightedFeatures = [];
-      for (var i = 0; i < features.length; i++) {
-        let feature = features[i];
+      for (var i = 0; i < trainingFeatures.length; i++) {
+        let feature = trainingFeatures[i];
         let featureValue = rating[feature];
         let weight = weights[i];
         weightedFeatures[i] = weight * featureValue;
