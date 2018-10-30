@@ -14,6 +14,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
   ];
 
   var trainingFeatures = [
+    "consistency",
     "historicalGrowth",
     "recentGrowth"
   ];
@@ -50,6 +51,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
             ratings.push(rating);
 
             // rating from 2y ago used to train algorithm
+            /**
             if (trainingData.length >= 2) {
               let trainingDataRating = evaluate(trainingData);
               trainingDataRating.symbol = symbol;
@@ -58,6 +60,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
                   chart[chart.length - 1].close);
               trainingDataRatings.push(trainingDataRating);
             }
+            */
           }
           else {
             console.log("No valid chart found for symbol: ", symbol);
@@ -69,9 +72,10 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         features.forEach(
           function(feature) {
             normalizeField(ratings, feature);
-            normalizeField(trainingDataRatings, feature);
+            // normalizeField(trainingDataRatings, feature);
           }
         );
+        /**
         normalizeField(trainingDataRatings, "actualGrowth");
 
         console.log("Computing weighted sums for training data");
@@ -81,6 +85,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
         // process training data to adjust feature weights
         console.log("Adjusting weights based on training data");
         processTrainingData(trainingDataRatings, weights);
+        */
 
         // take weighted sum of the different fields to generate overall rating
         ratings.forEach(function(rating) {

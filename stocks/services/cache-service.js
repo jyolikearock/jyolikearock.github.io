@@ -77,11 +77,11 @@ app.service("cacheService", function($http, $q, stockMarketService) {
             Object.keys(resp).forEach(
               function(symbol) {
                 var data = resp[symbol];
-                // if a chart has fewer than 90 data points in the last 2 years,
+                // if a chart has fewer than 120 data points in the last year,
                 // discard it
-                if (data.chart.length >= 90) {
+                if (data.chart.length >= 120) {
                   convertDeltaToPercentage(data.quote);
-                  extractTrainingData(data);
+                  // extractTrainingData(data);
                   symbolData[symbol] = data;
                   loadProgress.numSymbolsLoaded++;
                 }
