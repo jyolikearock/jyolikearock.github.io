@@ -47,6 +47,7 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
             // rating from 2y ago used to train algorithm
             if (trainingData.length >= 2) {
               let trainingDataRating = evaluate(trainingData);
+              trainingDataRating.symbol = symbol;
               trainingDataRating.actualGrowth = getPercentDiff(
                   chart[0].close,
                   chart[chart.length - 1].close);
@@ -121,6 +122,11 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
 
     var numTrials = 0;
     trainingDataRatings.forEach(function(rating) {
+      if (numTrials % 10 == 0) {
+        console.log("features: ", rating);
+        console.log("weights before: ", weights);
+      }
+
       let diff = rating.computedGrowth - rating.actualGrowth;
       let wFeatures = normalize(rating.weightedFeatures);
 
@@ -137,9 +143,14 @@ app.controller("rankingsController", function($scope, $location, stockMarketServ
       }
 
       normalize(weights);
+      if (numTrials % 10 == 0) {
+        console.log("weights after: ", weights);
+      }
 
-      $scope.trials.push(numTrials);
-      $scope.errors.push(diff);
+      if (numTrials % 10 == 0) {
+        $scope.trials.push(numTrials);
+        $scope.errors.push(diff);
+      }
 
       numTrials++;
     });
