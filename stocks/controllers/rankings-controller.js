@@ -195,7 +195,7 @@ app.controller("rankingsController", function(
   }
 
   function evaluateConsistency(chart) {
-    var rating = 0;
+    var rating = 1000000;
 
     var linearRegression = applyLinearRegression(chart);
     var offset = linearRegression.offset;
@@ -210,11 +210,13 @@ app.controller("rankingsController", function(
       let diff = getPercentDiff(expectedPrice, actualPrice);
       let squaredError = diff * diff;
 
-      // if diff is 0, consistency goes up by 1000 points (arbitrary)
-      rating += Math.max(0, (1000 - squaredError));
+      rating -= squaredError;
     }
 
-    return rating * (slope / chart[chart.length - 1].close);
+    if (slope < 0 && rating > 0) {
+      rating = slope * rating;
+    }
+    return rating;
   }
 
   function applyLinearRegression(chart) {
