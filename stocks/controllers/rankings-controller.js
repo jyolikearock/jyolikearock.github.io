@@ -200,9 +200,6 @@ app.controller("rankingsController", function(
     var linearRegression = applyLinearRegression(chart);
     var offset = linearRegression.offset;
     var slope = linearRegression.slope;
-    if (slope < 0) {
-      slope = 0;
-    }
 
     for (var i = 0; i < chart.length; i++) {
 
@@ -218,7 +215,7 @@ app.controller("rankingsController", function(
       rating += (100 - squaredError);
     }
 
-    return rating;
+    return slope * rating;
   }
 
   function applyLinearRegression(chart) {
