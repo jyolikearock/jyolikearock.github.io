@@ -65,43 +65,51 @@
       <div class="row" ng-show="isLoadingFinished">
 
         <!-- page nav bar -->
-        <div class="col-3 border-right">
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                 ng-click="resetCurrentPage()"
-                 ng-class="{'active': pageInfo.currentPage == 'Home'}">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/symbols"
-                 ng-class="{'active': pageInfo.currentPage == 'Symbols'}">
-                Symbols
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/rankings"
-                 ng-class="{'active': pageInfo.currentPage == 'Rankings'}">
-                Rankings
-              </a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link">
-                Sectors
-              </span>
-            </li>
-            <li class="nav-item" ng-repeat="sector in sectors">
-              <a class="nav-link" href="#/sectors/{{sector}}"
-                 ng-class="{'active': pageInfo.currentPage == sector}">
-                {{sector}}
-              </a>
-            </li>
-          </ul>
+        <div class="col-12 col-md-4 col-xl-3 border-right">
+          <nav class="navbar navbar-expand-md">
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#sideNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="sideNavbar">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"
+                     ng-click="resetCurrentPage()"
+                     ng-class="{'active': pageInfo.currentPage == 'Home'}">
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#/symbols"
+                     ng-class="{'active': pageInfo.currentPage == 'Symbols'}">
+                    Symbols
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#/rankings"
+                     ng-class="{'active': pageInfo.currentPage == 'Rankings'}">
+                    Rankings
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">
+                    Sectors
+                  </span>
+                </li>
+                <li class="nav-item" ng-repeat="sector in sectors">
+                  <a class="nav-link" href="#/sectors/{{sector}}"
+                     ng-class="{'active': pageInfo.currentPage == sector}">
+                    {{sector}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
 
         <!-- content body populated by angular -->
-        <div class="col-9" ng-view>
+        <div class="col-12 col-md-8 col-xl-9" ng-view>
 
         </div>
 
