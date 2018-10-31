@@ -214,7 +214,7 @@ app.controller("rankingsController", function(
       rating += Math.max(0, (1000 - squaredError));
     }
 
-    return slope * rating;
+    return rating * (slope / chart[chart.length - 1].close);
   }
 
   function applyLinearRegression(chart) {
