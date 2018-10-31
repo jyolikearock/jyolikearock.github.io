@@ -1,7 +1,12 @@
-app.controller("rankingsController", function($scope, $location, stockMarketService) {
+app.controller("rankingsController", function(
+  $scope, $routeParams, $location, stockMarketService) {
 
   // for coloring nav bar
   pageInfo.currentPage = "Rankings";
+
+  if ($routeParams.symbol) {
+    $scope.searchSymbol = $routeParams.symbol;
+  }
 
   $scope.goToSymbol = function(symbol) {
     $location.path("/symbols/" + symbol);

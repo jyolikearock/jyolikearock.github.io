@@ -2,7 +2,7 @@ app.service("stockMarketService", function($http, $q) {
 
   var baseEndpoint = "https://api.iextrading.com/1.0/stock/";
   var listSymbolsUrl = baseEndpoint + "market/collection/sector?collectionName=";
-  var getSymbolDataUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=2&symbols=";
+  var getSymbolDataUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=5&symbols=";
 
   // list symbols for sector
   this.listSymbols = function(sector) {

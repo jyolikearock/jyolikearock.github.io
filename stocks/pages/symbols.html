@@ -36,23 +36,15 @@
       </td>
     </tr>
     <tr>
-      <th>Open Price</th>
-      <td>{{symbolData.open | number: 2}}</td>
+      <th>Open | Close</th>
+      <td>{{symbolData.open | number: 2}} | {{symbolData.close | number: 2}}</td>
     </tr>
     <tr>
-      <th>Closing Price</th>
-      <td>{{symbolData.close | number: 2}}</td>
+      <th>Low | High</th>
+      <td>{{symbolData.high | number: 2}} | {{symbolData.low | number: 2}}</td>
     </tr>
     <tr>
-      <th>Today's High</th>
-      <td>{{symbolData.high | number: 2}}</td>
-    </tr>
-    <tr>
-      <th>Today's Low</th>
-      <td>{{symbolData.low | number: 2}}</td>
-    </tr>
-    <tr>
-      <th>Price Change</th>
+      <th>Price Change (%)</th>
       <td ng-class="{
         'red': symbolData.change < 0,
         'green': symbolData.change >= 0}">
@@ -66,6 +58,10 @@
         'green': symbolData.changePercent >= 0}">
         <span ng-show="symbolData.changePercent > 0">+</span>{{symbolData.changePercent | number: 2}}%
       </td>
+    </tr>
+    <tr>
+      <th>Ranking</th>
+      <a href="#/rankings/{{symbol}}">View</a>
     </tr>
   </table>
   <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">

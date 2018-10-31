@@ -16,6 +16,10 @@ app.config(["$routeProvider", function ($routeProvider) {
       templateUrl: "./pages/rankings.html",
       controller: "rankingsController"
     })
+    .when("/rankings/:symbol", {
+      templateUrl: "./pages/rankings.html",
+      controller: "rankingsController"
+    })
     .when("/sectors/", {
       templateUrl: "./pages/sectors.html",
       controller: "sectorsController"
