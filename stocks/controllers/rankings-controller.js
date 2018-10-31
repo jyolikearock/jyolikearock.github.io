@@ -172,13 +172,13 @@ app.controller("rankingsController", function(
   function evaluate(chart) {
     var rating = {};
     features.forEach(function(feature) {
-      rating[feature] = evaluate(chart, feature);
+      rating[feature] = evaluateFeature(chart, feature);
     });
 
     return rating;
   }
 
-  function evaluate(chart, feature) {
+  function evaluateFeature(chart, feature) {
     if (feature == "consistency") {
       return evaluateConsistency(chart);
     }
