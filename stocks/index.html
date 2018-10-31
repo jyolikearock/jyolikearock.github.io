@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Stocks</title>
 
     <!-- angular -->
@@ -38,15 +40,46 @@
   <body ng-app="mainApp" ng-controller="mainController">
 
     <!-- header / main nav bar -->
-    <header class="navbar navbar-expand bg-dark navbar-dark fixed-top position-sticky">
-      <a class="navbar-brand"
-         href="https://github.com/jyolikearock/jyolikearock.github.io/tree/master/stocks"
-         target="_blank">
-        jyolikearock
-      </a>
+    <header>
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top position-sticky">
+        <a class="navbar-brand"
+           href="https://github.com/jyolikearock/jyolikearock.github.io/tree/master/stocks"
+           target="_blank">
+          jyolikearock
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#/symbols">Symbols</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#/rankings">Rankings</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sectors
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-divider" ng-repeat="sector in sectors">
+                  <a class="dropdown-item" href="#/sectors/{{sector}}">{{sector}}</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
-
-
 
     <!-- body -->
     <div class="container-fluid mt-4">
@@ -64,52 +97,8 @@
 
       <div class="row" ng-show="isLoadingFinished">
 
-        <!-- page nav bar -->
-        <div class="col-12 col-md-4 col-xl-3 border-right">
-          <nav class="navbar navbar-expand-md">
-            <button class="navbar-toggler" type="button"
-                    data-toggle="collapse" data-target="#sideNavbar">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="sideNavbar">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"
-                     ng-click="resetCurrentPage()"
-                     ng-class="{'active': pageInfo.currentPage == 'Home'}">
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#/symbols"
-                     ng-class="{'active': pageInfo.currentPage == 'Symbols'}">
-                    Symbols
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#/rankings"
-                     ng-class="{'active': pageInfo.currentPage == 'Rankings'}">
-                    Rankings
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <span class="nav-link">
-                    Sectors
-                  </span>
-                </li>
-                <li class="nav-item" ng-repeat="sector in sectors">
-                  <a class="nav-link" href="#/sectors/{{sector}}"
-                     ng-class="{'active': pageInfo.currentPage == sector}">
-                    {{sector}}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-
         <!-- content body populated by angular -->
-        <div class="col-12 col-md-8 col-xl-9" ng-view>
+        <div class="col" ng-view>
 
         </div>
 
