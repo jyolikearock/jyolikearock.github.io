@@ -210,9 +210,8 @@ app.controller("rankingsController", function(
       let diff = getPercentDiff(expectedPrice, actualPrice);
       let squaredError = diff * diff;
 
-      // if diff is 0, consistency goes up by 100 points (arbitrary)
-      // if diff is greater than 10%, consistency goes down
-      rating += (100 - squaredError);
+      // if diff is 0, consistency goes up by 1000 points (arbitrary)
+      rating += Math.max(0, (1000 - squaredError));
     }
 
     return slope * rating;
