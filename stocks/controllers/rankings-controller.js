@@ -14,14 +14,14 @@ app.controller("rankingsController", function(
 
   var features = [
     "consistency",
-    "historicalGrowth",
-    "recentGrowth"
+    "growth1Y",
+    "growth1M"
   ];
 
   var trainingFeatures = [
     "consistency",
-    "historicalGrowth",
-    "recentGrowth"
+    "growth1Y",
+    "growth1M"
   ];
 
   // wrap logic inside a callback so that page loads only after data is loaded
@@ -171,11 +171,27 @@ app.controller("rankingsController", function(
 
   function evaluate(chart) {
     var rating = {};
-    rating.consistency = evaluateConsistency(chart);
-    rating.historicalGrowth = evaluateHistoricalGrowth(chart);
-    rating.recentGrowth = evaluateRecentGrowth(chart);
+    features.forEach(function(feature) {
+      rating[feature] = evaluate(chart, feature);
+    });
 
     return rating;
+  }
+
+  function evaluate(chart, feature) {
+    if (feature == "consistency") {
+      return evaluateConsistency(chart);
+    }
+    else if (feature == "growth1Y") {
+      return evaluateGrowth1Y(chart);
+    }
+    else if (feature == "growth1M") {
+      return evaluateGrowth1M(chart);
+    }
+    else {
+      console.log("Undefined feature: ", feature);
+      return 0;
+    }
   }
 
   function evaluateConsistency(chart) {
@@ -228,7 +244,7 @@ app.controller("rankingsController", function(
   }
 
   // growth over 1 year
-  function evaluateHistoricalGrowth(chart) {
+  function evaluateGrowth1Y(chart) {
     var start = chart[0].close;
     var end = chart[chart.length - 1].close;
 
@@ -236,7 +252,7 @@ app.controller("rankingsController", function(
   }
 
   // growth over 1 month
-  function evaluateRecentGrowth(chart) {
+  function evaluateGrowth1M(chart) {
     var start = chart[chart.length - 5].close;
     var end = chart[chart.length - 1].close;
 

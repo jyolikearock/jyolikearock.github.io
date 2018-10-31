@@ -8,8 +8,8 @@
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
         <th class="sortable" st-sort="consistency">Consistency</th>
-        <th class="sortable" st-sort="historicalGrowth">Historical Growth</th>
-        <th class="sortable" st-sort="recentGrowth">Recent Growth</th>
+        <th class="sortable" st-sort="growth1Y">Growth (1Y)</th>
+        <th class="sortable" st-sort="growth1M">Growth (1M)</th>
         <th class="sortable" st-sort="overall">Overall</th>
       </tr>
       <tr>
@@ -29,10 +29,10 @@
           {{rating.consistency | number: 1}}
         </td>
         <td>
-          {{rating.historicalGrowth | number: 1}}
+          {{rating.growth1Y | number: 1}}
         </td>
         <td>
-          {{rating.recentGrowth | number: 1}}
+          {{rating.growth1M | number: 1}}
         </td>
         <td>
           {{rating.overall | number: 1}}
