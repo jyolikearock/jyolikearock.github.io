@@ -60,18 +60,7 @@
         (<span ng-show="symbolData.changePercent > 0">+</span>{{symbolData.changePercent | number: 2}}%)
       </td>
     </tr>
-    <!--
-    <tr>
-      <th>Price Change (%)</th>
-      <td ng-class="{
-        'red': symbolData.changePercent < 0,
-        'green': symbolData.changePercent >= 0}">
-        <span ng-show="symbolData.changePercent > 0">+</span>{{symbolData.changePercent | number: 2}}%
-      </td>
-    </tr>
-    -->
   </table>
-  <canvas class="chart chart-bar"
-          chart-data="prices" chart-labels="dates">
+  <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
   </canvas>
 </div>
