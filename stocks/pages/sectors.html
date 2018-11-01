@@ -3,7 +3,7 @@
   <span class="lead">{{sector}}</span>
 </div>
 <div class="row">
-  <table class="table table-hover"
+  <table class="table table-hover table-fixed table-sectors"
          st-table="displayedSymbols"
          st-safe-src="symbols"
          st-persist="sectorsTable">
@@ -29,9 +29,8 @@
         <td>
           {{symbol.symbol}}
         </td>
-        <td>
-          {{symbol.companyName | limitTo: 30}}
-          <span ng-show="symbol.companyName.length > 30">...</span>
+        <td class="td-overflow">
+          {{symbol.companyName}}
         </td>
         <td>
           {{symbol.close | number: 2}}
