@@ -47,12 +47,15 @@
 }
 
 /* don't let table content overflow into next line */
-.td-overflow,
 .table-fixed tr th,
 .table-fixed tr td {
   white-space: nowrap;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   overflow: hidden;
+}
+
+.td-overflow  {
+  text-overflow: ellipsis;
 }
 
 /* prevent cursor from turning into i-bar */
