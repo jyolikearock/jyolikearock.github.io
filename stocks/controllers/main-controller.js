@@ -41,9 +41,6 @@ app.controller("mainController", function($scope, cacheService) {
       $scope.isNavCollapsed = true;
       console.log("closing nav, collapse: ", $scope.isNavCollapsed);
     }
-    else {
-      console.log("nav is already closed, collapse: ", $scope.isNavCollapsed);
-    }
   }
 
   $scope.isLoadingFinished = false;
