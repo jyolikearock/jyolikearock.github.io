@@ -1,7 +1,7 @@
 // extension of chart.js to show vertical line when hovering over chart
 // credit: https://stackoverflow.com/a/45172506
-Chart.defaults.LineWithLine = Chart.defaults.line;
-Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+Chart.defaults.lineWithLine = Chart.defaults.line;
+Chart.controllers.lineWithLine = Chart.controllers.line.extend({
    draw: function(ease) {
       Chart.controllers.line.prototype.draw.call(this, ease);
 
