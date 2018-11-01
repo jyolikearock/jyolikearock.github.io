@@ -1,5 +1,5 @@
 var app = angular.module("mainApp",
-  ["ngRoute", "smart-table", "chart.js", "ui.bootstrap"]);
+  ["ngRoute", "ngAnimate", "smart-table", "chart.js", "ui.bootstrap"]);
 
 // router
 app.config(["$routeProvider", function ($routeProvider) {

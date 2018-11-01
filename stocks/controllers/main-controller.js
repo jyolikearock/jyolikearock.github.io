@@ -30,9 +30,18 @@ var loadData = undefined;
 app.controller("mainController", function($scope, cacheService) {
 
   $scope.sectors = sectors;
+  $scope.isNavCollapsed = true;
+  $scope.toggleNav = function() {
+    $scope.isNavCollapsed = !$scope.isNavCollapsed;
+  }
+
+  $scope.closeNav = function() {
+    if (!$scope.isNavCollapsed) {
+      $scope.isNavCollapsed = true;
+    }
+  }
 
   $scope.isLoadingFinished = false;
-
   $scope.loadProgress = cacheService.getLoadProgress();
 
   // load data

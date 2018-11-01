@@ -51,31 +51,32 @@
           jyolikearock
         </a>
 
-        <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" ng-click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#" ng-click="closeNav()">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/symbols">Symbols</a>
+              <a class="nav-link" href="#/symbols" ng-click="closeNav()">Symbols</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/rankings">Rankings</a>
+              <a class="nav-link" href="#/rankings" ng-click="closeNav()">Rankings</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" disabled
-                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 role="button" data-toggle="dropdown">
                 Sectors
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li ng-repeat="sector in sectors">
-                  <a class="dropdown-item" href="#/sectors/{{sector}}">{{sector}}</a>
+                  <a class="dropdown-item" href="#/sectors/{{sector}}"
+                     ng-click="closeNav()">
+                    {{sector}}
+                  </a>
                 </li>
               </ul>
             </li>
