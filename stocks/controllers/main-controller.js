@@ -33,11 +33,16 @@ app.controller("mainController", function($scope, cacheService) {
   $scope.isNavCollapsed = true;
   $scope.toggleNav = function() {
     $scope.isNavCollapsed = !$scope.isNavCollapsed;
+    console.log("toggling nav, collapse: ", $scope.isNavCollapsed);
   }
 
   $scope.closeNav = function() {
     if (!$scope.isNavCollapsed) {
       $scope.isNavCollapsed = true;
+      console.log("closing nav, collapse: ", $scope.isNavCollapsed);
+    }
+    else {
+      console.log("nav is already closed, collapse: ", $scope.isNavCollapsed);
     }
   }
 
