@@ -28,13 +28,17 @@ var ratings = [];
 // a promise that resolves when all server data has been loaded
 var loadData = undefined;
 
-app.controller("mainController", function($scope, cacheService) {
+app.controller("mainController", function($scope, $location, cacheService) {
 
   $scope.pageInfo = pageInfo;
   $scope.sectors = sectors;
 
   $scope.resetCurrentPage = function() {
     pageInfo.currentPage = "Home";
+  }
+
+  $scope.go = function(path) {
+    $location.path(path);
   }
 
   $scope.isLoadingFinished = false;

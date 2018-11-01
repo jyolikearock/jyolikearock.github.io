@@ -73,11 +73,11 @@
                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sectors
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <div ng-repeat="sector in sectors">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li ng-repeat="sector in sectors">
                   <a class="dropdown-item" href="#/sectors/{{sector}}">{{sector}}</a>
-                </div>
-              </div>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>

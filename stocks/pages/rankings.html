@@ -1,48 +1,49 @@
-<h4 class="display-4">Rankings</h4>
-<table class="table table-hover"
-       st-table="displayedRatings"
-       st-safe-src="ratings"
-       st-persist="rankingsTable">
-  <thead>
-    <tr>
-      <th class="sortable" st-sort="symbol">Symbol</th>
-      <th class="sortable" st-sort="consistency">Consistency</th>
-      <th class="sortable" st-sort="growth1Y">Growth (1Y)</th>
-      <th class="sortable" st-sort="growth1M">Growth (1M)</th>
-      <th class="sortable" st-sort="overall">Overall</th>
-    </tr>
-    <tr>
-      <th colspan="5">
-        <input placeholder="Search symbols" class="form-control" type="search"
-               ng-model="searchSymbol" st-search="symbol" />
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="rating in displayedRatings track by rating.symbol"
-        ng-click="goToSymbol(rating.symbol)">
-      <td>
-        {{rating.symbol}}
-      </td>
-      <td>
-        {{rating.consistency | number: 1}}
-      </td>
-      <td>
-        {{rating.growth1Y | number: 1}}
-      </td>
-      <td>
-        {{rating.growth1M | number: 1}}
-      </td>
-      <td>
-        {{rating.overall | number: 1}}
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="5" class="text-center">
-        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<div class="row">
+  <table class="table table-hover table-fixed"
+         st-table="displayedRatings"
+         st-safe-src="ratings"
+         st-persist="rankingsTable">
+    <thead>
+      <tr>
+        <th class="sortable" st-sort="symbol">Symbol</th>
+        <th class="sortable" st-sort="consistency">Consistency</th>
+        <th class="sortable" st-sort="growth1Y">Growth (1Y)</th>
+        <th class="sortable" st-sort="growth1M">Growth (1M)</th>
+        <th class="sortable" st-sort="overall">Overall</th>
+      </tr>
+      <tr>
+        <th colspan="5">
+          <input placeholder="Search symbols" class="form-control" type="search"
+                 ng-model="searchSymbol" st-search="symbol" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="rating in displayedRatings track by rating.symbol"
+          ng-click="goToSymbol(rating.symbol)">
+        <td>
+          {{rating.symbol}}
+        </td>
+        <td>
+          {{rating.consistency | number: 1}}
+        </td>
+        <td>
+          {{rating.growth1Y | number: 1}}
+        </td>
+        <td>
+          {{rating.growth1M | number: 1}}
+        </td>
+        <td>
+          {{rating.overall | number: 1}}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

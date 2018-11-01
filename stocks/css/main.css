@@ -37,6 +37,10 @@
   cursor: pointer;
 }
 
+.table-fixed {
+  table-layout: fixed;
+}
+
 /* prevent cursor from turning into i-bar */
 td, th {
   cursor: default;

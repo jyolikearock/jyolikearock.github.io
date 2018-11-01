@@ -3,7 +3,7 @@
 <div class="mb-3">
   <form>
     <div class="row">
-      <div class="col-9 col-xl-10">
+      <div class="col-8 col-xl-10">
         <input class="form-control" type="text" placeholder="Stock symbol (e.g. AMZN)"
                ng-model="symbol"
                uib-typeahead="symbol for symbol in allSymbols | filter: $viewValue | limitTo: 7">
@@ -26,7 +26,7 @@
 <div ng-show="symbolData">
   <table class="table">
     <tr>
-      <th>Company Name</th>
+      <th>Name</th>
       <td>{{symbolData.companyName}}</td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@
       <td>${{symbolData.high | number: 2}}</td>
     </tr>
     <tr>
-      <th>Price Change (%)</th>
+      <th>Change (%)</th>
       <td ng-class="{
         'red': symbolData.change < 0,
         'green': symbolData.change >= 0}">
