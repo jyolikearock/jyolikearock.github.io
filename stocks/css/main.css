@@ -41,10 +41,12 @@
   table-layout: fixed;
 }
 
+/* stretch out company name column in sectors table */
 .table-sectors tr th:nth-child(2) {
-  width: 40%;
+  width: 35%;
 }
 
+/* don't let table content overflow into next line */
 .td-overflow,
 .table-fixed tr th,
 .table-fixed tr td {
