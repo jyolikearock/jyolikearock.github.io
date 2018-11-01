@@ -11,9 +11,6 @@ app.controller("sectorsController",
       $scope.sector = lastViewedSector;
     }
 
-    // for coloring nav bar
-    pageInfo.currentPage = $scope.sector;
-
     $scope.goToSymbol = function(symbol) {
       $location.path("/symbols/" + symbol);
     }

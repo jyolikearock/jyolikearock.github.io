@@ -1,9 +1,6 @@
 app.controller("rankingsController", function(
   $scope, $routeParams, $location, stockMarketService) {
 
-  // for coloring nav bar
-  pageInfo.currentPage = "Rankings";
-
   if ($routeParams.symbol) {
     $scope.searchSymbol = $routeParams.symbol;
   }
@@ -13,12 +10,6 @@ app.controller("rankingsController", function(
   }
 
   var features = [
-    "consistency",
-    "growth1Y",
-    "growth1M"
-  ];
-
-  var trainingFeatures = [
     "consistency",
     "growth1Y",
     "growth1M"
@@ -35,13 +26,11 @@ app.controller("rankingsController", function(
 
         // initialize feature weights
         var weights = [];
-        trainingFeatures.forEach(
+        features.forEach(
           function(feature) {
-            weights.push(1.0 / trainingFeatures.length);
+            weights.push(1.0 / features.length);
           }
         );
-
-        var trainingDataRatings = [];
 
         console.log("Calculating ratings for all symbols");
         Object.keys(symbolData).forEach(function(symbol) {
@@ -54,18 +43,6 @@ app.controller("rankingsController", function(
             let rating = evaluate(chart);
             rating.symbol = symbol;
             ratings.push(rating);
-
-            // rating from 2y ago used to train algorithm
-            /**
-            if (trainingData.length >= 2) {
-              let trainingDataRating = evaluate(trainingData);
-              trainingDataRating.symbol = symbol;
-              trainingDataRating.actualGrowth = getPercentDiff(
-                  chart[0].close,
-                  chart[chart.length - 1].close);
-              trainingDataRatings.push(trainingDataRating);
-            }
-            */
           }
           else {
             console.log("No valid chart found for symbol: ", symbol);
@@ -77,26 +54,14 @@ app.controller("rankingsController", function(
         features.forEach(
           function(feature) {
             normalizeField(ratings, feature);
-            // normalizeField(trainingDataRatings, feature);
           }
         );
-        /**
-        normalizeField(trainingDataRatings, "actualGrowth");
-
-        console.log("Computing weighted sums for training data");
-        computeWeightedSums(trainingDataRatings, weights);
-        normalizeField(trainingDataRatings, "computedGrowth");
-
-        // process training data to adjust feature weights
-        console.log("Adjusting weights based on training data");
-        processTrainingData(trainingDataRatings, weights);
-        */
 
         // take weighted sum of the different fields to generate overall rating
         ratings.forEach(function(rating) {
           let score = 0;
-          for (var i = 0; i < trainingFeatures.length; i++) {
-            let feature = trainingFeatures[i];
+          for (var i = 0; i < features.length; i++) {
+            let feature = features[i];
             score += rating[feature] * weights[i];
           }
           rating.overall = score;
@@ -112,62 +77,6 @@ app.controller("rankingsController", function(
 
     }
   );
-
-  // dot product weights x features
-  function computeWeightedSums(trainingDataRatings, weights) {
-    trainingDataRatings.forEach(function(rating) {
-      let weightedFeatures = [];
-      for (var i = 0; i < trainingFeatures.length; i++) {
-        let feature = trainingFeatures[i];
-        let featureValue = rating[feature];
-        let weight = weights[i];
-        weightedFeatures[i] = weight * featureValue;
-      }
-
-      let computedGrowth = sumArray(weightedFeatures);
-      rating.weightedFeatures = weightedFeatures;
-      rating.computedGrowth = computedGrowth;
-    });
-  }
-
-  // adjust weights based on how much the computed growth differs from the actual
-  function processTrainingData(trainingDataRatings, weights) {
-    $scope.trials = [];
-    $scope.errors = [];
-
-    var numTrials = 0;
-    trainingDataRatings.forEach(function(rating) {
-      if (numTrials % 10 == 0) {
-        console.log("features: ", rating);
-        console.log("weights before: ", weights);
-      }
-
-      let diff = rating.computedGrowth - rating.actualGrowth;
-      let wFeatures = normalize(rating.weightedFeatures);
-
-      for (let i = 0; i < weights.length; i++) {
-        // if computed growth is too high, decrease the weights of the significant features
-        // if computed growth is too low, increase the weights of the significant features
-        if (diff != 0) {
-          weights[i] = Math.max(0, weights[i] - wFeatures[i] * (diff / 10000.0));
-        }
-      }
-
-      normalize(weights);
-      if (numTrials % 10 == 0) {
-        console.log("weights after: ", weights);
-      }
-
-      if (numTrials % 10 == 0) {
-        $scope.trials.push(numTrials);
-        $scope.errors.push(Math.abs(diff));
-      }
-
-      numTrials++;
-    });
-
-    console.log("Finished processing training data; weights: ", weights);
-  }
 
   function evaluate(chart) {
     var rating = {};
@@ -276,42 +185,7 @@ app.controller("rankingsController", function(
     return (b * 1.0 / a - 1) * 100;
   }
 
-  function normalize(array) {
-    var sum = sumArray(array);
-
-    if (sum != 0) {
-      for (var i = 0; i < array.length; i++) {
-        array[i] = array[i] / sum;
-      }
-    }
-
-    return array;
-  }
-
-  function sumArray(array) {
-    return array.reduce(function(total, e) {
-      return total + e;
-    });
-  }
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

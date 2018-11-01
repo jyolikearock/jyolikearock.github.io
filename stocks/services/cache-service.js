@@ -108,9 +108,13 @@ app.service("cacheService", function($http, $q, stockMarketService) {
 
   function addLatestDataPoint(chart, quote) {
     var closeTime = new Date(quote.closeTime);
-    var closeDate = closeTime.getFullYear() +
-        "-" + closeTime.getMonth() +
-        "-" + closeTime.getDate();
+    var year = closeTime.getFullYear();
+    var month = closeTime.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    var day = closeTime.getDate();
+    var closeDate = year + "-" + month + "-" + day;
     if (chart[chart.length - 1].date != closeDate) {
       var dataPoint = {};
       dataPoint.date = closeDate;
@@ -121,30 +125,6 @@ app.service("cacheService", function($http, $q, stockMarketService) {
 
   function convertDeltaToPercentage(symbolData) {
     symbolData.changePercent = symbolData.changePercent * 100;
-  }
-
-  var oneYearAgo = new Date();
-  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-
-  function extractTrainingData(symbolData) {
-    // data from 2y ago to 1y ago is training data
-    var trainingData = [];
-
-    // data from 1y ago to now is considered live data
-    var chart = [];
-    symbolData.chart.forEach(
-      function(dataPoint) {
-        if (Date.parse(dataPoint.date) < oneYearAgo) {
-          trainingData.push(dataPoint);
-        }
-        else {
-          chart.push(dataPoint);
-        }
-      }
-    );
-
-    symbolData.trainingData = trainingData;
-    symbolData.chart = chart;
   }
 
 });

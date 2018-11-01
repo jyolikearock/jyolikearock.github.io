@@ -1,4 +1,3 @@
-var pageInfo = {};
 var sectors = [
   "Communication Services",
   "Consumer Discretionary",
@@ -30,12 +29,7 @@ var loadData = undefined;
 
 app.controller("mainController", function($scope, cacheService) {
 
-  $scope.pageInfo = pageInfo;
   $scope.sectors = sectors;
-
-  $scope.resetCurrentPage = function() {
-    pageInfo.currentPage = "Home";
-  }
 
   $scope.isLoadingFinished = false;
 

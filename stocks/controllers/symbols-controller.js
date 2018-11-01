@@ -10,9 +10,6 @@ app.controller("symbolsController", function($scope, $routeParams) {
     $scope.symbol = lastViewedSymbol;
   }
 
-  // for coloring nav bar
-  pageInfo.currentPage = "Symbols";
-
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
     function(resp) {
