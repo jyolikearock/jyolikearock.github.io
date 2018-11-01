@@ -2,51 +2,53 @@
 <div class="mb-3">
   <span class="lead">{{sector}}</span>
 </div>
-<table class="table table-hover"
-       st-table="displayedSymbols"
-       st-safe-src="symbols"
-       st-persist="sectorsTable">
-  <thead>
-    <tr>
-      <th class="sortable" st-sort="symbol">Symbol</th>
-      <th class="sortable" st-sort="companyName">Company Name</th>
-      <th class="sortable" st-sort="close">Last Price</th>
-      <th class="sortable" st-sort="changePercent">Change</th>
-    </tr>
-    <tr>
-      <th colspan="2">
-        <input st-search="symbol" placeholder="Search symbols" class="form-control" type="search"/>
-      </th>
-      <th colspan="2">
-        <input st-search="companyName" placeholder="Search companies" class="form-control" type="search"/>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="symbol in displayedSymbols"
-        ng-click="goToSymbol(symbol.symbol)">
-      <td>
-        {{symbol.symbol}}
-      </td>
-      <td>
-        {{symbol.companyName | limitTo: 30}}
-        <span ng-show="symbol.companyName.length > 30">...</span>
-      </td>
-      <td>
-        {{symbol.close | number: 2}}
-      </td>
-      <td ng-class="{
-        'red': symbol.changePercent < 0,
-        'green': symbol.changePercent >= 0}">
-        <span ng-show="symbol.changePercent > 0">+</span>{{symbol.changePercent | number: 2}}%
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="4" class="text-center">
-        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<div class="row">
+  <table class="table table-hover table-fixed"
+         st-table="displayedSymbols"
+         st-safe-src="symbols"
+         st-persist="sectorsTable">
+    <thead>
+      <tr>
+        <th class="sortable" st-sort="symbol">Symbol</th>
+        <th class="sortable" st-sort="companyName">Company Name</th>
+        <th class="sortable" st-sort="close">Last Price</th>
+        <th class="sortable" st-sort="changePercent">Change</th>
+      </tr>
+      <tr>
+        <th colspan="2">
+          <input st-search="symbol" placeholder="Search symbols" class="form-control" type="search"/>
+        </th>
+        <th colspan="2">
+          <input st-search="companyName" placeholder="Search companies" class="form-control" type="search"/>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="symbol in displayedSymbols"
+          ng-click="goToSymbol(symbol.symbol)">
+        <td>
+          {{symbol.symbol}}
+        </td>
+        <td>
+          {{symbol.companyName | limitTo: 30}}
+          <span ng-show="symbol.companyName.length > 30">...</span>
+        </td>
+        <td>
+          {{symbol.close | number: 2}}
+        </td>
+        <td ng-class="{
+          'red': symbol.changePercent < 0,
+          'green': symbol.changePercent >= 0}">
+          <span ng-show="symbol.changePercent > 0">+</span>{{symbol.changePercent | number: 2}}%
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="text-center">
+          <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

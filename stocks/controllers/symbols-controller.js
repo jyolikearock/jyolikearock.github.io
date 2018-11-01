@@ -41,6 +41,14 @@ app.controller("symbolsController", function($scope, $routeParams) {
     }
   );
 
+  $scope.chartOptions = {
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+  };
+
   function generateChart(chart) {
     var dates = [];
     var prices = [];
