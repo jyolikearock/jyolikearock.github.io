@@ -54,8 +54,8 @@
   overflow: hidden;
 }
 
-.td-overflow  {
-  text-overflow: ellipsis;
+.table-fixed tr .td-overflow  {
+  text-overflow: ellipsis !important;
 }
 
 /* prevent cursor from turning into i-bar */
