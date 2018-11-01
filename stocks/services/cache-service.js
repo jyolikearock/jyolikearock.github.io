@@ -80,6 +80,7 @@ app.service("cacheService", function($http, $q, stockMarketService) {
                 // if a chart has fewer than 50 data points in the last year,
                 // discard it
                 if (data.chart.length >= 50) {
+                  addLatestDataPoint(data.chart, data.quote);
                   convertDeltaToPercentage(data.quote);
                   // extractTrainingData(data);
                   symbolData[symbol] = data;
@@ -103,6 +104,19 @@ app.service("cacheService", function($http, $q, stockMarketService) {
         return true;
       }
     );
+  }
+
+  function addLatestDataPoint(chart, quote) {
+    var closeTime = new Date(quote.closeTime);
+    var closeDate = closeTime.getFullYear() +
+        "-" + closeTime.getMonth() +
+        "-" + closeTime.getDate();
+    if (chart[chart.length - 1].date != closeDate) {
+      var dataPoint = {};
+      dataPoint.date = closeDate;
+      dataPoint.close = quote.close;
+      chart.push(dataPoint);
+    }
   }
 
   function convertDeltaToPercentage(symbolData) {

@@ -37,8 +37,8 @@ app.controller("mainController", function($scope, $location, cacheService) {
     pageInfo.currentPage = "Home";
   }
 
-  $scope.go = function(path) {
-    $location.path(path);
+  $scope.goToSector = function(sector) {
+    $location.path(sector);
   }
 
   $scope.isLoadingFinished = false;

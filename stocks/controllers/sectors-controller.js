@@ -1,7 +1,15 @@
+var lastViewedSector = "";
+
 app.controller("sectorsController",
   function($scope, $routeParams, $location, stockMarketService) {
 
-    $scope.sector = $routeParams.sector;
+    if ($routeParams.sector) {
+      $scope.sector = $routeParams.sector;
+      lastViewedSector = $routeParams.sector;
+    }
+    else if (lastViewedSector) {
+      $scope.sector = lastViewedSector;
+    }
 
     // for coloring nav bar
     pageInfo.currentPage = $scope.sector;
