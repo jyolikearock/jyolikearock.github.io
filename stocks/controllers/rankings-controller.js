@@ -9,11 +9,43 @@ app.controller("rankingsController", function(
     $location.path("/symbols/" + symbol);
   }
 
+  $scope.togglePreferences = function() {
+    $scope.showPreferences = !$scope.showPreferences;
+  }
+
+  $scope.savePreferences = function() {
+    $scope.togglePreferences();
+    computeOverallRatings();
+  }
+
+  $scope.setCorrelation = function(featureName, correlation) {
+    features.forEach(function(feature) {
+      if (feature.name = featureName) {
+        console.log("Set correlation to: ", correlation);
+        feature.correlation = correlation;
+      }
+    });
+  }
+
   var features = [
-    "consistency",
-    "growth1Y",
-    "growth1M"
+    {
+      name: "consistency",
+      prettyName: "Consistency",
+      correlation: true
+    },
+    {
+      name: "growth1Y",
+      prettyName: "1Y Growth",
+      correlation: true
+    },
+    {
+      name: "growth1M",
+      prettyName: "1M Growth",
+      correlation: true
+    }
   ];
+
+  $scope.features = features;
 
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
@@ -25,10 +57,9 @@ app.controller("rankingsController", function(
       else {
 
         // initialize feature weights
-        var weights = [];
         features.forEach(
           function(feature) {
-            weights.push(1.0 / features.length);
+            feature.weight = 1.0 / features.length;
           }
         );
 
@@ -53,19 +84,12 @@ app.controller("rankingsController", function(
         console.log("Normalizing fields");
         features.forEach(
           function(feature) {
-            normalizeField(ratings, feature);
+            normalizeFeature(ratings, feature);
           }
         );
 
         // take weighted sum of the different fields to generate overall rating
-        ratings.forEach(function(rating) {
-          let score = 0;
-          for (var i = 0; i < features.length; i++) {
-            let feature = features[i];
-            score += rating[feature] * weights[i];
-          }
-          rating.overall = score;
-        });
+        computeOverallRatings();
 
         ratings.sort(function(a, b) {
           return b.overall - a.overall;
@@ -78,27 +102,46 @@ app.controller("rankingsController", function(
     }
   );
 
+  function computeOverallRatings() {
+    console.log("Computing overall ratings for all symbols");
+    ratings.forEach(function(rating) {
+      var overallRating = 0;
+      features.forEach(function(feature) {
+        var featureName = feature.name;
+        var featureRating = rating[featureName];
+
+        // if feature has a negative correlation, lower is better
+        if (!feature.correlation) {
+          featureRating = 100 - featureRating;
+        }
+        overallRating += feature.weight * featureRating;
+      });
+      rating.overall = overallRating;
+    });
+  }
+
   function evaluate(chart) {
     var rating = {};
     features.forEach(function(feature) {
-      rating[feature] = evaluateFeature(chart, feature);
+      rating[feature.name] = evaluateFeature(chart, feature);
     });
 
     return rating;
   }
 
   function evaluateFeature(chart, feature) {
-    if (feature == "consistency") {
+    var featureName = feature.name;
+    if (featureName == "consistency") {
       return evaluateConsistency(chart);
     }
-    else if (feature == "growth1Y") {
+    else if (featureName == "growth1Y") {
       return evaluateGrowth1Y(chart);
     }
-    else if (feature == "growth1M") {
+    else if (featureName == "growth1M") {
       return evaluateGrowth1M(chart);
     }
     else {
-      console.log("Undefined feature: ", feature);
+      console.log("Undefined feature: ", featureName);
       return 0;
     }
   }
@@ -160,23 +203,25 @@ app.controller("rankingsController", function(
 
   // growth over 1 month
   function evaluateGrowth1M(chart) {
-    var start = chart[chart.length - 5].close;
+    var start = chart[chart.length - 7].close;
     var end = chart[chart.length - 1].close;
 
     return getPercentDiff(start, end);
   }
 
-  function normalizeField(ratings, fieldName) {
+  function normalizeFeature(ratings, feature) {
+
+    var featureName = feature.name;
 
     // sort field in ascending order
     ratings.sort(function(a, b) {
-      return a[fieldName] - b[fieldName];
+      return a[featureName] - b[featureName];
     });
 
     // offset and scale values to be between 0 and 100
     for (let i = 0; i < ratings.length; i++) {
       let rating = ratings[i];
-      rating[fieldName] = i * 1.0 / ratings.length * 100;
+      rating[featureName] = i * 1.0 / ratings.length * 100;
     }
   }
 

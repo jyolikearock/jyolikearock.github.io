@@ -1,5 +1,36 @@
 <h4 class="display-4">Rankings</h4>
 <div class="row">
+  <div class="col">
+    <button class="btn btn-dark" type="button" ng-click="togglePreferences()">
+      Preferences
+    </button>
+
+    <div class="collapse navbar-collapse" uib-collapse="!showPreferences"
+         ng-class="{'show': showPreferences}">
+      <div ng-repeat="feature in features">
+        <div class="col-6">{{feature.prettyName}}</div>
+        <div class="col">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn"
+                    ng-click="setCorrelation(feature.name, false)"
+                    ng-class="{'btn-dark': !feature.correlation,
+                               'btn-outline-dark: feature.correlation}">
+              Low
+            </button>
+            <button type="button" class="btn"
+                    ng-click="setCorrelation(feature.name, true)"
+                    ng-class="{'btn-dark': feature.correlation,
+                               'btn-outline-dark: !feature.correlation}">
+              High
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-dark float-right" ng-click="savePreferences()">
+        Save
+      </button>
+    </div>
   <table class="table table-hover table-fixed"
          st-table="displayedRatings"
          st-safe-src="ratings"
