@@ -16,7 +16,18 @@ app.controller("rankingsController", function(
   $scope.savePreferences = function() {
     $scope.togglePreferences();
     computeOverallRatings();
+    $scope.reloadTable();
+  }
+
+  $scope.reloadTable = function(tableState, ctrl) {
+    if ( !$scope.stCtrl )
+    {
+      console.log("Table controller was undefined; setting controller: ", ctrl);
+      $scope.stCtrl = ctrl;
+    }
+
     $scope.stCtrl.pipe();
+    return;
   }
 
   $scope.setCorrelation = function(featureName, correlation) {

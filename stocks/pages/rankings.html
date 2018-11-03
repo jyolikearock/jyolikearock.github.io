@@ -33,7 +33,8 @@
   <table class="table table-hover table-fixed"
          st-table="displayedRatings"
          st-safe-src="ratings"
-         st-persist="rankingsTable">
+         st-persist="rankingsTable"
+         st-pipe="reloadTable">
     <thead>
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
