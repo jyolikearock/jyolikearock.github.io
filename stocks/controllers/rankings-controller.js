@@ -16,6 +16,7 @@ app.controller("rankingsController", function(
   $scope.savePreferences = function() {
     $scope.togglePreferences();
     computeOverallRatings();
+    $scope.stCtrl.pipe();
   }
 
   $scope.setCorrelation = function(featureName, correlation) {

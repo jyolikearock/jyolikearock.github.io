@@ -1,36 +1,35 @@
 <h4 class="display-4">Rankings</h4>
 <div class="row">
-  <div class="col">
+  <div class="col mb-3">
     <button class="btn btn-dark" type="button" ng-click="togglePreferences()">
       Preferences
     </button>
 
     <div class="collapse navbar-collapse" uib-collapse="!showPreferences"
          ng-class="{'show': showPreferences}">
-      <div ng-repeat="feature in features">
-        <div class="col-6">{{feature.prettyName}}</div>
-        <div class="col">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn"
-                    ng-click="setCorrelation(feature.name, false)"
-                    ng-class="{'btn-dark': !feature.correlation,
-                               'btn-outline-dark: feature.correlation}">
-              Low
-            </button>
-            <button type="button" class="btn"
-                    ng-click="setCorrelation(feature.name, true)"
-                    ng-class="{'btn-dark': feature.correlation,
-                               'btn-outline-dark: !feature.correlation}">
-              High
-            </button>
+      <form>
+        <div ng-repeat="feature in features"
+             class="form-group row">
+          <legend class="col-6">{{feature.prettyName}}</legend>
+          <div class="col-6">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="false" ng-model="feature.correlation">
+              <label class="form-check-label">Low</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="true" ng-model="feature.correlation">
+              <label class="form-check-label">High</label>
+            </div>
           </div>
         </div>
-      </div>
 
-      <button class="btn btn-dark float-right" ng-click="savePreferences()">
-        Save
-      </button>
+        <button class="btn btn-dark" ng-click="savePreferences()">
+          Save
+        </button>
+      </form>
     </div>
+  </div>
+
   <table class="table table-hover table-fixed"
          st-table="displayedRatings"
          st-safe-src="ratings"
