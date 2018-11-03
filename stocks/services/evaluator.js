@@ -65,6 +65,12 @@ app.service("evaluator", function() {
       features.forEach(function(feature) {
         rating[feature.name] = evaluateFeature(chart, feature);
       });
+
+      // if evaluation is not over the full range,
+      // also evaluate actual growth from end to current
+      if (end > 0) {
+        rating.actual = evaluateActualGrowth(chart);
+      }
     }
     else {
       console.log("No valid chart found for symbol: ", symbol);
@@ -105,6 +111,17 @@ app.service("evaluator", function() {
       });
       rating.overall = overallRating;
     });
+
+    // sort by overall
+    ratings.sort(function(a, b) {
+      return b.overall - a.overall;
+    });
+  }
+
+  function evaluateActualGrowth(chart) {
+    var startPrice = chart[chart.length - 1 - end].close;
+    var endPrice = chart[chart.length - 1].close;
+    return getPercentDiff(startPrice, endPrice);
   }
 
   function evaluateFeature(chart, feature) {
