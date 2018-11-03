@@ -16,7 +16,6 @@ app.controller("rankingsController", function(
   $scope.savePreferences = function() {
     $scope.togglePreferences();
     computeOverallRatings();
-    $scope.reloadTable();
   }
 
   $scope.reloadTable = function(tableState, ctrl) {
