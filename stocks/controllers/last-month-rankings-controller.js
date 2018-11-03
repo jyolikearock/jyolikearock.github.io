@@ -1,6 +1,6 @@
-var currentRatings = [];
+var lastMonthRatings = [];
 
-app.controller("rankingsController", function(
+app.controller("lastMonthRankingsController", function(
   $scope, $routeParams, $location, evaluator) {
 
   if ($routeParams.symbol) {
@@ -14,14 +14,15 @@ app.controller("rankingsController", function(
   // wrap logic inside a callback so that page loads only after data is loaded
   loadData.then(
     function(resp) {
-      if (currentRatings.length > 0) {
-        console.log("Re-using cached ratings");
+      if (lastMonthRatings.length > 0) {
+        console.log("Re-using cached ratings for last month");
       }
       else {
-        console.log("Evaluating symbols for this year");
-        currentRatings = evaluator.evaluate(symbolData, 0, 0);
+        console.log("Evaluating symbols up until last month");
+        lastMonthRatings = evaluator.evaluate(symbolData, 0, 7);
       }
-      $scope.ratings = currentRatings;
+
+      $scope.ratings = lastMonthRatings;
     }
   );
 });

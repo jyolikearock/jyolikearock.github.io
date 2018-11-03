@@ -20,6 +20,10 @@ app.config(["$routeProvider", function ($routeProvider) {
       templateUrl: "./pages/rankings.html",
       controller: "rankingsController"
     })
+    .when("/last-month", {
+      templateUrl: "./pages/last-month.html",
+      controller: "lastMonthRankingsController"
+    })
     .when("/sectors/", {
       templateUrl: "./pages/sectors.html",
       controller: "sectorsController"
