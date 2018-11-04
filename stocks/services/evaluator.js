@@ -56,6 +56,9 @@ app.service("evaluator", function() {
     // evaluate overall rating based on features
     evaluateOverallRatings();
 
+    // cache ratings to re-use next time
+    ratingsByDateRange[dateRange] = ratings;
+
     preferencesUpdated = false;
     return ratings;
   }
