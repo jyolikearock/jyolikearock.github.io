@@ -16,6 +16,9 @@ var features = [
   }
 ];
 
+var ratingsByDateRange = {};
+var preferencesUpdated = true;
+
 app.service("evaluator", function() {
 
   var ratings = [];
@@ -27,9 +30,16 @@ app.service("evaluator", function() {
   // start = 0 and end = 0 results in spanning the whole chart
   this.evaluate = function(symbolData, _start, _end) {
 
-    ratings = [];
     start = _start;
     end = _end;
+    var dateRange = [start, end];
+    if (ratingsByDateRange[dateRange] && !preferencesUpdated) {
+      console.log("Re-using cached ratings for date range: ", dateRange);
+      return ratingsByDateRange[dateRange];
+    }
+
+    console.log("Evaluating symbols for date range: ", dateRange);
+    ratings = [];
 
     // initialize feature weights
     features.forEach(
@@ -52,6 +62,7 @@ app.service("evaluator", function() {
     // evaluate overall rating based on features
     evaluateOverallRatings();
 
+    preferencesUpdated = false;
     return ratings;
   }
 
