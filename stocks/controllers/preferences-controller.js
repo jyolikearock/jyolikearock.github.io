@@ -11,13 +11,13 @@ app.controller("preferencesController", function(
           feature.correlation = correlation;
         }
       });
-      preferencesUpdated = true;
+      evaluator.clearCache();
     }
 
     $scope.setAggregation = function(aggregation) {
       console.log("Setting aggregation method to: ", aggregation);
       preferences.aggregation = aggregation;
-      preferencesUpdated = true;
+      evaluator.clearCache();
     }
 });
 

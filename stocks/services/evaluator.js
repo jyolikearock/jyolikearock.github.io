@@ -20,13 +20,18 @@ var preferences = {
   aggregation: "arithmetic"
 }
 var ratingsByDateRange = {};
-var preferencesUpdated = true;
 
 app.service("evaluator", function() {
 
   var ratings = [];
   var start = 0;
   var end = 0;
+
+  this.clearCache = function() {
+    Object.keys(ratingsByDateRange).forEach(function(dateRange) {
+      ratingsByDateRange[dateRange] = false;
+    });
+  }
 
   // start and end define which points on the chart to evaluate between
   // end is number of points away from the last point on the chart
@@ -36,7 +41,7 @@ app.service("evaluator", function() {
     start = _start;
     end = _end;
     var dateRange = [start, end];
-    if (ratingsByDateRange[dateRange] && !preferencesUpdated) {
+    if (ratingsByDateRange[dateRange]) {
       console.log("Re-using cached ratings for date range: ", dateRange);
       return ratingsByDateRange[dateRange];
     }
@@ -61,7 +66,6 @@ app.service("evaluator", function() {
     // cache ratings to re-use next time
     ratingsByDateRange[dateRange] = ratings;
 
-    preferencesUpdated = false;
     return ratings;
   }
 
@@ -143,7 +147,7 @@ app.service("evaluator", function() {
         overallRating = overallRating / numFeaturesUsed;
       }
       else if (aggregation == 'geometric') {
-        overallRating = Math.pow(overallRating, 1 / numFeaturesUsed);
+        overallRating = Math.pow(overallRating, 1.0 / numFeaturesUsed);
       }
       rating.overall = overallRating;
     });
