@@ -2,6 +2,7 @@ app.controller("preferencesController", function(
   $scope, evaluator) {
 
     $scope.features = features;
+    $scope.preferences = preferences;
 
     $scope.setCorrelation = function(featureName, correlation) {
       features.forEach(function(feature) {
@@ -13,9 +14,9 @@ app.controller("preferencesController", function(
       preferencesUpdated = true;
     }
 
-    $scope.setAggregation = function(_aggregation) {
-      console.log("Setting aggregation method to: ", _aggregation);
-      aggregation = _aggregation;
+    $scope.setAggregation = function(aggregation) {
+      console.log("Setting aggregation method to: ", aggregation);
+      preferences.aggregation = aggregation;
       preferencesUpdated = true;
     }
 });

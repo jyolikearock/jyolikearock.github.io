@@ -32,12 +32,12 @@
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-dark"
                 ng-click="setAggregation('arithmetic')"
-                ng-class="{'active': aggregation == 'arithmetic'}">
+                ng-class="{'active': preferences.aggregation == 'arithmetic'}">
           Arithmetic Mean
         </button>
         <button type="button" class="btn btn-dark"
                 ng-click="setAggregation('geometric')"
-                ng-class="{'active': aggregation == 'geometric'}">
+                ng-class="{'active': preferences.aggregation == 'geometric'}">
           Geometric Mean
         </button>
       </div>

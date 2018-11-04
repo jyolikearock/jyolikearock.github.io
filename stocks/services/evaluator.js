@@ -16,7 +16,9 @@ var features = [
   }
 ];
 
-var aggregation = "arithmetic";
+var preferences = {
+  aggregation: "arithmetic"
+}
 var ratingsByDateRange = {};
 var preferencesUpdated = true;
 
@@ -105,6 +107,7 @@ app.service("evaluator", function() {
 
   function evaluateOverallRatings() {
     console.log("Evaluating overall ratings");
+    var aggregation = preferences.aggregation;
     ratings.forEach(function(rating) {
       if (aggregation == 'arithmetic') {
         overallRating = 0;
