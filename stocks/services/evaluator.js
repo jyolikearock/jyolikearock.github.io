@@ -114,7 +114,7 @@ app.service("evaluator", function() {
     var aggregation = preferences.aggregation;
     ratings.forEach(function(rating) {
       var overallRating = 0;
-      else if (aggregation == 'geometric') {
+      if (aggregation == 'geometric') {
         overallRating = 1;
       }
       var overallRating = 0;
