@@ -113,11 +113,13 @@ app.service("evaluator", function() {
     console.log("Evaluating overall ratings");
     var aggregation = preferences.aggregation;
     ratings.forEach(function(rating) {
+
+      // initialize overall rating
       var overallRating = 0;
       if (aggregation == 'geometric') {
         overallRating = 1;
       }
-      var overallRating = 0;
+
       var numFeaturesUsed = 0;
       features.forEach(function(feature) {
         var correlation = feature.correlation;
