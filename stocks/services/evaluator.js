@@ -2,20 +2,21 @@ var features = [
   {
     name: "consistency",
     prettyName: "Consistency",
-    correlation: true
+    correlation: 1
   },
   {
     name: "growth1Y",
     prettyName: "1Y Growth",
-    correlation: true
+    correlation: 1
   },
   {
     name: "growth1M",
     prettyName: "1M Growth",
-    correlation: true
+    correlation: 1
   }
 ];
 
+var aggregation = "arithmetic";
 var ratingsByDateRange = {};
 var preferencesUpdated = true;
 
@@ -40,13 +41,6 @@ app.service("evaluator", function() {
 
     console.log("Evaluating symbols for date range: ", dateRange);
     ratings = [];
-
-    // initialize feature weights
-    features.forEach(
-      function(feature) {
-        feature.weight = 1.0 / features.length;
-      }
-    );
 
     // evaluate individual features
     console.log("Evaluating individual features");
@@ -109,17 +103,42 @@ app.service("evaluator", function() {
   function evaluateOverallRatings() {
     console.log("Evaluating overall ratings");
     ratings.forEach(function(rating) {
+      if (aggregation == 'arithmetic') {
+        overallRating = 0;
+      }
+      else if (aggregation == 'geometric') {
+        overallRating = 1;
+      }
       var overallRating = 0;
+      var numFeaturesUsed = 0;
       features.forEach(function(feature) {
+        var correlation = feature.correlation;
+        if (correlation == 0) {
+          return;
+        }
+
         var featureName = feature.name;
         var featureRating = rating[featureName];
 
         // if feature has a negative correlation, lower is better
-        if (!feature.correlation) {
+        if (correlation < 0) {
           featureRating = 100 - featureRating;
         }
-        overallRating += feature.weight * featureRating;
+
+        if (aggregation == 'arithmetic') {
+          overallRating += featureRating;
+        }
+        else if (aggregation == 'geometric') {
+          overallRating *= featureRating;
+        }
+        numFeaturesUsed++;
       });
+      if (aggregation == 'arithmetic') {
+        overallRating = overallRating / numFeaturesUsed;
+      }
+      else if (aggregation == 'geometric') {
+        overallRating = Math.pow(overallRating, 1 / numFeaturesUsed);
+      }
       rating.overall = overallRating;
     });
 
