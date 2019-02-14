@@ -7,9 +7,11 @@
     <thead>
       <tr>
         <th class="sortable" st-sort="symbol">Symbol</th>
+        <th class="sortable" st-sort="symbol">Company Name</th>
+        <th class="sortable" st-sort="symbol">Sector</th>
+        <th class="sortable" st-sort="symbol">Latest Price</th>
         <th class="sortable" st-sort="consistency">Consistency</th>
-        <th class="sortable" st-sort="growth1Y">1Y Growth</th>
-        <th class="sortable" st-sort="growth1M">1M Growth</th>
+        <th class="sortable" st-sort="growth1Y">Growth</th>
         <th class="sortable" st-sort="overall">Overall</th>
       </tr>
       <tr>
@@ -24,6 +26,15 @@
           ng-click="goToSymbol(rating.symbol)">
         <td>
           {{rating.symbol}}
+        </td>
+        <td>
+          {{rating.companyName}}
+        </td>
+        <td>
+          {{rating.sector}}
+        </td>
+        <td>
+          ${{rating.latestPrice | number: 2}}
         </td>
         <td>
           {{rating.consistency | number: 1}}

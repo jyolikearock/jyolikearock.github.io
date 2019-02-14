@@ -12,12 +12,12 @@ var features = [
   {
     name: "growth1M",
     prettyName: "1M Growth",
-    correlation: 1
+    correlation: 0
   }
 ];
 
 var preferences = {
-  aggregation: "arithmetic"
+  aggregation: "geometric"
 }
 var ratingsByDateRange = {};
 
@@ -71,11 +71,20 @@ app.service("evaluator", function() {
 
   function evaluateSymbol(symbol) {
 
-    var chart = symbolData[symbol].chart;
-    var rating = {};
+    let chart = symbolData[symbol].chart;
+    let quote = symbolData[symbol].quote;
+    let rating = {};
 
+    // don't include any symbol that has less than 2 data points
     if (chart.length >= 2) {
-      rating.symbol = symbol;
+
+      // populate some basic metadata
+      rating.symbol       = symbol;
+      rating.companyName  = quote.companyName;
+      rating.sector       = quote.sector;
+      rating.latestPrice  = quote.latestPrice;
+
+      // evaluate this symbol against each feature
       features.forEach(function(feature) {
         rating[feature.name] = evaluateFeature(chart, feature);
       });
