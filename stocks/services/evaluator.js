@@ -7,12 +7,44 @@ var features = [
   {
     name: "growth1Y",
     prettyName: "1Y Growth",
+    monthStart: 0,
+    monthEnd: 12,
     correlation: 1
   },
   {
     name: "growth1M",
     prettyName: "1M Growth",
+    monthStart: 11,
+    monthEnd: 12,
     correlation: 0
+  },
+  {
+    name: "growthQ1",
+    prettyName: "Q1 Growth",
+    monthStart: 0,
+    monthEnd: 3,
+    correlation: 1
+  },
+  {
+    name: "growthQ2",
+    prettyName: "Q2 Growth",
+    monthStart: 3,
+    monthEnd: 6,
+    correlation: 1
+  },
+  {
+    name: "growthQ3",
+    prettyName: "Q3 Growth",
+    monthStart: 6,
+    monthEnd: 9,
+    correlation: 1
+  },
+  {
+    name: "growthQ4",
+    prettyName: "Q4 Growth",
+    monthStart: 9,
+    monthEnd: 12,
+    correlation: 1
   }
 ];
 
@@ -186,11 +218,8 @@ app.service("evaluator", function() {
     if (featureName == "consistency") {
       return evaluateConsistency(chart);
     }
-    else if (featureName == "growth1Y") {
-      return evaluateGrowth1Y(chart);
-    }
-    else if (featureName == "growth1M") {
-      return evaluateGrowth1M(chart);
+    else if (featureName.includes("growth")) {
+      return evaluateGrowth(chart, feature.monthStart, feature.monthEnd);
     }
     else {
       console.log("Undefined feature: ", featureName);
@@ -244,6 +273,18 @@ app.service("evaluator", function() {
     var offset = (sumY - slope * sumX) / count;
 
     return {"slope": slope, "offset": offset};
+  }
+
+  function evaluateGrowth(chart, monthStart, monthEnd) {
+    let length = chart.length - end;
+
+    let startIndex = Math.floor(monthStart / 12.0 * length);
+    let endIndex = Math.floor(monthEnd / 12.0 * length);
+
+    let startPrice = chart[startIndex];
+    let endPrice = chart[endIndex];
+
+    return getPercentDiff(startPrice, endPrice);
   }
 
   // growth over 1 year
