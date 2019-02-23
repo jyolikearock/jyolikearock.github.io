@@ -1,5 +1,5 @@
 app.controller("rankingsController", function(
-  $scope, $routeParams, $location, evaluator, stockMarketService) {
+  $scope, $routeParams, $location, evaluator) {
 
   if ($routeParams.symbol) {
     $scope.searchSymbol = $routeParams.symbol;
@@ -22,11 +22,7 @@ app.controller("rankingsController", function(
       return rating.symbol === symbol;
     });
     generateChart($scope.displayedSymbol.chart);
-    stockMarketService.getTheStreetRating(symbol).then(
-      function(resp) {
-        $scope.showDetails = true;
-      }
-    );
+    $scope.showDetails = true;
   }
 
   // wrap logic inside a callback so that page loads only after data is loaded
