@@ -85,11 +85,12 @@ app.service("evaluator", function() {
       rating.latestPrice    = quote.latestPrice;
 
       // populate more detailed metadata - won't be displayed on main table
-      rating.open           = quote.open;
-      rating.close          = quote.close;
-      rating.change         = quote.change;
-      rating.changePercent  = quote.changePercent;
-      rating.chart          = chart;
+      rating.open             = quote.open;
+      rating.close            = quote.close;
+      rating.change           = quote.change;
+      rating.changePercent    = quote.changePercent;
+      rating.changePercent1Y  = evaluateGrowth1Y(chart);
+      rating.chart            = chart;
 
       // evaluate this symbol against each feature
       features.forEach(function(feature) {

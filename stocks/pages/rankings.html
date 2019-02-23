@@ -110,14 +110,14 @@
   </div>
 
   <div class="col-8">
-    <table class="table">
+    <table class="table table-fixed">
       <tr>
         <th>Name</th>
-        <td>{{displayedSymbol.companyName}}</td>
+        <td colspan="2">{{displayedSymbol.companyName}}</td>
       </tr>
       <tr>
         <th>Sector</th>
-        <td>{{displayedSymbol.sector}}</td>
+        <td colspan="2">{{displayedSymbol.sector}}</td>
       </tr>
       <tr>
         <th>Open / Close</th>
@@ -126,7 +126,7 @@
       </tr>
       <tr>
         <th>Change (%)</th>
-        <td ng-class="{
+        <td colspan="2" ng-class="{
           'red': displayedSymbol.change < 0,
           'green': displayedSymbol.change >= 0}">
           <span ng-show="displayedSymbol.change > 0">+</span>{{displayedSymbol.change | number: 2}}
@@ -134,9 +134,22 @@
         </td>
       </tr>
       <tr>
+        <th>Consistency</th>
+        <td colspan="2">${{displayedSymbol.consistency}}</td>
+      </tr>
+      <tr>
+        <th>1-Year Growth</th>
+        <td>${{displayedSymbol.growth1Y}}</td>
+        <td ng-class="{
+          'red': displayedSymbol.changePercent1Y < 0,
+          'green': displayedSymbol.changePercent1Y >= 0}">
+          <span ng-show="displayedSymbol.changePercent > 0">+</span>{{displayedSymbol.changePercent1Y | number: 2}}%
+        </td>
+      </tr>
+      <tr>
         <th>3rd Party Ratings</th>
-        <td><a ng-href="{{'https://www.thestreet.com/quote/' + displayedSymbol.symbol + '.html'}}">The Street</a></td>
-        <td><a ng-href="{{'https://www.zacks.com/stock/quote/' + displayedSymbol.symbol}}">ZACKS</a></td>
+        <td><a ng-href="{{'https://www.thestreet.com/quote/' + displayedSymbol.symbol + '.html'}}" target="_blank">The Street</a></td>
+        <td><a ng-href="{{'https://www.zacks.com/stock/quote/' + displayedSymbol.symbol}}" target="_blank">ZACKS</a></td>
       </tr>
     </table>
     <div>
