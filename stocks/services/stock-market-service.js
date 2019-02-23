@@ -4,6 +4,18 @@ app.service("stockMarketService", function($http, $q) {
   var listSymbolsUrl = baseEndpoint + "market/collection/sector?collectionName=";
   var getSymbolDataUrl = baseEndpoint + "market/batch?types=quote,chart&range=1y&chartInterval=3&symbols=";
 
+  var theStreetEndpoint = "https://www.thestreet.com/quote/TOKEN.html";
+
+  this.getTheStreetRating = function(symbol) {
+    let endpoint = theStreetEndpoint.replace("TOKEN", symbol);
+    return httpGet(endpoint).then(
+      function(resp) {
+        console.log("Got response from TheStreet: ", resp);
+        return resp;
+      }
+    );
+  }
+
   // list symbols for sector
   this.listSymbols = function(sector) {
     var response = httpGet(listSymbolsUrl + sector).then(
