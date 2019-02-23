@@ -79,10 +79,17 @@ app.service("evaluator", function() {
     if (chart.length >= 2) {
 
       // populate some basic metadata
-      rating.symbol       = symbol;
-      rating.companyName  = quote.companyName;
-      rating.sector       = quote.sector;
-      rating.latestPrice  = quote.latestPrice;
+      rating.symbol         = symbol;
+      rating.companyName    = quote.companyName;
+      rating.sector         = quote.sector;
+      rating.latestPrice    = quote.latestPrice;
+
+      // populate more detailed metadata - won't be displayed on main table
+      rating.open           = quote.open;
+      rating.close          = quote.close;
+      rating.change         = quote.change;
+      rating.changePercent  = quote.changePercent;
+      rating.chart          = chart;
 
       // evaluate this symbol against each feature
       features.forEach(function(feature) {

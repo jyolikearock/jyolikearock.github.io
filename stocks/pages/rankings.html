@@ -1,66 +1,142 @@
 <h4 class="display-4">Rankings</h4>
 <div class="row">
-  <table class="table table-hover table-fixed"
-         st-table="displayedRatings"
-         st-safe-src="ratings"
-         st-persist="rankingsTable">
-    <thead>
-      <tr>
-        <th class="sortable" st-sort="symbol">Symbol</th>
-        <th class="sortable" st-sort="companyName">Company Name</th>
-        <th class="sortable" st-sort="sector">Sector</th>
-        <th class="sortable" st-sort="latestPrice">Latest Price</th>
-        <th class="sortable" st-sort="consistency">Consistency</th>
-        <th class="sortable" st-sort="growth1Y">Growth</th>
-        <th class="sortable" st-sort="overall">Overall</th>
-      </tr>
-      <tr>
-        <th colspan="2">
-          <input placeholder="Search symbols" class="form-control" type="search"
-                 ng-model="searchSymbol" st-search="symbol" />
-        </th>
-        <th colspan="3">
-          <input placeholder="Search companies" class="form-control" type="search"
-                 ng-model="searchCompany" st-search="companyName" />
-        </th>
-        <th colspan="2">
-          <input placeholder="Search sectors" class="form-control" type="search"
-                 ng-model="searchSector" st-search="sector" />
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="rating in displayedRatings track by rating.symbol"
-          ng-click="goToSymbol(rating.symbol)">
-        <td>
-          {{rating.symbol}}
-        </td>
-        <td class="td-overflow">
-          {{rating.companyName}}
-        </td>
-        <td>
-          {{rating.sector}}
-        </td>
-        <td>
-          ${{rating.latestPrice | number: 2}}
-        </td>
-        <td>
-          {{rating.consistency | number: 1}}
-        </td>
-        <td>
-          {{rating.growth1Y | number: 1}}
-        </td>
-        <td>
-          {{rating.overall | number: 1}}
-        </td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="7" class="text-center">
-          <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+  <div ng-show="!showDetails">
+    <table class="table table-hover table-fixed"
+           st-table="displayedRatings"
+           st-safe-src="ratings"
+           st-persist="rankingsTable">
+      <thead>
+        <tr>
+          <th class="sortable" st-sort="symbol">Symbol</th>
+          <th class="sortable" st-sort="companyName">Company Name</th>
+          <th class="sortable" st-sort="sector">Sector</th>
+          <th class="sortable" st-sort="latestPrice">Latest Price</th>
+          <th class="sortable" st-sort="consistency">Consistency</th>
+          <th class="sortable" st-sort="growth1Y">Growth</th>
+          <th class="sortable" st-sort="overall">Overall</th>
+        </tr>
+        <tr>
+          <th colspan="2">
+            <input placeholder="Search symbols" class="form-control" type="search"
+                   ng-model="searchSymbol" st-search="symbol" />
+          </th>
+          <th colspan="3">
+            <input placeholder="Search companies" class="form-control" type="search"
+                   ng-model="searchCompany" st-search="companyName" />
+          </th>
+          <th colspan="2">
+            <input placeholder="Search sectors" class="form-control" type="search"
+                   ng-model="searchSector" st-search="sector" />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="rating in displayedRatings track by rating.symbol"
+            ng-click="showDetails(rating.symbol)">
+          <td>
+            {{rating.symbol}}
+          </td>
+          <td class="td-overflow">
+            {{rating.companyName}}
+          </td>
+          <td>
+            {{rating.sector}}
+          </td>
+          <td>
+            ${{rating.latestPrice | number: 2}}
+          </td>
+          <td>
+            {{rating.consistency | number: 1}}
+          </td>
+          <td>
+            {{rating.growth1Y | number: 1}}
+          </td>
+          <td>
+            {{rating.overall | number: 1}}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7" class="text-center">
+            <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div ng-show="showDetails">
+    <div class="col-3">
+      <table class="table table-hover table-fixed"
+             st-table="displayedRatings"
+             st-safe-src="ratings"
+             st-persist="rankingsTable">
+        <thead>
+          <tr>
+            <th class="sortable" st-sort="symbol">Symbol</th>
+            <th class="sortable" st-sort="overall">Overall</th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <input placeholder="Search symbols" class="form-control" type="search"
+                     ng-model="searchSymbol" st-search="symbol" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="rating in displayedRatings track by rating.symbol"
+              ng-click="goToSymbol(rating.symbol)">
+            <td>
+              {{rating.symbol}}
+            </td>
+            <td>
+              {{rating.overall | number: 1}}
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="text-center">
+              <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="col-9">
+      <button class="btn" ng-click="hideDetails()">Close &times;</button>
+      <br>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <td>{{displayedSymbol.companyName}}</td>
+        </tr>
+        <tr>
+          <th>Sector</th>
+          <td>{{displayedSymbol.sector}}</td>
+        </tr>
+        <tr>
+          <th>Open</th>
+          <td>${{displayedSymbol.open | number: 2}}</td>
+        </tr>
+        <tr>
+          <th>Close</th>
+          <td>${{displayedSymbol.close | number: 2}}</td>
+        </tr>
+        <tr>
+          <th>Change (%)</th>
+          <td ng-class="{
+            'red': symbolData.change < 0,
+            'green': symbolData.change >= 0}">
+            <span ng-show="displayedSymbol.change > 0">+</span>{{displayedSymbol.change | number: 2}}
+            (<span ng-show="displayedSymbol.changePercent > 0">+</span>{{displayedSymbol.changePercent | number: 2}}%)
+          </td>
+        </tr>
+      </table>
+      <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
+      </canvas>
+    </div>
+  </div>
 </div>
