@@ -11,7 +11,8 @@ app.controller("rankingsController", function(
 
   $scope.showDetailsForSymbol = function(symbol) {
 
-    if ($scope.displayedSymbol.symbol === symbol) {
+    if ($scope.displayedSymbol &&
+        $scope.displayedSymbol.symbol === symbol) {
       $scope.showDetails = false;
       $scope.displayedSymbol = {};
       return;
