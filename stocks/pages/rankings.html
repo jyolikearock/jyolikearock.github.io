@@ -86,7 +86,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="rating in displayedRatings track by rating.symbol"
-              ng-click="goToSymbol(rating.symbol)">
+              ng-click="showDetailsForSymbol(rating.symbol)">
             <td>
               {{rating.symbol}}
             </td>
@@ -135,8 +135,10 @@
           </td>
         </tr>
       </table>
-      <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
-      </canvas>
+      <div>
+        <canvas class="chart chart-line" chart-data="prices" chart-labels="dates">
+        </canvas>
+      </div>
     </div>
   </div>
 </div>

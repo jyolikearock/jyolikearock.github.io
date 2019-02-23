@@ -11,7 +11,7 @@ app.controller("rankingsController", function(
 
   $scope.showDetailsForSymbol = function(symbol) {
     $scope.displayedSymbol = $scope.ratings.find(rating => {
-      return rating.symbol = symbol;
+      return rating.symbol === symbol;
     });
     generateChart($scope.displayedSymbol.chart);
     $scope.showDetails = true;
