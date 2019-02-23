@@ -9,7 +9,7 @@ app.controller("rankingsController", function(
     $location.path("/symbols/" + symbol);
   }
 
-  $scope.showDetails = function(symbol) {
+  $scope.showDetailsForSymbol = function(symbol) {
     $scope.displayedSymbol = $scope.ratings.find(rating => {
       return rating.symbol = symbol;
     });

@@ -32,7 +32,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="rating in displayedRatings track by rating.symbol"
-            ng-click="showDetails(rating.symbol)">
+            ng-click="showDetailsForSymbol(rating.symbol)">
           <td>
             {{rating.symbol}}
           </td>
