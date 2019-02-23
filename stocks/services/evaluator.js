@@ -281,8 +281,8 @@ app.service("evaluator", function() {
     let startIndex = Math.floor(monthStart / 12.0 * length);
     let endIndex = Math.floor(monthEnd / 12.0 * length);
 
-    let startPrice = chart[startIndex];
-    let endPrice = chart[endIndex];
+    let startPrice = chart[startIndex].close;
+    let endPrice = chart[endIndex].close;
 
     return getPercentDiff(startPrice, endPrice);
   }
