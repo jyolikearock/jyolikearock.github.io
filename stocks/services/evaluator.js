@@ -276,7 +276,7 @@ app.service("evaluator", function() {
   }
 
   function evaluateGrowth(chart, monthStart, monthEnd) {
-    let length = chart.length - end;
+    let length = chart.length - 1 - end;
 
     let startIndex = Math.floor(monthStart / 12.0 * length);
     let endIndex = Math.floor(monthEnd / 12.0 * length);
