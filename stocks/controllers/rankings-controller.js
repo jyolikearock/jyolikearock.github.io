@@ -10,15 +10,18 @@ app.controller("rankingsController", function(
   }
 
   $scope.showDetailsForSymbol = function(symbol) {
+
+    if ($scope.displayedSymbol.symbol === symbol) {
+      $scope.showDetails = false;
+      $scope.displayedSymbol = {};
+      return;
+    }
+
     $scope.displayedSymbol = $scope.ratings.find(rating => {
       return rating.symbol === symbol;
     });
     generateChart($scope.displayedSymbol.chart);
     $scope.showDetails = true;
-  }
-
-  $scope.hideDetails = function() {
-    $scope.showDetails = false;
   }
 
   // wrap logic inside a callback so that page loads only after data is loaded
