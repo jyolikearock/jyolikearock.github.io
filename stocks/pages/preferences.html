@@ -18,8 +18,13 @@
         </button>
         <button type="button" class="btn btn-dark"
                 ng-click="setCorrelation(feature.name, 1)"
-                ng-class="{'active': feature.correlation > 0}">
+                ng-class="{'active': feature.correlation == 1}">
           High
+        </button>
+        <button type="button" class="btn btn-dark"
+                ng-click="setCorrelation(feature.name, 5)"
+                ng-class="{'active': feature.correlation > 1}">
+          Very High
         </button>
       </div>
     </div>

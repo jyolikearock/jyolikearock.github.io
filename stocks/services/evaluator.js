@@ -2,7 +2,7 @@ var features = [
   {
     name: "consistency",
     prettyName: "Consistency",
-    correlation: 1
+    correlation: 5
   },
   {
     name: "growth1Y",
@@ -171,33 +171,38 @@ app.service("evaluator", function() {
 
       var numFeaturesUsed = 0;
       features.forEach(function(feature) {
-        var correlation = feature.correlation;
+        let correlation = feature.correlation;
         if (correlation == 0) {
           return;
         }
 
-        var featureName = feature.name;
-        var featureRating = rating[featureName];
+        let featureName = feature.name;
+        let featureRating = rating[featureName];
+        let weight = Math.abs(correlation);
 
         // if feature has a negative correlation, lower is better
         if (correlation < 0) {
           featureRating = 100 - featureRating;
         }
 
-        if (aggregation == 'arithmetic') {
-          overallRating += featureRating;
+        for (let i = 0; i < weight; i++) {
+          if (aggregation == 'arithmetic') {
+            overallRating += featureRating;
+          }
+          else if (aggregation == 'geometric') {
+            overallRating *= featureRating;
+          }
+          numFeaturesUsed++;
         }
-        else if (aggregation == 'geometric') {
-          overallRating *= featureRating;
-        }
-        numFeaturesUsed++;
       });
+
       if (aggregation == 'arithmetic') {
         overallRating = overallRating / numFeaturesUsed;
       }
       else if (aggregation == 'geometric') {
         overallRating = Math.pow(overallRating, 1.0 / numFeaturesUsed);
       }
+
       rating.overall = overallRating;
     });
 
