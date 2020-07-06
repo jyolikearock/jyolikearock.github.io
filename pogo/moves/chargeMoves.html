@@ -1,0 +1,94 @@
+<h4 class="display-4">Charge Moves</h4>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-hover table-fixed"
+               st-table="displayedMoves"
+               st-safe-src="moves"
+               st-persist="movesTable">
+            <thead>
+            <tr>
+                <th colspan="4"></th>
+                <th colspan="5">PVP (GBL, Rocket)</th>
+                <th colspan="7">PVE (Gyms, Raids)</th>
+            </tr>
+            <tr>
+                <th class="sortable" colspan="2" st-sort="name">Move</th>
+                <th class="sortable" colspan="2" st-sort="type">Type</th>
+                <th class="sortable" st-sort="pvpDamage">Damage</th>
+                <th class="sortable" st-sort="pvpEnergy">Energy</th>
+                <th class="sortable" st-sort="pvpDpe">DPE</th>
+                <th class="sortable" colspan="2" st-sort="pvpEffect">Note</th>
+                <th class="sortable" st-sort="pveDamage">Damage</th>
+                <th class="sortable" st-sort="pveEnergy">Energy</th>
+                <th class="sortable" st-sort="pveCooldown">Cooldown</th>
+                <th class="sortable" st-sort="pveDps">DPS</th>
+                <th class="sortable" st-sort="pveDpe">DPE</th>
+                <th class="sortable" colspan="2" st-sort="pveTotal">DPS x DPE</th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input placeholder="Search Moves" class="form-control" type="search"
+                           ng-model="searchMove" st-search="name" />
+                </th>
+                <th colspan="2">
+                    <input placeholder="Filter Types" class="form-control" type="search"
+                           ng-model="searchType" st-search="type" />
+                </th>
+                <th colspan="3"></th>
+                <th colspan="2">
+                    <input placeholder="Filter Note" class="form-control" type="search"
+                           ng-model="searchNote" st-search="pvpEffect" />
+                </th>
+                <th colspan="7"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="move in displayedMoves track by move.name">
+                <td colspan="2" class="td-overflow">
+                    {{move.name}}
+                </td>
+                <td colspan="2" class="td-overflow">
+                    {{move.type}}
+                </td>
+                <td>
+                    {{move.pvpDamage}}
+                </td>
+                <td>
+                    {{move.pvpEnergy}}
+                </td>
+                <td>
+                    {{move.pvpDpe}}
+                </td>
+                <td colspan="2">
+                    {{move.pvpEffect}}
+                </td>
+                <td>
+                    {{move.pveDamage}}
+                </td >
+                <td>
+                    {{move.pveEnergy}}
+                </td>
+                <td>
+                    {{move.pveCooldown}}
+                </td>
+                <td>
+                    {{move.pveDps}}
+                </td>
+                <td>
+                    {{move.pveDpe}}
+                </td>
+                <td colspan="2">
+                    {{move.pveTotal}}
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="text-center" colspan="16">
+                    <div st-pagination="" st-items-by-page="20" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

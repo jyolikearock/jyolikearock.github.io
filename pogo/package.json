@@ -1,0 +1,25 @@
+{
+  "name": "pogo-database",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Database for all data related to Pokemon Go",
+  "repository": "https://github.com/jyolikearock/jyolikearock.github.io",
+  "license": "MIT",
+  "dependencies": {
+    "html5-boilerplate": "0.0.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.9",
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1",
+    "jasmine-core": "^3.3.0",
+    "karma": "^3.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-jasmine": "^1.1.2",
+    "protractor": "^5.4.1"
+  },
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1 ."
+  }
+}

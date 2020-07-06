@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pogo</title>
+
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!-- third party libraries -->
+    <script src="./js/smart-table.js"></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- main app module -->
+    <script src="./app.js"></script>
+
+    <!-- dependencies -->
+    <script src="./js/evaluator.js"></script>
+    <script src="./js/data.js"></script>
+
+    <!-- controllers -->
+    <script src="./pokemons/pokemons.js"></script>
+    <script src="./pokemons/pokemon.js"></script>
+    <script src="./moves/fastMoves.js"></script>
+    <script src="./moves/chargeMoves.js"></script>
+</head>
+
+<body ng-app="app">
+
+    <!-- header / main nav bar -->
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top position-sticky">
+            <a class="navbar-brand"
+               href="https://github.com/jyolikearock/jyolikearock.github.io/"
+               target="_blank">
+                jyolikearock
+            </a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/pokemons">Pokemon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/fastMoves">Fast Moves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/chargeMoves">Charge Moves</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- body -->
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- content body populated by angular -->
+            <div class="col" ng-view>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

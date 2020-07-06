@@ -1,0 +1,116 @@
+.container-fluid {
+  max-width: 1600px;
+}
+
+.navbar-dark {
+  color: white;
+}
+
+/* override bootstrap's default nav link color */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #343a40;
+}
+
+.page-link {
+  color: #343a40;
+}
+
+.page-item.active .page-link {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+/* add up / down arrows when columns are sorted */
+.st-sort-ascent:before{
+  content: '\25B2\ ';
+}
+
+.st-sort-descent:before{
+  content: '\25BC\ ';
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+/* stretch out company name column in sectors table */
+.table-sectors tr th:nth-child(2) {
+  width: 35%;
+}
+
+/* don't let table content overflow into next line */
+.table-fixed tr th,
+.table-fixed tr td {
+  white-space: nowrap;
+  text-overflow: clip;
+  overflow: hidden;
+}
+
+.table-fixed tr .td-overflow  {
+  text-overflow: ellipsis !important;
+}
+
+/* prevent cursor from turning into i-bar */
+td, th {
+  cursor: default;
+}
+
+/* remove underline from hyperlinks */
+a:hover {
+  text-decoration: none;
+}
+
+/* add padding to typeahead dropdown options */
+[uib-typeahead-popup].dropdown-menu {
+  display: block;
+  padding: .375rem .75rem;
+}
+
+[uib-typeahead-popup].dropdown-menu>li {
+  padding: .25rem 0;
+}
+
+/* highlight typeahead dropdown options */
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover {
+  color: black;
+  text-decoration: none;
+  outline: 0;
+}
+
+.uib-position-measure {
+  display: block !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.uib-position-scrollbar-measure {
+  position: absolute !important;
+  top: -9999px !important;
+  width: 50px !important;
+  height: 50px !important;
+  overflow: scroll !important;
+}
+
+.uib-position-body-scrollbar-measure {
+  overflow: scroll !important;
+}
+
+.red {
+  color: rgb(200, 33, 33);
+}
+
+.green {
+  color: rgb(25, 190, 135);
+}
