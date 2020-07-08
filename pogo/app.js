@@ -1,6 +1,12 @@
 'use strict';
 
+// set default global values
 var pageSize = 13;
+var showSettings = true;
+var maxCP = 9999;
+var atkIv = 15;
+var defIv = 15;
+var hpIv = 15;
 
 // enables tooltips
 $(function () {

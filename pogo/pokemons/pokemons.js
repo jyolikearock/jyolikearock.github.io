@@ -20,27 +20,29 @@ angular.module('app.pokemons', ['ngRoute'])
     // initialize page settings
     $scope.pageSize = pageSize;
     $scope.currentPage = 1;
-    $scope.showSettings = localStorage.getItem("pogoShowSettings");
 
     // extract user-defined values from url query params
     let params = $location.search();
-    let maxCP = validateCP(params["maxCP"]);
-    let atkIv = validateIv(params["atkIv"]);
-    let defIv = validateIv(params["defIv"]);
-    let hpIv = validateIv(params["hpIv"]);
+    maxCP = validateCP(params["maxCP"]);
+    atkIv = validateAtkIv(params["atkIv"]);
+    defIv = validateDefIv(params["defIv"]);
+    hpIv = validateHpIv(params["hpIv"]);
     $scope.maxCP = maxCP;
     $scope.atkIv = atkIv;
     $scope.defIv = defIv;
     $scope.hpIv = hpIv;
 
     // populate pokemon stats based on user inputs
+    $scope.refreshStats = function() {
+        pokemons.forEach(
+            function(pokemon) {
+                evaluateStatsHelper(pokemon);
+            }
+        )
+        $scope.pokemons = pokemons;
+    }
     console.log("Evaluating stats for " + pokemons.length + " pokemon");
-    pokemons.forEach(
-        function(pokemon) {
-            evaluateStatsHelper(pokemon);
-        }
-    );
-    $scope.pokemons = pokemons;
+    $scope.refreshStats();
 
     // get pokemon name if provided in route
     var pokemonName = $routeParams["pokemon"];
@@ -58,10 +60,10 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     function evaluateStatsHelper(pokemon) {
-        let maxCP = validateCP($scope.maxCP);
-        let atkIv = validateIv($scope.atkIv);
-        let defIv = validateIv($scope.defIv);
-        let hpIv = validateIv($scope.hpIv);
+        maxCP = validateCP($scope.maxCP);
+        atkIv = validateAtkIv($scope.atkIv);
+        defIv = validateDefIv($scope.defIv);
+        hpIv = validateHpIv($scope.hpIv);
         evaluateStatsWithCpCap(pokemon, maxCP, atkIv, defIv, hpIv);
     }
 
@@ -90,6 +92,11 @@ angular.module('app.pokemons', ['ngRoute'])
         $location.path("/pokemon/" + pokemonName.toLowerCase()).search($location.search());
     }
 
+    $scope.go = function(path) {
+        let params = getParams();
+        $location.path(path).search(params);
+    }
+
     // utility methods
     $scope.setCurrentPage = function(page) {
         $scope.currentPage = page;
@@ -99,21 +106,36 @@ angular.module('app.pokemons', ['ngRoute'])
         return (($scope.currentPage - 1) * $scope.pageSize) + rowOnPage + 1;
     }
 
+    $scope.shouldShowSettings = function() {
+        return showSettings;
+    }
+
     $scope.toggleSettings = function() {
-        $scope.showSettings = !$scope.showSettings;
-        console.log("toggling settings; display: " + $scope.showSettings);
-        localStorage.setItem("pogoShowSettings", $scope.showSettings);
+        showSettings = !showSettings;
+        console.log("toggling settings; display: " + showSettings);
     }
 
     function validateCP(cp) {
         let _cp = Number.parseInt(cp);
-        _cp = 10 <= _cp && _cp <= 9999 ? _cp : 9999;
+        _cp = 10 <= _cp && _cp <= 9999 ? _cp : maxCP;
         return _cp;
     }
 
-    function validateIv(iv) {
+    function validateAtkIv(iv) {
         let _iv = Number.parseInt(iv);
-        _iv = 0 <= _iv && _iv <= 15 ? _iv : 15;
+        _iv = 0 <= _iv && _iv <= 15 ? _iv : atkIv;
+        return _iv;
+    }
+
+    function validateDefIv(iv) {
+        let _iv = Number.parseInt(iv);
+        _iv = 0 <= _iv && _iv <= 15 ? _iv : defIv;
+        return _iv;
+    }
+
+    function validateHpIv(iv) {
+        let _iv = Number.parseInt(iv);
+        _iv = 0 <= _iv && _iv <= 15 ? _iv : hpIv;
         return _iv;
     }
 }]);

@@ -3,17 +3,18 @@
         <div class="row">
             <div class="col-6">
                 <h5 class="card-title">Pokemon</h5>
+                <span class="d-none">{{refreshStats()}}</span>
             </div>
             <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleSettings()">
                 Settings
             </button>
         </div>
 
-        <form ng-show="showSettings">
+        <form ng-show="shouldShowSettings()">
             <div class="form-group row">
                 <label class="col-3 col-lg-2 mt-2 col-form-label">Max CP:</label>
                 <div class="col-9 col-lg-4 mt-2">
-                    <input class="form-control" ng-model="maxCP" />
+                    <input class="form-control" type="text" ng-model="maxCP" />
                 </div>
                 <div class="btn-group ml-auto mr-3 mt-2" role="group">
                     <button class="btn btn-secondary" ng-click="updateMaxCP(1500)"
@@ -83,7 +84,7 @@
         <tr ng-repeat="pokemon in displayedPokemons track by pokemon.name"
             ng-click="getPokemon(pokemon.name)">
             <td colspan="2" class="td-overflow">
-                {{refreshStatsAndGetName(pokemon)}}
+                {{pokemon.name}}
             </td>
             <td colspan="2">
                 <div class="row">
