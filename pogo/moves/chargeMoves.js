@@ -12,6 +12,9 @@ angular.module('app.chargeMoves', ['ngRoute'])
 }])
 
 .controller('chargeMovesController', ['$scope', function($scope) {
+
+    $scope.pageSize = pageSize;
+
     if (!chargeMoveDataLoaded) {
         chargeMoves.forEach(
             function(move) {
@@ -41,7 +44,6 @@ angular.module('app.chargeMoves', ['ngRoute'])
         chargeMoveDataLoaded = true;
     }
 
-    console.log("loading charge moves with length: " + chargeMoves.length);
     $scope.moves = chargeMoves;
 
     function round(n) {

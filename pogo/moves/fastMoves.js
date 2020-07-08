@@ -12,6 +12,9 @@ angular.module('app.fastMoves', ['ngRoute'])
 }])
 
 .controller('fastMovesController', ['$scope', function($scope) {
+
+    $scope.pageSize = pageSize;
+
     if (!fastMoveDataLoaded) {
         fastMoves.forEach(
             function(move) {
@@ -49,7 +52,6 @@ angular.module('app.fastMoves', ['ngRoute'])
         fastMoveDataLoaded = true;
     }
 
-    console.log("loading fast moves with length: " + fastMoves.length);
     $scope.moves = fastMoves;
 
     function round(n) {

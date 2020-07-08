@@ -420,7 +420,8 @@ ng.module('smart-table')
             //manual reset
             index = 0;
             ctrl.tableState().sort = {};
-            ctrl.tableState().pagination.start = 0;
+            // @jyolikearock: do not reset page when sort is turned off
+            // ctrl.tableState().pagination.start = 0;
             func = ctrl.pipe.bind(ctrl);
           } else {
             func = ctrl.sortBy.bind(ctrl, predicate, index % 2 === 0);

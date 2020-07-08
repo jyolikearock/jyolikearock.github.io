@@ -1,24 +1,3 @@
-// todo: deprecate
-function evaluateTotal(pokemon, level, atkIv, defIv, hpIv) {
-    let cpm = cpmMap[level];
-    let atk = (pokemon.atk + atkIv) * cpm;
-    let def = (pokemon.def + defIv) * cpm;
-    let hp = (pokemon.hp + hpIv) * cpm;
-
-    let total = Math.floor(atk * def * hp / 10000);
-    return total;
-}
-
-// todo: deprecate
-function evaluateBulk(pokemon, level, defIv, hpIv) {
-    let cpm = cpmMap[level];
-    let def = (pokemon.def + defIv) * cpm;
-    let hp = (pokemon.hp + hpIv) * cpm;
-
-    let bulk = Math.floor(def * hp / 100);
-    return bulk;
-}
-
 function evaluateMaxCP(pokemon) {
     console.log("evaluating CP for pokemon: " + JSON.stringify(pokemon));
     return evaluateCP(pokemon, 40, 15, 15, 15);
@@ -34,8 +13,13 @@ function evaluateCP(pokemon, level, atkIv, defIv, hpIv) {
     return cp;
 }
 
-function evaluateStats(pokemon, capCP, atkIv, defIv, hpIv) {
-    let level = evaluateLevel(pokemon, capCP, atkIv, defIv, hpIv);
+function evaluateStats(pokemon, level, atkIv, defIv, hpIv) {
+    if (level < 1) {
+        level = 1;
+    }
+    if (level > 40) {
+        level = 40;
+    }
     let cpm = cpmMap[level];
 
     let atk = cpm * (pokemon.atk + atkIv);
@@ -46,9 +30,14 @@ function evaluateStats(pokemon, capCP, atkIv, defIv, hpIv) {
     pokemon._def = Math.floor(def);
     pokemon._hp = Math.floor(hp);
 
-    pokemon._bulk = Math.floor(def * hp / 100);
-    pokemon._total = Math.floor(atk * def * hp / 10000);
+    pokemon._bulk = Math.floor(Math.sqrt(def * hp));
+    pokemon._total = Math.floor(Math.pow(atk * def * hp, 1.0/3.0));
     pokemon._cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
+}
+
+function evaluateStatsWithCpCap(pokemon, cpCap, atkIv, defIv, hpIv) {
+    let level = evaluateLevel(pokemon, cpCap, atkIv, defIv, hpIv);
+    evaluateStats(pokemon, level, atkIv, defIv, hpIv);
 }
 
 function evaluateLevel(pokemon, capCP, atkIv, defIv, hpIv) {

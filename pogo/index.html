@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pogo</title>
+    <title>PoGo Database</title>
 
     <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -13,6 +13,7 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <!-- third party libraries -->
@@ -20,17 +21,18 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/icons.css">
 
     <!-- main app module -->
     <script src="./app.js"></script>
 
     <!-- dependencies -->
+    <script src="./js/pokemonData.js"></script>
+    <script src="./js/moveData.js"></script>
     <script src="./js/evaluator.js"></script>
-    <script src="./js/data.js"></script>
 
     <!-- controllers -->
     <script src="./pokemons/pokemons.js"></script>
-    <script src="./pokemons/pokemon.js"></script>
     <script src="./moves/fastMoves.js"></script>
     <script src="./moves/chargeMoves.js"></script>
 </head>
@@ -39,24 +41,31 @@
 
     <!-- header / main nav bar -->
     <header>
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top position-sticky">
-            <a class="navbar-brand"
-               href="https://github.com/jyolikearock/jyolikearock.github.io/"
-               target="_blank">
-                jyolikearock
-            </a>
+        <!-- navbar wrapper; auto-collapses at lg breakpoint (992px) -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top position-sticky">
+            <span class="navbar-brand">
+                Pokemon Go Database
+            </span>
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#!/pokemons">Pokemon</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!/fastMoves">Fast Moves</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!/chargeMoves">Charge Moves</a>
-                </li>
-            </ul>
+            <!-- button for toggling nav bar -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- navbar items -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/pokemons">Pokemon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/fastMoves">Fast Moves</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/chargeMoves">Charge Moves</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 

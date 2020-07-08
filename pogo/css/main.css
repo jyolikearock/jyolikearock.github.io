@@ -1,9 +1,13 @@
 .container-fluid {
-  max-width: 1600px;
+  max-width: 960px;
 }
 
 .navbar-dark {
   color: white;
+}
+
+html {
+  font-size: 13px;
 }
 
 /* override bootstrap's default nav link color */
@@ -39,11 +43,6 @@
 
 .table-fixed {
   table-layout: fixed;
-}
-
-/* stretch out company name column in sectors table */
-.table-sectors tr th:nth-child(2) {
-  width: 35%;
 }
 
 /* don't let table content overflow into next line */

@@ -6,20 +6,21 @@ angular.module('app.pokemons', ['ngRoute'])
     $routeProvider
     .when('/pokemon?', {
         templateUrl: 'pokemons/pokemons.html',
-        controller: 'pokemonsCtrl'
+        controller: 'pokemonsController'
     })
-    .when('/pokemon/:maxCP/:atkIv/:defIv/:hpIv', {
-        templateUrl: 'pokemons/pokemons.html',
-        controller: 'pokemonsCtrl'
+    .when('/pokemon/:pokemon?', {
+        templateUrl: 'pokemons/pokemon.html',
+        controller: 'pokemonsController'
     });
 }])
 
-.controller('pokemonsCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
+.controller('pokemonsController', ['$scope', '$http', '$location', '$routeParams',
+    function($scope, $http, $location, $routeParams) {
 
     // initialize page settings
-    $scope.pageSize = 20;
+    $scope.pageSize = pageSize;
     $scope.currentPage = 1;
+    $scope.showSettings = localStorage.getItem("pogoShowSettings");
 
     // extract user-defined values from url query params
     let params = $location.search();
@@ -33,79 +34,60 @@ angular.module('app.pokemons', ['ngRoute'])
     $scope.hpIv = hpIv;
 
     // populate pokemon stats based on user inputs
+    console.log("Evaluating stats for " + pokemons.length + " pokemon");
     pokemons.forEach(
         function(pokemon) {
-            evaluateStats(pokemon, maxCP, atkIv, defIv, hpIv);
+            evaluateStatsHelper(pokemon);
         }
     );
-
     $scope.pokemons = pokemons;
 
+    // get pokemon name if provided in route
+    var pokemonName = $routeParams["pokemon"];
+    console.log("loading details for pokemon: " + pokemonName);
+    if (pokemonName) {
+        let pokemon = pokemonsMap[pokemonName];
+        evaluateStatsHelper(pokemon);
+        $scope.pokemon = pokemon;
+    }
+
     // for refreshing stats in real-time
-    $scope.evaluateLevel = function(pokemon) {
+    $scope.refreshStatsAndGetName = function(pokemon) {
+        evaluateStatsHelper(pokemon);
+        return pokemon.name;
+    }
+
+    function evaluateStatsHelper(pokemon) {
         let maxCP = validateCP($scope.maxCP);
         let atkIv = validateIv($scope.atkIv);
         let defIv = validateIv($scope.defIv);
         let hpIv = validateIv($scope.hpIv);
-        evaluateStats(pokemon, maxCP, atkIv, defIv, hpIv);
-        return pokemon._level;
-    }
-
-    $scope.evaluateCP = function(pokemon) {
-        return evaluateCP(pokemon, 40, $scope.atkIv, $scope.defIv, $scope.hpIv);
-    }
-
-    $scope.evaluateBulk = function(pokemon) {
-        return evaluateBulk(pokemon, 40, $scope.defIv, $scope.hpIv);
-    }
-
-    $scope.evaluateTotal = function(pokemon) {
-        return evaluateTotal(pokemon, 40, $scope.atkIv, $scope.defIv, $scope.hpIv);
-    }
-
-    $scope.toggleFocusPokemon = function(pokemon) {
-        console.log("Toggling focus pokemon: " + pokemon);
-        if ($scope.focusPokemon === pokemon) {
-            $scope.focusPokemon = "";
-        }
-        else {
-            $scope.focusPokemon = pokemon;
-        }
-    }
-
-    $scope.isFocusPokemon = function(pokemon) {
-        return pokemon === $scope.focusPokemon;
+        evaluateStatsWithCpCap(pokemon, maxCP, atkIv, defIv, hpIv);
     }
 
     // routing methods
+    function getParams() {
+        let params = $location.search();
+        params.maxCP = $scope.maxCP;
+        params.atkIv = $scope.atkIv;
+        params.defIv = $scope.defIv;
+        params.hpIv = $scope.hpIv;
+        return params;
+    }
+
     $scope.updateMaxCP = function(maxCP) {
-        goto(maxCP, $scope.atkIv, $scope.defIv, $scope.hpIv);
-    }
-
-    $scope.updateAtkIv = function(iv) {
-        goto(maxCP, iv, $scope.defIv, $scope.hpIv);
-    }
-
-    $scope.updateDefIv = function(iv) {
-        goto(maxCP, $scope.atkIv, iv, $scope.hpIv);
-    }
-
-    $scope.updateHpIv = function(iv) {
-        goto(maxCP, $scope.atkIv, $scope.defIv, iv);
+        $scope.maxCP = maxCP;
     }
 
     $scope.refreshPage = function() {
-        goto($scope.maxCP, $scope.atkIv, $scope.defIv, $scope.hpIv);
+        let params = getParams();
+        $location.search(params);
     }
 
-    function goto(maxCP, atkIv, defIv, hpIv) {
-        let path = "/pokemon";
-        let params = {};
-        params.maxCP = maxCP;
-        params.atkIv = atkIv;
-        params.defIv = defIv;
-        params.hpIv = hpIv;
-        $location.path(path).search(params);
+    $scope.getPokemon = function(pokemonName) {
+        let params = getParams();
+        console.log("routing to: " + pokemonName);
+        $location.path("/pokemon/" + pokemonName.toLowerCase()).search($location.search());
     }
 
     // utility methods
@@ -115,6 +97,12 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.getRowNum = function(rowOnPage) {
         return (($scope.currentPage - 1) * $scope.pageSize) + rowOnPage + 1;
+    }
+
+    $scope.toggleSettings = function() {
+        $scope.showSettings = !$scope.showSettings;
+        console.log("toggling settings; display: " + $scope.showSettings);
+        localStorage.setItem("pogoShowSettings", $scope.showSettings);
     }
 
     function validateCP(cp) {

@@ -1,32 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{pokemon.name}}</title>
-</head>
-<body>
-    <h4 class="display-4">{{pokemon.name}}</h4>
-    <table class="table">
-        <tr>
-            <th>Type</th>
-            <td>{{pokemon.type}}</td>
-        </tr>
+<div class="card mt-3 mb-3">
+    <div class="card-body">
+
+        <!-- settings -->
+        <div class="row">
+            <div class="col-6">
+                <h5 class="card-title">{{refreshStatsAndGetName(pokemon)}}</h5>
+            </div>
+            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleSettings()">
+                Settings
+            </button>
+        </div>
+
+        <form ng-show="showSettings">
+            <div class="form-group row">
+                <label class="col-3 col-lg-2 mt-2 col-form-label">Max CP:</label>
+                <div class="col-9 col-lg-4 mt-2">
+                    <input class="form-control" ng-model="maxCP" />
+                </div>
+                <div class="btn-group ml-auto mr-3 mt-2" role="group">
+                    <button class="btn btn-secondary" ng-click="updateMaxCP(1500)"
+                            ng-class="maxCP <= 1500 ? 'btn-dark' : ''">
+                        GL (1500)
+                    </button>
+                    <button class="btn btn-secondary" ng-click="updateMaxCP(2500)"
+                            ng-class="maxCP > 1500 && maxCP <= 2500 ? 'btn-dark' : ''">
+                        UL (2500)
+                    </button>
+                    <button class="btn btn-secondary" ng-click="updateMaxCP(9999)"
+                            ng-class="maxCP > 2500 ? 'btn-dark' : ''">
+                        ML (No Max)
+                    </button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-lg-1 mt-2 col-form-label">ATK IV:</label>
+                <div class="col-5 col-lg-2 mt-2">
+                    <input class="form-control" ng-model="atkIv" type="number"/>
+                </div>
+                <div class="col-4 d-lg-none"></div>
+                <label class="col-3 col-lg-1 mt-2 col-form-label">DEF IV:</label>
+                <div class="col-5 col-lg-2 mt-2">
+                    <input class="form-control" ng-model="defIv" type="number"/>
+                </div>
+                <div class="col-4 d-lg-none"></div>
+                <label class="col-3 col-lg-1 mt-2 col-form-label">HP IV:</label>
+                <div class="col-5 col-lg-2 mt-2">
+                    <input class="form-control" ng-model="hpIv" type="number"/>
+                </div>
+                <div class="btn btn-dark ml-auto mr-3 mt-2" ng-click="refreshPage()">
+                    Refresh Page
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- content -->
+    <table class="table table-fixed">
         <tr>
             <th>ATK</th>
-            <td>{{pokemon.atk}}</td>
-        </tr>
-        <tr>
             <th>DEF</th>
-            <td>{{pokemon.def}}</td>
-        </tr>
-        <tr>
             <th>HP</th>
-            <td>{{pokemon.hp}}</td>
+            <th>Bulk</th>
+            <th>Total</th>
+            <th>CP</th>
         </tr>
         <tr>
-            <th>CP</th>
-            <td>{{pokemon.cp}}</td>
+            <td>{{pokemon._atk}}</td>
+            <td>{{pokemon._def}}</td>
+            <td>{{pokemon._hp}}</td>
+            <td>{{pokemon._bulk}}</td>
+            <td>{{pokemon._total}}</td>
+            <td>{{pokemon._cp}}</td>
         </tr>
     </table>
-</body>
-</html>
+</div>

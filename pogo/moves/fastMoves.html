@@ -4,7 +4,7 @@
         <table class="table table-hover table-fixed"
                st-table="displayedMoves"
                st-safe-src="moves"
-               st-persist="movesTable">
+               st-persist="fastMovesTable">
             <thead>
             <tr>
                 <th colspan="4"></th>
@@ -88,7 +88,7 @@
             <tfoot>
             <tr>
                 <td class="text-center" colspan="18">
-                    <div st-pagination="" st-items-by-page="20" st-displayed-pages="5"></div>
+                    <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
                 </td>
             </tr>
             </tfoot>
