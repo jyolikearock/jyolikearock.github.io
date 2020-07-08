@@ -1,0 +1,304 @@
+<div class="card mt-3">
+    <div class="card-header">
+        <ul class="nav nav-tabs nav-fill card-header-tabs">
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'pvpFast' ? 'active' : ''"
+                     ng-click="showTab('pvpFast')">PvP Fast</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'pveFast' ? 'active' : ''"
+                     ng-click="showTab('pveFast')">PvE Fast</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'pvpCharge' ? 'active' : ''"
+                     ng-click="showTab('pvpCharge')">PvP Charge</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'pveCharge' ? 'active' : ''"
+                     ng-click="showTab('pveCharge')">PvE Charge</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body">
+    </div>
+
+    <!-- pvp fast moves -->
+    <table class="table table-hover table-fixed" ng-show="currentTab === 'pvpFast'"
+           st-table="displayedFastMoves"
+           st-safe-src="fastMoves"
+           st-persist="fastMovesTable">
+        <thead>
+        <tr>
+            <th class="sortable" colspan="2" st-sort="name">Move</th>
+            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" st-sort="pvpDamage">D</th>
+            <th class="sortable" st-sort="pvpEnergy">E</th>
+            <th class="sortable" st-sort="pvpTurns">T</th>
+            <th class="sortable" st-sort="pvpDpt">DPT</th>
+            <th class="sortable" st-sort="pvpEpt">EPT</th>
+            <th class="sortable" colspan="2" st-sort="pvpTotal">DPT x EPT</th>
+        </tr>
+        <tr>
+            <th colspan="6">
+                <input placeholder="Search Moves" class="form-control" type="search"
+                       ng-model="searchFastMove" st-search="name" />
+            </th>
+            <th colspan="5">
+                <input placeholder="Search Types" class="form-control" type="search"
+                       ng-model="searchType" st-search="type" />
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="move in displayedFastMoves track by move.name">
+            <td colspan="2" class="td-overflow">
+                {{move.name}}
+            </td>
+            <td colspan="2" >
+                <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                </div>
+            </td>
+            <td>
+                {{move.pvpDamage}}
+            </td>
+            <td>
+                {{move.pvpEnergy}}
+            </td>
+            <td>
+                {{move.pvpTurns}}
+            </td>
+            <td>
+                {{move.pvpDpt}}
+            </td>
+            <td>
+                {{move.pvpEpt}}
+            </td >
+            <td colspan="2">
+                {{move.pvpTotal}}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" colspan="11">
+                <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <!-- pve fast moves -->
+    <table class="table table-hover table-fixed" ng-show="currentTab === 'pveFast'"
+           st-table="displayedFastMoves"
+           st-safe-src="fastMoves"
+           st-persist="fastMovesTable">
+        <thead>
+        <tr>
+            <th class="sortable" colspan="2" st-sort="name">Move</th>
+            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" st-sort="pveDamage">D</th>
+            <th class="sortable" st-sort="pveEnergy">E</th>
+            <th class="sortable" st-sort="pveCooldown">CD</th>
+            <th class="sortable" st-sort="pveDps">DPS</th>
+            <th class="sortable" st-sort="pveEps">EPS</th>
+            <th class="sortable" colspan="2" st-sort="pveTotal">DPS x EPS</th>
+        </tr>
+        <tr>
+            <th colspan="6">
+                <input placeholder="Search Moves" class="form-control" type="search"
+                       ng-model="searchFastMove" st-search="name" />
+            </th>
+            <th colspan="5">
+                <input placeholder="Search Types" class="form-control" type="search"
+                       ng-model="searchType" st-search="type" />
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="move in displayedFastMoves track by move.name">
+            <td colspan="2" class="td-overflow">
+                {{move.name}}
+            </td>
+            <td colspan="2">
+                <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                </div>
+            </td>
+            <td>
+                {{move.pveDamage}}
+            </td>
+            <td>
+                {{move.pveEnergy}}
+            </td>
+            <td>
+                {{move.pveCooldown}}
+            </td>
+            <td>
+                {{move.pveDps}}
+            </td>
+            <td>
+                {{move.pveEps}}
+            </td >
+            <td colspan="2">
+                {{move.pveTotal}}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" colspan="11">
+                <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <!-- pvp charge moves -->
+    <table class="table table-hover table-fixed" ng-show="currentTab === 'pvpCharge'"
+           st-table="displayedChargeMoves"
+           st-safe-src="chargeMoves"
+           st-persist="chargeMovesTable">
+        <thead>
+        <tr>
+            <th class="sortable" colspan="2" st-sort="name">Move</th>
+            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" st-sort="pvpDamage">D</th>
+            <th class="sortable" st-sort="pvpEnergy">E</th>
+            <th class="sortable" colspan="2" st-sort="pvpDpe">DPE</th>
+            <th class="sortable" st-sort="pvpEffectChance"
+                data-toggle="tooltip" data-placement="top" title="Chance to apply buff/debuff">%</th>
+            <th class="sortable" st-sort="pvpEffectStat"
+                data-toggle="tooltip" data-placement="top" title="(A)TK, (D)EF, or (B)oth">&plusmn;</th>
+            <th class="sortable" st-sort="pvpEffectTarget"
+                data-toggle="tooltip" data-placement="top" title="(S)elf or (O)pponent">&times;</th>
+        </tr>
+        <tr>
+            <th colspan="3">
+                <input placeholder="Moves" class="form-control" type="search"
+                       ng-model="searchChargeMove" st-search="name" />
+            </th>
+            <th colspan="2">
+                <input placeholder="Types" class="form-control" type="search"
+                       ng-model="searchType" st-search="type" />
+            </th>
+            <th colspan="2">
+                <input placeholder="%" class="form-control" type="search"
+                       ng-model="searchEffectChance" st-search="pvpEffectChance" />
+            </th>
+            <th colspan="2">
+                <input placeholder="Stat" class="form-control" type="search"
+                       ng-model="searchEffectStat" st-search="pvpEffectStat" />
+            </th>
+            <th colspan="2">
+                <input placeholder="Target" class="form-control" type="search"
+                       ng-model="searchEffectTarget" st-search="pvpEffectTarget" />
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="move in displayedChargeMoves track by move.name">
+            <td colspan="2" class="td-overflow">
+                {{move.name}}
+            </td>
+            <td colspan="2">
+                <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                </div>
+            </td>
+            <td>
+                {{move.pvpDamage}}
+            </td>
+            <td>
+                {{move.pvpEnergy}}
+            </td>
+            <td colspan="2">
+                {{move.pvpDpe}}
+            </td>
+            <td>
+                {{move.pvpEffectChance}}
+            </td>
+            <td>
+                {{move.pvpEffectStat}}
+            </td>
+            <td>
+                {{move.pvpEffectTarget}}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" colspan="11">
+                <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <!-- pve charge moves -->
+    <table class="table table-hover table-fixed" ng-show="currentTab === 'pveCharge'"
+           st-table="displayedChargeMoves"
+           st-safe-src="chargeMoves"
+           st-persist="chargeMovesTable">
+        <thead>
+        <tr>
+            <th class="sortable" colspan="2" st-sort="name">Move</th>
+            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" st-sort="pveDamage">D</th>
+            <th class="sortable" st-sort="pveEnergy">E</th>
+            <th class="sortable" st-sort="pveCooldown">CD</th>
+            <th class="sortable" st-sort="pveDpe">DPE</th>
+            <th class="sortable" st-sort="pveDps">DPS</th>
+            <th class="sortable" colspan="2" st-sort="pveTotal">DPE x DPS</th>
+        </tr>
+        <tr>
+            <th colspan="6">
+                <input placeholder="Moves" class="form-control" type="search"
+                       ng-model="searchChargeMove" st-search="name" />
+            </th>
+            <th colspan="5">
+                <input placeholder="Types" class="form-control" type="search"
+                       ng-model="searchType" st-search="type" />
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="move in displayedChargeMoves track by move.name">
+            <td colspan="2" class="td-overflow">
+                {{move.name}}
+            </td>
+            <td colspan="2">
+                <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                </div>
+            </td>
+            <td>
+                {{move.pveDamage}}
+            </td>
+            <td>
+                {{move.pveEnergy}}
+            </td>
+            <td>
+                {{move.pveCooldown}}
+            </td>
+            <td>
+                {{move.pveDpe}}
+            </td>
+            <td>
+                {{move.pveDps}}
+            </td>
+            <td colspan="2">
+                {{move.pveTotal}}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" colspan="11">
+                <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

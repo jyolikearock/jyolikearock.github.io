@@ -1,7 +1,7 @@
 'use strict';
 
 // set default global values
-var pageSize = 13;
+var pageSize = 9;
 var showSettings = true;
 var maxCP = 9999;
 var atkIv = 15;
@@ -18,8 +18,7 @@ var app = angular.module('app', [
   'ngRoute',
   'smart-table',
   'app.pokemons',
-  'app.fastMoves',
-  'app.chargeMoves'
+  'app.moves',
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

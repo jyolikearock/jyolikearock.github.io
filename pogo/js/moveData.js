@@ -696,8 +696,39 @@ var fastMoves =
 ];
 
 var fastMovesMap = {};
+
 fastMoves.forEach(
     function(move) {
+        let pd = move.pvpDamage;
+        let pe = move.pvpEnergy;
+        let pt = move.pvpTurns;
+
+        let dpt = pd / pt;
+        let ept = pe / pt;
+        let dptEpt = dpt * ept;
+
+        dpt = round2(dpt);
+        move.pvpDpt = dpt;
+        ept = round2(ept);
+        move.pvpEpt = ept;
+        dptEpt = round2(dptEpt);
+        move.pvpTotal = dptEpt;
+
+        let ed = move.pveDamage;
+        let ee = move.pveEnergy;
+        let ec = move.pveCooldown;
+
+        let dps = ed / ec;
+        let eps = ee / ec;
+        let dpsEps = dps * eps;
+
+        dps = round1(dps);
+        move.pveDps = dps;
+        eps = round1(eps);
+        move.pveEps = eps;
+        dpsEps = round(dpsEps);
+        move.pveTotal = dpsEps;
+
         let name = move.name;
         fastMovesMap[name] = move;
     }
@@ -2936,7 +2967,66 @@ var chargeMoves =
 var chargeMovesMap = {};
 chargeMoves.forEach(
     function(move) {
+        let pd = move.pvpDamage;
+        let pe = move.pvpEnergy;
+
+        let dpe = pe === 0 ? 0 : pd / pe;
+        dpe = round2(dpe);
+        move.pvpDpe = dpe;
+
+        let ed = move.pveDamage;
+        let ee = move.pveEnergy;
+        let ec = move.pveCooldown;
+
+        let dps = ec === 0 ? 0 : ed / ec;
+        let eDpe = ee === 0 ? 0 : ed / ee;
+        let dpsDpe = dps * dpe;
+
+        dps = round1(dps);
+        move.pveDps = dps;
+        eDpe = round1(eDpe);
+        move.pveDpe = eDpe;
+        dpsDpe = round(dpsDpe);
+        move.pveTotal = dpsDpe;
+
         let name = move.name;
+        if (move.pvpEffectChance === "N/A") {
+            move.pvpEffectChance = "";
+            move.pvpEffectStat = "";
+            move.pvpEffectDelta = "";
+            move.pvpEffectTarget = "";
+        }
+        else {
+            if (move.pvpEffectTarget === "Self") {
+                move.pvpEffectTarget = "S";
+            }
+            if (move.pvpEffectTarget === "Opponent") {
+                move.pvpEffectTarget = "O";
+            }
+            if (move.pvpEffectStat === "ATK") {
+                move.pvpEffectStat = "A";
+            }
+            if (move.pvpEffectStat === "DEF") {
+                move.pvpEffectStat = "D";
+            }
+            if (move.pvpEffectStat === "ATK/DEF") {
+                move.pvpEffectStat = "B";
+            }
+            move.pvpEffectStat = move.pvpEffectDelta + " " + move.pvpEffectStat;
+        }
+
         chargeMovesMap[name] = move;
     }
 );
+
+function round2(n) {
+    return Math.round(n * 100) / 100;
+}
+
+function round1(n) {
+    return Math.round(n * 10) / 10;
+}
+
+function round(n) {
+    return Math.round(n);
+}
