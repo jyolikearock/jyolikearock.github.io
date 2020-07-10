@@ -60,11 +60,15 @@
             </div>
 
             <!-- type filter -->
+            <div>
+                <label class="form-label mt-2 mb-0">Type Filters: </label>
+                <p class="text-muted mb-3"><small>Click a type twice to filter single-type Pokemon</small></p>
+            </div>
             <div class="row">
                 <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
                 <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                     <div class="row">
-                        <div ng-repeat="type in types" class="col-2 mt-2" ng-click="toggleTypeFilter(type)">
+                        <div ng-repeat="type in types" class="col-2 mt-2" ng-click="filterType(type)">
                             <div class="icon"
                                  ng-class="isTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
                                 <img ng-src="{{getIconPath(type)}}" data-toggle="tooltip" data-placement="top" title="{{type}}">

@@ -101,9 +101,12 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     // type filter
-    $scope.toggleTypeFilter = function(type) {
+    $scope.filterType = function(type) {
         let index = typeFilter.indexOf(type);
 
+        // if filter already contains type,
+        // change filter type to single-type only (if filter only contains this type)
+        // or remove this type from filter
         if (index > -1) {
             if (oneTypeOnly || typeFilter.length === 2) {
                 typeFilter.splice(index, 1);
@@ -113,8 +116,11 @@ angular.module('app.pokemons', ['ngRoute'])
                 oneTypeOnly = true;
             }
         }
+        // if filter does not contain type,
+        // if filter is already full (2 types), clear it, and set it to this type
+        // or simply add this type to filter
         else {
-            if (typeFilter.length === 2) {
+            if (typeFilter.length === 2 || oneTypeOnly) {
                 typeFilter = [];
             }
             typeFilter.push(type);
