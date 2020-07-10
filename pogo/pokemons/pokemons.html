@@ -5,15 +5,16 @@
                 <h5 class="card-title">Pokemon</h5>
                 <span class="d-none">{{refreshStats()}}</span>
             </div>
-            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleSettings()">
-                Settings
+            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
+                Options
             </button>
         </div>
 
-        <form ng-show="shouldShowSettings()">
+        <div ng-show="shouldshowOptions()">
+            <!-- max cp -->
             <div class="form-group row">
-                <label class="col-3 col-lg-2 mt-2 col-form-label">Max CP:</label>
-                <div class="col-9 col-lg-4 mt-2">
+                <label class="col-4 col-lg-2 mt-2 col-form-label">Max CP:</label>
+                <div class="col-8 col-lg-4 mt-2">
                     <input class="form-control" type="text" ng-model="maxCP" />
                 </div>
                 <div class="btn-group ml-auto mr-3 mt-2" role="group">
@@ -31,32 +32,52 @@
                     </button>
                 </div>
             </div>
+
+            <!-- IVs -->
             <div class="form-group row">
-                <label class="col-3 col-lg-1 mt-2 col-form-label">ATK IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">ATK IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="atkIv" type="number"/>
                 </div>
-                <div class="col-4 d-lg-none"></div>
-                <label class="col-3 col-lg-1 mt-2 col-form-label">DEF IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">DEF IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="defIv" type="number"/>
                 </div>
-                <div class="col-4 d-lg-none"></div>
-                <label class="col-3 col-lg-1 mt-2 col-form-label">HP IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">HP IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="hpIv" type="number"/>
                 </div>
-                <div class="btn btn-dark ml-auto mr-3 mt-2" ng-click="refreshPage()">
-                    Refresh Page
-                </div>
             </div>
-        </form>
+
+            <!-- type filter -->
+            <div class="row">
+                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
+                <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+                    <div class="row">
+                        <div ng-repeat="type in types" class="col-2 mt-2" ng-click="toggleTypeFilter(type)">
+                            <div class="icon"
+                                 ng-class="isTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                <img ng-src="{{getIconPath(type)}}" data-toggle="tooltip" data-placement="top" title="{{type}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
+            </div>
+
+            <div class="row mt-4">
+                <button  class="btn btn-dark ml-auto mr-3" ng-click="refreshPage()">
+                    Save URL
+                </button>
+            </div>
+        </div>
     </div>
 
     <table class="table table-hover table-fixed"
            st-table="displayedPokemons"
            st-safe-src="pokemons"
-           st-persist="pokemonsTable">
+           st-persist="pokemonsTable"
+           refresh-table>
         <thead>
         <tr>
             <th class="sortable" colspan="2" st-sort="name">Pokemon</th>
@@ -90,7 +111,7 @@
                 <div class="row">
                     <div ng-repeat="type in pokemon.type" class="col-4">
                         <div class="icon" ng-class="type.toLowerCase()">
-                            <img ng-src="{{getIconPath(type)}}" alt="{{type}}">
+                            <img ng-src="{{getIconPath(type)}}" data-toggle="tooltip" data-placement="top" title="{{type}}">
                         </div>
                     </div>
                 </div>

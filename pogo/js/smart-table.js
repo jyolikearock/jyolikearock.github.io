@@ -79,6 +79,11 @@ ng.module('smart-table').controller('stTableController', [
       return src ? [].concat(src) : [];
     }
 
+    // @jyolikearock: make updateSafeCopy public
+    this.updateSafeCopy = function() {
+        updateSafeCopy();
+    }
+
     function updateSafeCopy() {
       safeCopy = copyRefs(safeGetter($scope));
       if (pipeAfterSafeCopy === true) {
@@ -186,7 +191,7 @@ ng.module('smart-table').controller('stTableController', [
       var output;
 
       // @jyolikearock: apply filter and sort only if safe copy of table is not empty
-      if (safeCopy.length > 0) {
+      if (safeCopy.length > -1) {
         filtered = tableState.search.predicateObject
           ? filter(safeCopy, tableState.search.predicateObject)
           : safeCopy;
@@ -212,6 +217,11 @@ ng.module('smart-table').controller('stTableController', [
         }
       }
       displaySetter($scope, output || filtered);
+
+      // @jyolikearock: enable tooltips on each refresh of table
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
     };
 
     /**

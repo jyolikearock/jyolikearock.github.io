@@ -1,6 +1,3 @@
-// find:
-// replace:
-
 var fastMoves =
 [
 	{
@@ -697,6 +694,7 @@ var fastMoves =
 
 var fastMovesMap = {};
 
+// populate moves data with some extra values derived from base data
 fastMoves.forEach(
     function(move) {
         let pd = move.pvpDamage;
@@ -733,9 +731,6 @@ fastMoves.forEach(
         fastMovesMap[name] = move;
     }
 );
-
-// find:
-// replace:
 
 var chargeMoves =
 [
@@ -923,6 +918,19 @@ var chargeMoves =
 	},
 	{
 		"name": "Body Slam (Community Day)",
+		"type": "Normal",
+		"pvpDamage": 60,
+		"pvpEnergy": 35,
+		"pvpEffectChance": "N/A",
+		"pvpEffectStat": "N/A",
+		"pvpEffectDelta": "N/A",
+		"pvpEffectTarget": "N/A",
+		"pveDamage": 50,
+		"pveEnergy": 33,
+		"pveCooldown": 1.9
+	},
+	{
+		"name": "Body Slam (Legacy)",
 		"type": "Normal",
 		"pvpDamage": 60,
 		"pvpEnergy": 35,
@@ -1559,7 +1567,7 @@ var chargeMoves =
 		"pveCooldown": 2
 	},
 	{
-		"name": "Futuresight",
+		"name": "Future Sight",
 		"type": "Psychic",
 		"pvpDamage": 120,
 		"pvpEnergy": 65,
@@ -2965,6 +2973,8 @@ var chargeMoves =
 ];
 
 var chargeMovesMap = {};
+
+// populate moves data with some extra values derived from base data
 chargeMoves.forEach(
     function(move) {
         let pd = move.pvpDamage;
@@ -2997,22 +3007,16 @@ chargeMoves.forEach(
             move.pvpEffectTarget = "";
         }
         else {
-            if (move.pvpEffectTarget === "Self") {
-                move.pvpEffectTarget = "S";
-            }
-            if (move.pvpEffectTarget === "Opponent") {
-                move.pvpEffectTarget = "O";
-            }
-            if (move.pvpEffectStat === "ATK") {
-                move.pvpEffectStat = "A";
-            }
-            if (move.pvpEffectStat === "DEF") {
-                move.pvpEffectStat = "D";
-            }
+            let pvpEffect = move.pvpEffectChance;
+            pvpEffect += " " + move.pvpEffectDelta;
             if (move.pvpEffectStat === "ATK/DEF") {
-                move.pvpEffectStat = "B";
+                pvpEffect += " AD";
             }
-            move.pvpEffectStat = move.pvpEffectDelta + " " + move.pvpEffectStat;
+            else {
+                pvpEffect += " " + move.pvpEffectStat.charAt(0);
+            }
+            pvpEffect += " " + move.pvpEffectTarget.charAt(0);
+            move.pvpEffect = pvpEffect;
         }
 
         chargeMovesMap[name] = move;

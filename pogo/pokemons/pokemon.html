@@ -1,20 +1,21 @@
-<div class="card mt-3 mb-3">
+<div class="card mt-3">
     <div class="card-body">
 
-        <!-- settings -->
         <div class="row">
             <div class="col-6">
-                <h5 class="card-title">{{refreshStatsAndGetName(pokemon)}}</h5>
+                <h5 class="card-title">{{pokemon.name}}</h5>
+                <span class="d-none">{{refreshStats()}}</span>
             </div>
             <button class="btn btn-secondary ml-auto mr-3" ng-click="go('/pokemons')">
                 < Back
             </button>
-            <button class="btn btn-secondary mr-3" ng-click="toggleSettings()">
-                Settings
+            <button class="btn btn-secondary mr-3" ng-click="toggleOptions()">
+                Options
             </button>
         </div>
 
-        <form ng-show="shouldShowSettings()">
+        <!-- options -->
+        <form ng-show="shouldshowOptions()">
             <div class="form-group row">
                 <label class="col-3 col-lg-2 mt-2 col-form-label">Max CP:</label>
                 <div class="col-9 col-lg-4 mt-2">
@@ -50,14 +51,14 @@
                 <div class="col-5 col-lg-2 mt-2">
                     <input class="form-control" ng-model="hpIv" type="number"/>
                 </div>
-                <div class="btn btn-dark ml-auto mr-3 mt-2" ng-click="refreshPage()">
-                    Refresh Page
-                </div>
+                <button class="btn btn-dark ml-auto mr-3 mt-2" ng-click="saveIvs()">
+                    Compare IVs
+                </button>
             </div>
         </form>
     </div>
 
-    <!-- content -->
+    <!-- stats -->
     <table class="table table-fixed">
         <tr>
             <th>ATK</th>
@@ -76,4 +77,177 @@
             <td>{{pokemon._cp}}</td>
         </tr>
     </table>
+</div>
+
+<!-- iv comparison -->
+<div class="card mt-3" ng-show="showIvs()">
+    <div class="card-body"></div>
+    <table class="table table-fixed">
+        <tr>
+            <th colspan="2">IVs</th>
+            <th>Lv</th>
+            <th>ATK</th>
+            <th>DEF</th>
+            <th>HP</th>
+            <th>Bulk</th>
+            <th>Tot</th>
+            <th>CP</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="ivs in getIvs()">
+            <td colspan="2">{{ivs.ivs}}</td>
+            <td>{{ivs.level}}</td>
+            <td>{{ivs.atk}}</td>
+            <td>{{ivs.def}}</td>
+            <td>{{ivs.hp}}</td>
+            <td>{{ivs.bulk}}</td>
+            <td>{{ivs.total}}</td>
+            <td>{{ivs.cp}}</td>
+            <td ng-click="removeIvs(ivs)">&times;</td>
+        </tr>
+    </table>
+</div>
+
+<!-- moves -->
+<div class="card mt-3">
+    <div class="card-header">
+        <ul class="nav nav-tabs nav-fill card-header-tabs">
+            <li class="nav-item">
+                <div class="nav-link" ng-class="isPvp() ? 'active' : ''"
+                     ng-click="showTab('pvpFast')">PvP</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="isPvp() ? '' : 'active'"
+                     ng-click="showTab('pveFast')">PvE</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body row" ng-show="isPvp()">
+        <div class="col-12 col-lg-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Fast Moves</h6>
+                </div>
+                <table class="table table-fixed">
+                    <tr>
+                        <th colspan="2">Move</th>
+                        <th>Type</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>T</th>
+                        <th>DPT</th>
+                        <th>EPT</th>
+                    </tr>
+                    <tr ng-repeat="move in getFastMoves(pokemon)">
+                        <td colspan="2">{{move.name}}</td>
+                        <td>
+                            <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                                <img ng-src="{{getIconPath(move.type)}}" title="{{move.type}}">
+                            </div>
+                        </td>
+                        <td>{{move.pvpDamage}}</td>
+                        <td>{{move.pvpEnergy}}</td>
+                        <td>{{move.pvpTurns}}</td>
+                        <td>{{move.pvpDpt}}</td>
+                        <td>{{move.pvpEpt}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Charge Moves</h6>
+                </div>
+                <table class="table table-fixed">
+                    <tr>
+                        <th colspan="2">Move</th>
+                        <th>Type</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>DPE</th>
+                        <th colspan="2">Effect</th>
+                    </tr>
+                    <tr ng-repeat="move in getChargeMoves(pokemon)">
+                        <td colspan="2">{{move.name}}</td>
+                        <td>
+                            <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                                <img ng-src="{{getIconPath(move.type)}}" title="{{move.type}}">
+                            </div>
+                        </td>
+                        <td>{{move.pvpDamage}}</td>
+                        <td>{{move.pvpEnergy}}</td>
+                        <td>{{move.pvpDpe}}</td>
+                        <td colspan="2">{{move.pvpEffect}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body row" ng-show="!isPvp()">
+        <div class="col-12 col-lg-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Fast Moves</h6>
+                </div>
+                <table class="table table-fixed">
+                    <tr>
+                        <th colspan="2">Move</th>
+                        <th>Type</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>CD</th>
+                        <th>DPS</th>
+                        <th>EPS</th>
+                    </tr>
+                    <tr ng-repeat="move in getFastMoves(pokemon)">
+                        <td colspan="2">{{move.name}}</td>
+                        <td>
+                            <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                                <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                            </div>
+                        </td>
+                        <td>{{move.pveDamage}}</td>
+                        <td>{{move.pveEnergy}}</td>
+                        <td>{{move.pveCooldown}}</td>
+                        <td>{{move.pveDps}}</td>
+                        <td>{{move.pveEps}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Charge Moves</h6>
+                </div>
+                <table class="table table-fixed">
+                    <tr>
+                        <th colspan="2">Move</th>
+                        <th>Type</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>CD</th>
+                        <th>DPE</th>
+                        <th>DPS</th>
+                    </tr>
+                    <tr ng-repeat="move in getChargeMoves(pokemon)">
+                        <td colspan="2">{{move.name}}</td>
+                        <td>
+                            <div class="icon ml-1" ng-class="move.type.toLowerCase()">
+                                <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                            </div>
+                        </td>
+                        <td>{{move.pveDamage}}</td>
+                        <td>{{move.pveEnergy}}</td>
+                        <td>{{move.pveCooldown}}</td>
+                        <td>{{move.pveDpe}}</td>
+                        <td>{{move.pveDps}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

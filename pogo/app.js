@@ -2,7 +2,7 @@
 
 // set default global values
 var pageSize = 9;
-var showSettings = true;
+var showOptions = true;
 var maxCP = 9999;
 var atkIv = 15;
 var defIv = 15;
@@ -13,7 +13,7 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
 
-// Declare app level module which depends on views, and core components
+// Declare app level module which depends on views and core components
 var app = angular.module('app', [
   'ngRoute',
   'smart-table',
@@ -31,7 +31,7 @@ app.run(function($rootScope) {
     }
 });
 
-// custom smart-table directive for persisting table view
+// custom smart-table directive for persisting table view across sessions (saves to local storage on client side)
 app.directive('stPersist', function () {
   return {
     require: '^stTable',
@@ -58,3 +58,15 @@ app.directive('stPersist', function () {
     }
   };
 });
+
+app.directive("refreshTable", function(){
+    return {
+        require:'stTable',
+        restrict: "A",
+        link:function(scope,elem,attr,table){
+            scope.$on("refreshTable", function() {
+                console.log("received broadcast; calling table.pipe()");
+                table.pipe(table.tableState());
+            });
+    }
+}});

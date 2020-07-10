@@ -1,5 +1,9 @@
 'use strict';
 
+var ivsMap = {};
+var ivsId = 0;
+var typeFilter = [];
+
 angular.module('app.pokemons', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -14,12 +18,15 @@ angular.module('app.pokemons', ['ngRoute'])
     });
 }])
 
-.controller('pokemonsController', ['$scope', '$http', '$location', '$routeParams',
-    function($scope, $http, $location, $routeParams) {
+.controller('pokemonsController', ['$scope', '$http', '$location', '$routeParams', '$timeout',
+    function($scope, $http, $location, $routeParams, $timeout) {
 
     // initialize page settings
     $scope.pageSize = pageSize;
     $scope.currentPage = 1;
+    $scope.currentTab = currentTab;
+    $scope.ivsMap = ivsMap;
+    $scope.types = types;
 
     // extract user-defined values from url query params
     let params = $location.search();
@@ -33,16 +40,25 @@ angular.module('app.pokemons', ['ngRoute'])
     $scope.hpIv = hpIv;
 
     // populate pokemon stats based on user inputs
+    // for refreshing stats in real-time
+    function evaluateStatsHelper(pokemon) {
+        maxCP = validateCP($scope.maxCP);
+        atkIv = validateAtkIv($scope.atkIv);
+        defIv = validateDefIv($scope.defIv);
+        hpIv = validateHpIv($scope.hpIv);
+        evaluateStatsWithCpCap(pokemon, maxCP, atkIv, defIv, hpIv);
+    }
+
     $scope.refreshStats = function() {
         pokemons.forEach(
             function(pokemon) {
                 evaluateStatsHelper(pokemon);
             }
         )
-        $scope.pokemons = pokemons;
     }
     console.log("Evaluating stats for " + pokemons.length + " pokemon");
     $scope.refreshStats();
+    $scope.pokemons = pokemons;
 
     // get pokemon name if provided in route
     var pokemonName = $routeParams["pokemon"];
@@ -51,20 +67,6 @@ angular.module('app.pokemons', ['ngRoute'])
         let pokemon = pokemonsMap[pokemonName];
         evaluateStatsHelper(pokemon);
         $scope.pokemon = pokemon;
-    }
-
-    // for refreshing stats in real-time
-    $scope.refreshStatsAndGetName = function(pokemon) {
-        evaluateStatsHelper(pokemon);
-        return pokemon.name;
-    }
-
-    function evaluateStatsHelper(pokemon) {
-        maxCP = validateCP($scope.maxCP);
-        atkIv = validateAtkIv($scope.atkIv);
-        defIv = validateDefIv($scope.defIv);
-        hpIv = validateHpIv($scope.hpIv);
-        evaluateStatsWithCpCap(pokemon, maxCP, atkIv, defIv, hpIv);
     }
 
     // routing methods
@@ -97,6 +99,133 @@ angular.module('app.pokemons', ['ngRoute'])
         $location.path(path).search(params);
     }
 
+    // type filter
+    $scope.toggleTypeFilter = function(type) {
+        let index = typeFilter.indexOf(type);
+
+        if (index > -1) {
+            typeFilter.splice(index, 1);
+        }
+        else {
+            if (typeFilter.length === 2) {
+                typeFilter = [];
+            }
+            typeFilter.push(type);
+        }
+
+        console.log("type filter: " + typeFilter);
+        applyTypeFilter();
+    }
+
+    $scope.isTypeActive = function(type) {
+        return (typeFilter.indexOf(type) > -1);
+    }
+
+    function applyTypeFilter() {
+        let temp = [];
+
+        if (typeFilter.length === 0) {
+            temp = pokemons;
+        }
+
+        else {
+            temp = pokemons.filter(
+                function(pokemon) {
+                    return isType(pokemon, typeFilter);
+                }
+            );
+            console.log("filtered pokemon: " + temp.length);
+        }
+
+        $scope.pokemons = temp;
+        $scope.$broadcast('refreshTable');
+    }
+
+    function isType(pokemon, typesToMatch) {
+        for (let i = 0; i < typesToMatch.length; i++) {
+            let type = typesToMatch[i];
+            if (!pokemon.type.includes(type)) {
+                return false;
+            }
+            else if (pokemon.type.length > 1 && typesToMatch.length == 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // for iv comparison
+    $scope.showIvs = function() {
+        let ivs = $scope.ivsMap[$scope.pokemon.name];
+        return (ivs !== undefined && ivs.length > 0);
+    }
+
+    $scope.saveIvs = function() {
+        let ivs = $scope.ivsMap[$scope.pokemon.name];
+        if (ivs === undefined) {
+            ivs = [];
+            $scope.ivsMap[$scope.pokemon.name] = ivs;
+        }
+
+        let newIvs = {};
+        newIvs.id = ivsId;
+        ivsId++;
+        newIvs.ivs = $scope.atkIv + " / " + $scope.defIv + " / " + $scope.hpIv;
+        newIvs.level = $scope.pokemon._level;
+        newIvs.atk = $scope.pokemon._atk;
+        newIvs.def = $scope.pokemon._def;
+        newIvs.hp = $scope.pokemon._hp;
+        newIvs.bulk = $scope.pokemon._bulk;
+        newIvs.total = $scope.pokemon._total;
+        newIvs.cp = $scope.pokemon._cp;
+
+        ivs.push(newIvs);
+    }
+
+    $scope.removeIvs = function(ivs) {
+        let name = $scope.pokemon.name;
+        let currentIvs = $scope.ivsMap[name];
+        $scope.ivsMap[name] = currentIvs.filter(
+            function(e) {
+                return e.id !== ivs.id;
+            }
+        );
+    }
+
+    $scope.getIvs = function() {
+        return $scope.ivsMap[$scope.pokemon.name];
+    }
+
+    // for fetching move data
+    $scope.getFastMoves = function(pokemon) {
+        let fastMoves = [];
+        pokemon.fastMoves.forEach(
+            function(move) {
+                fastMoves.push(fastMovesMap[move]);
+            }
+        )
+        return fastMoves;
+    }
+
+    $scope.getChargeMoves = function(pokemon) {
+        let chargeMoves = [];
+        pokemon.chargeMoves.forEach(
+            function(move) {
+                chargeMoves.push(chargeMovesMap[move]);
+            }
+        )
+        return chargeMoves;
+    }
+
+    $scope.showTab = function(tab) {
+        currentTab = tab;
+        $scope.currentTab = tab;
+    }
+
+    $scope.isPvp = function() {
+        return $scope.currentTab.includes('pvp');
+    }
+
     // utility methods
     $scope.setCurrentPage = function(page) {
         $scope.currentPage = page;
@@ -106,13 +235,13 @@ angular.module('app.pokemons', ['ngRoute'])
         return (($scope.currentPage - 1) * $scope.pageSize) + rowOnPage + 1;
     }
 
-    $scope.shouldShowSettings = function() {
-        return showSettings;
+    $scope.shouldshowOptions = function() {
+        return showOptions;
     }
 
-    $scope.toggleSettings = function() {
-        showSettings = !showSettings;
-        console.log("toggling settings; display: " + showSettings);
+    $scope.toggleOptions = function() {
+        showOptions = !showOptions;
+        console.log("toggling options; display: " + showOptions);
     }
 
     function validateCP(cp) {

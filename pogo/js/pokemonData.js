@@ -8,8 +8,8 @@ var pokemons =
 		"name": "Bulbasaur",
 		"id": 1,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 118,
 		"def": 111,
@@ -21,8 +21,8 @@ var pokemons =
 		"name": "Ivysaur",
 		"id": 2,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 151,
 		"def": 143,
@@ -34,8 +34,8 @@ var pokemons =
 		"name": "Venusaur",
 		"id": 3,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 198,
 		"def": 189,
@@ -47,7 +47,7 @@ var pokemons =
 		"name": "Charmander",
 		"id": 4,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 116,
 		"def": 93,
@@ -59,7 +59,7 @@ var pokemons =
 		"name": "Charmeleon",
 		"id": 5,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 158,
 		"def": 126,
@@ -71,8 +71,8 @@ var pokemons =
 		"name": "Charizard",
 		"id": 6,
 		"type": [
-			"FIRE",
-			"FLYING"
+			"Fire",
+			"Flying"
 		],
 		"atk": 223,
 		"def": 173,
@@ -84,7 +84,7 @@ var pokemons =
 		"name": "Squirtle",
 		"id": 7,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 94,
 		"def": 121,
@@ -96,7 +96,7 @@ var pokemons =
 		"name": "Wartortle",
 		"id": 8,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 126,
 		"def": 155,
@@ -108,7 +108,7 @@ var pokemons =
 		"name": "Blastoise",
 		"id": 9,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 171,
 		"def": 207,
@@ -120,7 +120,7 @@ var pokemons =
 		"name": "Caterpie",
 		"id": 10,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 55,
 		"def": 55,
@@ -132,7 +132,7 @@ var pokemons =
 		"name": "Metapod",
 		"id": 11,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 45,
 		"def": 80,
@@ -144,8 +144,8 @@ var pokemons =
 		"name": "Butterfree",
 		"id": 12,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 167,
 		"def": 137,
@@ -157,8 +157,8 @@ var pokemons =
 		"name": "Weedle",
 		"id": 13,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 63,
 		"def": 50,
@@ -170,8 +170,8 @@ var pokemons =
 		"name": "Kakuna",
 		"id": 14,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 46,
 		"def": 75,
@@ -183,8 +183,8 @@ var pokemons =
 		"name": "Beedrill",
 		"id": 15,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 169,
 		"def": 130,
@@ -196,8 +196,8 @@ var pokemons =
 		"name": "Pidgey",
 		"id": 16,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 85,
 		"def": 73,
@@ -209,8 +209,8 @@ var pokemons =
 		"name": "Pidgeotto",
 		"id": 17,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 117,
 		"def": 105,
@@ -222,8 +222,8 @@ var pokemons =
 		"name": "Pidgeot",
 		"id": 18,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 166,
 		"def": 154,
@@ -235,7 +235,7 @@ var pokemons =
 		"name": "Rattata",
 		"id": 19,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 103,
 		"def": 70,
@@ -247,8 +247,8 @@ var pokemons =
 		"name": "Alolan Rattata",
 		"id": 19,
 		"type": [
-			"DARK",
-			"NORMAL"
+			"Dark",
+			"Normal"
 		],
 		"atk": 103,
 		"def": 70,
@@ -260,8 +260,8 @@ var pokemons =
 		"name": "Alolan Raticate",
 		"id": 20,
 		"type": [
-			"DARK",
-			"NORMAL"
+			"Dark",
+			"Normal"
 		],
 		"atk": 135,
 		"def": 154,
@@ -273,7 +273,7 @@ var pokemons =
 		"name": "Raticate",
 		"id": 20,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 161,
 		"def": 139,
@@ -285,8 +285,8 @@ var pokemons =
 		"name": "Spearow",
 		"id": 21,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 112,
 		"def": 60,
@@ -298,8 +298,8 @@ var pokemons =
 		"name": "Fearow",
 		"id": 22,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 182,
 		"def": 133,
@@ -311,7 +311,7 @@ var pokemons =
 		"name": "Ekans",
 		"id": 23,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 110,
 		"def": 97,
@@ -323,7 +323,7 @@ var pokemons =
 		"name": "Arbok",
 		"id": 24,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 167,
 		"def": 153,
@@ -335,7 +335,7 @@ var pokemons =
 		"name": "Pikachu",
 		"id": 25,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 112,
 		"def": 96,
@@ -347,7 +347,7 @@ var pokemons =
 		"name": "Pikachu Libre",
 		"id": 25,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 112,
 		"def": 96,
@@ -359,7 +359,7 @@ var pokemons =
 		"name": "Flying Pikachu",
 		"id": 25,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 111,
 		"def": 112,
@@ -371,7 +371,7 @@ var pokemons =
 		"name": "Alolan Raichu",
 		"id": 26,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 201,
 		"def": 154,
@@ -383,8 +383,8 @@ var pokemons =
 		"name": "Raichu",
 		"id": 26,
 		"type": [
-			"ELECTRIC",
-			"PSYCHIC"
+			"Electric",
+			"Psychic"
 		],
 		"atk": 193,
 		"def": 151,
@@ -396,7 +396,7 @@ var pokemons =
 		"name": "Alolan Sandshrew",
 		"id": 27,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 125,
 		"def": 129,
@@ -408,8 +408,8 @@ var pokemons =
 		"name": "Sandshrew",
 		"id": 27,
 		"type": [
-			"ICE",
-			"STEEL"
+			"Ice",
+			"Steel"
 		],
 		"atk": 126,
 		"def": 120,
@@ -421,7 +421,7 @@ var pokemons =
 		"name": "Alolan Sandslash",
 		"id": 28,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 177,
 		"def": 195,
@@ -433,8 +433,8 @@ var pokemons =
 		"name": "Sandslash",
 		"id": 28,
 		"type": [
-			"ICE",
-			"STEEL"
+			"Ice",
+			"Steel"
 		],
 		"atk": 182,
 		"def": 175,
@@ -446,7 +446,7 @@ var pokemons =
 		"name": "Nidoran Female",
 		"id": 29,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 86,
 		"def": 89,
@@ -458,7 +458,7 @@ var pokemons =
 		"name": "Nidorina",
 		"id": 30,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 117,
 		"def": 120,
@@ -470,8 +470,8 @@ var pokemons =
 		"name": "Nidoqueen",
 		"id": 31,
 		"type": [
-			"POISON",
-			"GROUND"
+			"Poison",
+			"Ground"
 		],
 		"atk": 180,
 		"def": 173,
@@ -483,7 +483,7 @@ var pokemons =
 		"name": "Nidoran Male",
 		"id": 32,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 105,
 		"def": 76,
@@ -495,7 +495,7 @@ var pokemons =
 		"name": "Nidorino",
 		"id": 33,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 137,
 		"def": 111,
@@ -507,8 +507,8 @@ var pokemons =
 		"name": "Nidoking",
 		"id": 34,
 		"type": [
-			"POISON",
-			"GROUND"
+			"Poison",
+			"Ground"
 		],
 		"atk": 204,
 		"def": 156,
@@ -520,7 +520,7 @@ var pokemons =
 		"name": "Clefairy",
 		"id": 35,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 107,
 		"def": 108,
@@ -532,7 +532,7 @@ var pokemons =
 		"name": "Clefable",
 		"id": 36,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 178,
 		"def": 162,
@@ -544,7 +544,7 @@ var pokemons =
 		"name": "Alolan Vulpix",
 		"id": 37,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 96,
 		"def": 109,
@@ -556,7 +556,7 @@ var pokemons =
 		"name": "Vulpix",
 		"id": 37,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 96,
 		"def": 109,
@@ -568,7 +568,7 @@ var pokemons =
 		"name": "Alolan Ninetales",
 		"id": 38,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 170,
 		"def": 193,
@@ -580,7 +580,7 @@ var pokemons =
 		"name": "Ninetales",
 		"id": 38,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 169,
 		"def": 190,
@@ -592,8 +592,8 @@ var pokemons =
 		"name": "Jigglypuff",
 		"id": 39,
 		"type": [
-			"NORMAL",
-			"FAIRY"
+			"Normal",
+			"Fairy"
 		],
 		"atk": 80,
 		"def": 41,
@@ -605,8 +605,8 @@ var pokemons =
 		"name": "Wigglytuff",
 		"id": 40,
 		"type": [
-			"NORMAL",
-			"FAIRY"
+			"Normal",
+			"Fairy"
 		],
 		"atk": 156,
 		"def": 90,
@@ -618,8 +618,8 @@ var pokemons =
 		"name": "Zubat",
 		"id": 41,
 		"type": [
-			"POISON",
-			"FLYING"
+			"Poison",
+			"Flying"
 		],
 		"atk": 83,
 		"def": 73,
@@ -631,8 +631,8 @@ var pokemons =
 		"name": "Golbat",
 		"id": 42,
 		"type": [
-			"POISON",
-			"FLYING"
+			"Poison",
+			"Flying"
 		],
 		"atk": 161,
 		"def": 150,
@@ -644,8 +644,8 @@ var pokemons =
 		"name": "Oddish",
 		"id": 43,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 131,
 		"def": 112,
@@ -657,8 +657,8 @@ var pokemons =
 		"name": "Gloom",
 		"id": 44,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 153,
 		"def": 136,
@@ -670,8 +670,8 @@ var pokemons =
 		"name": "Vileplume",
 		"id": 45,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 202,
 		"def": 167,
@@ -683,8 +683,8 @@ var pokemons =
 		"name": "Paras",
 		"id": 46,
 		"type": [
-			"BUG",
-			"GRASS"
+			"Bug",
+			"Grass"
 		],
 		"atk": 121,
 		"def": 99,
@@ -696,8 +696,8 @@ var pokemons =
 		"name": "Parasect",
 		"id": 47,
 		"type": [
-			"BUG",
-			"GRASS"
+			"Bug",
+			"Grass"
 		],
 		"atk": 165,
 		"def": 146,
@@ -709,8 +709,8 @@ var pokemons =
 		"name": "Venonat",
 		"id": 48,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 100,
 		"def": 100,
@@ -722,8 +722,8 @@ var pokemons =
 		"name": "Venomoth",
 		"id": 49,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 179,
 		"def": 143,
@@ -735,57 +735,57 @@ var pokemons =
 		"name": "Alolan Diglett",
 		"id": 50,
 		"type": [
-			"GROUND",
-			"STEEL"
+			"Ground",
+			"Steel"
 		],
 		"atk": 108,
 		"def": 81,
 		"hp": 67,
-		"fastMoves": "Metal Claw,Mud-Slap",
+		"fastMoves": "Metal Claw,Mud Slap",
 		"chargeMoves": "Dig,Rock Tomb,Mud Bomb",
 		"legendary": false
 	},{
 		"name": "Diglett",
 		"id": 50,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 109,
 		"def": 78,
 		"hp": 67,
-		"fastMoves": "Scratch,Mud-Slap",
+		"fastMoves": "Scratch,Mud Slap",
 		"chargeMoves": "Dig,Rock Tomb,Mud Bomb",
 		"legendary": false
 	},{
 		"name": "Alolan Dugtrio",
 		"id": 51,
 		"type": [
-			"GROUND",
-			"STEEL"
+			"Ground",
+			"Steel"
 		],
 		"atk": 201,
 		"def": 142,
 		"hp": 111,
-		"fastMoves": "Metal Claw,Mud-Slap",
+		"fastMoves": "Metal Claw,Mud Slap",
 		"chargeMoves": "Earthquake,Iron Head,Mud Bomb",
 		"legendary": false
 	},{
 		"name": "Dugtrio",
 		"id": 51,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 167,
 		"def": 134,
 		"hp": 111,
-		"fastMoves": "Sucker Punch,Mud-Slap",
+		"fastMoves": "Sucker Punch,Mud Slap",
 		"chargeMoves": "Earthquake,Stone Edge,Mud Bomb",
 		"legendary": false
 	},{
 		"name": "Alolan Meowth",
 		"id": 52,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 99,
 		"def": 78,
@@ -797,7 +797,7 @@ var pokemons =
 		"name": "Meowth",
 		"id": 52,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 92,
 		"def": 78,
@@ -809,7 +809,7 @@ var pokemons =
 		"name": "Galarian Meowth",
 		"id": 52,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 137,
 		"def": 115,
@@ -821,7 +821,7 @@ var pokemons =
 		"name": "Alolan Persian",
 		"id": 53,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 158,
 		"def": 136,
@@ -833,7 +833,7 @@ var pokemons =
 		"name": "Persian",
 		"id": 53,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 150,
 		"def": 136,
@@ -845,7 +845,7 @@ var pokemons =
 		"name": "Psyduck",
 		"id": 54,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 122,
 		"def": 95,
@@ -857,7 +857,7 @@ var pokemons =
 		"name": "Golduck",
 		"id": 55,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 191,
 		"def": 162,
@@ -869,7 +869,7 @@ var pokemons =
 		"name": "Mankey",
 		"id": 56,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 148,
 		"def": 82,
@@ -881,7 +881,7 @@ var pokemons =
 		"name": "Primeape",
 		"id": 57,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 207,
 		"def": 138,
@@ -893,7 +893,7 @@ var pokemons =
 		"name": "Growlithe",
 		"id": 58,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 136,
 		"def": 93,
@@ -905,7 +905,7 @@ var pokemons =
 		"name": "Arcanine",
 		"id": 59,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 227,
 		"def": 166,
@@ -917,7 +917,7 @@ var pokemons =
 		"name": "Poliwag",
 		"id": 60,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 101,
 		"def": 82,
@@ -929,7 +929,7 @@ var pokemons =
 		"name": "Poliwhirl",
 		"id": 61,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 130,
 		"def": 123,
@@ -941,8 +941,8 @@ var pokemons =
 		"name": "Poliwrath",
 		"id": 62,
 		"type": [
-			"WATER",
-			"FIGHTING"
+			"Water",
+			"Fighting"
 		],
 		"atk": 182,
 		"def": 184,
@@ -954,7 +954,7 @@ var pokemons =
 		"name": "Abra",
 		"id": 63,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 195,
 		"def": 82,
@@ -966,7 +966,7 @@ var pokemons =
 		"name": "Kadabra",
 		"id": 64,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 232,
 		"def": 117,
@@ -978,7 +978,7 @@ var pokemons =
 		"name": "Alakazam",
 		"id": 65,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 271,
 		"def": 167,
@@ -990,7 +990,7 @@ var pokemons =
 		"name": "Machop",
 		"id": 66,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 137,
 		"def": 82,
@@ -1002,7 +1002,7 @@ var pokemons =
 		"name": "Machoke",
 		"id": 67,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 177,
 		"def": 125,
@@ -1014,7 +1014,7 @@ var pokemons =
 		"name": "Machamp",
 		"id": 68,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 234,
 		"def": 159,
@@ -1026,8 +1026,8 @@ var pokemons =
 		"name": "Bellsprout",
 		"id": 69,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 139,
 		"def": 61,
@@ -1039,8 +1039,8 @@ var pokemons =
 		"name": "Weepinbell",
 		"id": 70,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 172,
 		"def": 92,
@@ -1052,8 +1052,8 @@ var pokemons =
 		"name": "Victreebel",
 		"id": 71,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 207,
 		"def": 135,
@@ -1065,8 +1065,8 @@ var pokemons =
 		"name": "Tentacool",
 		"id": 72,
 		"type": [
-			"WATER",
-			"POISON"
+			"Water",
+			"Poison"
 		],
 		"atk": 97,
 		"def": 149,
@@ -1078,8 +1078,8 @@ var pokemons =
 		"name": "Tentacruel",
 		"id": 73,
 		"type": [
-			"WATER",
-			"POISON"
+			"Water",
+			"Poison"
 		],
 		"atk": 166,
 		"def": 209,
@@ -1091,8 +1091,8 @@ var pokemons =
 		"name": "Alolan Geodude",
 		"id": 74,
 		"type": [
-			"ROCK",
-			"ELECTRIC"
+			"Rock",
+			"Electric"
 		],
 		"atk": 132,
 		"def": 132,
@@ -1104,8 +1104,8 @@ var pokemons =
 		"name": "Geodude",
 		"id": 74,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 132,
 		"def": 132,
@@ -1117,8 +1117,8 @@ var pokemons =
 		"name": "Alolan Graveler",
 		"id": 75,
 		"type": [
-			"ROCK",
-			"ELECTRIC"
+			"Rock",
+			"Electric"
 		],
 		"atk": 164,
 		"def": 164,
@@ -1130,21 +1130,21 @@ var pokemons =
 		"name": "Graveler",
 		"id": 75,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 164,
 		"def": 164,
 		"hp": 146,
-		"fastMoves": "Rock Throw,Mud-Slap",
+		"fastMoves": "Rock Throw,Mud Slap",
 		"chargeMoves": "Dig,Stone Edge,Rock Blast",
 		"legendary": false
 	},{
 		"name": "Alolan Golem",
 		"id": 76,
 		"type": [
-			"ROCK",
-			"ELECTRIC"
+			"Rock",
+			"Electric"
 		],
 		"atk": 211,
 		"def": 198,
@@ -1156,20 +1156,20 @@ var pokemons =
 		"name": "Golem",
 		"id": 76,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 211,
 		"def": 198,
 		"hp": 190,
-		"fastMoves": "Rock Throw,Mud-Slap",
+		"fastMoves": "Rock Throw,Mud Slap",
 		"chargeMoves": "Earthquake,Stone Edge,Ancient Power,Rock Blast",
 		"legendary": false
 	},{
 		"name": "Ponyta",
 		"id": 77,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 170,
 		"def": 127,
@@ -1181,7 +1181,7 @@ var pokemons =
 		"name": "Rapidash",
 		"id": 78,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 207,
 		"def": 162,
@@ -1193,8 +1193,8 @@ var pokemons =
 		"name": "Slowpoke",
 		"id": 79,
 		"type": [
-			"WATER",
-			"PSYCHIC"
+			"Water",
+			"Psychic"
 		],
 		"atk": 109,
 		"def": 98,
@@ -1206,8 +1206,8 @@ var pokemons =
 		"name": "Slowbro",
 		"id": 80,
 		"type": [
-			"WATER",
-			"PSYCHIC"
+			"Water",
+			"Psychic"
 		],
 		"atk": 177,
 		"def": 180,
@@ -1219,8 +1219,8 @@ var pokemons =
 		"name": "Magnemite",
 		"id": 81,
 		"type": [
-			"ELECTRIC",
-			"STEEL"
+			"Electric",
+			"Steel"
 		],
 		"atk": 165,
 		"def": 121,
@@ -1232,8 +1232,8 @@ var pokemons =
 		"name": "Magneton",
 		"id": 82,
 		"type": [
-			"ELECTRIC",
-			"STEEL"
+			"Electric",
+			"Steel"
 		],
 		"atk": 223,
 		"def": 169,
@@ -1245,8 +1245,8 @@ var pokemons =
 		"name": "Farfetch'd",
 		"id": 83,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 124,
 		"def": 115,
@@ -1258,7 +1258,7 @@ var pokemons =
 		"name": "Galarian Farfetch'd",
 		"id": 83,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 141,
 		"def": 174,
@@ -1270,8 +1270,8 @@ var pokemons =
 		"name": "Doduo",
 		"id": 84,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 158,
 		"def": 83,
@@ -1283,8 +1283,8 @@ var pokemons =
 		"name": "Dodrio",
 		"id": 85,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 218,
 		"def": 140,
@@ -1296,7 +1296,7 @@ var pokemons =
 		"name": "Seel",
 		"id": 86,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 85,
 		"def": 121,
@@ -1308,8 +1308,8 @@ var pokemons =
 		"name": "Dewgong",
 		"id": 87,
 		"type": [
-			"WATER",
-			"ICE"
+			"Water",
+			"Ice"
 		],
 		"atk": 139,
 		"def": 177,
@@ -1321,8 +1321,8 @@ var pokemons =
 		"name": "Alolan Grimer",
 		"id": 88,
 		"type": [
-			"POISON",
-			"DARK"
+			"Poison",
+			"Dark"
 		],
 		"atk": 135,
 		"def": 90,
@@ -1334,20 +1334,20 @@ var pokemons =
 		"name": "Grimer",
 		"id": 88,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 135,
 		"def": 90,
 		"hp": 190,
-		"fastMoves": "Poison Jab,Mud-Slap",
+		"fastMoves": "Poison Jab,Mud Slap",
 		"chargeMoves": "Sludge,Sludge Bomb,Mud Bomb,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Alolan Muk",
 		"id": 89,
 		"type": [
-			"POISON",
-			"DARK"
+			"Poison",
+			"Dark"
 		],
 		"atk": 190,
 		"def": 172,
@@ -1359,7 +1359,7 @@ var pokemons =
 		"name": "Muk",
 		"id": 89,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 190,
 		"def": 172,
@@ -1371,7 +1371,7 @@ var pokemons =
 		"name": "Shellder",
 		"id": 90,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 116,
 		"def": 134,
@@ -1383,8 +1383,8 @@ var pokemons =
 		"name": "Cloyster",
 		"id": 91,
 		"type": [
-			"WATER",
-			"ICE"
+			"Water",
+			"Ice"
 		],
 		"atk": 186,
 		"def": 256,
@@ -1396,8 +1396,8 @@ var pokemons =
 		"name": "Gastly",
 		"id": 92,
 		"type": [
-			"GHOST",
-			"POISON"
+			"Ghost",
+			"Poison"
 		],
 		"atk": 186,
 		"def": 67,
@@ -1409,8 +1409,8 @@ var pokemons =
 		"name": "Haunter",
 		"id": 93,
 		"type": [
-			"GHOST",
-			"POISON"
+			"Ghost",
+			"Poison"
 		],
 		"atk": 223,
 		"def": 107,
@@ -1422,8 +1422,8 @@ var pokemons =
 		"name": "Gengar",
 		"id": 94,
 		"type": [
-			"GHOST",
-			"POISON"
+			"Ghost",
+			"Poison"
 		],
 		"atk": 261,
 		"def": 149,
@@ -1435,8 +1435,8 @@ var pokemons =
 		"name": "Onix",
 		"id": 95,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 85,
 		"def": 232,
@@ -1448,7 +1448,7 @@ var pokemons =
 		"name": "Drowzee",
 		"id": 96,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 89,
 		"def": 136,
@@ -1460,7 +1460,7 @@ var pokemons =
 		"name": "Hypno",
 		"id": 97,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 144,
 		"def": 193,
@@ -1472,7 +1472,7 @@ var pokemons =
 		"name": "Krabby",
 		"id": 98,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 181,
 		"def": 124,
@@ -1484,7 +1484,7 @@ var pokemons =
 		"name": "Kingler",
 		"id": 99,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 240,
 		"def": 181,
@@ -1496,7 +1496,7 @@ var pokemons =
 		"name": "Voltorb",
 		"id": 100,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 109,
 		"def": 111,
@@ -1508,7 +1508,7 @@ var pokemons =
 		"name": "Electrode",
 		"id": 101,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 173,
 		"def": 173,
@@ -1520,8 +1520,8 @@ var pokemons =
 		"name": "Exeggcute",
 		"id": 102,
 		"type": [
-			"GRASS",
-			"PSYCHIC"
+			"Grass",
+			"Psychic"
 		],
 		"atk": 107,
 		"def": 125,
@@ -1533,8 +1533,8 @@ var pokemons =
 		"name": "Alolan Exeggutor",
 		"id": 103,
 		"type": [
-			"GRASS",
-			"PSYCHIC"
+			"Grass",
+			"Psychic"
 		],
 		"atk": 230,
 		"def": 153,
@@ -1546,8 +1546,8 @@ var pokemons =
 		"name": "Exeggutor",
 		"id": 103,
 		"type": [
-			"GRASS",
-			"DRAGON"
+			"Grass",
+			"Dragon"
 		],
 		"atk": 233,
 		"def": 149,
@@ -1559,20 +1559,20 @@ var pokemons =
 		"name": "Cubone",
 		"id": 104,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 90,
 		"def": 144,
 		"hp": 137,
-		"fastMoves": "Mud-Slap,Rock Smash",
+		"fastMoves": "Mud Slap,Rock Smash",
 		"chargeMoves": "Dig,Bone Club,Bulldoze,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Alolan Marowak",
 		"id": 105,
 		"type": [
-			"FIRE",
-			"GHOST"
+			"Fire",
+			"Ghost"
 		],
 		"atk": 144,
 		"def": 186,
@@ -1584,19 +1584,19 @@ var pokemons =
 		"name": "Marowak",
 		"id": 105,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 144,
 		"def": 186,
 		"hp": 155,
-		"fastMoves": "Mud-Slap,Rock Smash",
+		"fastMoves": "Mud Slap,Rock Smash",
 		"chargeMoves": "Dig,Earthquake,Bone Club,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Hitmonlee",
 		"id": 106,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 224,
 		"def": 181,
@@ -1608,7 +1608,7 @@ var pokemons =
 		"name": "Hitmonchan",
 		"id": 107,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 193,
 		"def": 197,
@@ -1620,19 +1620,19 @@ var pokemons =
 		"name": "Lickitung",
 		"id": 108,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 108,
 		"def": 137,
 		"hp": 207,
 		"fastMoves": "Lick,Zen Headbutt",
-		"chargeMoves": "Hyper Beam,Power Whip,Stomp,Body Slam (legacy)",
+		"chargeMoves": "Hyper Beam,Power Whip,Stomp,Body Slam (Legacy)",
 		"legendary": false
 	},{
 		"name": "Koffing",
 		"id": 109,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 119,
 		"def": 141,
@@ -1644,7 +1644,7 @@ var pokemons =
 		"name": "Weezing",
 		"id": 110,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 174,
 		"def": 197,
@@ -1656,8 +1656,8 @@ var pokemons =
 		"name": "Galarian Weezing",
 		"id": 110,
 		"type": [
-			"POISON",
-			"FAIRY"
+			"Poison",
+			"Fairy"
 		],
 		"atk": 174,
 		"def": 197,
@@ -1669,33 +1669,33 @@ var pokemons =
 		"name": "Rhyhorn",
 		"id": 111,
 		"type": [
-			"GROUND",
-			"ROCK"
+			"Ground",
+			"Rock"
 		],
 		"atk": 140,
 		"def": 127,
 		"hp": 190,
-		"fastMoves": "Mud-Slap,Rock Smash",
+		"fastMoves": "Mud Slap,Rock Smash",
 		"chargeMoves": "Bulldoze,Horn Attack,Stomp",
 		"legendary": false
 	},{
 		"name": "Rhydon",
 		"id": 112,
 		"type": [
-			"GROUND",
-			"ROCK"
+			"Ground",
+			"Rock"
 		],
 		"atk": 222,
 		"def": 171,
 		"hp": 233,
-		"fastMoves": "Mud-Slap,Rock Smash",
+		"fastMoves": "Mud Slap,Rock Smash",
 		"chargeMoves": "Earthquake,Stone Edge,Surf",
 		"legendary": false
 	},{
 		"name": "Chansey",
 		"id": 113,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 60,
 		"def": 128,
@@ -1707,7 +1707,7 @@ var pokemons =
 		"name": "Tangela",
 		"id": 114,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 183,
 		"def": 169,
@@ -1719,19 +1719,19 @@ var pokemons =
 		"name": "Kangaskhan",
 		"id": 115,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 181,
 		"def": 165,
 		"hp": 233,
-		"fastMoves": "Low Kick,Mud-Slap",
+		"fastMoves": "Low Kick,Mud Slap",
 		"chargeMoves": "Earthquake,Outrage,Crunch,Power-Up Punch",
 		"legendary": false
 	},{
 		"name": "Horsea",
 		"id": 116,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 129,
 		"def": 103,
@@ -1743,7 +1743,7 @@ var pokemons =
 		"name": "Seadra",
 		"id": 117,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 187,
 		"def": 156,
@@ -1755,7 +1755,7 @@ var pokemons =
 		"name": "Goldeen",
 		"id": 118,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 123,
 		"def": 110,
@@ -1767,7 +1767,7 @@ var pokemons =
 		"name": "Seaking",
 		"id": 119,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 175,
 		"def": 147,
@@ -1779,7 +1779,7 @@ var pokemons =
 		"name": "Staryu",
 		"id": 120,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 137,
 		"def": 112,
@@ -1791,8 +1791,8 @@ var pokemons =
 		"name": "Starmie",
 		"id": 121,
 		"type": [
-			"WATER",
-			"PSYCHIC"
+			"Water",
+			"Psychic"
 		],
 		"atk": 210,
 		"def": 184,
@@ -1804,8 +1804,8 @@ var pokemons =
 		"name": "Mr. Mime",
 		"id": 122,
 		"type": [
-			"PSYCHIC",
-			"FAIRY"
+			"Psychic",
+			"Fairy"
 		],
 		"atk": 192,
 		"def": 205,
@@ -1817,8 +1817,8 @@ var pokemons =
 		"name": "Scyther",
 		"id": 123,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 218,
 		"def": 170,
@@ -1830,8 +1830,8 @@ var pokemons =
 		"name": "Jynx",
 		"id": 124,
 		"type": [
-			"ICE",
-			"PSYCHIC"
+			"Ice",
+			"Psychic"
 		],
 		"atk": 223,
 		"def": 151,
@@ -1843,7 +1843,7 @@ var pokemons =
 		"name": "Electabuzz",
 		"id": 125,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 198,
 		"def": 158,
@@ -1855,7 +1855,7 @@ var pokemons =
 		"name": "Magmar",
 		"id": 126,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 206,
 		"def": 154,
@@ -1867,7 +1867,7 @@ var pokemons =
 		"name": "Pinsir",
 		"id": 127,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 238,
 		"def": 182,
@@ -1879,7 +1879,7 @@ var pokemons =
 		"name": "Tauros",
 		"id": 128,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 198,
 		"def": 183,
@@ -1891,7 +1891,7 @@ var pokemons =
 		"name": "Magikarp",
 		"id": 129,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 29,
 		"def": 85,
@@ -1903,8 +1903,8 @@ var pokemons =
 		"name": "Gyarados",
 		"id": 130,
 		"type": [
-			"WATER",
-			"FLYING"
+			"Water",
+			"Flying"
 		],
 		"atk": 237,
 		"def": 186,
@@ -1916,8 +1916,8 @@ var pokemons =
 		"name": "Lapras",
 		"id": 131,
 		"type": [
-			"WATER",
-			"ICE"
+			"Water",
+			"Ice"
 		],
 		"atk": 165,
 		"def": 174,
@@ -1929,7 +1929,7 @@ var pokemons =
 		"name": "Ditto",
 		"id": 132,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 91,
 		"def": 91,
@@ -1941,7 +1941,7 @@ var pokemons =
 		"name": "Eevee",
 		"id": 133,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 104,
 		"def": 114,
@@ -1953,7 +1953,7 @@ var pokemons =
 		"name": "Vaporeon",
 		"id": 134,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 205,
 		"def": 161,
@@ -1965,7 +1965,7 @@ var pokemons =
 		"name": "Jolteon",
 		"id": 135,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 232,
 		"def": 182,
@@ -1977,7 +1977,7 @@ var pokemons =
 		"name": "Flareon",
 		"id": 136,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 246,
 		"def": 179,
@@ -1989,7 +1989,7 @@ var pokemons =
 		"name": "Porygon",
 		"id": 137,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 153,
 		"def": 136,
@@ -2001,8 +2001,8 @@ var pokemons =
 		"name": "Omanyte",
 		"id": 138,
 		"type": [
-			"ROCK",
-			"WATER"
+			"Rock",
+			"Water"
 		],
 		"atk": 155,
 		"def": 153,
@@ -2014,8 +2014,8 @@ var pokemons =
 		"name": "Omastar",
 		"id": 139,
 		"type": [
-			"ROCK",
-			"WATER"
+			"Rock",
+			"Water"
 		],
 		"atk": 207,
 		"def": 201,
@@ -2027,8 +2027,8 @@ var pokemons =
 		"name": "Kabuto",
 		"id": 140,
 		"type": [
-			"ROCK",
-			"WATER"
+			"Rock",
+			"Water"
 		],
 		"atk": 148,
 		"def": 140,
@@ -2040,8 +2040,8 @@ var pokemons =
 		"name": "Kabutops",
 		"id": 141,
 		"type": [
-			"ROCK",
-			"WATER"
+			"Rock",
+			"Water"
 		],
 		"atk": 220,
 		"def": 186,
@@ -2053,8 +2053,8 @@ var pokemons =
 		"name": "Aerodactyl",
 		"id": 142,
 		"type": [
-			"ROCK",
-			"FLYING"
+			"Rock",
+			"Flying"
 		],
 		"atk": 221,
 		"def": 159,
@@ -2066,7 +2066,7 @@ var pokemons =
 		"name": "Snorlax",
 		"id": 143,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 190,
 		"def": 169,
@@ -2078,7 +2078,7 @@ var pokemons =
 		"name": "Dratini",
 		"id": 147,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 119,
 		"def": 91,
@@ -2090,7 +2090,7 @@ var pokemons =
 		"name": "Dragonair",
 		"id": 148,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 163,
 		"def": 135,
@@ -2102,8 +2102,8 @@ var pokemons =
 		"name": "Dragonite",
 		"id": 149,
 		"type": [
-			"DRAGON",
-			"FLYING"
+			"Dragon",
+			"Flying"
 		],
 		"atk": 263,
 		"def": 198,
@@ -2115,7 +2115,7 @@ var pokemons =
 		"name": "Mew",
 		"id": 151,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 210,
 		"def": 210,
@@ -2127,7 +2127,7 @@ var pokemons =
 		"name": "Chikorita",
 		"id": 152,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 92,
 		"def": 122,
@@ -2139,7 +2139,7 @@ var pokemons =
 		"name": "Bayleef",
 		"id": 153,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 122,
 		"def": 155,
@@ -2151,7 +2151,7 @@ var pokemons =
 		"name": "Meganium",
 		"id": 154,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 168,
 		"def": 202,
@@ -2163,7 +2163,7 @@ var pokemons =
 		"name": "Cyndaquil",
 		"id": 155,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 116,
 		"def": 93,
@@ -2175,7 +2175,7 @@ var pokemons =
 		"name": "Quilava",
 		"id": 156,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 158,
 		"def": 126,
@@ -2187,7 +2187,7 @@ var pokemons =
 		"name": "Typhlosion",
 		"id": 157,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 223,
 		"def": 173,
@@ -2199,7 +2199,7 @@ var pokemons =
 		"name": "Totodile",
 		"id": 158,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 117,
 		"def": 109,
@@ -2211,7 +2211,7 @@ var pokemons =
 		"name": "Croconaw",
 		"id": 159,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 150,
 		"def": 142,
@@ -2223,7 +2223,7 @@ var pokemons =
 		"name": "Feraligatr",
 		"id": 160,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 205,
 		"def": 188,
@@ -2235,7 +2235,7 @@ var pokemons =
 		"name": "Sentret",
 		"id": 161,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 79,
 		"def": 73,
@@ -2247,7 +2247,7 @@ var pokemons =
 		"name": "Furret",
 		"id": 162,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 148,
 		"def": 125,
@@ -2259,8 +2259,8 @@ var pokemons =
 		"name": "Hoothoot",
 		"id": 163,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 67,
 		"def": 88,
@@ -2272,8 +2272,8 @@ var pokemons =
 		"name": "Noctowl",
 		"id": 164,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 145,
 		"def": 156,
@@ -2285,8 +2285,8 @@ var pokemons =
 		"name": "Ledyba",
 		"id": 165,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 72,
 		"def": 118,
@@ -2298,8 +2298,8 @@ var pokemons =
 		"name": "Ledian",
 		"id": 166,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 107,
 		"def": 179,
@@ -2311,8 +2311,8 @@ var pokemons =
 		"name": "Spinarak",
 		"id": 167,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 105,
 		"def": 73,
@@ -2324,8 +2324,8 @@ var pokemons =
 		"name": "Ariados",
 		"id": 168,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 161,
 		"def": 124,
@@ -2337,8 +2337,8 @@ var pokemons =
 		"name": "Crobat",
 		"id": 169,
 		"type": [
-			"POISON",
-			"FLYING"
+			"Poison",
+			"Flying"
 		],
 		"atk": 194,
 		"def": 178,
@@ -2350,8 +2350,8 @@ var pokemons =
 		"name": "Chinchou",
 		"id": 170,
 		"type": [
-			"WATER",
-			"ELECTRIC"
+			"Water",
+			"Electric"
 		],
 		"atk": 106,
 		"def": 97,
@@ -2363,8 +2363,8 @@ var pokemons =
 		"name": "Lanturn",
 		"id": 171,
 		"type": [
-			"WATER",
-			"ELECTRIC"
+			"Water",
+			"Electric"
 		],
 		"atk": 146,
 		"def": 137,
@@ -2376,7 +2376,7 @@ var pokemons =
 		"name": "Pichu",
 		"id": 172,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 77,
 		"def": 53,
@@ -2388,7 +2388,7 @@ var pokemons =
 		"name": "Cleffa",
 		"id": 173,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 75,
 		"def": 79,
@@ -2400,8 +2400,8 @@ var pokemons =
 		"name": "Igglybuff",
 		"id": 174,
 		"type": [
-			"NORMAL",
-			"FAIRY"
+			"Normal",
+			"Fairy"
 		],
 		"atk": 69,
 		"def": 32,
@@ -2413,7 +2413,7 @@ var pokemons =
 		"name": "Togepi",
 		"id": 175,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 67,
 		"def": 116,
@@ -2425,8 +2425,8 @@ var pokemons =
 		"name": "Togetic",
 		"id": 176,
 		"type": [
-			"FAIRY",
-			"FLYING"
+			"Fairy",
+			"Flying"
 		],
 		"atk": 139,
 		"def": 181,
@@ -2438,8 +2438,8 @@ var pokemons =
 		"name": "Natu",
 		"id": 177,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 134,
 		"def": 89,
@@ -2451,8 +2451,8 @@ var pokemons =
 		"name": "Xatu",
 		"id": 178,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 192,
 		"def": 146,
@@ -2464,7 +2464,7 @@ var pokemons =
 		"name": "Mareep",
 		"id": 179,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 114,
 		"def": 79,
@@ -2476,7 +2476,7 @@ var pokemons =
 		"name": "Flaaffy",
 		"id": 180,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 145,
 		"def": 109,
@@ -2488,7 +2488,7 @@ var pokemons =
 		"name": "Ampharos",
 		"id": 181,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 211,
 		"def": 169,
@@ -2500,7 +2500,7 @@ var pokemons =
 		"name": "Bellossom",
 		"id": 182,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 169,
 		"def": 186,
@@ -2512,8 +2512,8 @@ var pokemons =
 		"name": "Marill",
 		"id": 183,
 		"type": [
-			"WATER",
-			"FAIRY"
+			"Water",
+			"Fairy"
 		],
 		"atk": 37,
 		"def": 93,
@@ -2525,8 +2525,8 @@ var pokemons =
 		"name": "Azumarill",
 		"id": 184,
 		"type": [
-			"WATER",
-			"FAIRY"
+			"Water",
+			"Fairy"
 		],
 		"atk": 112,
 		"def": 152,
@@ -2538,7 +2538,7 @@ var pokemons =
 		"name": "Sudowoodo",
 		"id": 185,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 167,
 		"def": 176,
@@ -2550,7 +2550,7 @@ var pokemons =
 		"name": "Politoed",
 		"id": 186,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 174,
 		"def": 179,
@@ -2562,8 +2562,8 @@ var pokemons =
 		"name": "Hoppip",
 		"id": 187,
 		"type": [
-			"GRASS",
-			"FLYING"
+			"Grass",
+			"Flying"
 		],
 		"atk": 67,
 		"def": 94,
@@ -2575,8 +2575,8 @@ var pokemons =
 		"name": "Skiploom",
 		"id": 188,
 		"type": [
-			"GRASS",
-			"FLYING"
+			"Grass",
+			"Flying"
 		],
 		"atk": 91,
 		"def": 120,
@@ -2588,8 +2588,8 @@ var pokemons =
 		"name": "Jumpluff",
 		"id": 189,
 		"type": [
-			"GRASS",
-			"FLYING"
+			"Grass",
+			"Flying"
 		],
 		"atk": 118,
 		"def": 183,
@@ -2601,7 +2601,7 @@ var pokemons =
 		"name": "Aipom",
 		"id": 190,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 136,
 		"def": 112,
@@ -2613,7 +2613,7 @@ var pokemons =
 		"name": "Sunkern",
 		"id": 191,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 55,
 		"def": 55,
@@ -2625,7 +2625,7 @@ var pokemons =
 		"name": "Sunflora",
 		"id": 192,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 185,
 		"def": 135,
@@ -2637,8 +2637,8 @@ var pokemons =
 		"name": "Yanma",
 		"id": 193,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 154,
 		"def": 94,
@@ -2650,8 +2650,8 @@ var pokemons =
 		"name": "Wooper",
 		"id": 194,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 75,
 		"def": 66,
@@ -2663,8 +2663,8 @@ var pokemons =
 		"name": "Quagsire",
 		"id": 195,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 152,
 		"def": 143,
@@ -2676,7 +2676,7 @@ var pokemons =
 		"name": "Espeon",
 		"id": 196,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 261,
 		"def": 175,
@@ -2688,7 +2688,7 @@ var pokemons =
 		"name": "Umbreon",
 		"id": 197,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 126,
 		"def": 240,
@@ -2700,8 +2700,8 @@ var pokemons =
 		"name": "Murkrow",
 		"id": 198,
 		"type": [
-			"DARK",
-			"FLYING"
+			"Dark",
+			"Flying"
 		],
 		"atk": 175,
 		"def": 87,
@@ -2713,8 +2713,8 @@ var pokemons =
 		"name": "Slowking",
 		"id": 199,
 		"type": [
-			"WATER",
-			"PSYCHIC"
+			"Water",
+			"Psychic"
 		],
 		"atk": 177,
 		"def": 180,
@@ -2726,7 +2726,7 @@ var pokemons =
 		"name": "Misdreavus",
 		"id": 200,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 167,
 		"def": 154,
@@ -2738,7 +2738,7 @@ var pokemons =
 		"name": "Unown",
 		"id": 201,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 136,
 		"def": 91,
@@ -2750,7 +2750,7 @@ var pokemons =
 		"name": "Wobbuffet",
 		"id": 202,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 60,
 		"def": 106,
@@ -2762,8 +2762,8 @@ var pokemons =
 		"name": "Girafarig",
 		"id": 203,
 		"type": [
-			"NORMAL",
-			"PSYCHIC"
+			"Normal",
+			"Psychic"
 		],
 		"atk": 182,
 		"def": 133,
@@ -2775,7 +2775,7 @@ var pokemons =
 		"name": "Pineco",
 		"id": 204,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 108,
 		"def": 122,
@@ -2787,8 +2787,8 @@ var pokemons =
 		"name": "Forretress",
 		"id": 205,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 161,
 		"def": 205,
@@ -2800,7 +2800,7 @@ var pokemons =
 		"name": "Dunsparce",
 		"id": 206,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 131,
 		"def": 128,
@@ -2812,8 +2812,8 @@ var pokemons =
 		"name": "Gligar",
 		"id": 207,
 		"type": [
-			"GROUND",
-			"FLYING"
+			"Ground",
+			"Flying"
 		],
 		"atk": 143,
 		"def": 184,
@@ -2825,8 +2825,8 @@ var pokemons =
 		"name": "Steelix",
 		"id": 208,
 		"type": [
-			"STEEL",
-			"GROUND"
+			"Steel",
+			"Ground"
 		],
 		"atk": 148,
 		"def": 272,
@@ -2838,7 +2838,7 @@ var pokemons =
 		"name": "Snubbull",
 		"id": 209,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 137,
 		"def": 85,
@@ -2850,7 +2850,7 @@ var pokemons =
 		"name": "Granbull",
 		"id": 210,
 		"type": [
-			"FAIRY"
+			"Fairy"
 		],
 		"atk": 212,
 		"def": 131,
@@ -2862,8 +2862,8 @@ var pokemons =
 		"name": "Qwilfish",
 		"id": 211,
 		"type": [
-			"WATER",
-			"POISON"
+			"Water",
+			"Poison"
 		],
 		"atk": 184,
 		"def": 138,
@@ -2875,8 +2875,8 @@ var pokemons =
 		"name": "Scizor",
 		"id": 212,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 236,
 		"def": 181,
@@ -2888,8 +2888,8 @@ var pokemons =
 		"name": "Shuckle",
 		"id": 213,
 		"type": [
-			"BUG",
-			"ROCK"
+			"Bug",
+			"Rock"
 		],
 		"atk": 17,
 		"def": 396,
@@ -2901,8 +2901,8 @@ var pokemons =
 		"name": "Heracross",
 		"id": 214,
 		"type": [
-			"BUG",
-			"FIGHTING"
+			"Bug",
+			"Fighting"
 		],
 		"atk": 234,
 		"def": 179,
@@ -2914,8 +2914,8 @@ var pokemons =
 		"name": "Sneasel",
 		"id": 215,
 		"type": [
-			"DARK",
-			"ICE"
+			"Dark",
+			"Ice"
 		],
 		"atk": 189,
 		"def": 146,
@@ -2927,7 +2927,7 @@ var pokemons =
 		"name": "Teddiursa",
 		"id": 216,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 142,
 		"def": 93,
@@ -2939,7 +2939,7 @@ var pokemons =
 		"name": "Ursaring",
 		"id": 217,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 236,
 		"def": 144,
@@ -2951,7 +2951,7 @@ var pokemons =
 		"name": "Slugma",
 		"id": 218,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 118,
 		"def": 71,
@@ -2963,8 +2963,8 @@ var pokemons =
 		"name": "Magcargo",
 		"id": 219,
 		"type": [
-			"FIRE",
-			"ROCK"
+			"Fire",
+			"Rock"
 		],
 		"atk": 139,
 		"def": 191,
@@ -2976,8 +2976,8 @@ var pokemons =
 		"name": "Swinub",
 		"id": 220,
 		"type": [
-			"ICE",
-			"GROUND"
+			"Ice",
+			"Ground"
 		],
 		"atk": 90,
 		"def": 69,
@@ -2989,8 +2989,8 @@ var pokemons =
 		"name": "Piloswine",
 		"id": 221,
 		"type": [
-			"ICE",
-			"GROUND"
+			"Ice",
+			"Ground"
 		],
 		"atk": 181,
 		"def": 138,
@@ -3002,8 +3002,8 @@ var pokemons =
 		"name": "Corsola",
 		"id": 222,
 		"type": [
-			"WATER",
-			"ROCK"
+			"Water",
+			"Rock"
 		],
 		"atk": 118,
 		"def": 156,
@@ -3015,7 +3015,7 @@ var pokemons =
 		"name": "Remoraid",
 		"id": 223,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 127,
 		"def": 69,
@@ -3027,7 +3027,7 @@ var pokemons =
 		"name": "Octillery",
 		"id": 224,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 197,
 		"def": 141,
@@ -3039,8 +3039,8 @@ var pokemons =
 		"name": "Delibird",
 		"id": 225,
 		"type": [
-			"ICE",
-			"FLYING"
+			"Ice",
+			"Flying"
 		],
 		"atk": 128,
 		"def": 90,
@@ -3052,8 +3052,8 @@ var pokemons =
 		"name": "Mantine",
 		"id": 226,
 		"type": [
-			"WATER",
-			"FLYING"
+			"Water",
+			"Flying"
 		],
 		"atk": 148,
 		"def": 226,
@@ -3065,8 +3065,8 @@ var pokemons =
 		"name": "Skarmory",
 		"id": 227,
 		"type": [
-			"STEEL",
-			"FLYING"
+			"Steel",
+			"Flying"
 		],
 		"atk": 148,
 		"def": 226,
@@ -3078,8 +3078,8 @@ var pokemons =
 		"name": "Houndour",
 		"id": 228,
 		"type": [
-			"DARK",
-			"FIRE"
+			"Dark",
+			"Fire"
 		],
 		"atk": 152,
 		"def": 83,
@@ -3091,8 +3091,8 @@ var pokemons =
 		"name": "Houndoom",
 		"id": 229,
 		"type": [
-			"DARK",
-			"FIRE"
+			"Dark",
+			"Fire"
 		],
 		"atk": 224,
 		"def": 144,
@@ -3104,8 +3104,8 @@ var pokemons =
 		"name": "Kingdra",
 		"id": 230,
 		"type": [
-			"WATER",
-			"DRAGON"
+			"Water",
+			"Dragon"
 		],
 		"atk": 194,
 		"def": 194,
@@ -3117,7 +3117,7 @@ var pokemons =
 		"name": "Phanpy",
 		"id": 231,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 107,
 		"def": 98,
@@ -3129,31 +3129,31 @@ var pokemons =
 		"name": "Donphan",
 		"id": 232,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 214,
 		"def": 185,
 		"hp": 207,
-		"fastMoves": "Tackle,Mud-Slap,Counter,Charm",
+		"fastMoves": "Tackle,Mud Slap,Counter,Charm",
 		"chargeMoves": "Earthquake,Play Rough,Heavy Slam",
 		"legendary": false
 	},{
 		"name": "Porygon2",
 		"id": 233,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 198,
 		"def": 180,
 		"hp": 198,
-		"fastMoves": "Charge Beam,Hidden Power,Lock-On",
+		"fastMoves": "Charge Beam,Hidden Power,Lock On",
 		"chargeMoves": "Hyper Beam,Solar Beam,Zap Cannon,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Stantler",
 		"id": 234,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 192,
 		"def": 131,
@@ -3165,7 +3165,7 @@ var pokemons =
 		"name": "Smeargle",
 		"id": 235,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 40,
 		"def": 83,
@@ -3177,7 +3177,7 @@ var pokemons =
 		"name": "Tyrogue",
 		"id": 236,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 64,
 		"def": 64,
@@ -3189,7 +3189,7 @@ var pokemons =
 		"name": "Hitmontop",
 		"id": 237,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 173,
 		"def": 207,
@@ -3201,8 +3201,8 @@ var pokemons =
 		"name": "Smoochum",
 		"id": 238,
 		"type": [
-			"ICE",
-			"PSYCHIC"
+			"Ice",
+			"Psychic"
 		],
 		"atk": 153,
 		"def": 91,
@@ -3214,7 +3214,7 @@ var pokemons =
 		"name": "Elekid",
 		"id": 239,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 135,
 		"def": 101,
@@ -3226,7 +3226,7 @@ var pokemons =
 		"name": "Magby",
 		"id": 240,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 151,
 		"def": 99,
@@ -3238,7 +3238,7 @@ var pokemons =
 		"name": "Miltank",
 		"id": 241,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 157,
 		"def": 193,
@@ -3250,7 +3250,7 @@ var pokemons =
 		"name": "Blissey",
 		"id": 242,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 129,
 		"def": 169,
@@ -3262,8 +3262,8 @@ var pokemons =
 		"name": "Larvitar",
 		"id": 246,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 115,
 		"def": 93,
@@ -3275,8 +3275,8 @@ var pokemons =
 		"name": "Pupitar",
 		"id": 247,
 		"type": [
-			"ROCK",
-			"GROUND"
+			"Rock",
+			"Ground"
 		],
 		"atk": 155,
 		"def": 133,
@@ -3288,8 +3288,8 @@ var pokemons =
 		"name": "Tyranitar",
 		"id": 248,
 		"type": [
-			"ROCK",
-			"DARK"
+			"Rock",
+			"Dark"
 		],
 		"atk": 251,
 		"def": 207,
@@ -3301,8 +3301,8 @@ var pokemons =
 		"name": "Celebi",
 		"id": 251,
 		"type": [
-			"PSYCHIC",
-			"GRASS"
+			"Psychic",
+			"Grass"
 		],
 		"atk": 210,
 		"def": 210,
@@ -3314,7 +3314,7 @@ var pokemons =
 		"name": "Treecko",
 		"id": 252,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 124,
 		"def": 94,
@@ -3326,7 +3326,7 @@ var pokemons =
 		"name": "Grovyle",
 		"id": 253,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 172,
 		"def": 120,
@@ -3338,7 +3338,7 @@ var pokemons =
 		"name": "Sceptile",
 		"id": 254,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 223,
 		"def": 169,
@@ -3350,7 +3350,7 @@ var pokemons =
 		"name": "Torchic",
 		"id": 255,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 130,
 		"def": 87,
@@ -3362,8 +3362,8 @@ var pokemons =
 		"name": "Combusken",
 		"id": 256,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 163,
 		"def": 115,
@@ -3375,8 +3375,8 @@ var pokemons =
 		"name": "Blaziken",
 		"id": 257,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 240,
 		"def": 141,
@@ -3388,7 +3388,7 @@ var pokemons =
 		"name": "Mudkip",
 		"id": 258,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 126,
 		"def": 93,
@@ -3400,8 +3400,8 @@ var pokemons =
 		"name": "Marshtomp",
 		"id": 259,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 156,
 		"def": 133,
@@ -3413,8 +3413,8 @@ var pokemons =
 		"name": "Swampert",
 		"id": 260,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 208,
 		"def": 175,
@@ -3426,7 +3426,7 @@ var pokemons =
 		"name": "Poochyena",
 		"id": 261,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 96,
 		"def": 61,
@@ -3438,7 +3438,7 @@ var pokemons =
 		"name": "Mightyena",
 		"id": 262,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 171,
 		"def": 132,
@@ -3450,7 +3450,7 @@ var pokemons =
 		"name": "Zigzagoon",
 		"id": 263,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 58,
 		"def": 80,
@@ -3462,8 +3462,8 @@ var pokemons =
 		"name": "Galarian Zigzagoon",
 		"id": 263,
 		"type": [
-			"DARK",
-			"NORMAL"
+			"Dark",
+			"Normal"
 		],
 		"atk": 116,
 		"def": 58,
@@ -3475,7 +3475,7 @@ var pokemons =
 		"name": "Linoone",
 		"id": 264,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 142,
 		"def": 128,
@@ -3487,8 +3487,8 @@ var pokemons =
 		"name": "Galarian Linoone",
 		"id": 264,
 		"type": [
-			"DARK",
-			"NORMAL"
+			"Dark",
+			"Normal"
 		],
 		"atk": 186,
 		"def": 142,
@@ -3500,7 +3500,7 @@ var pokemons =
 		"name": "Wurmple",
 		"id": 265,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 75,
 		"def": 59,
@@ -3512,7 +3512,7 @@ var pokemons =
 		"name": "Silcoon",
 		"id": 266,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 60,
 		"def": 77,
@@ -3524,8 +3524,8 @@ var pokemons =
 		"name": "Beautifly",
 		"id": 267,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 189,
 		"def": 98,
@@ -3537,7 +3537,7 @@ var pokemons =
 		"name": "Cascoon",
 		"id": 268,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 60,
 		"def": 77,
@@ -3549,8 +3549,8 @@ var pokemons =
 		"name": "Dustox",
 		"id": 269,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 98,
 		"def": 162,
@@ -3562,8 +3562,8 @@ var pokemons =
 		"name": "Lotad",
 		"id": 270,
 		"type": [
-			"WATER",
-			"GRASS"
+			"Water",
+			"Grass"
 		],
 		"atk": 71,
 		"def": 77,
@@ -3575,8 +3575,8 @@ var pokemons =
 		"name": "Lombre",
 		"id": 271,
 		"type": [
-			"WATER",
-			"GRASS"
+			"Water",
+			"Grass"
 		],
 		"atk": 112,
 		"def": 119,
@@ -3588,8 +3588,8 @@ var pokemons =
 		"name": "Ludicolo",
 		"id": 272,
 		"type": [
-			"WATER",
-			"GRASS"
+			"Water",
+			"Grass"
 		],
 		"atk": 173,
 		"def": 176,
@@ -3601,7 +3601,7 @@ var pokemons =
 		"name": "Seedot",
 		"id": 273,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 71,
 		"def": 77,
@@ -3613,8 +3613,8 @@ var pokemons =
 		"name": "Nuzleaf",
 		"id": 274,
 		"type": [
-			"GRASS",
-			"DARK"
+			"Grass",
+			"Dark"
 		],
 		"atk": 134,
 		"def": 78,
@@ -3626,8 +3626,8 @@ var pokemons =
 		"name": "Shiftry",
 		"id": 275,
 		"type": [
-			"GRASS",
-			"DARK"
+			"Grass",
+			"Dark"
 		],
 		"atk": 200,
 		"def": 121,
@@ -3639,8 +3639,8 @@ var pokemons =
 		"name": "Taillow",
 		"id": 276,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 106,
 		"def": 61,
@@ -3652,8 +3652,8 @@ var pokemons =
 		"name": "Swellow",
 		"id": 277,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 185,
 		"def": 124,
@@ -3665,8 +3665,8 @@ var pokemons =
 		"name": "Wingull",
 		"id": 278,
 		"type": [
-			"WATER",
-			"FLYING"
+			"Water",
+			"Flying"
 		],
 		"atk": 106,
 		"def": 61,
@@ -3678,8 +3678,8 @@ var pokemons =
 		"name": "Pelipper",
 		"id": 279,
 		"type": [
-			"WATER",
-			"FLYING"
+			"Water",
+			"Flying"
 		],
 		"atk": 175,
 		"def": 174,
@@ -3691,8 +3691,8 @@ var pokemons =
 		"name": "Ralts",
 		"id": 280,
 		"type": [
-			"PSYCHIC",
-			"FAIRY"
+			"Psychic",
+			"Fairy"
 		],
 		"atk": 79,
 		"def": 59,
@@ -3704,8 +3704,8 @@ var pokemons =
 		"name": "Kirlia",
 		"id": 281,
 		"type": [
-			"PSYCHIC",
-			"FAIRY"
+			"Psychic",
+			"Fairy"
 		],
 		"atk": 117,
 		"def": 90,
@@ -3717,8 +3717,8 @@ var pokemons =
 		"name": "Gardevoir",
 		"id": 282,
 		"type": [
-			"PSYCHIC",
-			"FAIRY"
+			"Psychic",
+			"Fairy"
 		],
 		"atk": 237,
 		"def": 195,
@@ -3730,8 +3730,8 @@ var pokemons =
 		"name": "Surskit",
 		"id": 283,
 		"type": [
-			"BUG",
-			"WATER"
+			"Bug",
+			"Water"
 		],
 		"atk": 93,
 		"def": 87,
@@ -3743,8 +3743,8 @@ var pokemons =
 		"name": "Masquerain",
 		"id": 284,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 192,
 		"def": 150,
@@ -3756,7 +3756,7 @@ var pokemons =
 		"name": "Shroomish",
 		"id": 285,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 74,
 		"def": 110,
@@ -3768,8 +3768,8 @@ var pokemons =
 		"name": "Breloom",
 		"id": 286,
 		"type": [
-			"GRASS",
-			"FIGHTING"
+			"Grass",
+			"Fighting"
 		],
 		"atk": 241,
 		"def": 144,
@@ -3781,7 +3781,7 @@ var pokemons =
 		"name": "Slakoth",
 		"id": 287,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 104,
 		"def": 92,
@@ -3793,7 +3793,7 @@ var pokemons =
 		"name": "Vigoroth",
 		"id": 288,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 159,
 		"def": 145,
@@ -3805,7 +3805,7 @@ var pokemons =
 		"name": "Slaking",
 		"id": 289,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 290,
 		"def": 166,
@@ -3817,8 +3817,8 @@ var pokemons =
 		"name": "Nincada",
 		"id": 290,
 		"type": [
-			"BUG",
-			"GROUND"
+			"Bug",
+			"Ground"
 		],
 		"atk": 80,
 		"def": 126,
@@ -3830,8 +3830,8 @@ var pokemons =
 		"name": "Ninjask",
 		"id": 291,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 199,
 		"def": 112,
@@ -3843,8 +3843,8 @@ var pokemons =
 		"name": "Shedinja",
 		"id": 292,
 		"type": [
-			"BUG",
-			"GHOST"
+			"Bug",
+			"Ghost"
 		],
 		"atk": 153,
 		"def": 73,
@@ -3856,7 +3856,7 @@ var pokemons =
 		"name": "Whismur",
 		"id": 293,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 92,
 		"def": 42,
@@ -3868,7 +3868,7 @@ var pokemons =
 		"name": "Loudred",
 		"id": 294,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 134,
 		"def": 81,
@@ -3880,7 +3880,7 @@ var pokemons =
 		"name": "Exploud",
 		"id": 295,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 179,
 		"def": 137,
@@ -3892,7 +3892,7 @@ var pokemons =
 		"name": "Makuhita",
 		"id": 296,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 99,
 		"def": 54,
@@ -3904,7 +3904,7 @@ var pokemons =
 		"name": "Hariyama",
 		"id": 297,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 209,
 		"def": 114,
@@ -3916,8 +3916,8 @@ var pokemons =
 		"name": "Azurill",
 		"id": 298,
 		"type": [
-			"NORMAL",
-			"FAIRY"
+			"Normal",
+			"Fairy"
 		],
 		"atk": 36,
 		"def": 71,
@@ -3929,7 +3929,7 @@ var pokemons =
 		"name": "Nosepass",
 		"id": 299,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 82,
 		"def": 215,
@@ -3941,7 +3941,7 @@ var pokemons =
 		"name": "Skitty",
 		"id": 300,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 84,
 		"def": 79,
@@ -3953,7 +3953,7 @@ var pokemons =
 		"name": "Delcatty",
 		"id": 301,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 132,
 		"def": 127,
@@ -3965,8 +3965,8 @@ var pokemons =
 		"name": "Sableye",
 		"id": 302,
 		"type": [
-			"DARK",
-			"GHOST"
+			"Dark",
+			"Ghost"
 		],
 		"atk": 141,
 		"def": 136,
@@ -3978,8 +3978,8 @@ var pokemons =
 		"name": "Mawile",
 		"id": 303,
 		"type": [
-			"STEEL",
-			"FAIRY"
+			"Steel",
+			"Fairy"
 		],
 		"atk": 155,
 		"def": 141,
@@ -3991,8 +3991,8 @@ var pokemons =
 		"name": "Aron",
 		"id": 304,
 		"type": [
-			"STEEL",
-			"ROCK"
+			"Steel",
+			"Rock"
 		],
 		"atk": 121,
 		"def": 141,
@@ -4004,8 +4004,8 @@ var pokemons =
 		"name": "Lairon",
 		"id": 305,
 		"type": [
-			"STEEL",
-			"ROCK"
+			"Steel",
+			"Rock"
 		],
 		"atk": 158,
 		"def": 198,
@@ -4017,8 +4017,8 @@ var pokemons =
 		"name": "Aggron",
 		"id": 306,
 		"type": [
-			"STEEL",
-			"ROCK"
+			"Steel",
+			"Rock"
 		],
 		"atk": 198,
 		"def": 257,
@@ -4030,8 +4030,8 @@ var pokemons =
 		"name": "Meditite",
 		"id": 307,
 		"type": [
-			"FIGHTING",
-			"PSYCHIC"
+			"Fighting",
+			"Psychic"
 		],
 		"atk": 78,
 		"def": 107,
@@ -4043,8 +4043,8 @@ var pokemons =
 		"name": "Medicham",
 		"id": 308,
 		"type": [
-			"FIGHTING",
-			"PSYCHIC"
+			"Fighting",
+			"Psychic"
 		],
 		"atk": 121,
 		"def": 152,
@@ -4056,7 +4056,7 @@ var pokemons =
 		"name": "Electrike",
 		"id": 309,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 123,
 		"def": 78,
@@ -4068,7 +4068,7 @@ var pokemons =
 		"name": "Manectric",
 		"id": 310,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 215,
 		"def": 127,
@@ -4080,7 +4080,7 @@ var pokemons =
 		"name": "Plusle",
 		"id": 311,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 167,
 		"def": 129,
@@ -4092,7 +4092,7 @@ var pokemons =
 		"name": "Minun",
 		"id": 312,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 147,
 		"def": 150,
@@ -4104,7 +4104,7 @@ var pokemons =
 		"name": "Volbeat",
 		"id": 313,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 143,
 		"def": 166,
@@ -4116,7 +4116,7 @@ var pokemons =
 		"name": "Illumise",
 		"id": 314,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 143,
 		"def": 166,
@@ -4128,8 +4128,8 @@ var pokemons =
 		"name": "Roselia",
 		"id": 315,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 186,
 		"def": 131,
@@ -4141,7 +4141,7 @@ var pokemons =
 		"name": "Gulpin",
 		"id": 316,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 80,
 		"def": 99,
@@ -4153,7 +4153,7 @@ var pokemons =
 		"name": "Swalot",
 		"id": 317,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 140,
 		"def": 159,
@@ -4165,8 +4165,8 @@ var pokemons =
 		"name": "Carvanha",
 		"id": 318,
 		"type": [
-			"WATER",
-			"DARK"
+			"Water",
+			"Dark"
 		],
 		"atk": 171,
 		"def": 39,
@@ -4178,8 +4178,8 @@ var pokemons =
 		"name": "Sharpedo",
 		"id": 319,
 		"type": [
-			"WATER",
-			"DARK"
+			"Water",
+			"Dark"
 		],
 		"atk": 243,
 		"def": 83,
@@ -4191,7 +4191,7 @@ var pokemons =
 		"name": "Wailmer",
 		"id": 320,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 136,
 		"def": 68,
@@ -4203,7 +4203,7 @@ var pokemons =
 		"name": "Wailord",
 		"id": 321,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 175,
 		"def": 87,
@@ -4215,8 +4215,8 @@ var pokemons =
 		"name": "Numel",
 		"id": 322,
 		"type": [
-			"FIRE",
-			"GROUND"
+			"Fire",
+			"Ground"
 		],
 		"atk": 119,
 		"def": 79,
@@ -4228,8 +4228,8 @@ var pokemons =
 		"name": "Camerupt",
 		"id": 323,
 		"type": [
-			"FIRE",
-			"GROUND"
+			"Fire",
+			"Ground"
 		],
 		"atk": 194,
 		"def": 136,
@@ -4241,7 +4241,7 @@ var pokemons =
 		"name": "Torkoal",
 		"id": 324,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 151,
 		"def": 203,
@@ -4253,7 +4253,7 @@ var pokemons =
 		"name": "Spoink",
 		"id": 325,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 125,
 		"def": 122,
@@ -4265,7 +4265,7 @@ var pokemons =
 		"name": "Grumpig",
 		"id": 326,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 171,
 		"def": 188,
@@ -4277,7 +4277,7 @@ var pokemons =
 		"name": "Spinda",
 		"id": 327,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 116,
 		"def": 116,
@@ -4289,7 +4289,7 @@ var pokemons =
 		"name": "Trapinch",
 		"id": 328,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 162,
 		"def": 78,
@@ -4301,8 +4301,8 @@ var pokemons =
 		"name": "Vibrava",
 		"id": 329,
 		"type": [
-			"GROUND",
-			"DRAGON"
+			"Ground",
+			"Dragon"
 		],
 		"atk": 134,
 		"def": 99,
@@ -4314,8 +4314,8 @@ var pokemons =
 		"name": "Flygon",
 		"id": 330,
 		"type": [
-			"GROUND",
-			"DRAGON"
+			"Ground",
+			"Dragon"
 		],
 		"atk": 205,
 		"def": 168,
@@ -4327,7 +4327,7 @@ var pokemons =
 		"name": "Cacnea",
 		"id": 331,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 156,
 		"def": 74,
@@ -4339,8 +4339,8 @@ var pokemons =
 		"name": "Cacturne",
 		"id": 332,
 		"type": [
-			"GRASS",
-			"DARK"
+			"Grass",
+			"Dark"
 		],
 		"atk": 221,
 		"def": 115,
@@ -4352,8 +4352,8 @@ var pokemons =
 		"name": "Swablu",
 		"id": 333,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 76,
 		"def": 132,
@@ -4365,8 +4365,8 @@ var pokemons =
 		"name": "Altaria",
 		"id": 334,
 		"type": [
-			"DRAGON",
-			"FLYING"
+			"Dragon",
+			"Flying"
 		],
 		"atk": 141,
 		"def": 201,
@@ -4378,7 +4378,7 @@ var pokemons =
 		"name": "Zangoose",
 		"id": 335,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 222,
 		"def": 124,
@@ -4390,7 +4390,7 @@ var pokemons =
 		"name": "Seviper",
 		"id": 336,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 196,
 		"def": 118,
@@ -4402,8 +4402,8 @@ var pokemons =
 		"name": "Lunatone",
 		"id": 337,
 		"type": [
-			"ROCK",
-			"PSYCHIC"
+			"Rock",
+			"Psychic"
 		],
 		"atk": 178,
 		"def": 153,
@@ -4415,8 +4415,8 @@ var pokemons =
 		"name": "Solrock",
 		"id": 338,
 		"type": [
-			"ROCK",
-			"PSYCHIC"
+			"Rock",
+			"Psychic"
 		],
 		"atk": 178,
 		"def": 153,
@@ -4428,8 +4428,8 @@ var pokemons =
 		"name": "Barboach",
 		"id": 339,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 93,
 		"def": 82,
@@ -4441,8 +4441,8 @@ var pokemons =
 		"name": "Whiscash",
 		"id": 340,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 151,
 		"def": 141,
@@ -4454,7 +4454,7 @@ var pokemons =
 		"name": "Corphish",
 		"id": 341,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 141,
 		"def": 99,
@@ -4466,8 +4466,8 @@ var pokemons =
 		"name": "Crawdaunt",
 		"id": 342,
 		"type": [
-			"WATER",
-			"DARK"
+			"Water",
+			"Dark"
 		],
 		"atk": 224,
 		"def": 142,
@@ -4479,8 +4479,8 @@ var pokemons =
 		"name": "Baltoy",
 		"id": 343,
 		"type": [
-			"GROUND",
-			"PSYCHIC"
+			"Ground",
+			"Psychic"
 		],
 		"atk": 77,
 		"def": 124,
@@ -4492,21 +4492,21 @@ var pokemons =
 		"name": "Claydol",
 		"id": 344,
 		"type": [
-			"GROUND",
-			"PSYCHIC"
+			"Ground",
+			"Psychic"
 		],
 		"atk": 140,
 		"def": 229,
 		"hp": 155,
-		"fastMoves": "Mud-Slap,Confusion,Extrasensory",
+		"fastMoves": "Mud Slap,Confusion,Extrasensory",
 		"chargeMoves": "Earthquake,Psychic,Gyro Ball,Earth Power",
 		"legendary": false
 	},{
 		"name": "Lileep",
 		"id": 345,
 		"type": [
-			"ROCK",
-			"GRASS"
+			"Rock",
+			"Grass"
 		],
 		"atk": 105,
 		"def": 150,
@@ -4518,8 +4518,8 @@ var pokemons =
 		"name": "Cradily",
 		"id": 346,
 		"type": [
-			"ROCK",
-			"GRASS"
+			"Rock",
+			"Grass"
 		],
 		"atk": 152,
 		"def": 194,
@@ -4531,8 +4531,8 @@ var pokemons =
 		"name": "Anorith",
 		"id": 347,
 		"type": [
-			"ROCK",
-			"BUG"
+			"Rock",
+			"Bug"
 		],
 		"atk": 176,
 		"def": 100,
@@ -4544,8 +4544,8 @@ var pokemons =
 		"name": "Armaldo",
 		"id": 348,
 		"type": [
-			"ROCK",
-			"BUG"
+			"Rock",
+			"Bug"
 		],
 		"atk": 222,
 		"def": 174,
@@ -4557,7 +4557,7 @@ var pokemons =
 		"name": "Feebas",
 		"id": 349,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 29,
 		"def": 85,
@@ -4569,7 +4569,7 @@ var pokemons =
 		"name": "Milotic",
 		"id": 350,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 192,
 		"def": 219,
@@ -4581,7 +4581,7 @@ var pokemons =
 		"name": "Castform Snowy Form",
 		"id": 351,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 139,
 		"def": 139,
@@ -4593,7 +4593,7 @@ var pokemons =
 		"name": "Castform Sunny Form",
 		"id": 351,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 139,
 		"def": 139,
@@ -4605,7 +4605,7 @@ var pokemons =
 		"name": "Castform Rainy Form",
 		"id": 351,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 139,
 		"def": 139,
@@ -4617,7 +4617,7 @@ var pokemons =
 		"name": "Castform",
 		"id": 351,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 139,
 		"def": 139,
@@ -4629,7 +4629,7 @@ var pokemons =
 		"name": "Shuppet",
 		"id": 353,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 138,
 		"def": 65,
@@ -4641,7 +4641,7 @@ var pokemons =
 		"name": "Banette",
 		"id": 354,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 218,
 		"def": 126,
@@ -4653,7 +4653,7 @@ var pokemons =
 		"name": "Duskull",
 		"id": 355,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 70,
 		"def": 162,
@@ -4665,7 +4665,7 @@ var pokemons =
 		"name": "Dusclops",
 		"id": 356,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 124,
 		"def": 234,
@@ -4677,8 +4677,8 @@ var pokemons =
 		"name": "Tropius",
 		"id": 357,
 		"type": [
-			"GRASS",
-			"FLYING"
+			"Grass",
+			"Flying"
 		],
 		"atk": 136,
 		"def": 163,
@@ -4690,7 +4690,7 @@ var pokemons =
 		"name": "Chimecho",
 		"id": 358,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 175,
 		"def": 170,
@@ -4702,7 +4702,7 @@ var pokemons =
 		"name": "Absol",
 		"id": 359,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 246,
 		"def": 120,
@@ -4714,7 +4714,7 @@ var pokemons =
 		"name": "Wynaut",
 		"id": 360,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 41,
 		"def": 86,
@@ -4726,7 +4726,7 @@ var pokemons =
 		"name": "Snorunt",
 		"id": 361,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 95,
 		"def": 95,
@@ -4738,7 +4738,7 @@ var pokemons =
 		"name": "Glalie",
 		"id": 362,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 162,
 		"def": 162,
@@ -4750,8 +4750,8 @@ var pokemons =
 		"name": "Spheal",
 		"id": 363,
 		"type": [
-			"ICE",
-			"WATER"
+			"Ice",
+			"Water"
 		],
 		"atk": 95,
 		"def": 90,
@@ -4763,8 +4763,8 @@ var pokemons =
 		"name": "Sealeo",
 		"id": 364,
 		"type": [
-			"ICE",
-			"WATER"
+			"Ice",
+			"Water"
 		],
 		"atk": 137,
 		"def": 132,
@@ -4776,8 +4776,8 @@ var pokemons =
 		"name": "Walrein",
 		"id": 365,
 		"type": [
-			"ICE",
-			"WATER"
+			"Ice",
+			"Water"
 		],
 		"atk": 182,
 		"def": 176,
@@ -4789,7 +4789,7 @@ var pokemons =
 		"name": "Clamperl",
 		"id": 366,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 133,
 		"def": 135,
@@ -4801,7 +4801,7 @@ var pokemons =
 		"name": "Huntail",
 		"id": 367,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 197,
 		"def": 179,
@@ -4813,7 +4813,7 @@ var pokemons =
 		"name": "Gorebyss",
 		"id": 368,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 211,
 		"def": 179,
@@ -4825,8 +4825,8 @@ var pokemons =
 		"name": "Relicanth",
 		"id": 369,
 		"type": [
-			"WATER",
-			"ROCK"
+			"Water",
+			"Rock"
 		],
 		"atk": 162,
 		"def": 203,
@@ -4838,7 +4838,7 @@ var pokemons =
 		"name": "Luvdisc",
 		"id": 370,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 81,
 		"def": 128,
@@ -4850,7 +4850,7 @@ var pokemons =
 		"name": "Bagon",
 		"id": 371,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 134,
 		"def": 93,
@@ -4862,7 +4862,7 @@ var pokemons =
 		"name": "Shelgon",
 		"id": 372,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 172,
 		"def": 155,
@@ -4874,8 +4874,8 @@ var pokemons =
 		"name": "Salamence",
 		"id": 373,
 		"type": [
-			"DRAGON",
-			"FLYING"
+			"Dragon",
+			"Flying"
 		],
 		"atk": 277,
 		"def": 168,
@@ -4887,8 +4887,8 @@ var pokemons =
 		"name": "Beldum",
 		"id": 374,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 96,
 		"def": 132,
@@ -4900,8 +4900,8 @@ var pokemons =
 		"name": "Metang",
 		"id": 375,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 138,
 		"def": 176,
@@ -4913,8 +4913,8 @@ var pokemons =
 		"name": "Metagross",
 		"id": 376,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 257,
 		"def": 228,
@@ -4926,8 +4926,8 @@ var pokemons =
 		"name": "Jirachi",
 		"id": 385,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 210,
 		"def": 210,
@@ -4939,7 +4939,7 @@ var pokemons =
 		"name": "Turtwig",
 		"id": 387,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 119,
 		"def": 110,
@@ -4951,7 +4951,7 @@ var pokemons =
 		"name": "Grotle",
 		"id": 388,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 157,
 		"def": 143,
@@ -4963,8 +4963,8 @@ var pokemons =
 		"name": "Torterra",
 		"id": 389,
 		"type": [
-			"GRASS",
-			"GROUND"
+			"Grass",
+			"Ground"
 		],
 		"atk": 202,
 		"def": 188,
@@ -4976,7 +4976,7 @@ var pokemons =
 		"name": "Chimchar",
 		"id": 390,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 113,
 		"def": 86,
@@ -4988,8 +4988,8 @@ var pokemons =
 		"name": "Monferno",
 		"id": 391,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 158,
 		"def": 105,
@@ -5001,8 +5001,8 @@ var pokemons =
 		"name": "Infernape",
 		"id": 392,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 222,
 		"def": 151,
@@ -5014,7 +5014,7 @@ var pokemons =
 		"name": "Piplup",
 		"id": 393,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 112,
 		"def": 102,
@@ -5026,7 +5026,7 @@ var pokemons =
 		"name": "Prinplup",
 		"id": 394,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 150,
 		"def": 139,
@@ -5038,8 +5038,8 @@ var pokemons =
 		"name": "Empoleon",
 		"id": 395,
 		"type": [
-			"WATER",
-			"STEEL"
+			"Water",
+			"Steel"
 		],
 		"atk": 210,
 		"def": 186,
@@ -5051,8 +5051,8 @@ var pokemons =
 		"name": "Starly",
 		"id": 396,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 101,
 		"def": 58,
@@ -5064,8 +5064,8 @@ var pokemons =
 		"name": "Staravia",
 		"id": 397,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 142,
 		"def": 94,
@@ -5077,8 +5077,8 @@ var pokemons =
 		"name": "Staraptor",
 		"id": 398,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 234,
 		"def": 140,
@@ -5090,7 +5090,7 @@ var pokemons =
 		"name": "Bidoof",
 		"id": 399,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 80,
 		"def": 73,
@@ -5102,8 +5102,8 @@ var pokemons =
 		"name": "Bibarel",
 		"id": 400,
 		"type": [
-			"NORMAL",
-			"WATER"
+			"Normal",
+			"Water"
 		],
 		"atk": 162,
 		"def": 119,
@@ -5115,7 +5115,7 @@ var pokemons =
 		"name": "Kricketot",
 		"id": 401,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 45,
 		"def": 74,
@@ -5127,7 +5127,7 @@ var pokemons =
 		"name": "Kricketune",
 		"id": 402,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 160,
 		"def": 100,
@@ -5139,7 +5139,7 @@ var pokemons =
 		"name": "Shinx",
 		"id": 403,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 117,
 		"def": 64,
@@ -5151,7 +5151,7 @@ var pokemons =
 		"name": "Luxio",
 		"id": 404,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 159,
 		"def": 95,
@@ -5163,7 +5163,7 @@ var pokemons =
 		"name": "Luxray",
 		"id": 405,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 232,
 		"def": 156,
@@ -5175,8 +5175,8 @@ var pokemons =
 		"name": "Budew",
 		"id": 406,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 91,
 		"def": 109,
@@ -5188,8 +5188,8 @@ var pokemons =
 		"name": "Roserade",
 		"id": 407,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 243,
 		"def": 185,
@@ -5201,7 +5201,7 @@ var pokemons =
 		"name": "Cranidos",
 		"id": 408,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 218,
 		"def": 71,
@@ -5213,7 +5213,7 @@ var pokemons =
 		"name": "Rampardos",
 		"id": 409,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 295,
 		"def": 109,
@@ -5225,8 +5225,8 @@ var pokemons =
 		"name": "Shieldon",
 		"id": 410,
 		"type": [
-			"ROCK",
-			"STEEL"
+			"Rock",
+			"Steel"
 		],
 		"atk": 76,
 		"def": 195,
@@ -5238,8 +5238,8 @@ var pokemons =
 		"name": "Bastiodon",
 		"id": 411,
 		"type": [
-			"ROCK",
-			"STEEL"
+			"Rock",
+			"Steel"
 		],
 		"atk": 94,
 		"def": 286,
@@ -5251,7 +5251,7 @@ var pokemons =
 		"name": "Burmy Plant Cloak",
 		"id": 412,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 53,
 		"def": 83,
@@ -5263,7 +5263,7 @@ var pokemons =
 		"name": "Burmy Sandy Cloak",
 		"id": 412,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 53,
 		"def": 83,
@@ -5275,7 +5275,7 @@ var pokemons =
 		"name": "Burmy Trash Cloak",
 		"id": 412,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 53,
 		"def": 83,
@@ -5287,8 +5287,8 @@ var pokemons =
 		"name": "Wormadam Plant Cloak",
 		"id": 413,
 		"type": [
-			"BUG",
-			"GRASS"
+			"Bug",
+			"Grass"
 		],
 		"atk": 141,
 		"def": 180,
@@ -5300,8 +5300,8 @@ var pokemons =
 		"name": "Wormadam Sandy Cloak",
 		"id": 413,
 		"type": [
-			"BUG",
-			"GROUND"
+			"Bug",
+			"Ground"
 		],
 		"atk": 141,
 		"def": 180,
@@ -5313,8 +5313,8 @@ var pokemons =
 		"name": "Wormadam Trash Cloak",
 		"id": 413,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 127,
 		"def": 175,
@@ -5326,8 +5326,8 @@ var pokemons =
 		"name": "Mothim",
 		"id": 414,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 185,
 		"def": 98,
@@ -5339,8 +5339,8 @@ var pokemons =
 		"name": "Combee",
 		"id": 415,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 59,
 		"def": 83,
@@ -5352,8 +5352,8 @@ var pokemons =
 		"name": "Vespiquen",
 		"id": 416,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 149,
 		"def": 190,
@@ -5365,7 +5365,7 @@ var pokemons =
 		"name": "Pachirisu",
 		"id": 417,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 94,
 		"def": 172,
@@ -5377,7 +5377,7 @@ var pokemons =
 		"name": "Buizel",
 		"id": 418,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 132,
 		"def": 67,
@@ -5389,7 +5389,7 @@ var pokemons =
 		"name": "Floatzel",
 		"id": 419,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 221,
 		"def": 114,
@@ -5401,7 +5401,7 @@ var pokemons =
 		"name": "Cherubi",
 		"id": 420,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 108,
 		"def": 92,
@@ -5413,7 +5413,7 @@ var pokemons =
 		"name": "Cherrim Sunshine Form",
 		"id": 421,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 170,
 		"def": 153,
@@ -5425,7 +5425,7 @@ var pokemons =
 		"name": "Cherrim Overcast Form",
 		"id": 421,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 170,
 		"def": 153,
@@ -5437,57 +5437,57 @@ var pokemons =
 		"name": "Shellos East Sea",
 		"id": 422,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 103,
 		"def": 105,
 		"hp": 183,
-		"fastMoves": "Mud-Slap,Hidden Power",
+		"fastMoves": "Mud Slap,Hidden Power",
 		"chargeMoves": "Mud Bomb,Water Pulse,Body Slam",
 		"legendary": false
 	},{
 		"name": "Shellos West Sea",
 		"id": 422,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 103,
 		"def": 105,
 		"hp": 183,
-		"fastMoves": "Mud-Slap,Hidden Power",
+		"fastMoves": "Mud Slap,Hidden Power",
 		"chargeMoves": "Mud Bomb,Water Pulse,Body Slam",
 		"legendary": false
 	},{
 		"name": "Gastrodon East Sea",
 		"id": 423,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 169,
 		"def": 143,
 		"hp": 244,
-		"fastMoves": "Mud-Slap,Hidden Power",
+		"fastMoves": "Mud Slap,Hidden Power",
 		"chargeMoves": "Water Pulse,Body Slam,Earth Power",
 		"legendary": false
 	},{
 		"name": "Gastrodon West Sea",
 		"id": 423,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 169,
 		"def": 143,
 		"hp": 244,
-		"fastMoves": "Mud-Slap,Hidden Power",
+		"fastMoves": "Mud Slap,Hidden Power",
 		"chargeMoves": "Water Pulse,Body Slam,Earth Power",
 		"legendary": false
 	},{
 		"name": "Ambipom",
 		"id": 424,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 205,
 		"def": 143,
@@ -5499,8 +5499,8 @@ var pokemons =
 		"name": "Drifloon",
 		"id": 425,
 		"type": [
-			"GHOST",
-			"FLYING"
+			"Ghost",
+			"Flying"
 		],
 		"atk": 117,
 		"def": 80,
@@ -5512,8 +5512,8 @@ var pokemons =
 		"name": "Drifblim",
 		"id": 426,
 		"type": [
-			"GHOST",
-			"FLYING"
+			"Ghost",
+			"Flying"
 		],
 		"atk": 180,
 		"def": 102,
@@ -5525,7 +5525,7 @@ var pokemons =
 		"name": "Buneary",
 		"id": 427,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 130,
 		"def": 105,
@@ -5537,7 +5537,7 @@ var pokemons =
 		"name": "Lopunny",
 		"id": 428,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 156,
 		"def": 194,
@@ -5549,7 +5549,7 @@ var pokemons =
 		"name": "Mismagius",
 		"id": 429,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 211,
 		"def": 187,
@@ -5561,8 +5561,8 @@ var pokemons =
 		"name": "Honchkrow",
 		"id": 430,
 		"type": [
-			"DARK",
-			"FLYING"
+			"Dark",
+			"Flying"
 		],
 		"atk": 243,
 		"def": 103,
@@ -5574,7 +5574,7 @@ var pokemons =
 		"name": "Glameow",
 		"id": 431,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 109,
 		"def": 82,
@@ -5586,7 +5586,7 @@ var pokemons =
 		"name": "Purugly",
 		"id": 432,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 172,
 		"def": 133,
@@ -5598,7 +5598,7 @@ var pokemons =
 		"name": "Chingling",
 		"id": 433,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 114,
 		"def": 94,
@@ -5610,8 +5610,8 @@ var pokemons =
 		"name": "Stunky",
 		"id": 434,
 		"type": [
-			"POISON",
-			"DARK"
+			"Poison",
+			"Dark"
 		],
 		"atk": 121,
 		"def": 90,
@@ -5623,8 +5623,8 @@ var pokemons =
 		"name": "Skuntank",
 		"id": 435,
 		"type": [
-			"POISON",
-			"DARK"
+			"Poison",
+			"Dark"
 		],
 		"atk": 184,
 		"def": 132,
@@ -5636,8 +5636,8 @@ var pokemons =
 		"name": "Bronzor",
 		"id": 436,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 43,
 		"def": 154,
@@ -5649,8 +5649,8 @@ var pokemons =
 		"name": "Bronzong",
 		"id": 437,
 		"type": [
-			"STEEL",
-			"PSYCHIC"
+			"Steel",
+			"Psychic"
 		],
 		"atk": 161,
 		"def": 213,
@@ -5662,7 +5662,7 @@ var pokemons =
 		"name": "Bonsly",
 		"id": 438,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 124,
 		"def": 133,
@@ -5674,8 +5674,8 @@ var pokemons =
 		"name": "Mime Jr.",
 		"id": 439,
 		"type": [
-			"PSYCHIC",
-			"FAIRY"
+			"Psychic",
+			"Fairy"
 		],
 		"atk": 125,
 		"def": 142,
@@ -5687,7 +5687,7 @@ var pokemons =
 		"name": "Happiny",
 		"id": 440,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 25,
 		"def": 77,
@@ -5699,8 +5699,8 @@ var pokemons =
 		"name": "Chatot",
 		"id": 441,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 183,
 		"def": 91,
@@ -5712,8 +5712,8 @@ var pokemons =
 		"name": "Spiritomb",
 		"id": 442,
 		"type": [
-			"GHOST",
-			"DARK"
+			"Ghost",
+			"Dark"
 		],
 		"atk": 169,
 		"def": 199,
@@ -5725,8 +5725,8 @@ var pokemons =
 		"name": "Gible",
 		"id": 443,
 		"type": [
-			"DRAGON",
-			"GROUND"
+			"Dragon",
+			"Ground"
 		],
 		"atk": 124,
 		"def": 84,
@@ -5738,8 +5738,8 @@ var pokemons =
 		"name": "Gabite",
 		"id": 444,
 		"type": [
-			"DRAGON",
-			"GROUND"
+			"Dragon",
+			"Ground"
 		],
 		"atk": 172,
 		"def": 125,
@@ -5751,8 +5751,8 @@ var pokemons =
 		"name": "Garchomp",
 		"id": 445,
 		"type": [
-			"DRAGON",
-			"GROUND"
+			"Dragon",
+			"Ground"
 		],
 		"atk": 261,
 		"def": 193,
@@ -5764,7 +5764,7 @@ var pokemons =
 		"name": "Munchlax",
 		"id": 446,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 137,
 		"def": 117,
@@ -5776,7 +5776,7 @@ var pokemons =
 		"name": "Riolu",
 		"id": 447,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 127,
 		"def": 78,
@@ -5788,8 +5788,8 @@ var pokemons =
 		"name": "Lucario",
 		"id": 448,
 		"type": [
-			"FIGHTING",
-			"STEEL"
+			"Fighting",
+			"Steel"
 		],
 		"atk": 236,
 		"def": 144,
@@ -5801,7 +5801,7 @@ var pokemons =
 		"name": "Hippopotas",
 		"id": 449,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 124,
 		"def": 118,
@@ -5813,7 +5813,7 @@ var pokemons =
 		"name": "Hippowdon",
 		"id": 450,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 201,
 		"def": 191,
@@ -5825,8 +5825,8 @@ var pokemons =
 		"name": "Skorupi",
 		"id": 451,
 		"type": [
-			"POISON",
-			"BUG"
+			"Poison",
+			"Bug"
 		],
 		"atk": 93,
 		"def": 151,
@@ -5838,8 +5838,8 @@ var pokemons =
 		"name": "Drapion",
 		"id": 452,
 		"type": [
-			"POISON",
-			"DARK"
+			"Poison",
+			"Dark"
 		],
 		"atk": 180,
 		"def": 202,
@@ -5851,8 +5851,8 @@ var pokemons =
 		"name": "Croagunk",
 		"id": 453,
 		"type": [
-			"POISON",
-			"FIGHTING"
+			"Poison",
+			"Fighting"
 		],
 		"atk": 116,
 		"def": 76,
@@ -5864,8 +5864,8 @@ var pokemons =
 		"name": "Toxicroak",
 		"id": 454,
 		"type": [
-			"POISON",
-			"FIGHTING"
+			"Poison",
+			"Fighting"
 		],
 		"atk": 211,
 		"def": 133,
@@ -5877,7 +5877,7 @@ var pokemons =
 		"name": "Carnivine",
 		"id": 455,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 187,
 		"def": 136,
@@ -5889,7 +5889,7 @@ var pokemons =
 		"name": "Finneon",
 		"id": 456,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 96,
 		"def": 116,
@@ -5901,7 +5901,7 @@ var pokemons =
 		"name": "Lumineon",
 		"id": 457,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 142,
 		"def": 170,
@@ -5913,8 +5913,8 @@ var pokemons =
 		"name": "Mantyke",
 		"id": 458,
 		"type": [
-			"WATER",
-			"FLYING"
+			"Water",
+			"Flying"
 		],
 		"atk": 105,
 		"def": 179,
@@ -5926,8 +5926,8 @@ var pokemons =
 		"name": "Snover",
 		"id": 459,
 		"type": [
-			"GRASS",
-			"ICE"
+			"Grass",
+			"Ice"
 		],
 		"atk": 115,
 		"def": 105,
@@ -5939,8 +5939,8 @@ var pokemons =
 		"name": "Abomasnow",
 		"id": 460,
 		"type": [
-			"GRASS",
-			"ICE"
+			"Grass",
+			"Ice"
 		],
 		"atk": 178,
 		"def": 158,
@@ -5952,8 +5952,8 @@ var pokemons =
 		"name": "Weavile",
 		"id": 461,
 		"type": [
-			"DARK",
-			"ICE"
+			"Dark",
+			"Ice"
 		],
 		"atk": 243,
 		"def": 171,
@@ -5965,8 +5965,8 @@ var pokemons =
 		"name": "Magnezone",
 		"id": 462,
 		"type": [
-			"ELECTRIC",
-			"STEEL"
+			"Electric",
+			"Steel"
 		],
 		"atk": 238,
 		"def": 205,
@@ -5978,32 +5978,32 @@ var pokemons =
 		"name": "Lickilicky",
 		"id": 463,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 161,
 		"def": 181,
 		"hp": 242,
 		"fastMoves": "Lick,Zen Headbutt",
-		"chargeMoves": "Hyper Beam,Earthquake,Shadow Ball,Solar Beam,Body Slam (legacy)",
+		"chargeMoves": "Hyper Beam,Earthquake,Shadow Ball,Solar Beam,Body Slam (Legacy)",
 		"legendary": false
 	},{
 		"name": "Rhyperior",
 		"id": 464,
 		"type": [
-			"GROUND",
-			"ROCK"
+			"Ground",
+			"Rock"
 		],
 		"atk": 241,
 		"def": 190,
 		"hp": 251,
-		"fastMoves": "Mud-Slap,Smack Down",
+		"fastMoves": "Mud Slap,Smack Down",
 		"chargeMoves": "Earthquake,Stone Edge,Surf,Skull Bash,Superpower,Rock Wrecker (Community Day)",
 		"legendary": false
 	},{
 		"name": "Tangrowth",
 		"id": 465,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 207,
 		"def": 184,
@@ -6015,7 +6015,7 @@ var pokemons =
 		"name": "Electivire",
 		"id": 466,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 249,
 		"def": 163,
@@ -6027,7 +6027,7 @@ var pokemons =
 		"name": "Magmortar",
 		"id": 467,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 247,
 		"def": 172,
@@ -6039,8 +6039,8 @@ var pokemons =
 		"name": "Yanmega",
 		"id": 469,
 		"type": [
-			"BUG",
-			"FLYING"
+			"Bug",
+			"Flying"
 		],
 		"atk": 231,
 		"def": 156,
@@ -6052,7 +6052,7 @@ var pokemons =
 		"name": "Leafeon",
 		"id": 470,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 216,
 		"def": 219,
@@ -6064,7 +6064,7 @@ var pokemons =
 		"name": "Glaceon",
 		"id": 471,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 238,
 		"def": 205,
@@ -6076,8 +6076,8 @@ var pokemons =
 		"name": "Gliscor",
 		"id": 472,
 		"type": [
-			"GROUND",
-			"FLYING"
+			"Ground",
+			"Flying"
 		],
 		"atk": 185,
 		"def": 222,
@@ -6089,33 +6089,33 @@ var pokemons =
 		"name": "Mamoswine",
 		"id": 473,
 		"type": [
-			"ICE",
-			"GROUND"
+			"Ice",
+			"Ground"
 		],
 		"atk": 247,
 		"def": 146,
 		"hp": 242,
-		"fastMoves": "Mud-Slap,Powder Snow",
+		"fastMoves": "Mud Slap,Powder Snow",
 		"chargeMoves": "Stone Edge,Ancient Power (Community Day),Bulldoze,Avalanche",
 		"legendary": false
 	},{
 		"name": "Porygon Z",
 		"id": 474,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 264,
 		"def": 150,
 		"hp": 198,
-		"fastMoves": "Charge Beam,Hidden Power,Lock-On",
+		"fastMoves": "Charge Beam,Hidden Power,Lock On",
 		"chargeMoves": "Hyper Beam,Blizzard,Solar Beam,Zap Cannon,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Gallade",
 		"id": 475,
 		"type": [
-			"PSYCHIC",
-			"FIGHTING"
+			"Psychic",
+			"Fighting"
 		],
 		"atk": 237,
 		"def": 195,
@@ -6127,8 +6127,8 @@ var pokemons =
 		"name": "Probopass",
 		"id": 476,
 		"type": [
-			"ROCK",
-			"STEEL"
+			"Rock",
+			"Steel"
 		],
 		"atk": 135,
 		"def": 275,
@@ -6140,7 +6140,7 @@ var pokemons =
 		"name": "Dusknoir",
 		"id": 477,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 180,
 		"def": 254,
@@ -6152,8 +6152,8 @@ var pokemons =
 		"name": "Froslass",
 		"id": 478,
 		"type": [
-			"ICE",
-			"GHOST"
+			"Ice",
+			"Ghost"
 		],
 		"atk": 171,
 		"def": 150,
@@ -6165,7 +6165,7 @@ var pokemons =
 		"name": "Snivy",
 		"id": 495,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 88,
 		"def": 107,
@@ -6177,7 +6177,7 @@ var pokemons =
 		"name": "Servine",
 		"id": 496,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 122,
 		"def": 152,
@@ -6189,7 +6189,7 @@ var pokemons =
 		"name": "Serperior",
 		"id": 497,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 161,
 		"def": 204,
@@ -6201,7 +6201,7 @@ var pokemons =
 		"name": "Tepig",
 		"id": 498,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 115,
 		"def": 85,
@@ -6213,8 +6213,8 @@ var pokemons =
 		"name": "Pignite",
 		"id": 499,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 173,
 		"def": 106,
@@ -6226,8 +6226,8 @@ var pokemons =
 		"name": "Emboar",
 		"id": 500,
 		"type": [
-			"FIRE",
-			"FIGHTING"
+			"Fire",
+			"Fighting"
 		],
 		"atk": 235,
 		"def": 127,
@@ -6239,7 +6239,7 @@ var pokemons =
 		"name": "Oshawott",
 		"id": 501,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 117,
 		"def": 85,
@@ -6251,7 +6251,7 @@ var pokemons =
 		"name": "Dewott",
 		"id": 502,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 159,
 		"def": 116,
@@ -6263,7 +6263,7 @@ var pokemons =
 		"name": "Samurott",
 		"id": 503,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 212,
 		"def": 157,
@@ -6275,7 +6275,7 @@ var pokemons =
 		"name": "Patrat",
 		"id": 504,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 98,
 		"def": 73,
@@ -6287,7 +6287,7 @@ var pokemons =
 		"name": "Watchog",
 		"id": 505,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 165,
 		"def": 139,
@@ -6299,7 +6299,7 @@ var pokemons =
 		"name": "Lillipup",
 		"id": 506,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 107,
 		"def": 86,
@@ -6311,7 +6311,7 @@ var pokemons =
 		"name": "Herdier",
 		"id": 507,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 145,
 		"def": 126,
@@ -6323,7 +6323,7 @@ var pokemons =
 		"name": "Stoutland",
 		"id": 508,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 206,
 		"def": 182,
@@ -6335,7 +6335,7 @@ var pokemons =
 		"name": "Purrloin",
 		"id": 509,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 98,
 		"def": 73,
@@ -6347,7 +6347,7 @@ var pokemons =
 		"name": "Liepard",
 		"id": 510,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 187,
 		"def": 106,
@@ -6359,7 +6359,7 @@ var pokemons =
 		"name": "Pansage",
 		"id": 511,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 104,
 		"def": 94,
@@ -6371,7 +6371,7 @@ var pokemons =
 		"name": "Simisage",
 		"id": 512,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 206,
 		"def": 133,
@@ -6383,7 +6383,7 @@ var pokemons =
 		"name": "Pansear",
 		"id": 513,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 104,
 		"def": 94,
@@ -6395,7 +6395,7 @@ var pokemons =
 		"name": "Simisear",
 		"id": 514,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 206,
 		"def": 133,
@@ -6407,7 +6407,7 @@ var pokemons =
 		"name": "Panpour",
 		"id": 515,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 104,
 		"def": 94,
@@ -6419,7 +6419,7 @@ var pokemons =
 		"name": "Simipour",
 		"id": 516,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 206,
 		"def": 133,
@@ -6431,8 +6431,8 @@ var pokemons =
 		"name": "Pidove",
 		"id": 519,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 98,
 		"def": 80,
@@ -6444,8 +6444,8 @@ var pokemons =
 		"name": "Tranquill",
 		"id": 520,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 144,
 		"def": 107,
@@ -6457,8 +6457,8 @@ var pokemons =
 		"name": "Unfezant",
 		"id": 521,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 226,
 		"def": 146,
@@ -6470,7 +6470,7 @@ var pokemons =
 		"name": "Blitzle",
 		"id": 522,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 118,
 		"def": 64,
@@ -6482,7 +6482,7 @@ var pokemons =
 		"name": "Zebstrika",
 		"id": 523,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 211,
 		"def": 136,
@@ -6494,7 +6494,7 @@ var pokemons =
 		"name": "Roggenrola",
 		"id": 524,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 121,
 		"def": 110,
@@ -6506,32 +6506,32 @@ var pokemons =
 		"name": "Boldore",
 		"id": 525,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 174,
 		"def": 143,
 		"hp": 172,
-		"fastMoves": "Mud-Slap,Smack Down",
+		"fastMoves": "Mud Slap,Smack Down",
 		"chargeMoves": "Stone Edge,Rock Slide,Bulldoze",
 		"legendary": false
 	},{
 		"name": "Gigalith",
 		"id": 526,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 226,
 		"def": 201,
 		"hp": 198,
-		"fastMoves": "Mud-Slap,Smack Down",
+		"fastMoves": "Mud Slap,Smack Down",
 		"chargeMoves": "Rock Slide,Solar Beam,Heavy Slam,Superpower",
 		"legendary": false
 	},{
 		"name": "Woobat",
 		"id": 527,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 107,
 		"def": 85,
@@ -6543,8 +6543,8 @@ var pokemons =
 		"name": "Swoobat",
 		"id": 528,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 161,
 		"def": 119,
@@ -6556,32 +6556,32 @@ var pokemons =
 		"name": "Drilbur",
 		"id": 529,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 154,
 		"def": 85,
 		"hp": 155,
-		"fastMoves": "Scratch,Mud-Slap",
+		"fastMoves": "Scratch,Mud Slap",
 		"chargeMoves": "Dig,Drill Run,Rock Tomb",
 		"legendary": false
 	},{
 		"name": "Excadrill",
 		"id": 530,
 		"type": [
-			"GROUND",
-			"STEEL"
+			"Ground",
+			"Steel"
 		],
 		"atk": 255,
 		"def": 129,
 		"hp": 242,
-		"fastMoves": "Metal Claw,Mud-Slap",
+		"fastMoves": "Metal Claw,Mud Slap",
 		"chargeMoves": "Earthquake,Drill Run,Rock Slide,Iron Head",
 		"legendary": false
 	},{
 		"name": "Audino",
 		"id": 531,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 114,
 		"def": 163,
@@ -6593,7 +6593,7 @@ var pokemons =
 		"name": "Timburr",
 		"id": 532,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 134,
 		"def": 87,
@@ -6605,7 +6605,7 @@ var pokemons =
 		"name": "Gurdurr",
 		"id": 533,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 180,
 		"def": 134,
@@ -6617,7 +6617,7 @@ var pokemons =
 		"name": "Conkeldurr",
 		"id": 534,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 243,
 		"def": 158,
@@ -6629,7 +6629,7 @@ var pokemons =
 		"name": "Tympole",
 		"id": 535,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 98,
 		"def": 78,
@@ -6641,8 +6641,8 @@ var pokemons =
 		"name": "Palpitoad",
 		"id": 536,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 128,
 		"def": 109,
@@ -6654,8 +6654,8 @@ var pokemons =
 		"name": "Seismitoad",
 		"id": 537,
 		"type": [
-			"WATER",
-			"GROUND"
+			"Water",
+			"Ground"
 		],
 		"atk": 188,
 		"def": 150,
@@ -6667,7 +6667,7 @@ var pokemons =
 		"name": "Throh",
 		"id": 538,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 172,
 		"def": 160,
@@ -6679,7 +6679,7 @@ var pokemons =
 		"name": "Sawk",
 		"id": 539,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 231,
 		"def": 153,
@@ -6691,8 +6691,8 @@ var pokemons =
 		"name": "Venipede",
 		"id": 543,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 83,
 		"def": 99,
@@ -6704,8 +6704,8 @@ var pokemons =
 		"name": "Whirlipede",
 		"id": 544,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 100,
 		"def": 173,
@@ -6717,8 +6717,8 @@ var pokemons =
 		"name": "Scolipede",
 		"id": 545,
 		"type": [
-			"BUG",
-			"POISON"
+			"Bug",
+			"Poison"
 		],
 		"atk": 203,
 		"def": 175,
@@ -6730,7 +6730,7 @@ var pokemons =
 		"name": "Basculin Red Striped Form",
 		"id": 550,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 189,
 		"def": 129,
@@ -6742,7 +6742,7 @@ var pokemons =
 		"name": "Basculin Blue Striped Form",
 		"id": 550,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 189,
 		"def": 129,
@@ -6754,7 +6754,7 @@ var pokemons =
 		"name": "Darumaka",
 		"id": 554,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 153,
 		"def": 86,
@@ -6766,7 +6766,7 @@ var pokemons =
 		"name": "Galarian Darumaka",
 		"id": 554,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 172,
 		"def": 153,
@@ -6778,7 +6778,7 @@ var pokemons =
 		"name": "Darmanitan Standard Mode",
 		"id": 555,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 263,
 		"def": 114,
@@ -6790,7 +6790,7 @@ var pokemons =
 		"name": "Galarian Darmanitan",
 		"id": 555,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 233,
 		"def": 263,
@@ -6802,7 +6802,7 @@ var pokemons =
 		"name": "Maractus",
 		"id": 556,
 		"type": [
-			"GRASS"
+			"Grass"
 		],
 		"atk": 201,
 		"def": 130,
@@ -6814,8 +6814,8 @@ var pokemons =
 		"name": "Dwebble",
 		"id": 557,
 		"type": [
-			"BUG",
-			"ROCK"
+			"Bug",
+			"Rock"
 		],
 		"atk": 118,
 		"def": 128,
@@ -6827,8 +6827,8 @@ var pokemons =
 		"name": "Crustle",
 		"id": 558,
 		"type": [
-			"BUG",
-			"ROCK"
+			"Bug",
+			"Rock"
 		],
 		"atk": 188,
 		"def": 200,
@@ -6840,8 +6840,8 @@ var pokemons =
 		"name": "Scraggy",
 		"id": 559,
 		"type": [
-			"DARK",
-			"FIGHTING"
+			"Dark",
+			"Fighting"
 		],
 		"atk": 132,
 		"def": 132,
@@ -6853,8 +6853,8 @@ var pokemons =
 		"name": "Scrafty",
 		"id": 560,
 		"type": [
-			"DARK",
-			"FIGHTING"
+			"Dark",
+			"Fighting"
 		],
 		"atk": 163,
 		"def": 222,
@@ -6866,8 +6866,8 @@ var pokemons =
 		"name": "Sigilyph",
 		"id": 561,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 204,
 		"def": 167,
@@ -6879,7 +6879,7 @@ var pokemons =
 		"name": "Yamask",
 		"id": 562,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 95,
 		"def": 141,
@@ -6891,7 +6891,7 @@ var pokemons =
 		"name": "Cofagrigus",
 		"id": 563,
 		"type": [
-			"GHOST"
+			"Ghost"
 		],
 		"atk": 163,
 		"def": 237,
@@ -6903,8 +6903,8 @@ var pokemons =
 		"name": "Tirtouga",
 		"id": 564,
 		"type": [
-			"WATER",
-			"ROCK"
+			"Water",
+			"Rock"
 		],
 		"atk": 134,
 		"def": 146,
@@ -6916,8 +6916,8 @@ var pokemons =
 		"name": "Carracosta",
 		"id": 565,
 		"type": [
-			"WATER",
-			"ROCK"
+			"Water",
+			"Rock"
 		],
 		"atk": 192,
 		"def": 197,
@@ -6929,8 +6929,8 @@ var pokemons =
 		"name": "Archen",
 		"id": 566,
 		"type": [
-			"ROCK",
-			"FLYING"
+			"Rock",
+			"Flying"
 		],
 		"atk": 213,
 		"def": 89,
@@ -6942,8 +6942,8 @@ var pokemons =
 		"name": "Archeops",
 		"id": 567,
 		"type": [
-			"ROCK",
-			"FLYING"
+			"Rock",
+			"Flying"
 		],
 		"atk": 292,
 		"def": 139,
@@ -6955,7 +6955,7 @@ var pokemons =
 		"name": "Trubbish",
 		"id": 568,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 96,
 		"def": 122,
@@ -6967,7 +6967,7 @@ var pokemons =
 		"name": "Garbodor",
 		"id": 569,
 		"type": [
-			"POISON"
+			"Poison"
 		],
 		"atk": 181,
 		"def": 164,
@@ -6979,7 +6979,7 @@ var pokemons =
 		"name": "Minccino",
 		"id": 572,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 98,
 		"def": 80,
@@ -6991,7 +6991,7 @@ var pokemons =
 		"name": "Cinccino",
 		"id": 573,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 198,
 		"def": 130,
@@ -7003,7 +7003,7 @@ var pokemons =
 		"name": "Gothita",
 		"id": 574,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 98,
 		"def": 112,
@@ -7015,7 +7015,7 @@ var pokemons =
 		"name": "Gothorita",
 		"id": 575,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 137,
 		"def": 153,
@@ -7027,7 +7027,7 @@ var pokemons =
 		"name": "Gothitelle",
 		"id": 576,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 176,
 		"def": 205,
@@ -7039,7 +7039,7 @@ var pokemons =
 		"name": "Solosis",
 		"id": 577,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 170,
 		"def": 83,
@@ -7051,7 +7051,7 @@ var pokemons =
 		"name": "Duosion",
 		"id": 578,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 208,
 		"def": 103,
@@ -7063,7 +7063,7 @@ var pokemons =
 		"name": "Reuniclus",
 		"id": 579,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 214,
 		"def": 148,
@@ -7075,8 +7075,8 @@ var pokemons =
 		"name": "Ducklett",
 		"id": 580,
 		"type": [
-			"FLYING",
-			"WATER"
+			"Flying",
+			"Water"
 		],
 		"atk": 158,
 		"def": 84,
@@ -7088,8 +7088,8 @@ var pokemons =
 		"name": "Swanna",
 		"id": 581,
 		"type": [
-			"FLYING",
-			"WATER"
+			"Flying",
+			"Water"
 		],
 		"atk": 181,
 		"def": 182,
@@ -7101,7 +7101,7 @@ var pokemons =
 		"name": "Karrablast",
 		"id": 588,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 137,
 		"def": 87,
@@ -7113,8 +7113,8 @@ var pokemons =
 		"name": "Escavalier",
 		"id": 589,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 223,
 		"def": 187,
@@ -7126,8 +7126,8 @@ var pokemons =
 		"name": "Foongus",
 		"id": 590,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 97,
 		"def": 91,
@@ -7139,8 +7139,8 @@ var pokemons =
 		"name": "Amoonguss",
 		"id": 591,
 		"type": [
-			"GRASS",
-			"POISON"
+			"Grass",
+			"Poison"
 		],
 		"atk": 155,
 		"def": 139,
@@ -7152,7 +7152,7 @@ var pokemons =
 		"name": "Alomomola",
 		"id": 594,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 138,
 		"def": 131,
@@ -7164,8 +7164,8 @@ var pokemons =
 		"name": "Joltik",
 		"id": 595,
 		"type": [
-			"BUG",
-			"ELECTRIC"
+			"Bug",
+			"Electric"
 		],
 		"atk": 110,
 		"def": 98,
@@ -7177,8 +7177,8 @@ var pokemons =
 		"name": "Galvantula",
 		"id": 596,
 		"type": [
-			"BUG",
-			"ELECTRIC"
+			"Bug",
+			"Electric"
 		],
 		"atk": 201,
 		"def": 128,
@@ -7190,8 +7190,8 @@ var pokemons =
 		"name": "Ferroseed",
 		"id": 597,
 		"type": [
-			"GRASS",
-			"STEEL"
+			"Grass",
+			"Steel"
 		],
 		"atk": 82,
 		"def": 155,
@@ -7203,8 +7203,8 @@ var pokemons =
 		"name": "Ferrothorn",
 		"id": 598,
 		"type": [
-			"GRASS",
-			"STEEL"
+			"Grass",
+			"Steel"
 		],
 		"atk": 158,
 		"def": 223,
@@ -7216,7 +7216,7 @@ var pokemons =
 		"name": "Klink",
 		"id": 599,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 98,
 		"def": 121,
@@ -7228,7 +7228,7 @@ var pokemons =
 		"name": "Klang",
 		"id": 600,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 150,
 		"def": 174,
@@ -7240,7 +7240,7 @@ var pokemons =
 		"name": "Klinklang",
 		"id": 601,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 199,
 		"def": 214,
@@ -7252,8 +7252,8 @@ var pokemons =
 		"name": "Litwick",
 		"id": 607,
 		"type": [
-			"GHOST",
-			"FIRE"
+			"Ghost",
+			"Fire"
 		],
 		"atk": 108,
 		"def": 98,
@@ -7265,8 +7265,8 @@ var pokemons =
 		"name": "Lampent",
 		"id": 608,
 		"type": [
-			"GHOST",
-			"FIRE"
+			"Ghost",
+			"Fire"
 		],
 		"atk": 169,
 		"def": 115,
@@ -7278,8 +7278,8 @@ var pokemons =
 		"name": "Chandelure",
 		"id": 609,
 		"type": [
-			"GHOST",
-			"FIRE"
+			"Ghost",
+			"Fire"
 		],
 		"atk": 271,
 		"def": 182,
@@ -7291,7 +7291,7 @@ var pokemons =
 		"name": "Axew",
 		"id": 610,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 154,
 		"def": 101,
@@ -7303,7 +7303,7 @@ var pokemons =
 		"name": "Fraxure",
 		"id": 611,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 212,
 		"def": 123,
@@ -7315,7 +7315,7 @@ var pokemons =
 		"name": "Haxorus",
 		"id": 612,
 		"type": [
-			"DRAGON"
+			"Dragon"
 		],
 		"atk": 284,
 		"def": 172,
@@ -7327,7 +7327,7 @@ var pokemons =
 		"name": "Cubchoo",
 		"id": 613,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 128,
 		"def": 74,
@@ -7339,7 +7339,7 @@ var pokemons =
 		"name": "Beartic",
 		"id": 614,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 233,
 		"def": 152,
@@ -7351,7 +7351,7 @@ var pokemons =
 		"name": "Cryogonal",
 		"id": 615,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 190,
 		"def": 218,
@@ -7363,7 +7363,7 @@ var pokemons =
 		"name": "Shelmet",
 		"id": 616,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 72,
 		"def": 140,
@@ -7375,7 +7375,7 @@ var pokemons =
 		"name": "Accelgor",
 		"id": 617,
 		"type": [
-			"BUG"
+			"Bug"
 		],
 		"atk": 220,
 		"def": 120,
@@ -7387,8 +7387,8 @@ var pokemons =
 		"name": "Stunfisk",
 		"id": 618,
 		"type": [
-			"GROUND",
-			"ELECTRIC"
+			"Ground",
+			"Electric"
 		],
 		"atk": 144,
 		"def": 171,
@@ -7400,8 +7400,8 @@ var pokemons =
 		"name": "Galarian Stunfisk",
 		"id": 618,
 		"type": [
-			"GROUND",
-			"STEEL"
+			"Ground",
+			"Steel"
 		],
 		"atk": 240,
 		"def": 144,
@@ -7413,34 +7413,34 @@ var pokemons =
 		"name": "Golett",
 		"id": 622,
 		"type": [
-			"GROUND",
-			"GHOST"
+			"Ground",
+			"Ghost"
 		],
 		"atk": 127,
 		"def": 92,
 		"hp": 153,
-		"fastMoves": "Mud-Slap,Astonish",
+		"fastMoves": "Mud Slap,Astonish",
 		"chargeMoves": "Shadow Punch,Brick Break,Night Shade",
 		"legendary": false
 	},{
 		"name": "Golurk",
 		"id": 623,
 		"type": [
-			"GROUND",
-			"GHOST"
+			"Ground",
+			"Ghost"
 		],
 		"atk": 222,
 		"def": 154,
 		"hp": 205,
-		"fastMoves": "Mud-Slap,Astonish",
+		"fastMoves": "Mud Slap,Astonish",
 		"chargeMoves": "Shadow Punch,Dynamic Punch,Earth Power",
 		"legendary": false
 	},{
 		"name": "Rufflet",
 		"id": 627,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 150,
 		"def": 97,
@@ -7452,8 +7452,8 @@ var pokemons =
 		"name": "Braviary",
 		"id": 628,
 		"type": [
-			"NORMAL",
-			"FLYING"
+			"Normal",
+			"Flying"
 		],
 		"atk": 232,
 		"def": 152,
@@ -7465,7 +7465,7 @@ var pokemons =
 		"name": "Heatmor",
 		"id": 631,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 204,
 		"def": 129,
@@ -7477,8 +7477,8 @@ var pokemons =
 		"name": "Durant",
 		"id": 632,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 217,
 		"def": 188,
@@ -7490,8 +7490,8 @@ var pokemons =
 		"name": "Deino",
 		"id": 633,
 		"type": [
-			"DARK",
-			"DRAGON"
+			"Dark",
+			"Dragon"
 		],
 		"atk": 116,
 		"def": 93,
@@ -7503,8 +7503,8 @@ var pokemons =
 		"name": "Zweilous",
 		"id": 634,
 		"type": [
-			"DARK",
-			"DRAGON"
+			"Dark",
+			"Dragon"
 		],
 		"atk": 159,
 		"def": 135,
@@ -7516,8 +7516,8 @@ var pokemons =
 		"name": "Hydreigon",
 		"id": 635,
 		"type": [
-			"DARK",
-			"DRAGON"
+			"Dark",
+			"Dragon"
 		],
 		"atk": 256,
 		"def": 188,
@@ -7529,8 +7529,8 @@ var pokemons =
 		"name": "Kyurem",
 		"id": 646,
 		"type": [
-			"DRAGON",
-			"ICE"
+			"Dragon",
+			"Ice"
 		],
 		"atk": 245,
 		"def": 246,
@@ -7542,7 +7542,7 @@ var pokemons =
 		"name": "Meltan",
 		"id": 808,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 118,
 		"def": 99,
@@ -7554,7 +7554,7 @@ var pokemons =
 		"name": "Melmetal",
 		"id": 809,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 226,
 		"def": 190,
@@ -7566,8 +7566,8 @@ var pokemons =
 		"name": "Obstagoon",
 		"id": 862,
 		"type": [
-			"DARK",
-			"NORMAL"
+			"Dark",
+			"Normal"
 		],
 		"atk": 212,
 		"def": 180,
@@ -7579,7 +7579,7 @@ var pokemons =
 		"name": "Perrserker",
 		"id": 863,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 172,
 		"def": 195,
@@ -7591,7 +7591,7 @@ var pokemons =
 		"name": "Sirfetch'd",
 		"id": 865,
 		"type": [
-			"FIGHTING"
+			"Fighting"
 		],
 		"atk": 158,
 		"def": 248,
@@ -7603,8 +7603,8 @@ var pokemons =
 		"name": "Articuno",
 		"id": 144,
 		"type": [
-			"ICE",
-			"FLYING"
+			"Ice",
+			"Flying"
 		],
 		"atk": 192,
 		"def": 236,
@@ -7616,8 +7616,8 @@ var pokemons =
 		"name": "Zapdos",
 		"id": 145,
 		"type": [
-			"ELECTRIC",
-			"FLYING"
+			"Electric",
+			"Flying"
 		],
 		"atk": 253,
 		"def": 185,
@@ -7629,8 +7629,8 @@ var pokemons =
 		"name": "Moltres",
 		"id": 146,
 		"type": [
-			"FIRE",
-			"FLYING"
+			"Fire",
+			"Flying"
 		],
 		"atk": 251,
 		"def": 181,
@@ -7642,7 +7642,7 @@ var pokemons =
 		"name": "Armored Mewtwo",
 		"id": 150,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 182,
 		"def": 278,
@@ -7654,7 +7654,7 @@ var pokemons =
 		"name": "Mewtwo",
 		"id": 150,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 300,
 		"def": 182,
@@ -7666,7 +7666,7 @@ var pokemons =
 		"name": "Raikou",
 		"id": 243,
 		"type": [
-			"ELECTRIC"
+			"Electric"
 		],
 		"atk": 241,
 		"def": 195,
@@ -7678,7 +7678,7 @@ var pokemons =
 		"name": "Entei",
 		"id": 244,
 		"type": [
-			"FIRE"
+			"Fire"
 		],
 		"atk": 235,
 		"def": 171,
@@ -7690,7 +7690,7 @@ var pokemons =
 		"name": "Suicune",
 		"id": 245,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 180,
 		"def": 235,
@@ -7702,8 +7702,8 @@ var pokemons =
 		"name": "Lugia",
 		"id": 249,
 		"type": [
-			"PSYCHIC",
-			"FLYING"
+			"Psychic",
+			"Flying"
 		],
 		"atk": 193,
 		"def": 310,
@@ -7715,8 +7715,8 @@ var pokemons =
 		"name": "Ho oh",
 		"id": 250,
 		"type": [
-			"FIRE",
-			"FLYING"
+			"Fire",
+			"Flying"
 		],
 		"atk": 239,
 		"def": 244,
@@ -7728,44 +7728,44 @@ var pokemons =
 		"name": "Regirock",
 		"id": 377,
 		"type": [
-			"ROCK"
+			"Rock"
 		],
 		"atk": 179,
 		"def": 309,
 		"hp": 190,
-		"fastMoves": "Rock Throw,Rock Smash,Lock-On",
+		"fastMoves": "Rock Throw,Rock Smash,Lock On",
 		"chargeMoves": "Stone Edge,Focus Blast,Zap Cannon",
 		"legendary": true
 	},{
 		"name": "Regice",
 		"id": 378,
 		"type": [
-			"ICE"
+			"Ice"
 		],
 		"atk": 179,
 		"def": 309,
 		"hp": 190,
-		"fastMoves": "Frost Breath,Rock Smash,Lock-On",
+		"fastMoves": "Frost Breath,Rock Smash,Lock On",
 		"chargeMoves": "Earthquake,Blizzard,Focus Blast",
 		"legendary": true
 	},{
 		"name": "Registeel",
 		"id": 379,
 		"type": [
-			"STEEL"
+			"Steel"
 		],
 		"atk": 143,
 		"def": 285,
 		"hp": 190,
-		"fastMoves": "Metal Claw,Rock Smash,Lock-On",
+		"fastMoves": "Metal Claw,Rock Smash,Lock On",
 		"chargeMoves": "Hyper Beam,Flash Cannon,Focus Blast",
 		"legendary": true
 	},{
 		"name": "Latias",
 		"id": 380,
 		"type": [
-			"DRAGON",
-			"PSYCHIC"
+			"Dragon",
+			"Psychic"
 		],
 		"atk": 228,
 		"def": 246,
@@ -7777,8 +7777,8 @@ var pokemons =
 		"name": "Latios",
 		"id": 381,
 		"type": [
-			"DRAGON",
-			"PSYCHIC"
+			"Dragon",
+			"Psychic"
 		],
 		"atk": 268,
 		"def": 212,
@@ -7790,7 +7790,7 @@ var pokemons =
 		"name": "Kyogre",
 		"id": 382,
 		"type": [
-			"WATER"
+			"Water"
 		],
 		"atk": 270,
 		"def": 228,
@@ -7802,7 +7802,7 @@ var pokemons =
 		"name": "Groudon",
 		"id": 383,
 		"type": [
-			"GROUND"
+			"Ground"
 		],
 		"atk": 270,
 		"def": 228,
@@ -7814,8 +7814,8 @@ var pokemons =
 		"name": "Rayquaza",
 		"id": 384,
 		"type": [
-			"DRAGON",
-			"FLYING"
+			"Dragon",
+			"Flying"
 		],
 		"atk": 284,
 		"def": 170,
@@ -7827,7 +7827,7 @@ var pokemons =
 		"name": "Deoxys Defense Forme",
 		"id": 386,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 144,
 		"def": 330,
@@ -7839,7 +7839,7 @@ var pokemons =
 		"name": "Deoxys Speed Forme",
 		"id": 386,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 230,
 		"def": 218,
@@ -7851,7 +7851,7 @@ var pokemons =
 		"name": "Deoxys Normal Forme",
 		"id": 386,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 345,
 		"def": 115,
@@ -7863,7 +7863,7 @@ var pokemons =
 		"name": "Deoxys Attack Forme",
 		"id": 386,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 414,
 		"def": 46,
@@ -7875,8 +7875,8 @@ var pokemons =
 		"name": "Togekiss",
 		"id": 468,
 		"type": [
-			"FAIRY",
-			"FLYING"
+			"Fairy",
+			"Flying"
 		],
 		"atk": 225,
 		"def": 217,
@@ -7888,7 +7888,7 @@ var pokemons =
 		"name": "Uxie",
 		"id": 480,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 156,
 		"def": 270,
@@ -7900,7 +7900,7 @@ var pokemons =
 		"name": "Mesprit",
 		"id": 481,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 212,
 		"def": 212,
@@ -7912,7 +7912,7 @@ var pokemons =
 		"name": "Azelf",
 		"id": 482,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 270,
 		"def": 151,
@@ -7924,8 +7924,8 @@ var pokemons =
 		"name": "Dialga",
 		"id": 483,
 		"type": [
-			"STEEL",
-			"DRAGON"
+			"Steel",
+			"Dragon"
 		],
 		"atk": 275,
 		"def": 211,
@@ -7937,8 +7937,8 @@ var pokemons =
 		"name": "Palkia",
 		"id": 484,
 		"type": [
-			"WATER",
-			"DRAGON"
+			"Water",
+			"Dragon"
 		],
 		"atk": 280,
 		"def": 215,
@@ -7950,8 +7950,8 @@ var pokemons =
 		"name": "Heatran",
 		"id": 485,
 		"type": [
-			"FIRE",
-			"STEEL"
+			"Fire",
+			"Steel"
 		],
 		"atk": 251,
 		"def": 213,
@@ -7963,7 +7963,7 @@ var pokemons =
 		"name": "Regigigas",
 		"id": 486,
 		"type": [
-			"NORMAL"
+			"Normal"
 		],
 		"atk": 287,
 		"def": 210,
@@ -7975,8 +7975,8 @@ var pokemons =
 		"name": "Giratina Altered Forme",
 		"id": 487,
 		"type": [
-			"GHOST",
-			"DRAGON"
+			"Ghost",
+			"Dragon"
 		],
 		"atk": 187,
 		"def": 225,
@@ -7988,8 +7988,8 @@ var pokemons =
 		"name": "Giratina Origin Forme",
 		"id": 487,
 		"type": [
-			"GHOST",
-			"DRAGON"
+			"Ghost",
+			"Dragon"
 		],
 		"atk": 225,
 		"def": 187,
@@ -8001,19 +8001,19 @@ var pokemons =
 		"name": "Cresselia",
 		"id": 488,
 		"type": [
-			"PSYCHIC"
+			"Psychic"
 		],
 		"atk": 152,
 		"def": 258,
 		"hp": 260,
 		"fastMoves": "Psycho Cut,Confusion",
-		"chargeMoves": "Moonblast,Aurora Beam,Future Sight, Grass Knot",
+		"chargeMoves": "Moonblast,Aurora Beam,Future Sight,Grass Knot",
 		"legendary": true
 	},{
 		"name": "Darkrai",
 		"id": 491,
 		"type": [
-			"DARK"
+			"Dark"
 		],
 		"atk": 285,
 		"def": 198,
@@ -8025,8 +8025,8 @@ var pokemons =
 		"name": "Cobalion",
 		"id": 638,
 		"type": [
-			"STEEL",
-			"FIGHTING"
+			"Steel",
+			"Fighting"
 		],
 		"atk": 192,
 		"def": 229,
@@ -8038,8 +8038,8 @@ var pokemons =
 		"name": "Terrakion",
 		"id": 639,
 		"type": [
-			"ROCK",
-			"FIGHTING"
+			"Rock",
+			"Fighting"
 		],
 		"atk": 260,
 		"def": 192,
@@ -8051,8 +8051,8 @@ var pokemons =
 		"name": "Virizion",
 		"id": 640,
 		"type": [
-			"GRASS",
-			"FIGHTING"
+			"Grass",
+			"Fighting"
 		],
 		"atk": 192,
 		"def": 229,
@@ -8064,7 +8064,7 @@ var pokemons =
 		"name": "Tornadus Incarnate Forme",
 		"id": 641,
 		"type": [
-			"FLYING"
+			"Flying"
 		],
 		"atk": 266,
 		"def": 164,
@@ -8076,8 +8076,8 @@ var pokemons =
 		"name": "Thundurus Incarnate Forme",
 		"id": 642,
 		"type": [
-			"ELECTRIC",
-			"FLYING"
+			"Electric",
+			"Flying"
 		],
 		"atk": 266,
 		"def": 164,
@@ -8089,8 +8089,8 @@ var pokemons =
 		"name": "Reshiram",
 		"id": 643,
 		"type": [
-			"DRAGON",
-			"FIRE"
+			"Dragon",
+			"Fire"
 		],
 		"atk": 275,
 		"def": 211,
@@ -8102,8 +8102,8 @@ var pokemons =
 		"name": "Zekrom",
 		"id": 644,
 		"type": [
-			"DRAGON",
-			"ELECTRIC"
+			"Dragon",
+			"Electric"
 		],
 		"atk": 275,
 		"def": 211,
@@ -8115,8 +8115,8 @@ var pokemons =
 		"name": "Landorus Incarnate Forme",
 		"id": 645,
 		"type": [
-			"GROUND",
-			"FLYING"
+			"Ground",
+			"Flying"
 		],
 		"atk": 261,
 		"def": 182,
@@ -8128,8 +8128,8 @@ var pokemons =
 		"name": "Genesect",
 		"id": 649,
 		"type": [
-			"BUG",
-			"STEEL"
+			"Bug",
+			"Steel"
 		],
 		"atk": 252,
 		"def": 199,
@@ -8144,6 +8144,15 @@ var pokemonsMap = {};
 pokemons.forEach(
     function(pokemon) {
         let name = pokemon.name.toLowerCase();
+
+
+
+        let fastMoves = pokemon.fastMoves.split(",");
+        pokemon.fastMoves = fastMoves;
+
+        let chargeMoves = pokemon.chargeMoves.split(",");
+        pokemon.chargeMoves = chargeMoves;
+
         pokemonsMap[name] = pokemon;
     }
 );
