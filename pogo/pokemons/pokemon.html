@@ -16,9 +16,11 @@
 
         <!-- options -->
         <form ng-show="shouldshowOptions()">
+
+            <!-- max cp -->
             <div class="form-group row">
-                <label class="col-3 col-lg-2 mt-2 col-form-label">Max CP:</label>
-                <div class="col-9 col-lg-4 mt-2">
+                <label class="col-4 col-lg-2 mt-2 col-form-label">Max CP:</label>
+                <div class="col-8 col-lg-4 mt-2">
                     <input class="form-control" type="text" ng-model="maxCP" />
                 </div>
                 <div class="btn-group ml-auto mr-3 mt-2" role="group">
@@ -36,23 +38,39 @@
                     </button>
                 </div>
             </div>
+
+            <!-- IVs -->
             <div class="form-group row">
-                <label class="col-3 col-lg-1 mt-2 col-form-label">ATK IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">ATK IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="atkIv" type="number"/>
                 </div>
-                <div class="col-4 d-lg-none"></div>
-                <label class="col-3 col-lg-1 mt-2 col-form-label">DEF IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">DEF IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="defIv" type="number"/>
                 </div>
-                <div class="col-4 d-lg-none"></div>
-                <label class="col-3 col-lg-1 mt-2 col-form-label">HP IV:</label>
-                <div class="col-5 col-lg-2 mt-2">
+                <label class="col-4 col-lg-1 mt-2 col-form-label">HP IV:</label>
+                <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="hpIv" type="number"/>
                 </div>
-                <button class="btn btn-dark ml-auto mr-3 mt-2" ng-click="saveIvs()">
-                    Compare IVs
+                <div class="btn-group ml-auto mr-3 mt-2" role="group">
+                    <button class="btn btn-dark" ng-click="saveIvs()">
+                        Compare
+                    </button>
+                    <button class="btn btn-secondary" ng-click="minIvs()"
+                            ng-class="atkIv === 0 && defIv === 0 && hpIv === 0 ? 'btn-dark' : ''">
+                        Min
+                    </button>
+                    <button class="btn btn-secondary" ng-click="maxIvs()"
+                            ng-class="atkIv === 15 && defIv === 15 && hpIv === 15 ? 'btn-dark' : ''">
+                        Max
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <button  class="btn btn-dark ml-auto mr-3" ng-click="refreshPage()">
+                    Save URL
                 </button>
             </div>
         </form>

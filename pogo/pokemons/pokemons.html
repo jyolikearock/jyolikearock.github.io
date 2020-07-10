@@ -47,6 +47,16 @@
                 <div class="col-8 col-lg-2 mt-2">
                     <input class="form-control" ng-model="hpIv" type="number"/>
                 </div>
+                <div class="btn-group ml-auto mr-3 mt-2" role="group">
+                    <button class="btn btn-secondary" ng-click="minIvs()"
+                            ng-class="atkIv === 0 && defIv === 0 && hpIv === 0 ? 'btn-dark' : ''">
+                        Min
+                    </button>
+                    <button class="btn btn-secondary" ng-click="maxIvs()"
+                            ng-class="atkIv === 15 && defIv === 15 && hpIv === 15 ? 'btn-dark' : ''">
+                        Max
+                    </button>
+                </div>
             </div>
 
             <!-- type filter -->
@@ -80,6 +90,12 @@
            refresh-table>
         <thead>
         <tr>
+            <th colspan="11">
+                <input placeholder="Search Pokemon" class="form-control" type="search"
+                       ng-model="searchPokemon" st-search="name" />
+            </th>
+        </tr>
+        <tr>
             <th class="sortable" colspan="2" st-sort="name">Pokemon</th>
             <th class="sortable" colspan="2" st-sort="type">Type</th>
             <th class="sortable" st-sort="_level">Level</th>
@@ -89,16 +105,6 @@
             <th class="sortable" st-sort="_bulk" data-toggle="tooltip" data-placement="top" title="Geometric mean of DEF and HP">Bulk</th>
             <th class="sortable" st-sort="_total" data-toggle="tooltip" data-placement="top" title="Geometric mean of ATK, DEF, and HP">Total</th>
             <th class="sortable" st-sort="_cp">CP</th>
-        </tr>
-        <tr>
-            <th colspan="5">
-                <input placeholder="Search Pokemon" class="form-control" type="search"
-                       ng-model="searchPokemon" st-search="name" />
-            </th>
-            <th colspan="6">
-                <input placeholder="Search Types" class="form-control" type="search"
-                       ng-model="searchType" st-search="type" />
-            </th>
         </tr>
         </thead>
         <tbody>

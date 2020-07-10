@@ -65,7 +65,6 @@ app.directive("refreshTable", function(){
         restrict: "A",
         link:function(scope,elem,attr,table){
             scope.$on("refreshTable", function() {
-                console.log("received broadcast; calling table.pipe()");
                 table.pipe(table.tableState());
             });
     }

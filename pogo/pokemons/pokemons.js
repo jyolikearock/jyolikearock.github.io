@@ -3,6 +3,7 @@
 var ivsMap = {};
 var ivsId = 0;
 var typeFilter = [];
+var oneTypeOnly = false;
 
 angular.module('app.pokemons', ['ngRoute'])
 
@@ -104,16 +105,22 @@ angular.module('app.pokemons', ['ngRoute'])
         let index = typeFilter.indexOf(type);
 
         if (index > -1) {
-            typeFilter.splice(index, 1);
+            if (oneTypeOnly || typeFilter.length === 2) {
+                typeFilter.splice(index, 1);
+                oneTypeOnly = false;
+            }
+            else {
+                oneTypeOnly = true;
+            }
         }
         else {
             if (typeFilter.length === 2) {
                 typeFilter = [];
             }
             typeFilter.push(type);
+            oneTypeOnly = false;
         }
 
-        console.log("type filter: " + typeFilter);
         applyTypeFilter();
     }
 
@@ -147,7 +154,7 @@ angular.module('app.pokemons', ['ngRoute'])
             if (!pokemon.type.includes(type)) {
                 return false;
             }
-            else if (pokemon.type.length > 1 && typesToMatch.length == 1) {
+            else if (oneTypeOnly && pokemon.type.length > 1) {
                 return false;
             }
         }
@@ -158,6 +165,20 @@ angular.module('app.pokemons', ['ngRoute'])
     $scope.showIvs = function() {
         let ivs = $scope.ivsMap[$scope.pokemon.name];
         return (ivs !== undefined && ivs.length > 0);
+    }
+
+    $scope.minIvs = function() {
+        console.log("setting IVs to 0");
+        $scope.atkIv = 0;
+        $scope.defIv = 0;
+        $scope.hpIv = 0;
+    }
+
+    $scope.maxIvs = function() {
+        console.log("setting IVs to 15");
+        $scope.atkIv = 15;
+        $scope.defIv = 15;
+        $scope.hpIv = 15;
     }
 
     $scope.saveIvs = function() {
