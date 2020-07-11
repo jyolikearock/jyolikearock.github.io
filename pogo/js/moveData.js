@@ -2685,7 +2685,7 @@ var chargeMoves =
 		"pveCooldown": 2.2
 	},
 	{
-		"name": "Super Power",
+		"name": "Superpower",
 		"type": "Fighting",
 		"pvpDamage": 85,
 		"pvpEnergy": 40,

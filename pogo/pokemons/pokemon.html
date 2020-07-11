@@ -1,39 +1,51 @@
 <div class="card mt-3">
-    <div class="card-body">
+    <div class="card-body" ng-controller="optionsController">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-secondary" ng-click="go('/pokemons')">
+                    < Back
+                </button>
+            </div>
+            <input class="form-control" type="text" placeholder="Search Pokemon" ng-model="searchPokemon"
+                   uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue | limitTo: 7"/>
+            <div class="input-group-append">
+                <button class="btn btn-dark" ng-click="getPokemon(searchPokemon)">
+                    Go
+                </button>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-6">
                 <h5 class="card-title">{{pokemon.name}}</h5>
-                <span class="d-none">{{refreshStats()}}</span>
+                <span class="d-none">{{updatePokemon()}}</span>
             </div>
-            <button class="btn btn-secondary ml-auto mr-3" ng-click="go('/pokemons')">
-                < Back
-            </button>
-            <button class="btn btn-secondary mr-3" ng-click="toggleOptions()">
+            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
                 Options
             </button>
         </div>
 
         <!-- options -->
-        <form ng-show="shouldshowOptions()">
+        <form ng-show="showOptions()">
 
             <!-- max cp -->
             <div class="form-group row">
                 <label class="col-4 col-lg-2 mt-2 col-form-label">Max CP:</label>
                 <div class="col-8 col-lg-4 mt-2">
-                    <input class="form-control" type="text" ng-model="maxCP" />
+                    <input class="form-control" type="number" ng-model="maxCp" ng-change="validateMaxCp()"/>
                 </div>
                 <div class="btn-group ml-auto mr-3 mt-2" role="group">
-                    <button class="btn btn-secondary" ng-click="updateMaxCP(1500)"
-                            ng-class="maxCP <= 1500 ? 'btn-dark' : ''">
+                    <button class="btn btn-secondary" ng-click="setMaxCp(1500)"
+                            ng-class="maxCp <= 1500 ? 'btn-dark' : ''">
                         GL (1500)
                     </button>
-                    <button class="btn btn-secondary" ng-click="updateMaxCP(2500)"
-                            ng-class="maxCP > 1500 && maxCP <= 2500 ? 'btn-dark' : ''">
+                    <button class="btn btn-secondary" ng-click="setMaxCp(2500)"
+                            ng-class="maxCp > 1500 && maxCp <= 2500 ? 'btn-dark' : ''">
                         UL (2500)
                     </button>
-                    <button class="btn btn-secondary" ng-click="updateMaxCP(9999)"
-                            ng-class="maxCP > 2500 ? 'btn-dark' : ''">
+                    <button class="btn btn-secondary" ng-click="setMaxCp(9999)"
+                            ng-class="maxCp > 2500 ? 'btn-dark' : ''">
                         ML (No Max)
                     </button>
                 </div>
@@ -43,15 +55,15 @@
             <div class="form-group row">
                 <label class="col-4 col-lg-1 mt-2 col-form-label">ATK IV:</label>
                 <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="atkIv" type="number"/>
+                    <input class="form-control" ng-model="atkIv" type="number" ng-change="validateAtkIv()"/>
                 </div>
                 <label class="col-4 col-lg-1 mt-2 col-form-label">DEF IV:</label>
                 <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="defIv" type="number"/>
+                    <input class="form-control" ng-model="defIv" type="number" ng-change="validateDefIv()"/>
                 </div>
                 <label class="col-4 col-lg-1 mt-2 col-form-label">HP IV:</label>
                 <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="hpIv" type="number"/>
+                    <input class="form-control" ng-model="hpIv" type="number" ng-change="validateHpIv()"/>
                 </div>
                 <div class="btn-group ml-auto mr-3 mt-2" role="group">
                     <button class="btn btn-dark" ng-click="saveIvs()">
@@ -69,7 +81,7 @@
             </div>
 
             <div class="row mt-4">
-                <button  class="btn btn-dark ml-auto mr-3" ng-click="refreshPage()">
+                <button  class="btn btn-dark ml-auto mr-3" ng-click="updateUrl()">
                     Save URL
                 </button>
             </div>
@@ -103,7 +115,6 @@
     <table class="table table-fixed">
         <tr>
             <th colspan="2">IVs</th>
-            <th>Lv</th>
             <th>ATK</th>
             <th>DEF</th>
             <th>HP</th>
@@ -114,7 +125,6 @@
         </tr>
         <tr ng-repeat="ivs in getIvs()">
             <td colspan="2">{{ivs.ivs}}</td>
-            <td>{{ivs.level}}</td>
             <td>{{ivs.atk}}</td>
             <td>{{ivs.def}}</td>
             <td>{{ivs.hp}}</td>
@@ -161,7 +171,8 @@
                         <td colspan="2">{{move.name}}</td>
                         <td>
                             <div class="icon ml-1" ng-class="move.type.toLowerCase()">
-                                <img ng-src="{{getIconPath(move.type)}}" title="{{move.type}}">
+                                <img ng-src="{{getIconPath(move.type)}}"
+                                     data-toggle="tooltip" data-placement="top" title="{{move.type}}">
                             </div>
                         </td>
                         <td>{{move.pvpDamage}}</td>

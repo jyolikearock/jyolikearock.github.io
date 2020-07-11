@@ -18,3 +18,7 @@ var types = [
     "Steel",
     "Water"
 ];
+
+var typeChart = {
+
+};

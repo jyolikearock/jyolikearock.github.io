@@ -17,6 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <!-- third party libraries -->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
     <script src="./js/smart-table.js"></script>
 
     <!-- custom css -->
@@ -27,14 +28,17 @@
     <script src="./app.js"></script>
 
     <!-- dependencies -->
+    <script src="./js/evaluator.js"></script>
     <script src="./js/pokemonData.js"></script>
     <script src="./js/moveData.js"></script>
     <script src="./js/typeData.js"></script>
-    <script src="./js/evaluator.js"></script>
+    <script src="./js/options.js"></script>
+    <script src="./js/dataService.js"></script>
 
     <!-- controllers -->
     <script src="./pokemons/pokemons.js"></script>
     <script src="./moves/moves.js"></script>
+    <script src="./movesets/movesets.js"></script>
 </head>
 
 <body ng-app="app">
@@ -60,6 +64,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#!/moves">Moves</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/movesets">Movesets</a>
                     </li>
                 </ul>
             </div>

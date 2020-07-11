@@ -2,11 +2,6 @@
 
 // set default global values
 var pageSize = 9;
-var showOptions = true;
-var maxCP = 9999;
-var atkIv = 15;
-var defIv = 15;
-var hpIv = 15;
 
 // enables tooltips
 $(function () {
@@ -17,8 +12,10 @@ $(function () {
 var app = angular.module('app', [
   'ngRoute',
   'smart-table',
+  'ui.bootstrap',
   'app.pokemons',
   'app.moves',
+  'app.movesets'
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -59,13 +56,14 @@ app.directive('stPersist', function () {
   };
 });
 
+// custom directive to listen for a broadcast message that prompts a table refresh
 app.directive("refreshTable", function(){
     return {
         require:'stTable',
         restrict: "A",
         link:function(scope,elem,attr,table){
             scope.$on("refreshTable", function() {
-                table.pipe(table.tableState());
+                table.updateSafeCopy();
             });
     }
 }});

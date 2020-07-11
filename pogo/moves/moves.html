@@ -46,20 +46,21 @@
            refreshTable>
         <thead>
         <tr>
-            <th colspan="11">
+            <th colspan="9">
                 <input placeholder="Search Moves" class="form-control" type="search"
                        ng-model="searchFastMove" st-search="name" />
             </th>
         </tr>
         <tr>
             <th class="sortable" colspan="2" st-sort="name">Move</th>
-            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" colspan="1" st-sort="type">Type</th>
             <th class="sortable" st-sort="pvpDamage">D</th>
             <th class="sortable" st-sort="pvpEnergy">E</th>
             <th class="sortable" st-sort="pvpTurns">T</th>
             <th class="sortable" st-sort="pvpDpt">DPT</th>
             <th class="sortable" st-sort="pvpEpt">EPT</th>
-            <th class="sortable" colspan="2" st-sort="pvpTotal">DPT x EPT</th>
+            <th class="sortable" colspan="1" st-sort="pvpTotal"
+                data-toggle="tooltip" data-placement="top" title="DPT x EPT">Tot</th>
         </tr>
         </thead>
         <tbody>
@@ -67,9 +68,10 @@
             <td colspan="2" class="td-overflow">
                 {{move.name}}
             </td>
-            <td colspan="2" >
+            <td colspan="1" >
                 <div class="icon ml-1" ng-class="move.type.toLowerCase()">
-                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                    <img ng-src="{{getIconPath(move.type)}}"
+                         data-toggle="tooltip" data-placement="top" title="{{move.type}}">
                 </div>
             </td>
             <td>
@@ -87,14 +89,14 @@
             <td>
                 {{move.pvpEpt}}
             </td >
-            <td colspan="2">
+            <td colspan="1">
                 {{move.pvpTotal}}
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td class="text-center" colspan="11">
+            <td class="text-center" colspan="9">
                 <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
             </td>
         </tr>
@@ -109,20 +111,21 @@
            refreshTable>
         <thead>
         <tr>
-            <th colspan="11">
+            <th colspan="9">
                 <input placeholder="Search Moves" class="form-control" type="search"
                        ng-model="searchFastMove" st-search="name" />
             </th>
         </tr>
         <tr>
             <th class="sortable" colspan="2" st-sort="name">Move</th>
-            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" colspan="1" st-sort="type">Type</th>
             <th class="sortable" st-sort="pveDamage">D</th>
             <th class="sortable" st-sort="pveEnergy">E</th>
             <th class="sortable" st-sort="pveCooldown">CD</th>
             <th class="sortable" st-sort="pveDps">DPS</th>
             <th class="sortable" st-sort="pveEps">EPS</th>
-            <th class="sortable" colspan="2" st-sort="pveTotal">DPS x EPS</th>
+            <th class="sortable" colspan="1" st-sort="pveTotal"
+                data-toggle="tooltip" data-placement="top" title="DPS x EPS">Tot</th>
         </tr>
         </thead>
         <tbody>
@@ -130,9 +133,10 @@
             <td colspan="2" class="td-overflow">
                 {{move.name}}
             </td>
-            <td colspan="2">
+            <td colspan="1">
                 <div class="icon ml-1" ng-class="move.type.toLowerCase()">
-                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                    <img ng-src="{{getIconPath(move.type)}}"
+                         data-toggle="tooltip" data-placement="top" title="{{move.type}}">
                 </div>
             </td>
             <td>
@@ -150,14 +154,14 @@
             <td>
                 {{move.pveEps}}
             </td >
-            <td colspan="2">
+            <td colspan="1">
                 {{move.pveTotal}}
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td class="text-center" colspan="11">
+            <td class="text-center" colspan="9">
                 <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
             </td>
         </tr>
@@ -172,22 +176,22 @@
            refreshTable>
         <thead>
         <tr>
-            <th colspan="5">
+            <th colspan="4">
                 <input placeholder="Search Moves" class="form-control" type="search"
                        ng-model="searchChargeMove" st-search="name" />
             </th>
-            <th colspan="6">
+            <th colspan="4">
                 <input placeholder="Search Effects" class="form-control" type="search"
                        ng-model="searchEffect" st-search="pvpEffect" />
             </th>
         </tr>
         <tr>
             <th class="sortable" colspan="2" st-sort="name">Move</th>
-            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" colspan="1" st-sort="type">Type</th>
             <th class="sortable" st-sort="pvpDamage">D</th>
             <th class="sortable" st-sort="pvpEnergy">E</th>
-            <th class="sortable" colspan="2" st-sort="pvpDpe">DPE</th>
-            <th class="sortable" colspan="3" st-sort="pvpEffect">Effect</th>
+            <th class="sortable" colspan="1" st-sort="pvpDpe">DPE</th>
+            <th class="sortable" colspan="2" st-sort="pvpEffect">Effect</th>
         </tr>
         </thead>
         <tbody>
@@ -195,9 +199,10 @@
             <td colspan="2" class="td-overflow">
                 {{move.name}}
             </td>
-            <td colspan="2">
+            <td colspan="1">
                 <div class="icon ml-1" ng-class="move.type.toLowerCase()">
-                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                    <img ng-src="{{getIconPath(move.type)}}"
+                         data-toggle="tooltip" data-placement="top" title="{{move.type}}">
                 </div>
             </td>
             <td>
@@ -206,17 +211,17 @@
             <td>
                 {{move.pvpEnergy}}
             </td>
-            <td colspan="2">
+            <td colspan="1">
                 {{move.pvpDpe}}
             </td>
-            <td colspan="3">
+            <td colspan="2">
                 {{move.pvpEffect}}
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td class="text-center" colspan="11">
+            <td class="text-center" colspan="8">
                 <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
             </td>
         </tr>
@@ -231,20 +236,18 @@
            refreshTable>
         <thead>
         <tr>
-            <th colspan="11">
+            <th colspan="7">
                 <input placeholder="Search Moves" class="form-control" type="search"
                        ng-model="searchChargeMove" st-search="name" />
             </th>
         </tr>
         <tr>
             <th class="sortable" colspan="2" st-sort="name">Move</th>
-            <th class="sortable" colspan="2" st-sort="type">Type</th>
+            <th class="sortable" colspan="1" st-sort="type">Type</th>
             <th class="sortable" st-sort="pveDamage">D</th>
             <th class="sortable" st-sort="pveEnergy">E</th>
             <th class="sortable" st-sort="pveCooldown">CD</th>
             <th class="sortable" st-sort="pveDpe">DPE</th>
-            <th class="sortable" st-sort="pveDps">DPS</th>
-            <th class="sortable" colspan="2" st-sort="pveTotal">DPE x DPS</th>
         </tr>
         </thead>
         <tbody>
@@ -252,9 +255,10 @@
             <td colspan="2" class="td-overflow">
                 {{move.name}}
             </td>
-            <td colspan="2">
+            <td colspan="1">
                 <div class="icon ml-1" ng-class="move.type.toLowerCase()">
-                    <img ng-src="{{getIconPath(move.type)}}" alt="{{move.type}}">
+                    <img ng-src="{{getIconPath(move.type)}}"
+                         data-toggle="tooltip" data-placement="top" title="{{move.type}}">
                 </div>
             </td>
             <td>
@@ -269,17 +273,11 @@
             <td>
                 {{move.pveDpe}}
             </td>
-            <td>
-                {{move.pveDps}}
-            </td>
-            <td colspan="2">
-                {{move.pveTotal}}
-            </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td class="text-center" colspan="11">
+            <td class="text-center" colspan="7">
                 <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
             </td>
         </tr>

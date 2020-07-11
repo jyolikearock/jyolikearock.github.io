@@ -361,9 +361,9 @@ var pokemons =
 		"type": [
 			"Electric"
 		],
-		"atk": 111,
-		"def": 112,
-		"hp": 96,
+		"atk": 112,
+		"def": 96,
+		"hp": 111,
 		"fastMoves": "Quick Attack,Thunder Shock",
 		"chargeMoves": "Discharge,Wild Charge,Thunderbolt,Fly",
 		"legendary": false
@@ -811,9 +811,9 @@ var pokemons =
 		"type": [
 			"Steel"
 		],
-		"atk": 137,
-		"def": 115,
-		"hp": 92,
+		"atk": 115,
+		"def": 92,
+		"hp": 137,
 		"fastMoves": "Scratch,Metal Claw",
 		"chargeMoves": "Night Slash,Gyro Ball,Dig",
 		"legendary": false
@@ -1260,9 +1260,9 @@ var pokemons =
 		"type": [
 			"Fighting"
 		],
-		"atk": 141,
-		"def": 174,
-		"hp": 114,
+		"atk": 174,
+		"def": 114,
+		"hp": 141,
 		"fastMoves": "Fury Cutter,Rock Smash",
 		"chargeMoves": "Brick Break,Brave Bird,Leaf Blade",
 		"legendary": false
@@ -1478,7 +1478,7 @@ var pokemons =
 		"def": 124,
 		"hp": 102,
 		"fastMoves": "Mud Shot,Bubble",
-		"chargeMoves": "Vise Grip,Bubble Beam,Water Pulse",
+		"chargeMoves": "Vice Grip,Bubble Beam,Water Pulse",
 		"legendary": false
 	},{
 		"name": "Kingler",
@@ -1490,7 +1490,7 @@ var pokemons =
 		"def": 181,
 		"hp": 146,
 		"fastMoves": "Metal Claw,Bubble",
-		"chargeMoves": "Vise Grip,X-Scissor,Water Pulse,Crabhammer",
+		"chargeMoves": "Vice Grip,X-Scissor,Water Pulse,Crabhammer",
 		"legendary": false
 	},{
 		"name": "Voltorb",
@@ -1873,7 +1873,7 @@ var pokemons =
 		"def": 182,
 		"hp": 163,
 		"fastMoves": "Fury Cutter,Bug Bite,Rock Smash",
-		"chargeMoves": "Vise Grip,X-Scissor,Close Combat,Superpower",
+		"chargeMoves": "Vice Grip,X-Scissor,Close Combat,Superpower",
 		"legendary": false
 	},{
 		"name": "Tauros",
@@ -3465,9 +3465,9 @@ var pokemons =
 			"Dark",
 			"Normal"
 		],
-		"atk": 116,
-		"def": 58,
-		"hp": 80,
+		"atk": 58,
+		"def": 80,
+		"hp": 116,
 		"fastMoves": "Tackle,Take Down",
 		"chargeMoves": "Dig,Body Slam,Swift",
 		"legendary": false
@@ -3490,9 +3490,9 @@ var pokemons =
 			"Dark",
 			"Normal"
 		],
-		"atk": 186,
-		"def": 142,
-		"hp": 128,
+		"atk": 142,
+		"def": 128,
+		"hp": 186,
 		"fastMoves": "Snarl,Lick",
 		"chargeMoves": "Dig,Body Slam,Gunk Shot",
 		"legendary": false
@@ -3985,7 +3985,7 @@ var pokemons =
 		"def": 141,
 		"hp": 137,
 		"fastMoves": "Bite,Fire Fang,Astonish,Ice Fang",
-		"chargeMoves": "Vise Grip,Iron Head,Play Rough,Power-Up Punch",
+		"chargeMoves": "Vice Grip,Iron Head,Play Rough,Power-Up Punch",
 		"legendary": false
 	},{
 		"name": "Aron",
@@ -4460,7 +4460,7 @@ var pokemons =
 		"def": 99,
 		"hp": 125,
 		"fastMoves": "Bubble,Rock Smash",
-		"chargeMoves": "Vise Grip,Bubble Beam,Aqua Jet",
+		"chargeMoves": "Vice Grip,Bubble Beam,Aqua Jet",
 		"legendary": false
 	},{
 		"name": "Crawdaunt",
@@ -4473,7 +4473,7 @@ var pokemons =
 		"def": 142,
 		"hp": 160,
 		"fastMoves": "Snarl,Waterfall",
-		"chargeMoves": "Vise Grip,Night Slash,Bubble Beam,Crabhammer",
+		"chargeMoves": "Vice Grip,Night Slash,Bubble Beam,Crabhammer",
 		"legendary": false
 	},{
 		"name": "Baltoy",
@@ -6768,9 +6768,9 @@ var pokemons =
 		"type": [
 			"Ice"
 		],
-		"atk": 172,
-		"def": 153,
-		"hp": 86,
+		"atk": 153,
+		"def": 86,
+		"hp": 172,
 		"fastMoves": "Tackle,Ice Fang",
 		"chargeMoves": "Ice Punch,Ice Beam",
 		"legendary": false
@@ -6792,9 +6792,9 @@ var pokemons =
 		"type": [
 			"Ice"
 		],
-		"atk": 233,
-		"def": 263,
-		"hp": 114,
+		"atk": 263,
+		"def": 114,
+		"hp": 233,
 		"fastMoves": "Tackle,Ice Fang",
 		"chargeMoves": "Overheat,Avalanche,Superpower,Ice Punch",
 		"legendary": false
@@ -7078,9 +7078,9 @@ var pokemons =
 			"Flying",
 			"Water"
 		],
-		"atk": 158,
-		"def": 84,
-		"hp": 96,
+		"atk": 84,
+		"def": 96,
+		"hp": 158,
 		"fastMoves": "Water Gun,Wing Attack",
 		"chargeMoves": "Aerial Ace,Bubble Beam,Brave Bird",
 		"legendary": false
@@ -7091,9 +7091,9 @@ var pokemons =
 			"Flying",
 			"Water"
 		],
-		"atk": 181,
-		"def": 182,
-		"hp": 132,
+		"atk": 182,
+		"def": 132,
+		"hp": 181,
 		"fastMoves": "Water Gun,Air Slash",
 		"chargeMoves": "Ice Beam,Bubble Beam,Hurricane",
 		"legendary": false
@@ -7222,7 +7222,7 @@ var pokemons =
 		"def": 121,
 		"hp": 120,
 		"fastMoves": "Charge Beam,Volt Switch",
-		"chargeMoves": "Vise Grip,Discharge,Zap Cannon",
+		"chargeMoves": "Vice Grip,Discharge,Zap Cannon",
 		"legendary": false
 	},{
 		"name": "Klang",
@@ -7234,7 +7234,7 @@ var pokemons =
 		"def": 174,
 		"hp": 155,
 		"fastMoves": "Thunder Shock,Charge Beam",
-		"chargeMoves": "Vise Grip,Thunderbolt,Zap Cannon",
+		"chargeMoves": "Vice Grip,Thunderbolt,Zap Cannon",
 		"legendary": false
 	},{
 		"name": "Klinklang",
@@ -7403,9 +7403,9 @@ var pokemons =
 			"Ground",
 			"Steel"
 		],
-		"atk": 240,
-		"def": 144,
-		"hp": 171,
+		"atk": 144,
+		"def": 171,
+		"hp": 240,
 		"fastMoves": "Mud Shot,Metal Claw",
 		"chargeMoves": "Earthquake,Flash Cannon,Muddy Water,Rock Slide",
 		"legendary": false
@@ -7532,9 +7532,9 @@ var pokemons =
 			"Dragon",
 			"Ice"
 		],
-		"atk": 245,
-		"def": 246,
-		"hp": 170,
+		"atk": 246,
+		"def": 170,
+		"hp": 245,
 		"fastMoves": "Dragon Breath,Steel Wing",
 		"chargeMoves": "Dragon Claw,Blizzard,Draco Meteor",
 		"legendary": false
@@ -7569,9 +7569,9 @@ var pokemons =
 			"Dark",
 			"Normal"
 		],
-		"atk": 212,
-		"def": 180,
-		"hp": 194,
+		"atk": 180,
+		"def": 190,
+		"hp": 212,
 		"fastMoves": "Counter,Lick",
 		"chargeMoves": "Cross Chop,Night Slash,Hyper Beam,Gunk Shot",
 		"legendary": false
@@ -7581,9 +7581,9 @@ var pokemons =
 		"type": [
 			"Steel"
 		],
-		"atk": 172,
-		"def": 195,
-		"hp": 162,
+		"atk": 195,
+		"def": 162,
+		"hp": 172,
 		"fastMoves": "Metal Claw,Shadow Claw",
 		"chargeMoves": "Iron Head,Close Combat,Play Rough,Foul Play",
 		"legendary": false
@@ -7593,9 +7593,9 @@ var pokemons =
 		"type": [
 			"Fighting"
 		],
-		"atk": 158,
-		"def": 248,
-		"hp": 176,
+		"atk": 248,
+		"def": 176,
+		"hp": 158,
 		"fastMoves": "Counter,Fury Cutter",
 		"chargeMoves": "Close Combat,Brave Bird,Leaf Blade,Night Slash",
 		"legendary": false
@@ -8141,11 +8141,10 @@ var pokemons =
 ];
 
 var pokemonsMap = {};
+var pokemonNames = [];
 pokemons.forEach(
     function(pokemon) {
-        let name = pokemon.name.toLowerCase();
-
-
+        pokemon.maxCp = getMaxCp(pokemon);
 
         let fastMoves = pokemon.fastMoves.split(",");
         pokemon.fastMoves = fastMoves;
@@ -8153,6 +8152,8 @@ pokemons.forEach(
         let chargeMoves = pokemon.chargeMoves.split(",");
         pokemon.chargeMoves = chargeMoves;
 
+        let name = pokemon.name.toLowerCase();
         pokemonsMap[name] = pokemon;
+        pokemonNames.push(pokemon.name);
     }
 );
