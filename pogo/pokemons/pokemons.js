@@ -73,9 +73,14 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     $scope.getPokemon = function(pokemonName) {
-        let params = getParams();
         console.log("routing to: " + pokemonName);
-        $location.path("/pokemon/" + pokemonName.toLowerCase()).search($location.search());
+        let params = getParams();
+        if (!pokemonsMap[pokemonName.toLowerCase()]) {
+            $location.path("/pokemon").search(params);
+        }
+        else {
+            $location.path("/pokemon/" + pokemonName.toLowerCase()).search(params);
+        }
     }
 
     $scope.go = function(path) {

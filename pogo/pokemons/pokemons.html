@@ -1,4 +1,18 @@
 <div class="card mt-3">
+
+    <div class="card-header">
+        <!-- pokemon search bar -->
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search Pokemon" ng-model="searchPokemon"
+                   uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue | limitTo: 7"/>
+            <div class="input-group-append">
+                <button class="btn btn-dark" ng-click="getPokemon(searchPokemon)">
+                    Go
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="card-body" ng-controller="optionsController">
         <div class="row">
             <div class="col-6">
@@ -33,38 +47,12 @@
                 </div>
             </div>
 
-            <!-- IVs -->
-            <div class="form-group row">
-                <label class="col-4 col-lg-1 mt-2 col-form-label">ATK IV:</label>
-                <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="atkIv" type="number" ng-change="validateAtkIv()"/>
-                </div>
-                <label class="col-4 col-lg-1 mt-2 col-form-label">DEF IV:</label>
-                <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="defIv" type="number" ng-change="validateDefIv()"/>
-                </div>
-                <label class="col-4 col-lg-1 mt-2 col-form-label">HP IV:</label>
-                <div class="col-8 col-lg-2 mt-2">
-                    <input class="form-control" ng-model="hpIv" type="number" ng-change="validateHpIv()"/>
-                </div>
-                <div class="btn-group ml-auto mr-3 mt-2" role="group">
-                    <button class="btn btn-secondary" ng-click="minIvs()"
-                            ng-class="atkIv === 0 && defIv === 0 && hpIv === 0 ? 'btn-dark' : ''">
-                        Min
-                    </button>
-                    <button class="btn btn-secondary" ng-click="maxIvs()"
-                            ng-class="atkIv === 15 && defIv === 15 && hpIv === 15 ? 'btn-dark' : ''">
-                        Max
-                    </button>
-                </div>
-            </div>
-
             <!-- type filter -->
             <div>
                 <label class="form-label mt-2 mb-0">Type Filters: </label>
                 <p class="text-muted mb-3"><small>Click a type twice to filter single-type Pokemon</small></p>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
                 <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                     <div class="row">
@@ -80,79 +68,107 @@
                 <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
             </div>
 
-            <div class="row mt-4">
-                <button  class="btn btn-dark ml-auto mr-3" ng-click="updateUrl()">
+            <!-- legendary toggle -->
+            <div class="btn-toolbar justify-content-between">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Include Legendaries</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" ng-click="setShowLegendaries(true)"
+                                ng-class="showLegendaries ? 'btn-dark' : ''">Yes</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" ng-click="setShowLegendaries(false)"
+                                ng-class="showLegendaries ? '' : 'btn-dark'">No</button>
+                    </div>
+                </div>
+                <button  class="btn btn-dark" ng-click="updateUrl()">
                     Save URL
                 </button>
             </div>
         </div>
     </div>
 
-    <table class="table table-hover table-fixed"
-           st-table="displayedPokemons"
-           st-safe-src="pokemons"
-           st-persist="pokemonsTable"
-           refresh-table>
-        <thead>
-        <tr>
-            <th colspan="10">
-                <input placeholder="Search Pokemon" class="form-control" type="search"
-                       ng-model="searchPokemon" st-search="name" />
-            </th>
-        </tr>
-        <tr>
-            <th class="sortable" colspan="2" st-sort="name">Pokemon</th>
-            <th class="sortable" colspan="2" st-sort="type">Type</th>
-            <th class="sortable" st-sort="_atk">ATK</th>
-            <th class="sortable" st-sort="_def">DEF</th>
-            <th class="sortable" st-sort="_hp">HP</th>
-            <th class="sortable" st-sort="_bulk" data-toggle="tooltip" data-placement="top" title="Geometric mean of DEF and HP">Bulk</th>
-            <th class="sortable" st-sort="_total" data-toggle="tooltip" data-placement="top" title="Geometric mean of ATK, DEF, and HP">Total</th>
-            <th class="sortable" st-sort="_cp">CP</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="pokemon in displayedPokemons track by pokemon.name"
-            ng-click="getPokemon(pokemon.name)">
-            <td colspan="2" class="td-overflow">
-                {{pokemon.name}}
-            </td>
-            <td colspan="2">
-                <div class="row">
-                    <div ng-repeat="type in pokemon.type" class="col-4">
-                        <div class="icon" ng-class="type.toLowerCase()">
-                            <img ng-src="{{getIconPath(type)}}" data-toggle="tooltip" data-placement="top" title="{{type}}">
+    <div class="table-responsive">
+        <table class="table table-hover table-fixed"
+               st-table="displayedPokemons"
+               st-safe-src="pokemons"
+               st-persist="pokemonsTable"
+               refresh-table>
+            <thead>
+            <tr>
+                <th colspan="3">
+                    <input placeholder="Pokemon" class="form-control" type="text"
+                           ng-model="searchPokemon" st-search="name" />
+                </th>
+                <th colspan="2">
+                    <input placeholder="ATK" class="form-control" type="search"
+                           ng-model="searchAtk" st-search="_atk" />
+                </th>
+                <th colspan="2">
+                    <input placeholder="DEF" class="form-control" type="search"
+                           ng-model="searchDef" st-search="_def" />
+                </th>
+                <th colspan="3">
+                    <input placeholder="Max CP" class="form-control" type="search"
+                           ng-model="searchMaxCp" st-search="maxCp" />
+                </th>
+            </tr>
+            <tr>
+                <th class="sortable" colspan="2" st-sort="name">Pokemon</th>
+                <th class="sortable" colspan="2" st-sort="type">Type</th>
+                <th class="sortable" st-sort="_atk">ATK</th>
+                <th class="sortable" st-sort="_def">DEF</th>
+                <th class="sortable" st-sort="_hp">HP</th>
+                <th class="sortable" st-sort="_bulk" data-toggle="tooltip" data-placement="top" title="Geometric mean of DEF and HP">Bulk</th>
+                <th class="sortable" st-sort="_total" data-toggle="tooltip" data-placement="top" title="Geometric mean of ATK, DEF, and HP">Total</th>
+                <th class="sortable" st-sort="_cp">CP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pokemon in displayedPokemons track by pokemon.name"
+                ng-click="getPokemon(pokemon.name)">
+                <td colspan="2" class="td-overflow">
+                    {{pokemon.name}}
+                </td>
+                <td colspan="2">
+                    <div class="row">
+                        <div ng-repeat="type in pokemon.type" class="col-4">
+                            <div class="icon" ng-class="type.toLowerCase()">
+                                <img ng-src="{{getIconPath(type)}}" data-toggle="tooltip" data-placement="top" title="{{type}}">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                {{pokemon._atk}}
-            </td>
-            <td>
-                {{pokemon._def}}
-            </td>
-            <td>
-                {{pokemon._hp}}
-            </td>
-            <td>
-                {{pokemon._bulk}}
-            </td >
-            <td>
-                {{pokemon._total}}
-            </td>
-            <td>
-                {{pokemon._cp}}
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td class="text-center" colspan="10">
-                <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"
-                     st-page-change="setCurrentPage(newPage)"></div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+                </td>
+                <td>
+                    {{pokemon._atk}}
+                </td>
+                <td>
+                    {{pokemon._def}}
+                </td>
+                <td>
+                    {{pokemon._hp}}
+                </td>
+                <td>
+                    {{pokemon._bulk}}
+                </td >
+                <td>
+                    {{pokemon._total}}
+                </td>
+                <td>
+                    {{pokemon._cp}}
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="text-center" colspan="10">
+                    <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"
+                         st-page-change="setCurrentPage(newPage)"></div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>

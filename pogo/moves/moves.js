@@ -19,10 +19,9 @@ angular.module('app.moves', ['ngRoute'])
 
     $scope.pageSize = pageSize;
     $scope.currentTab = currentTab;
-    $scope.types = types;
 
     // apply type filter and load data to tables
-    applyTypeFilter();
+    updateMoves();
 
     // for switching between pve/pvp tabs
     $scope.showTab = function(tab) {
@@ -31,19 +30,11 @@ angular.module('app.moves', ['ngRoute'])
         $scope.currentTab = tab;
     }
 
-    // for filtering moves by type
-    $scope.filterType = function(type) {
-        if (moveTypeFilter === type) {
-            moveTypeFilter = "";
-        }
-        else {
-            moveTypeFilter = type;
-        }
-
-        applyTypeFilter();
+    $scope.updateMoves = function() {
+        updateMoves();
     }
 
-    function applyTypeFilter() {
+    function updateMoves() {
         let filteredFastMoves = [];
         let filteredChargeMoves = [];
         if (moveTypeFilter === "") {
@@ -53,12 +44,12 @@ angular.module('app.moves', ['ngRoute'])
         else {
             filteredFastMoves = fastMoves.filter(
                 function(move) {
-                    return isType(move, moveTypeFilter)
+                    return isMoveType(move, moveTypeFilter)
                 }
             );
             filteredChargeMoves = chargeMoves.filter(
                 function(move) {
-                    return isType(move, moveTypeFilter);
+                    return isMoveType(move, moveTypeFilter);
                 }
             )
         }
@@ -67,11 +58,7 @@ angular.module('app.moves', ['ngRoute'])
         $scope.$broadcast("refreshTable");
     }
 
-    function isType(move, type) {
+    function isMoveType(move, type) {
         return (move.type === type);
-    }
-
-    $scope.isTypeActive = function(type) {
-        return (moveTypeFilter === type);
     }
 }]);

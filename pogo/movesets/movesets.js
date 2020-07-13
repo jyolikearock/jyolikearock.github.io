@@ -10,9 +10,9 @@ var ultraLeagueTargetDummy = {
     "type": []
 };
 
-var greatLeagueTargetDummy = {
-    "_def": 150,
-    "_atk": 150,
+var masterLeagueTargetDummy = {
+    "_atk": 225,
+    "_def": 200,
     "type": []
 };
 
@@ -34,6 +34,7 @@ var targetDummyChargeMove = {
 }
 
 var shields = 0;
+var isPvp = true;
 
 var stop = false;
 
@@ -48,23 +49,55 @@ angular.module('app.movesets', ['ngRoute'])
 
 .controller('movesetsController', ['$scope', function($scope) {
 
-    var isPvp = true;
+    $scope.pageSize = pageSize;
+    $scope.isPvp = isPvp;
+
+    // initial load of moveset data
+    populateMovesets();
+
     $scope.populateMovesets = function() {
+        populateMovesets();
+    }
+
+    $scope.setPvp = function(_isPvp) {
+        isPvp = _isPvp;
+        $scope.isPvp = _isPvp;
+    }
+
+    var currentPokemon = "";
+    function populateMovesets() {
 
         let movesets = [];
 
         let pokemonsCopy = [];
         updatePokemonData(pokemonsCopy);
 
+        let targetDummy = masterLeagueTargetDummy;
+        if (maxCp <= 2500) {
+            targetDummy = ultraLeagueTargetDummy;
+        }
+        if (maxCp <= 1500) {
+            targetDummy = greatLeagueTargetDummy;
+        }
+
         pokemonsCopy.forEach(function(pokemon) {
-            if (pokemon.maxCp < 1400) {
+            if (pokemon.maxCp < 1430) {
                 return;
             }
+
+            currentPokemon = pokemon.name;
 
             pokemon.fastMoves.forEach(function(fmName) {
                 let fm = fastMovesMap[fmName];
                 pokemon.chargeMoves.forEach(function(cmName) {
                     let cm = chargeMovesMap[cmName];
+
+                    if (moveTypeFilter) {
+                        if (fm.type !== moveTypeFilter && cm.type !== moveTypeFilter) {
+                            return;
+                        }
+                    }
+
                     let moveset = {};
                     moveset.pokemon = pokemon.name;
                     moveset.fastMove = fm.name;
@@ -80,7 +113,7 @@ angular.module('app.movesets', ['ngRoute'])
 
                     let pvpTtfa = Math.ceil(cm.pvpEnergy / fm.pvpEnergy) * fm.pvpTurns;
 
-                    let enemyDpt = getMoveDamage(targetDummyFastMove, ultraLeagueTargetDummy, pokemon);
+                    let enemyDpt = getMoveDamage(targetDummyFastMove, targetDummy, pokemon);
                     log("Enemy DPT: " + enemyDpt);
 
                     let turnsToDie = Math.floor(pokemon._hp / enemyDpt);
@@ -89,13 +122,13 @@ angular.module('app.movesets', ['ngRoute'])
                     let totalEnergy = Math.floor(turnsToDie / fm.pvpTurns) * fm.pvpEnergy;
                     log("Total energy generated: " + totalEnergy);
 
-                    let fmDamage = getMoveDamage(fm, pokemon, ultraLeagueTargetDummy);
+                    let fmDamage = getMoveDamage(fm, pokemon, targetDummy);
                     log("FM damage: " + fmDamage);
 
                     let totFmDmg = Math.floor(turnsToDie / fm.pvpTurns) * fmDamage;
                     log("Total FM damage: " + totFmDmg);
 
-                    let cmDamage = getMoveDamage(cm, pokemon, ultraLeagueTargetDummy);
+                    let cmDamage = getMoveDamage(cm, pokemon, targetDummy);
                     log("CM damage: " + cmDamage);
 
                     let totCmDmg = Math.max(0, Math.floor(totalEnergy / cm.pvpEnergy) - shields) * cmDamage;
@@ -113,6 +146,7 @@ angular.module('app.movesets', ['ngRoute'])
                     moveset.pvpTtfa = pvpTtfa;
                     moveset.pvpDpt = round2(pvpDpt);
                     moveset.pvpTotal = totalDamage;
+                    moveset.pvpDmgDist = round(100 * totFmDmg / totalDamage) + "% / " + round(100 * totCmDmg / totalDamage) + "%";
 
                     movesets.push(moveset);
 
@@ -124,12 +158,6 @@ angular.module('app.movesets', ['ngRoute'])
         $scope.movesets = movesets;
     }
 
-    $scope.populateMovesets();
-
-    $scope.setPvp = function(_isPvp) {
-        isPvp = _isPvp;
-    }
-
     function getMoveDamage(move, atkPokemon, defPokemon) {
         let movePower = isPvp ? move.pvpDamage : move.pveDamage;
         let stab = atkPokemon.type.includes(move.type) ? 1.2 : 1.0;
@@ -137,7 +165,7 @@ angular.module('app.movesets', ['ngRoute'])
     }
 
     function log(message) {
-        if (!stop) {
+        if (currentPokemon === "None") {
             console.log(message);
         }
     }

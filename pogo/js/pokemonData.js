@@ -41,7 +41,7 @@ var pokemons =
 		"def": 189,
 		"hp": 190,
 		"fastMoves": "Vine Whip,Razor Leaf",
-		"chargeMoves": "Petal Blizzard,Sludge Bomb,Solar Beam,Frenzy Plant (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Petal Blizzard,Sludge Bomb,Solar Beam,Frenzy Plant (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Charmander",
@@ -78,7 +78,7 @@ var pokemons =
 		"def": 173,
 		"hp": 186,
 		"fastMoves": "Air Slash,Fire Spin",
-		"chargeMoves": "Dragon Claw,Fire Blast,Overheat,Blast Burn (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Dragon Claw,Fire Blast,Overheat,Blast Burn (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Squirtle",
@@ -114,7 +114,7 @@ var pokemons =
 		"def": 207,
 		"hp": 188,
 		"fastMoves": "Bite,Water Gun",
-		"chargeMoves": "Flash Cannon,Ice Beam,Hydro Pump,Hydro Cannon (Community Day),Skull Bash,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Flash Cannon,Ice Beam,Hydro Pump,Hydro Cannon (CD),Skull Bash,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Caterpie",
@@ -190,7 +190,7 @@ var pokemons =
 		"def": 130,
 		"hp": 163,
 		"fastMoves": "Poison Jab,Infestation",
-		"chargeMoves": "Aerial Ace,Sludge Bomb,X-Scissor,Fell Stinger,Drill Run (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Aerial Ace,Sludge Bomb,X-Scissor,Fell Stinger,Drill Run (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Pidgey",
@@ -341,7 +341,7 @@ var pokemons =
 		"def": 96,
 		"hp": 111,
 		"fastMoves": "Thunder Shock,Quick Attack",
-		"chargeMoves": "Discharge,Thunderbolt,Wild Charge,Surf (Community Day)",
+		"chargeMoves": "Discharge,Thunderbolt,Wild Charge,Surf (CD)",
 		"legendary": false
 	},{
 		"name": "Pikachu Libre",
@@ -1947,7 +1947,7 @@ var pokemons =
 		"def": 114,
 		"hp": 146,
 		"fastMoves": "Quick Attack,Tackle",
-		"chargeMoves": "Dig,Swift,Last Resort (Community Day)",
+		"chargeMoves": "Dig,Swift,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Vaporeon",
@@ -1959,7 +1959,7 @@ var pokemons =
 		"def": 161,
 		"hp": 277,
 		"fastMoves": "Water Gun",
-		"chargeMoves": "Aqua Tail,Water Pulse,Hydro Pump,Last Resort (Community Day)",
+		"chargeMoves": "Aqua Tail,Water Pulse,Hydro Pump,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Jolteon",
@@ -1971,7 +1971,7 @@ var pokemons =
 		"def": 182,
 		"hp": 163,
 		"fastMoves": "Thunder Shock,Volt Switch",
-		"chargeMoves": "Discharge,Thunder,Thunderbolt,Last Resort (Community Day)",
+		"chargeMoves": "Discharge,Thunder,Thunderbolt,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Flareon",
@@ -1983,7 +1983,7 @@ var pokemons =
 		"def": 179,
 		"hp": 163,
 		"fastMoves": "Ember,Fire Spin",
-		"chargeMoves": "Flamethrower,Fire Blast,Overheat,Last Resort (Community Day)",
+		"chargeMoves": "Flamethrower,Fire Blast,Overheat,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Porygon",
@@ -2109,7 +2109,7 @@ var pokemons =
 		"def": 198,
 		"hp": 209,
 		"fastMoves": "Dragon Breath,Steel Wing,Dragon Tail",
-		"chargeMoves": "Hyper Beam,Dragon Claw,Hurricane,Outrage,Draco Meteor (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Hyper Beam,Dragon Claw,Hurricane,Outrage,Draco Meteor (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Mew",
@@ -2122,7 +2122,7 @@ var pokemons =
 		"hp": 225,
 		"fastMoves": "Shadow Claw,Frost Breath,Pound,Cut,Poison Jab,Steel Wing,Rock Smash,Charge Beam,Volt Switch,Dragon Tail,Infestation,Struggle Bug,Snarl,Waterfall",
 		"chargeMoves": "Hyper Beam,Dark Pulse,Stone Edge,Flash Cannon,Ice Beam,Blizzard,Low Sweep,Psyshock,Ancient Power,Rock Slide,Thunder,Thunderbolt,Dragon Claw,Dazzling Gleam,Bulldoze,Flame Charge,Psychic,Solar Beam,Focus Blast,Wild Charge,Gyro Ball,Overheat,Grass Knot,Energy Ball,Surf",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Chikorita",
 		"id": 152,
@@ -2157,7 +2157,7 @@ var pokemons =
 		"def": 202,
 		"hp": 190,
 		"fastMoves": "Vine Whip,Razor Leaf",
-		"chargeMoves": "Earthquake,Petal Blizzard,Solar Beam,Frenzy Plant (Community Day)",
+		"chargeMoves": "Earthquake,Petal Blizzard,Solar Beam,Frenzy Plant (CD)",
 		"legendary": false
 	},{
 		"name": "Cyndaquil",
@@ -2193,7 +2193,7 @@ var pokemons =
 		"def": 173,
 		"hp": 186,
 		"fastMoves": "Ember,Shadow Claw",
-		"chargeMoves": "Fire Blast,Solar Beam,Overheat,Blast Burn (Community Day)",
+		"chargeMoves": "Fire Blast,Solar Beam,Overheat,Blast Burn (CD)",
 		"legendary": false
 	},{
 		"name": "Totodile",
@@ -2229,7 +2229,7 @@ var pokemons =
 		"def": 188,
 		"hp": 198,
 		"fastMoves": "Bite,Waterfall,Ice Fang",
-		"chargeMoves": "Ice Beam,Hydro Pump,Crunch,Hydro Cannon (Community Day)",
+		"chargeMoves": "Ice Beam,Hydro Pump,Crunch,Hydro Cannon (CD)",
 		"legendary": false
 	},{
 		"name": "Sentret",
@@ -2494,7 +2494,7 @@ var pokemons =
 		"def": 169,
 		"hp": 207,
 		"fastMoves": "Charge Beam,Volt Switch",
-		"chargeMoves": "Power Gem,Thunder Punch,Thunder,Dragon Pulse (Community Day),Focus Blast,Zap Cannon,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Power Gem,Thunder Punch,Thunder,Dragon Pulse (CD),Focus Blast,Zap Cannon,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Bellossom",
@@ -2682,7 +2682,7 @@ var pokemons =
 		"def": 175,
 		"hp": 163,
 		"fastMoves": "Zen Headbutt,Confusion",
-		"chargeMoves": "Psybeam,Psychic,Future Sight,Last Resort (Community Day)",
+		"chargeMoves": "Psybeam,Psychic,Future Sight,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Umbreon",
@@ -2694,7 +2694,7 @@ var pokemons =
 		"def": 240,
 		"hp": 216,
 		"fastMoves": "Feint Attack,Snarl",
-		"chargeMoves": "Dark Pulse,Foul Play,Last Resort (Community Day)",
+		"chargeMoves": "Dark Pulse,Foul Play,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Murkrow",
@@ -3294,7 +3294,7 @@ var pokemons =
 		"atk": 251,
 		"def": 207,
 		"hp": 225,
-		"fastMoves": "Bite,Iron Tail,Smack Down (Community Day)",
+		"fastMoves": "Bite,Iron Tail,Smack Down (CD)",
 		"chargeMoves": "Stone Edge,Fire Blast,Crunch,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
@@ -3309,7 +3309,7 @@ var pokemons =
 		"hp": 225,
 		"fastMoves": "Confusion,Charge Beam",
 		"chargeMoves": "Hyper Beam,Seed Bomb,Dazzling Gleam,Psychic",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Treecko",
 		"id": 252,
@@ -3344,7 +3344,7 @@ var pokemons =
 		"def": 169,
 		"hp": 172,
 		"fastMoves": "Fury Cutter,Bullet Seed",
-		"chargeMoves": "Earthquake,Aerial Ace,Dragon Claw,Leaf Blade,Frenzy Plant (Community Day)",
+		"chargeMoves": "Earthquake,Aerial Ace,Dragon Claw,Leaf Blade,Frenzy Plant (CD)",
 		"legendary": false
 	},{
 		"name": "Torchic",
@@ -3382,7 +3382,7 @@ var pokemons =
 		"def": 141,
 		"hp": 190,
 		"fastMoves": "Counter,Fire Spin",
-		"chargeMoves": "Focus Blast,Brave Bird,Overheat,Blast Burn (Community Day),Blaze Kick",
+		"chargeMoves": "Focus Blast,Brave Bird,Overheat,Blast Burn (CD),Blaze Kick",
 		"legendary": false
 	},{
 		"name": "Mudkip",
@@ -3420,7 +3420,7 @@ var pokemons =
 		"def": 175,
 		"hp": 225,
 		"fastMoves": "Mud Shot,Water Gun",
-		"chargeMoves": "Earthquake,Sludge Wave,Surf,Hydro Cannon (Community Day),Muddy Water,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Earthquake,Sludge Wave,Surf,Hydro Cannon (CD),Muddy Water,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Poochyena",
@@ -3632,7 +3632,7 @@ var pokemons =
 		"atk": 200,
 		"def": 121,
 		"hp": 207,
-		"fastMoves": "Razor Leaf,Feint Attack,Snarl,Bullet Seed (Community Day)",
+		"fastMoves": "Razor Leaf,Feint Attack,Snarl,Bullet Seed (CD)",
 		"chargeMoves": "Leaf Blade,Hurricane,Foul Play,Leaf Tornado,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
@@ -3724,7 +3724,7 @@ var pokemons =
 		"def": 195,
 		"hp": 169,
 		"fastMoves": "Confusion,Charge Beam,Charm",
-		"chargeMoves": "Shadow Ball,Dazzling Gleam,Psychic,Frustration (Shadow),Return (Shadow),Synchronoise (Community Day)",
+		"chargeMoves": "Shadow Ball,Dazzling Gleam,Psychic,Frustration (Shadow),Return (Shadow),Synchronoise (CD)",
 		"legendary": false
 	},{
 		"name": "Surskit",
@@ -3811,7 +3811,7 @@ var pokemons =
 		"def": 166,
 		"hp": 284,
 		"fastMoves": "Yawn",
-		"chargeMoves": "Hyper Beam,Earthquake,Play Rough,Body Slam (Community Day)",
+		"chargeMoves": "Hyper Beam,Earthquake,Play Rough,Body Slam (CD)",
 		"legendary": false
 	},{
 		"name": "Nincada",
@@ -4321,7 +4321,7 @@ var pokemons =
 		"def": 168,
 		"hp": 190,
 		"fastMoves": "Mud Shot,Dragon Tail",
-		"chargeMoves": "Earthquake,Stone Edge,Dragon Claw,Earth Power (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Earthquake,Stone Edge,Dragon Claw,Earth Power (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Cacnea",
@@ -4881,7 +4881,7 @@ var pokemons =
 		"def": 168,
 		"hp": 216,
 		"fastMoves": "Bite,Fire Fang,Dragon Tail",
-		"chargeMoves": "Fire Blast,Hydro Pump,Outrage (Community Day),Draco Meteor,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Fire Blast,Hydro Pump,Outrage (CD),Draco Meteor,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Beldum",
@@ -4920,7 +4920,7 @@ var pokemons =
 		"def": 228,
 		"hp": 190,
 		"fastMoves": "Bullet Punch,Zen Headbutt",
-		"chargeMoves": "Earthquake,Flash Cannon,Psychic,Meteor Mash (Community Day)",
+		"chargeMoves": "Earthquake,Flash Cannon,Psychic,Meteor Mash (CD)",
 		"legendary": false
 	},{
 		"name": "Jirachi",
@@ -4934,7 +4934,7 @@ var pokemons =
 		"hp": 225,
 		"fastMoves": "Confusion,Charge Beam",
 		"chargeMoves": "Dazzling Gleam,Psychic,Doom Desire",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Turtwig",
 		"id": 387,
@@ -4970,7 +4970,7 @@ var pokemons =
 		"def": 188,
 		"hp": 216,
 		"fastMoves": "Bite,Razor Leaf",
-		"chargeMoves": "Earthquake,Stone Edge,Solar Beam,Sand Tomb,Frenzy Plant (Community Day),Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Earthquake,Stone Edge,Solar Beam,Sand Tomb,Frenzy Plant (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Chimchar",
@@ -5008,7 +5008,7 @@ var pokemons =
 		"def": 151,
 		"hp": 183,
 		"fastMoves": "Rock Smash,Fire Spin",
-		"chargeMoves": "Flamethrower,Solar Beam,Close Combat,Blast Burn (Community Day)",
+		"chargeMoves": "Flamethrower,Solar Beam,Close Combat,Blast Burn (CD)",
 		"legendary": false
 	},{
 		"name": "Piplup",
@@ -5045,7 +5045,7 @@ var pokemons =
 		"def": 186,
 		"hp": 197,
 		"fastMoves": "Metal Claw,Waterfall",
-		"chargeMoves": "Flash Cannon,Blizzard,Hydro Pump,Hydro Cannon (Community Day)",
+		"chargeMoves": "Flash Cannon,Blizzard,Hydro Pump,Hydro Cannon (CD)",
 		"legendary": false
 	},{
 		"name": "Starly",
@@ -5997,7 +5997,7 @@ var pokemons =
 		"def": 190,
 		"hp": 251,
 		"fastMoves": "Mud Slap,Smack Down",
-		"chargeMoves": "Earthquake,Stone Edge,Surf,Skull Bash,Superpower,Rock Wrecker (Community Day)",
+		"chargeMoves": "Earthquake,Stone Edge,Surf,Skull Bash,Superpower,Rock Wrecker (CD)",
 		"legendary": false
 	},{
 		"name": "Tangrowth",
@@ -6058,7 +6058,7 @@ var pokemons =
 		"def": 219,
 		"hp": 163,
 		"fastMoves": "Razor Leaf,Quick Attack",
-		"chargeMoves": "Solar Beam,Leaf Blade,Energy Ball,Last Resort (Community Day)",
+		"chargeMoves": "Solar Beam,Leaf Blade,Energy Ball,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Glaceon",
@@ -6070,7 +6070,7 @@ var pokemons =
 		"def": 205,
 		"hp": 163,
 		"fastMoves": "Ice Shard,Frost Breath",
-		"chargeMoves": "Ice Beam,Icy Wind,Avalanche,Last Resort (Community Day)",
+		"chargeMoves": "Ice Beam,Icy Wind,Avalanche,Last Resort (CD)",
 		"legendary": false
 	},{
 		"name": "Gliscor",
@@ -6096,7 +6096,7 @@ var pokemons =
 		"def": 146,
 		"hp": 242,
 		"fastMoves": "Mud Slap,Powder Snow",
-		"chargeMoves": "Stone Edge,Ancient Power (Community Day),Bulldoze,Avalanche",
+		"chargeMoves": "Stone Edge,Ancient Power (CD),Bulldoze,Avalanche",
 		"legendary": false
 	},{
 		"name": "Porygon Z",
@@ -6121,7 +6121,7 @@ var pokemons =
 		"def": 195,
 		"hp": 169,
 		"fastMoves": "Low Kick,Confusion,Charm",
-		"chargeMoves": "Psychic,Leaf Blade,Close Combat,Frustration (Shadow),Return (Shadow),Synchronoise (Community Day)",
+		"chargeMoves": "Psychic,Leaf Blade,Close Combat,Frustration (Shadow),Return (Shadow),Synchronoise (CD)",
 		"legendary": false
 	},{
 		"name": "Probopass",
@@ -7549,7 +7549,7 @@ var pokemons =
 		"hp": 130,
 		"fastMoves": "Thunder Shock",
 		"chargeMoves": "Flash Cannon,Thunderbolt",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Melmetal",
 		"id": 809,
@@ -7561,7 +7561,7 @@ var pokemons =
 		"hp": 264,
 		"fastMoves": "Thunder Shock",
 		"chargeMoves": "Hyper Beam,Flash Cannon,Rock Slide,Thunderbolt,Superpower",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Obstagoon",
 		"id": 862,

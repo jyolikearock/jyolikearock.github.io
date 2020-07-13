@@ -4,11 +4,12 @@ var maxCp = 9999;
 var atkIv = 15;
 var defIv = 15;
 var hpIv = 15;
+var showLegendaries = true;
 
 var pokemonTypeFilter = [];
 var oneTypeOnly = false;
 
-var moveTypeFilter = [];
+var moveTypeFilter = "";
 
 // stand-alone controller which is not assigned to a route
 // instead, it is used on several pages which require the 'Options' dropdown
@@ -18,6 +19,8 @@ app.controller('optionsController', function($scope) {
     $scope.atkIv = atkIv;
     $scope.defIv = defIv;
     $scope.hpIv = hpIv;
+    $scope.showLegendaries = showLegendaries;
+    $scope.types = types;
 
     $scope.toggleOptions = function() {
         showOptions = !showOptions;
@@ -27,11 +30,13 @@ app.controller('optionsController', function($scope) {
         return showOptions;
     }
 
+    // set max cp
     $scope.setMaxCp = function(_maxCp) {
         maxCp = _maxCp;
         $scope.maxCp = maxCp;
     }
 
+    // for adjusting ivs
     $scope.setAtkIv = function(iv) {
         atkIv = iv;
         $scope.atkIv = iv;
@@ -95,7 +100,13 @@ app.controller('optionsController', function($scope) {
         return iv;
     }
 
-    // type filter
+    // toggles legendaries
+    $scope.setShowLegendaries = function(bool) {
+        showLegendaries = bool;
+        $scope.showLegendaries = bool;
+    }
+
+    // pokemon type filter
     $scope.updatePokemonTypeFilter = function(type) {
         let index = pokemonTypeFilter.indexOf(type);
 
@@ -121,11 +132,23 @@ app.controller('optionsController', function($scope) {
             pokemonTypeFilter.push(type);
             oneTypeOnly = false;
         }
-
-        console.log("filter updated: " + pokemonTypeFilter + ", " + oneTypeOnly);
     }
 
     $scope.isPokemonTypeActive = function(type) {
         return (pokemonTypeFilter.indexOf(type) > -1);
+    }
+
+    // move type filter
+    $scope.updateMoveTypeFilter = function(type) {
+        if (moveTypeFilter === type) {
+            moveTypeFilter = "";
+        }
+        else {
+            moveTypeFilter = type;
+        }
+    }
+
+    $scope.isMoveTypeActive = function(type) {
+        return (moveTypeFilter === type);
     }
 })

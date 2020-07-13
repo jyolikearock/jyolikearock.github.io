@@ -192,9 +192,20 @@ ng.module('smart-table').controller('stTableController', [
 
       // @jyolikearock: apply filter and sort only if safe copy of table is not empty
       if (safeCopy.length > -1) {
+        // @jyolikearock: use a function as the filter predicate when keywords < or > detected in predicate
+        if (tableState.search.predicateObject) {
+            let predicateFunction = buildPredicateFunction(tableState.search.predicateObject);
+            filtered = filter(safeCopy, predicateFunction);
+        }
+        else {
+            filtered = safeCopy;
+        }
+        /*
         filtered = tableState.search.predicateObject
           ? filter(safeCopy, tableState.search.predicateObject)
           : safeCopy;
+        */
+
         if (tableState.sort.predicate) {
           filtered = orderBy(
             filtered,
@@ -223,6 +234,36 @@ ng.module('smart-table').controller('stTableController', [
         $('[data-toggle="tooltip"]').tooltip()
       });
     };
+
+    // @jyolikearock: takes a predicate map and returns a function which can be used to apply the predicate
+    // on elements of an array, while also taking into account keywords '<' and '>' in the predicate
+    function buildPredicateFunction(predicateMap) {
+        let predicateFunction = function(element, index, array) {
+            let applyFilter = function(e, attr, filterExpr) {
+                let startsWith = filterExpr.charAt(0);
+                let compareValue = filterExpr.substring(1, filterExpr.length);
+                if (startsWith === '<') {
+                    return (element[attr] < compareValue);
+                }
+                else if (startsWith === '>') {
+                    return (element[attr] > compareValue);
+                }
+                else {
+                    return ((element[attr] + "").toLowerCase().includes(filterExpr.toLowerCase()));
+                }
+            }
+
+            for (const key in predicateMap) {
+                let predicate = predicateMap[key];
+                if (!applyFilter(element, key, predicate)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return predicateFunction;
+    }
 
     /**
      * select a dataRow (it will add the attribute isSelected to the row object)

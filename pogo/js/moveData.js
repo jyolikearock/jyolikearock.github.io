@@ -81,7 +81,7 @@ var fastMoves =
 		"pveCooldown": 1.1
 	},
 	{
-		"name": "Bullet Seed (Community Day)",
+		"name": "Bullet Seed (CD)",
 		"type": "Grass",
 		"pvpDamage": 5,
 		"pvpEnergy": 13,
@@ -501,7 +501,7 @@ var fastMoves =
 		"pveCooldown": 1.2
 	},
 	{
-		"name": "Smack Down (Community Day)",
+		"name": "Smack Down (CD)",
 		"type": "Rock",
 		"pvpDamage": 12,
 		"pvpEnergy": 8,
@@ -787,7 +787,7 @@ var chargeMoves =
 		"pveCooldown": 3.5
 	},
 	{
-		"name": "Ancient Power (Community Day)",
+		"name": "Ancient Power (CD)",
 		"type": "Rock",
 		"pvpDamage": 45,
 		"pvpEnergy": 45,
@@ -865,7 +865,7 @@ var chargeMoves =
 		"pveCooldown": 2.7
 	},
 	{
-		"name": "Blast Burn (Community Day)",
+		"name": "Blast Burn (CD)",
 		"type": "Fire",
 		"pvpDamage": 110,
 		"pvpEnergy": 50,
@@ -917,7 +917,7 @@ var chargeMoves =
 		"pveCooldown": 1.9
 	},
 	{
-		"name": "Body Slam (Community Day)",
+		"name": "Body Slam (CD)",
 		"type": "Normal",
 		"pvpDamage": 60,
 		"pvpEnergy": 35,
@@ -1203,7 +1203,7 @@ var chargeMoves =
 		"pveCooldown": 3.6
 	},
 	{
-		"name": "Draco Meteor (Community Day)",
+		"name": "Draco Meteor (CD)",
 		"type": "Dragon",
 		"pvpDamage": 150,
 		"pvpEnergy": 65,
@@ -1242,7 +1242,7 @@ var chargeMoves =
 		"pveCooldown": 3.6
 	},
 	{
-		"name": "Dragon Pulse (Community Day)",
+		"name": "Dragon Pulse (CD)",
 		"type": "Dragon",
 		"pvpDamage": 90,
 		"pvpEnergy": 60,
@@ -1307,7 +1307,7 @@ var chargeMoves =
 		"pveCooldown": 2.8
 	},
 	{
-		"name": "Drill Run (Community Day)",
+		"name": "Drill Run (CD)",
 		"type": "Ground",
 		"pvpDamage": 80,
 		"pvpEnergy": 45,
@@ -1346,7 +1346,7 @@ var chargeMoves =
 		"pveCooldown": 3.6
 	},
 	{
-		"name": "Earth Power (Community Day)",
+		"name": "Earth Power (CD)",
 		"type": "Ground",
 		"pvpDamage": 90,
 		"pvpEnergy": 55,
@@ -1541,7 +1541,7 @@ var chargeMoves =
 		"pveCooldown": 2
 	},
 	{
-		"name": "Frenzy Plant (Community Day)",
+		"name": "Frenzy Plant (CD)",
 		"type": "Grass",
 		"pvpDamage": 100,
 		"pvpEnergy": 45,
@@ -1723,7 +1723,7 @@ var chargeMoves =
 		"pveCooldown": 2.7
 	},
 	{
-		"name": "Hydro Cannon (Community Day)",
+		"name": "Hydro Cannon (CD)",
 		"type": "Water",
 		"pvpDamage": 80,
 		"pvpEnergy": 40,
@@ -1840,7 +1840,7 @@ var chargeMoves =
 		"pveCooldown": 1.9
 	},
 	{
-		"name": "Last Resort (Community Day)",
+		"name": "Last Resort (CD)",
 		"type": "Normal",
 		"pvpDamage": 90,
 		"pvpEnergy": 55,
@@ -1970,7 +1970,7 @@ var chargeMoves =
 		"pveCooldown": 2.6
 	},
 	{
-		"name": "Meteor Mash (Community Day)",
+		"name": "Meteor Mash (CD)",
 		"type": "Steel",
 		"pvpDamage": 100,
 		"pvpEnergy": 50,
@@ -2126,7 +2126,7 @@ var chargeMoves =
 		"pveCooldown": 3.9
 	},
 	{
-		"name": "Outrage (Community Day)",
+		"name": "Outrage (CD)",
 		"type": "Dragon",
 		"pvpDamage": 110,
 		"pvpEnergy": 60,
@@ -2399,7 +2399,7 @@ var chargeMoves =
 		"pveCooldown": 3.2
 	},
 	{
-		"name": "Rock Wrecker (Community Day)",
+		"name": "Rock Wrecker (CD)",
 		"type": "Rock",
 		"pvpDamage": 110,
 		"pvpEnergy": 50,
@@ -2711,7 +2711,7 @@ var chargeMoves =
 		"pveCooldown": 1.7
 	},
 	{
-		"name": "Surf (Community Day)",
+		"name": "Surf (CD)",
 		"type": "Water",
 		"pvpDamage": 65,
 		"pvpEnergy": 40,
@@ -2750,7 +2750,7 @@ var chargeMoves =
 		"pveCooldown": 2.6
 	},
 	{
-		"name": "Synchronoise (Community Day)",
+		"name": "Synchronoise (CD)",
 		"type": "Psychic",
 		"pvpDamage": 80,
 		"pvpEnergy": 50,

@@ -10,23 +10,41 @@ function getPokemonData(pokemonName) {
 function updatePokemonData(pokemonData) {
     clear(pokemonData);
 
-    // apply type filter
-    applyPokemonTypeFilter(pokemonData);
+    // apply filters
+    applyPokemonFilters(pokemonData);
 
-    // apply max CP and IV options
+    // evaluate stats using max cp and iv options
     pokemonData.forEach(function(pokemon) {
         evaluateStatsWithCpCap(pokemon, maxCp, atkIv, defIv, hpIv);
     });
 }
 
-function applyPokemonTypeFilter(pokemonData) {
+function clear(array) {
+    while (array.length > 0) {
+        array.pop();
+    }
+}
+
+function applyPokemonFilters(pokemonData) {
     pokemons.forEach(
         function(pokemon) {
-            if (isPokemonType(pokemon, pokemonTypeFilter)) {
+            if (filterPokemon(pokemon)) {
                 pokemonData.push(pokemon);
             }
         }
     );
+}
+
+function filterPokemon(pokemon) {
+    let pass = true;
+
+    // apply type filter
+    pass = pass && isPokemonType(pokemon, pokemonTypeFilter);
+
+    // apply legendary filter
+    pass = pass && (pokemon.legendary === showLegendaries || showLegendaries);
+
+    return pass;
 }
 
 function isPokemonType(pokemon, typesToMatch) {
@@ -44,10 +62,4 @@ function isPokemonType(pokemon, typesToMatch) {
         }
     }
     return true;
-}
-
-function clear(array) {
-    while (array.length > 0) {
-        array.pop();
-    }
 }

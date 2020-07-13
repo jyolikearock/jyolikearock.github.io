@@ -1,8 +1,6 @@
-- adjust column widths on moves page to improve readability
-- cache last visited tab on moves page
-- persist last type filter when leaving and returning to a page
-- introduce moveset page
-- create new options controller to re-use on all pages that use options
-- create data service dedicated to vending all data
-- add search bar to pokemon page
-- add pvp/pve button on movesets page
+- add support for '<' and '>' in table filters
+- add back level column in single-pokemon view
+- fix type filters for moves page
+- add type filter to moveset page
+- add 'include legendaries' option
+- add search bar to pokemons page
