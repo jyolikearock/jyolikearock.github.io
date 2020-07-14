@@ -7648,7 +7648,7 @@ var pokemons =
 		"def": 278,
 		"hp": 214,
 		"fastMoves": "Confusion,Iron Tail",
-		"chargeMoves": "Earthquake,Rock Slide,Dynamic Punch,Future Sight",
+		"chargeMoves": "Earthquake,Rock Slide,Dynamic Punch,Future Sight,Psystrike (Event)",
 		"legendary": true
 	},{
 		"name": "Mewtwo",
@@ -7660,7 +7660,7 @@ var pokemons =
 		"def": 182,
 		"hp": 214,
 		"fastMoves": "Psycho Cut,Confusion",
-		"chargeMoves": "Flamethrower,Ice Beam,Thunderbolt,Psychic,Focus Blast",
+		"chargeMoves": "Flamethrower,Ice Beam,Thunderbolt,Psychic,Focus Blast,Psystrike (Event)",
 		"legendary": true
 	},{
 		"name": "Raikou",

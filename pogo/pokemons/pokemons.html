@@ -24,7 +24,7 @@
             </button>
         </div>
 
-        <div ng-show="showOptions()">
+        <div ng-show="showOptions">
             <!-- max cp -->
             <div class="form-group row">
                 <label class="col-4 col-lg-2 mt-2 col-form-label">Max CP:</label>
@@ -98,8 +98,8 @@
                refresh-table>
             <thead>
             <tr>
-                <th colspan="3">
-                    <input placeholder="Pokemon" class="form-control" type="text"
+                <th colspan="4">
+                    <input placeholder="Pokemon" class="form-control" type="search"
                            ng-model="searchPokemon" st-search="name" />
                 </th>
                 <th colspan="2">
@@ -121,6 +121,7 @@
                 <th class="sortable" st-sort="_atk">ATK</th>
                 <th class="sortable" st-sort="_def">DEF</th>
                 <th class="sortable" st-sort="_hp">HP</th>
+                <th class="sortable" st-sort="_combat">AD</th>
                 <th class="sortable" st-sort="_bulk" data-toggle="tooltip" data-placement="top" title="Geometric mean of DEF and HP">Bulk</th>
                 <th class="sortable" st-sort="_total" data-toggle="tooltip" data-placement="top" title="Geometric mean of ATK, DEF, and HP">Total</th>
                 <th class="sortable" st-sort="_cp">CP</th>
@@ -151,6 +152,9 @@
                     {{pokemon._hp}}
                 </td>
                 <td>
+                    {{pokemon._combat}}
+                </td>
+                <td>
                     {{pokemon._bulk}}
                 </td >
                 <td>
@@ -163,7 +167,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td class="text-center" colspan="10">
+                <td class="text-center" colspan="11">
                     <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"
                          st-page-change="setCurrentPage(newPage)"></div>
                 </td>

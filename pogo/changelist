@@ -1,6 +1,7 @@
-- add support for '<' and '>' in table filters
-- add back level column in single-pokemon view
-- fix type filters for moves page
-- add type filter to moveset page
-- add 'include legendaries' option
-- add search bar to pokemons page
+- add damage distribution to moveset table
+- add shield option to moveset page
+- add simulation type option to moveset page
+- add pve movesets
+- significantly improve accuracy of pvp moveset damage
+- fix issue where table was resetting to page 0 on content change
+- change the way pvp move effects are being represented

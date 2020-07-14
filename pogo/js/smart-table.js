@@ -136,7 +136,8 @@ ng.module('smart-table').controller('stTableController', [
         },
         function(newValue, oldValue) {
           if (newValue !== oldValue) {
-            tableState.pagination.start = 0;
+            // @jyolikearock: don't reset page number even if safe source changes
+            // tableState.pagination.start = 0;
             updateSafeCopy();
           }
         }
@@ -218,9 +219,11 @@ ng.module('smart-table').controller('stTableController', [
           pagination.numberOfPages = filtered.length > 0
             ? Math.ceil(filtered.length / pagination.number)
             : 1;
+          /* @jyolikearock: dont reset page on filter
           pagination.start = pagination.start >= filtered.length
             ? (pagination.numberOfPages - 1) * pagination.number
             : pagination.start;
+          */
           output = filtered.slice(
             pagination.start,
             pagination.start + parseInt(pagination.number)

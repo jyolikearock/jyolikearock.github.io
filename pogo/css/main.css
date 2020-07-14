@@ -41,6 +41,10 @@ html {
   cursor: pointer;
 }
 
+.table tr td {
+  white-space: nowrap;
+}
+
 .table-fixed {
   table-layout: fixed;
 }

@@ -21,13 +21,11 @@ app.controller('optionsController', function($scope) {
     $scope.hpIv = hpIv;
     $scope.showLegendaries = showLegendaries;
     $scope.types = types;
+    $scope.showOptions = showOptions;
 
     $scope.toggleOptions = function() {
         showOptions = !showOptions;
-    }
-
-    $scope.showOptions = function() {
-        return showOptions;
+        $scope.showOptions = showOptions;
     }
 
     // set max cp

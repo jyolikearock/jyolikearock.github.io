@@ -63,6 +63,7 @@ function evaluateStats(pokemon, level, _atkIv, _defIv, _hpIv) {
     pokemon._hp = Math.floor(hp);
 
     pokemon._bulk = Math.floor(Math.sqrt(def * hp));
+    pokemon._combat = Math.floor(Math.sqrt(atk * def));
     pokemon._total = Math.floor(Math.pow(atk * def * hp, 1.0/3.0));
     pokemon._cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
 }
