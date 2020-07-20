@@ -11,23 +11,27 @@
         <form ng-show="showOptions">
 
             <!-- max cp -->
-            <div class="form-group row">
-                <label class="col-4 col-lg-2 mt-2 col-form-label">Max CP:</label>
-                <div class="col-8 col-lg-4 mt-2">
-                    <input class="form-control" type="text" ng-model="maxCp" disabled/>
+            <div class="input-group mt-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Max CP:</label>
                 </div>
-                <div class="btn-group ml-auto mr-3 mt-2" role="group">
-                    <button class="btn btn-secondary" ng-click="setMaxCp(1500); populateMovesets()"
-                            ng-class="maxCp <= 1500 ? 'btn-dark' : ''">
-                        GL (1500)
+                <input class="form-control" type="number" ng-model="maxCp" readonly>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" ng-class="maxCp <= 1500 ? 'btn-dark' : ''"
+                            ng-click="setMaxCp(1500); populateMovesets()">
+                        1500
                     </button>
-                    <button class="btn btn-secondary" ng-click="setMaxCp(2500); populateMovesets()"
-                            ng-class="maxCp > 1500 && maxCp <= 2500 ? 'btn-dark' : ''">
-                        UL (2500)
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" ng-class="maxCp > 1500 && maxCp <= 2500 ? 'btn-dark' : ''"
+                            ng-click="setMaxCp(2500); populateMovesets()">
+                        2500
                     </button>
-                    <button class="btn btn-secondary" ng-click="setMaxCp(9999); populateMovesets()"
-                            ng-class="maxCp > 2500 ? 'btn-dark' : ''">
-                        ML (No Max)
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" ng-class="maxCp > 2500 ? 'btn-dark' : ''"
+                            ng-click="setMaxCp(9999); populateMovesets()">
+                        None
                     </button>
                 </div>
             </div>
@@ -39,13 +43,42 @@
             <div class="row mb-4">
                 <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
                 <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-                    <div class="row">
-                        <div ng-repeat="type in types" class="col-2 mt-2"
-                             ng-click="updateMoveTypeFilter(type); populateMovesets()">
-                            <div class="icon"
-                                 ng-class="isMoveTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
-                                <img ng-src="{{getIconPath(type)}}" title="{{type}}"
-                                     data-toggle="tooltip" data-placement="top" >
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs nav-fill card-header-tabs">
+                                <li class="nav-item">
+                                    <div class="nav-link" ng-class="currentTypeTab === 'pokemonTypes' ? 'active' : ''"
+                                         ng-click="setCurrentTypeTab('pokemonTypes')">Pokemon Types</div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="nav-link" ng-class="currentTypeTab === 'moveTypes' ? 'active' : ''"
+                                         ng-click="setCurrentTypeTab('moveTypes')">Move Types</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <!-- pokemon type filters -->
+                            <div class="row" ng-show="currentTypeTab === 'pokemonTypes'">
+                                <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
+                                     ng-click="updatePokemonTypeFilter(type); populateMovesets()">
+                                    <div class="icon"
+                                         ng-class="isPokemonTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                        <img ng-src="{{getIconPath(type)}}" title="{{type}}"
+                                             data-toggle="tooltip" data-placement="top" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- move type filters -->
+                            <div class="row" ng-show="currentTypeTab === 'moveTypes'">
+                                <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
+                                     ng-click="updateMoveTypeFilter(type); populateMovesets()">
+                                    <div class="icon"
+                                         ng-class="isMoveTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                        <img ng-src="{{getIconPath(type)}}" title="{{type}}"
+                                             data-toggle="tooltip" data-placement="top" >
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,50 +172,33 @@
                 </th>
                 <th colspan="2">
                     <input placeholder="TTFA" class="form-control" type="search"
-                           ng-model="searchTtfa" st-search="pvpTtfa" />
+                           ng-model="searchTtfa" st-search="ttfa" />
                 </th>
                 <th colspan="2">
                     <input placeholder="# Charges" class="form-control" type="search"
-                           ng-model="searchCharges" st-search="pvpCharges" />
+                           ng-model="searchCharges" st-search="charges" />
                 </th>
             </tr>
 
-            <!-- pvp headers -->
-            <tr ng-show="isPvp">
+            <!-- headers -->
+            <tr>
                 <th class="sortable" colspan="2" st-sort="pokemon">Pokemon</th>
                 <th class="sortable" st-sort="fastMove">FM</th>
                 <th class="sortable" st-sort="fmType">Type</th>
                 <th class="sortable" st-sort="chargeMove">CM</th>
                 <th class="sortable" st-sort="cmType">Type</th>
-                <th class="sortable" st-sort="pvpDpt">DPT</th>
-                <th class="sortable" st-sort="pvpTtfa"
-                    data-toggle="tooltip" data-placement="top" title="Turns to first charge move activation">TTFA</th>
-                <th class="sortable" st-sort="pvpTotal"
+                <th class="sortable" st-sort="dps">DPT</th>
+                <th class="sortable" st-sort="ttfa"
+                    data-toggle="tooltip" data-placement="top" title="Time to first charge move activation">TTFA</th>
+                <th class="sortable" st-sort="total"
                     data-toggle="tooltip" data-placement="top" title="Total damage dealt before dying">Tot</th>
-                <th class="sortable" st-sort="pvpCharges"
+                <th class="sortable" st-sort="charges"
                     data-toggle="tooltip" data-placement="top" title="Number of charge attacks fired">CAs</th>
                 <th>FM/CM</th>
             </tr>
 
-            <!-- pve headers -->
-            <tr ng-show="!isPvp">
-                <th class="sortable" colspan="2" st-sort="pokemon">Pokemon</th>
-                <th class="sortable" st-sort="fastMove">FM</th>
-                <th class="sortable" st-sort="fmType">Type</th>
-                <th class="sortable" st-sort="chargeMove">CM</th>
-                <th class="sortable" st-sort="cmType">Type</th>
-                <th class="sortable" st-sort="pveDps">DPS</th>
-                <th class="sortable" st-sort="pveTtfa"
-                    data-toggle="tooltip" data-placement="top" title="Seconds to first charge move activation">TTFA</th>
-                <th class="sortable" st-sort="pveTotal"
-                    data-toggle="tooltip" data-placement="top" title="Total damage dealt before dying">Tot</th>
-                <th class="sortable" st-sort="pveCharges"
-                    data-toggle="tooltip" data-placement="top" title="Number of charge attacks fired">CAs</th>
-                <th>FM/CM</th>
-            </tr>
-
-            <!-- pvp table body -->
-            <tr ng-repeat="moveset in displayedMovesets" ng-show="isPvp">
+            <!-- table body -->
+            <tr ng-repeat="moveset in displayedMovesets">
                 <td colspan="2">{{moveset.pokemon}}</td>
                 <td>{{moveset.fastMove}}</td>
                 <td>
@@ -198,35 +214,11 @@
                              data-toggle="tooltip" data-placement="top" title="{{moveset.cmType}}">
                     </div>
                 </td>
-                <td>{{moveset.pvpDpt}}</td>
-                <td>{{moveset.pvpTtfa}}</td>
-                <td>{{moveset.pvpTotal}}</td>
-                <td>{{moveset.pvpCharges}}</td>
-                <td>{{moveset.pvpDmgDist}}</td>
-            </tr>
-
-            <!-- pve table body -->
-            <tr ng-repeat="moveset in displayedMovesets" ng-show="!isPvp">
-                <td colspan="2">{{moveset.pokemon}}</td>
-                <td>{{moveset.fastMove}}</td>
-                <td>
-                    <div class="icon ml-1" ng-class="moveset.fmType.toLowerCase()">
-                        <img ng-src="{{getIconPath(moveset.fmType)}}"
-                             data-toggle="tooltip" data-placement="top" title="{{moveset.fmType}}">
-                    </div>
-                </td>
-                <td>{{moveset.chargeMove}}</td>
-                <td>
-                    <div class="icon ml-1" ng-class="moveset.cmType.toLowerCase()">
-                        <img ng-src="{{getIconPath(moveset.cmType)}}"
-                             data-toggle="tooltip" data-placement="top" title="{{moveset.cmType}}">
-                    </div>
-                </td>
-                <td>{{moveset.pveDps}}</td>
-                <td>{{moveset.pveTtfa}}</td>
-                <td>{{moveset.pveTotal}}</td>
-                <td>{{moveset.pveCharges}}</td>
-                <td>{{moveset.pveDmgDist}}</td>
+                <td>{{moveset.dps}}</td>
+                <td>{{moveset.ttfa}}</td>
+                <td>{{moveset.total}}</td>
+                <td>{{moveset.charges}}</td>
+                <td>{{moveset.dmgDist}}</td>
             </tr>
 
             <!-- pagination -->

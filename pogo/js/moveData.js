@@ -271,6 +271,16 @@ var fastMoves =
 		"pveCooldown": 1.2
 	},
 	{
+		"name": "Ice Shard (Legacy)",
+		"type": "Ice",
+		"pvpDamage": 9,
+		"pvpEnergy": 10,
+		"pvpTurns": 3,
+		"pveDamage": 12,
+		"pveEnergy": 12,
+		"pveCooldown": 1.2
+	},
+	{
 		"name": "Infestation",
 		"type": "Bug",
 		"pvpDamage": 6,
@@ -801,6 +811,19 @@ var chargeMoves =
 	},
 	{
 		"name": "Aqua Jet",
+		"type": "Water",
+		"pvpDamage": 45,
+		"pvpEnergy": 45,
+		"pvpEffectChance": "N/A",
+		"pvpEffectStat": "N/A",
+		"pvpEffectDelta": "N/A",
+		"pvpEffectTarget": "N/A",
+		"pveDamage": 45,
+		"pveEnergy": 33,
+		"pveCooldown": 2.6
+	},
+	{
+		"name": "Aqua Jet (Legacy)",
 		"type": "Water",
 		"pvpDamage": 45,
 		"pvpEnergy": 45,
@@ -1827,6 +1850,19 @@ var chargeMoves =
 		"pveCooldown": 3.3
 	},
 	{
+		"name": "Icy Wind (Legacy)",
+		"type": "Ice",
+		"pvpDamage": 60,
+		"pvpEnergy": 45,
+		"pvpEffectChance": 100,
+		"pvpEffectStat": "A",
+		"pvpEffectDelta": -1,
+		"pvpEffectTarget": "O",
+		"pveDamage": 60,
+		"pveEnergy": 33,
+		"pveCooldown": 3.3
+	},
+	{
 		"name": "Iron Head",
 		"type": "Steel",
 		"pvpDamage": 70,
@@ -2504,6 +2540,19 @@ var chargeMoves =
 	},
 	{
 		"name": "Shadow Punch",
+		"type": "Ghost",
+		"pvpDamage": 40,
+		"pvpEnergy": 35,
+		"pvpEffectChance": "N/A",
+		"pvpEffectStat": "N/A",
+		"pvpEffectDelta": "N/A",
+		"pvpEffectTarget": "N/A",
+		"pveDamage": 40,
+		"pveEnergy": 33,
+		"pveCooldown": 1.7
+	},
+	{
+		"name": "Shadow Punch (CD)",
 		"type": "Ghost",
 		"pvpDamage": 40,
 		"pvpEnergy": 35,

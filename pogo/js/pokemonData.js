@@ -371,7 +371,8 @@ var pokemons =
 		"name": "Alolan Raichu",
 		"id": 26,
 		"type": [
-			"Electric"
+			"Electric",
+            "Psychic"
 		],
 		"atk": 201,
 		"def": 154,
@@ -383,8 +384,7 @@ var pokemons =
 		"name": "Raichu",
 		"id": 26,
 		"type": [
-			"Electric",
-			"Psychic"
+			"Electric"
 		],
 		"atk": 193,
 		"def": 151,
@@ -421,7 +421,8 @@ var pokemons =
 		"name": "Alolan Sandslash",
 		"id": 28,
 		"type": [
-			"Ground"
+			"Ice",
+			"Steel"
 		],
 		"atk": 177,
 		"def": 195,
@@ -433,8 +434,7 @@ var pokemons =
 		"name": "Sandslash",
 		"id": 28,
 		"type": [
-			"Ice",
-			"Steel"
+			"Ground"
 		],
 		"atk": 182,
 		"def": 175,
@@ -1314,8 +1314,8 @@ var pokemons =
 		"atk": 139,
 		"def": 177,
 		"hp": 207,
-		"fastMoves": "Frost Breath,Iron Tail",
-		"chargeMoves": "Blizzard,Water Pulse,Aurora Beam",
+		"fastMoves": "Frost Breath,Iron Tail,Ice Shard (Legacy)",
+		"chargeMoves": "Blizzard,Water Pulse,Aurora Beam,Aqua Jet (Legacy),Icy Wind (Legacy)",
 		"legendary": false
 	},{
 		"name": "Alolan Grimer",
@@ -1429,7 +1429,7 @@ var pokemons =
 		"def": 149,
 		"hp": 155,
 		"fastMoves": "Sucker Punch,Shadow Claw,Hex",
-		"chargeMoves": "Shadow Ball,Sludge Bomb,Focus Blast",
+		"chargeMoves": "Shadow Ball,Sludge Bomb,Focus Blast,Shadow Punch (CD)",
 		"legendary": false
 	},{
 		"name": "Onix",
@@ -7537,7 +7537,7 @@ var pokemons =
 		"hp": 245,
 		"fastMoves": "Dragon Breath,Steel Wing",
 		"chargeMoves": "Dragon Claw,Blizzard,Draco Meteor",
-		"legendary": false
+		"legendary": true
 	},{
 		"name": "Meltan",
 		"id": 808,

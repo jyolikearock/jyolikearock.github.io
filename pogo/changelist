@@ -1,7 +1,7 @@
-- add damage distribution to moveset table
-- add shield option to moveset page
-- add simulation type option to moveset page
-- add pve movesets
-- significantly improve accuracy of pvp moveset damage
-- fix issue where table was resetting to page 0 on content change
-- change the way pvp move effects are being represented
+- tweak target dummy stats
+- add pokemon type filter to moveset page
+- add some missing legacy moves
+- change look of max cp and iv controls
+- remove 'save url' button
+- add types to pokemon page
+- make pagination buttons bigger

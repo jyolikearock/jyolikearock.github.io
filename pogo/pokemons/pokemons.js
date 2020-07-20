@@ -22,7 +22,6 @@ angular.module('app.pokemons', ['ngRoute'])
 
     // initialize page settings
     $scope.pageSize = pageSize;
-    $scope.currentPage = 1;
     $scope.currentTab = currentTab;
     $scope.ivsMap = ivsMap;
     $scope.types = types;
@@ -75,6 +74,7 @@ angular.module('app.pokemons', ['ngRoute'])
     $scope.getPokemon = function(pokemonName) {
         console.log("routing to: " + pokemonName);
         let params = getParams();
+        console.log("with params: " + JSON.stringify(params));
         if (!pokemonsMap[pokemonName.toLowerCase()]) {
             $location.path("/pokemon").search(params);
         }

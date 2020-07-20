@@ -53,6 +53,8 @@ angular.module('app.moves', ['ngRoute'])
                 }
             )
         }
+        console.log("Found %d fast moves", filteredFastMoves.length);
+        console.log("Found %d charge moves", filteredChargeMoves.length);
         $scope.fastMoves = filteredFastMoves;
         $scope.chargeMoves = filteredChargeMoves;
         $scope.$broadcast("refreshTable");

@@ -1,41 +1,44 @@
 var greatLeagueTargetDummy = {
-    "_atk": 140,
-    "_def": 140,
-    "type": []
+    "_atk": 100,
+    "_def": 160,
+    "type": ["Dragon"]
 };
 
 var ultraLeagueTargetDummy = {
-    "_atk": 175,
-    "_def": 175,
-    "type": []
+    "_atk": 130,
+    "_def": 185,
+    "type": ["Dragon"]
 };
 
 var masterLeagueTargetDummy = {
-    "_atk": 205,
-    "_def": 205,
-    "type": []
+    "_atk": 220,
+    "_def": 185,
+    "type": ["Dragon"]
 };
 
 var targetDummyFastMove = {
-    "pvpDamage": 5,
-    "pvpEnergy": 4,
+    "type": "Dragon",
+    "pvpDamage": 4,
+    "pvpEnergy": 3,
     "pvpTurns": 1,
-    "pveDamage": 20,
-    "pveEnergy": 16,
+    "pveDamage": 16,
+    "pveEnergy": 12,
     "pveCooldown": 2
 };
 
 var targetDummyChargeMove = {
-    "pvpDamage": 95,
-    "pvpEnergy": 40,
-    "pveDamage": 120,
-    "pveEnergy": 48,
+    "type": "Dragon",
+    "pvpDamage": 80,
+    "pvpEnergy": 45,
+    "pveDamage": 130,
+    "pveEnergy": 60,
     "pveCooldown": 3
 }
 
 var shields = 0;
 var isPvp = true;
 var actualDps = true;
+var currentTypeTab = "pokemonTypes";
 
 angular.module('app.movesets', ['ngRoute'])
 
@@ -52,6 +55,7 @@ angular.module('app.movesets', ['ngRoute'])
     $scope.isPvp = isPvp;
     $scope.shields = shields;
     $scope.actualDps = actualDps;
+    $scope.currentTypeTab = currentTypeTab;
 
     // initial load of moveset data
     populateMovesets();
@@ -73,6 +77,11 @@ angular.module('app.movesets', ['ngRoute'])
     $scope.setActualDps = function(bool) {
         actualDps = bool;
         $scope.actualDps = actualDps;
+    }
+
+    $scope.setCurrentTypeTab = function(tab) {
+        currentTypeTab = tab;
+        $scope.currentTypeTab = currentTypeTab;
     }
 
     var currentPokemon = "";
@@ -122,7 +131,7 @@ angular.module('app.movesets', ['ngRoute'])
                     moveset.cmType = cm.type;
 
                     if (isPvp) {
-                        moveset.pvpTtfa = Math.ceil(cm.pvpEnergy / fm.pvpEnergy) * fm.pvpTurns;
+                        moveset.ttfa = Math.ceil(cm.pvpEnergy / fm.pvpEnergy) * fm.pvpTurns;
 
                         // simulate fight
                         if (actualDps) {
@@ -133,10 +142,10 @@ angular.module('app.movesets', ['ngRoute'])
                             let fmd = getMoveDamage(fm, pokemon, targetDummy);
                             let cmd = getMoveDamage(cm, pokemon, targetDummy);
                             let fmdt = cm.pvpEnergy / fm.pvpEnergy * fmd;
-                            moveset.pvpTotal = round(cmd + fmdt);
-                            moveset.pvpDpt = round2(moveset.pvpTotal / moveset.pvpTtfa);
-                            moveset.pvpDmgDist = getDamageDistribution(fmdt, cmd);
-                            moveset.pvpCharges = 1;
+                            moveset.total = round(cmd + fmdt);
+                            moveset.dps = round2(moveset.total / moveset.ttfa);
+                            moveset.dmgDist = getDamageDistribution(fmdt, cmd);
+                            moveset.charges = 1;
                         }
                     }
                     else {
@@ -168,11 +177,11 @@ angular.module('app.movesets', ['ngRoute'])
                         let cmdt = activations * cmd;
                         let fmdt = Math.floor((timeToDie - activations * cm.pveCooldown) / fm.pveCooldown) * fmd;
                         let total = cmdt + fmdt;
-                        moveset.pveTtfa = round1(ttfa);
-                        moveset.pveTotal = total;
-                        moveset.pveDps = round2(total / timeToDie);
-                        moveset.pveDmgDist = getDamageDistribution(fmdt, cmdt);
-                        moveset.pveCharges = activations;
+                        moveset.ttfa = round1(ttfa);
+                        moveset.total = total;
+                        moveset.dps = round2(total / timeToDie);
+                        moveset.dmgDist = getDamageDistribution(fmdt, cmdt);
+                        moveset.charges = activations;
                     }
                     movesets.push(moveset);
                     count++;
@@ -348,10 +357,10 @@ angular.module('app.movesets', ['ngRoute'])
         log("Total FM Damage: " + fmdt);
         log("Total CM Damage: " + cmdt);
 
-        moveset.pvpDpt = round2(totalDamage / turn);
-        moveset.pvpTotal = totalDamage;
-        moveset.pvpCharges = cms;
-        moveset.pvpDmgDist = getDamageDistribution(fmdt, cmdt);
+        moveset.dps = round2(totalDamage / turn);
+        moveset.total = totalDamage;
+        moveset.charges = cms;
+        moveset.dmgDist = getDamageDistribution(fmdt, cmdt);
     }
 
     function getMoveDamageWithStats(move, atkPokemon, defPokemon, a, d) {

@@ -1,6 +1,7 @@
 var showOptions = true;
 
 var maxCp = 9999;
+var level = 40;
 var atkIv = 15;
 var defIv = 15;
 var hpIv = 15;
@@ -16,6 +17,7 @@ var moveTypeFilter = "";
 app.controller('optionsController', function($scope) {
 
     $scope.maxCp = maxCp;
+    $scope.level = level;
     $scope.atkIv = atkIv;
     $scope.defIv = defIv;
     $scope.hpIv = hpIv;
@@ -28,13 +30,19 @@ app.controller('optionsController', function($scope) {
         $scope.showOptions = showOptions;
     }
 
-    // set max cp
+    // for controlling max cp
     $scope.setMaxCp = function(_maxCp) {
         maxCp = _maxCp;
         $scope.maxCp = maxCp;
     }
 
-    // for adjusting ivs
+    // for controlling level
+    $scope.setLevel = function(_level) {
+        level = _level;
+        $scope.level = level;
+    }
+
+    // for controlling ivs
     $scope.setAtkIv = function(iv) {
         atkIv = iv;
         $scope.atkIv = iv;
@@ -48,18 +56,6 @@ app.controller('optionsController', function($scope) {
     $scope.setHpIv = function(iv) {
         hpIv = iv;
         $scope.hpIv = iv;
-    }
-
-    $scope.minIvs = function() {
-        $scope.setAtkIv(0);
-        $scope.setDefIv(0);
-        $scope.setHpIv(0);
-    }
-
-    $scope.maxIvs = function() {
-        $scope.setAtkIv(15);
-        $scope.setDefIv(15);
-        $scope.setHpIv(15);
     }
 
     $scope.validateMaxCp = function() {
@@ -144,6 +140,7 @@ app.controller('optionsController', function($scope) {
         else {
             moveTypeFilter = type;
         }
+        console.log("filtering moves with type: " + moveTypeFilter);
     }
 
     $scope.isMoveTypeActive = function(type) {
