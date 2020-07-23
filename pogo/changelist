@@ -1,7 +1,6 @@
-- tweak target dummy stats
-- add pokemon type filter to moveset page
-- add some missing legacy moves
-- change look of max cp and iv controls
-- remove 'save url' button
-- add types to pokemon page
-- make pagination buttons bigger
+- remember last viewed pokemon when routing to 'pokemon' tab
+- implement level slider on single-pokemon page (now functional)
+- add types page and type data
+- cache pokemon IVs to local storage
+- add support for dual typing
+- add type chart to single-pokemon page

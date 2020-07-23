@@ -3066,15 +3066,3 @@ chargeMoves.forEach(
         chargeMovesMap[name] = move;
     }
 );
-
-function round2(n) {
-    return Math.round(n * 100) / 100;
-}
-
-function round1(n) {
-    return Math.round(n * 10) / 10;
-}
-
-function round(n) {
-    return Math.round(n);
-}

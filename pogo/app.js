@@ -15,7 +15,8 @@ var app = angular.module('app', [
   'ui.bootstrap',
   'app.pokemons',
   'app.moves',
-  'app.movesets'
+  'app.movesets',
+  'app.types'
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -67,3 +68,12 @@ app.directive("refreshTable", function(){
             });
     }
 }});
+
+// for caching objects to and from local storage
+function getObject(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+function setObject(key, object) {
+    localStorage.setItem(key, JSON.stringify(object));
+}

@@ -1,0 +1,132 @@
+<div class="card mt-3" ng-controller="optionsController">
+
+    <div class="card-body">
+
+        <!-- title -->
+        <div class="row">
+            <div class="col-6">
+                <h5 class="card-title">
+                    Types
+                </h5>
+            </div>
+            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
+                Options
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <ul class="nav nav-tabs nav-fill card-header-tabs">
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'defending' ? 'active' : ''"
+                     ng-click="setTab('defending')">Defending</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="currentTab === 'attacking' ? 'active' : ''"
+                     ng-click="setTab('attacking')">Attacking</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- defending data -->
+    <table class="table table-hover table-fixed mt-3" ng-show="currentTab === 'defending'">
+        <tr>
+            <td class="bg-dark text-white sticky">Type</td>
+            <td class="bg-dark text-white border-left border-white sticky">Weak to</td>
+            <td class="bg-dark text-white border-left border-white sticky">Resists</td>
+            <td class="bg-dark text-white border-left border-white sticky">Resists (x2)</td>
+        </tr>
+        <tr ng-repeat="(type, effs) in typeChartByEffectiveness">
+            <td class="align-middle border-bottom">
+                <div class="row">
+                    <div class="icon ml-4" ng-class="type.toLowerCase()">
+                        <img ng-src="{{getIconPath(type)}}">
+                        &nbsp;{{type}}
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- attacking data -->
+    <table class="table table-hover table-fixed mt-3" ng-show="currentTab === 'attacking'">
+        <tr>
+            <td class="bg-dark text-white sticky">Type</td>
+            <td class="bg-dark text-white border-left border-white sticky">Super Effective</td>
+            <td class="bg-dark text-white border-left border-white sticky">Ineffective</td>
+            <td class="bg-dark text-white border-left border-white sticky">Ineffective (x2)</td>
+        </tr>
+        <tr ng-repeat="(type, effs) in typeChartByEffectiveness">
+            <td class="align-middle border-bottom">
+                <div class="row">
+                    <div class="icon ml-4" ng-class="type.toLowerCase()">
+                        <img ng-src="{{getIconPath(type)}}">
+                        &nbsp;{{type}}
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.attacking[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.attacking[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in effs.attacking[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

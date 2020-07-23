@@ -5,8 +5,8 @@ function getMaxCp(pokemon) {
 }
 
 function evaluateStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
-    let level = evaluateLevel(pokemon, cpCap, _atkIv, _defIv, _hpIv);
-    evaluateStats(pokemon, level, _atkIv, _defIv, _hpIv);
+    let _level = evaluateLevelForMaxCp(pokemon, cpCap, _atkIv, _defIv, _hpIv);
+    evaluateStatsWithLevel(pokemon, _level, _atkIv, _defIv, _hpIv);
 }
 
 // same as evaluateStatsWithCpCap(), but returns a new object instead of mutating original pokemon
@@ -14,23 +14,23 @@ function getStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
 
 }
 
-function evaluateLevel(pokemon, capCp, _atkIv, _defIv, _hpIv) {
+function evaluateLevelForMaxCp(pokemon, capCp, _atkIv, _defIv, _hpIv) {
     let _maxCp = getCp(pokemon, 40, _atkIv, _defIv, _hpIv);
     let targetCpm = cpmMap[40] * Math.sqrt(capCp / _maxCp);
-    let level = 1;
+    let _level = 1;
     for (let i = 40; i >= 1; i = i - 0.5) {
         if (targetCpm >= cpmMap[i]) {
-            level = i;
+            _level = i;
             break;
         }
     }
 
-    pokemon._level = level;
-    return level;
+    pokemon._level = _level;
+    return _level;
 }
 
-function getCp(pokemon, level, _atkIv, _defIv, _hpIv) {
-    let cpm = cpmMap[level];
+function getCp(pokemon, _level, _atkIv, _defIv, _hpIv) {
+    let cpm = cpmMap[_level];
     let atk = (pokemon.atk + _atkIv) * cpm;
     let def = (pokemon.def + _defIv) * cpm;
     let hp = (pokemon.hp + _hpIv) * cpm;
@@ -39,20 +39,21 @@ function getCp(pokemon, level, _atkIv, _defIv, _hpIv) {
     return cp;
 }
 
-function evaluateMaxStatsAll(pokemons) {
+function evaluateMaxStatsForAll(pokemons) {
     pokemons.forEach(function(pokemon) {
-        evaluateStats(pokemon, 40, 15, 15, 15);
+        evaluateStatsWithLevel(pokemon, 40, 15, 15, 15);
     });
 }
 
-function evaluateStats(pokemon, level, _atkIv, _defIv, _hpIv) {
-    if (level < 1) {
-        level = 1;
+function evaluateStatsWithLevel(pokemon, _level, _atkIv, _defIv, _hpIv) {
+    if (_level < 1) {
+        _level = 1;
     }
-    if (level > 40) {
-        level = 40;
+    if (_level > 40) {
+        _level = 40;
     }
-    let cpm = cpmMap[level];
+    pokemon._level = _level;
+    let cpm = cpmMap[_level];
 
     let atk = cpm * (pokemon.atk + _atkIv);
     let def = cpm * (pokemon.def + _defIv);
@@ -66,6 +67,22 @@ function evaluateStats(pokemon, level, _atkIv, _defIv, _hpIv) {
     pokemon._combat = Math.floor(Math.sqrt(atk * def));
     pokemon._total = Math.floor(Math.pow(atk * def * hp, 1.0/3.0));
     pokemon._cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
+}
+
+function round6(n) {
+    return Math.round(n * 1000000) / 1000000;
+}
+
+function round2(n) {
+    return Math.round(n * 100) / 100;
+}
+
+function round1(n) {
+    return Math.round(n * 10) / 10;
+}
+
+function round(n) {
+    return Math.round(n);
 }
 
 // CP multiplier: level >> multiplier

@@ -1,7 +1,13 @@
 'use strict';
 
-var ivsMap = {};
+var ivsMap = getObject("pogoIvsMap");
+console.log("Fetching cached IVs from local storage:", ivsMap);
+if (!ivsMap) {
+    ivsMap = {};
+    setObject("pogoIvsMap", ivsMap);
+}
 var ivsId = 0;
+var focusPokemon = "";
 
 angular.module('app.pokemons', ['ngRoute'])
 
@@ -17,14 +23,21 @@ angular.module('app.pokemons', ['ngRoute'])
     });
 }])
 
-.controller('pokemonsController', ['$scope', '$location', '$routeParams', '$timeout',
-    function($scope, $location, $routeParams, $timeout) {
+.controller('pokemonsController', ['$scope', '$location', '$routeParams',
+    function($scope, $location, $routeParams) {
 
     // initialize page settings
     $scope.pageSize = pageSize;
-    $scope.currentTab = currentTab;
-    $scope.ivsMap = ivsMap;
+    $scope.currentMovesTab = currentMovesTab;
     $scope.types = types;
+    $scope.ivsMap = ivsMap;
+    $scope.focusPokemon = focusPokemon;
+
+    // reroute to single view if there is a pokemon selected
+    if (focusPokemon && !$routeParams.pokemon) {
+        console.log("Routing back to last viewed pokemon: %s", focusPokemon);
+        goToPokemon(focusPokemon);
+    }
 
     // update global variables with user-defined values in url query params
     let params = $location.search();
@@ -48,12 +61,34 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     // get pokemon name if provided in route
-    var pokemonName = $routeParams["pokemon"];
-    $scope.updatePokemon = function() {
-        $scope.pokemon = getPokemonData(pokemonName);
+    if (!focusPokemon && $routeParams.pokemon) {
+        focusPokemon = $routeParams.pokemon;
     }
-    if (pokemonName) {
-        $scope.updatePokemon();
+    if (focusPokemon) {
+        updatePokemon();
+    }
+
+    // stat fetching methods
+    $scope.updatePokemon = function() {
+        updatePokemon();
+    }
+
+    function updatePokemon() {
+        if (focusPokemon) {
+            let pokemon = getPokemonData(focusPokemon);
+            level = pokemon._level;
+            $scope.pokemon = pokemon;
+        }
+    }
+
+    $scope.updatePokemonWithLevel = function() {
+        updatePokemonWithLevel();
+    }
+
+    function updatePokemonWithLevel() {
+        if (focusPokemon) {
+            $scope.pokemon = getPokemonDataWithLevel(focusPokemon);
+        }
     }
 
     // routing methods
@@ -71,19 +106,38 @@ angular.module('app.pokemons', ['ngRoute'])
         $location.search(params);
     }
 
-    $scope.getPokemon = function(pokemonName) {
-        console.log("routing to: " + pokemonName);
+    $scope.seeAllPokemon = function() {
+        console.log("Going back to pokemon table");
+        focusPokemon = "";
+        $scope.focusPokemon = "";
+        go("/pokemon");
+    }
+
+    $scope.goToPokemon = function(pokemonName) {
+        goToPokemon(pokemonName);
+    }
+
+    function goToPokemon(pokemonName) {
+        console.log("Routing to: " + pokemonName);
+        let name = pokemonName.toLowerCase();
+        focusPokemon = name;
+        $scope.focusPokemon = name;
+
         let params = getParams();
         console.log("with params: " + JSON.stringify(params));
-        if (!pokemonsMap[pokemonName.toLowerCase()]) {
+        if (!pokemonsMap[name]) {
             $location.path("/pokemon").search(params);
         }
         else {
-            $location.path("/pokemon/" + pokemonName.toLowerCase()).search(params);
+            $location.path("/pokemon/" + name).search(params);
         }
     }
 
     $scope.go = function(path) {
+        go(path);
+    }
+
+    function go(path) {
         let params = getParams();
         $location.path(path).search(params);
     }
@@ -95,10 +149,11 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     $scope.saveIvs = function() {
-        let ivs = $scope.ivsMap[$scope.pokemon.name];
-        if (ivs === undefined) {
+        let name = $scope.pokemon.name;
+        let ivs = ivsMap[name];
+        if (!ivs) {
             ivs = [];
-            $scope.ivsMap[$scope.pokemon.name] = ivs;
+            ivsMap[name] = ivs;
         }
 
         let newIvs = {};
@@ -117,6 +172,8 @@ angular.module('app.pokemons', ['ngRoute'])
         newIvs.cp = $scope.pokemon._cp;
 
         ivs.push(newIvs);
+        $scope.ivsMap = ivsMap;
+        setObject("pogoIvsMap", ivsMap);
     }
 
     function updateIvs() {
@@ -130,12 +187,14 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.removeIvs = function(ivs) {
         let name = $scope.pokemon.name;
-        let currentIvs = $scope.ivsMap[name];
-        $scope.ivsMap[name] = currentIvs.filter(
+        let currentIvs = ivsMap[name];
+        ivsMap[name] = currentIvs.filter(
             function(e) {
                 return e.id !== ivs.id;
             }
         );
+        $scope.ivsMap = ivsMap;
+        setObject("pogoIvsMap", ivsMap);
     }
 
     $scope.getIvs = function() {
@@ -163,13 +222,13 @@ angular.module('app.pokemons', ['ngRoute'])
         return chargeMoves;
     }
 
-    $scope.showTab = function(tab) {
-        currentTab = tab;
-        $scope.currentTab = tab;
+    $scope.showMovesTab = function(tab) {
+        currentMovesTab = tab;
+        $scope.currentMovesTab = tab;
     }
 
     $scope.isPvp = function() {
-        return $scope.currentTab.includes('pvp');
+        return $scope.currentMovesTab.includes('pvp');
     }
 
     // utility methods

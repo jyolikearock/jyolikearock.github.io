@@ -37,8 +37,11 @@ app.controller('optionsController', function($scope) {
     }
 
     // for controlling level
-    $scope.setLevel = function(_level) {
-        level = _level;
+    $scope.setLevel = function() {
+        level = $scope.level;
+    }
+
+    $scope.updateScopeLevel = function() {
         $scope.level = level;
     }
 

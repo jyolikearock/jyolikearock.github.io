@@ -2,19 +2,19 @@
     <div class="card-header">
         <ul class="nav nav-tabs nav-fill card-header-tabs">
             <li class="nav-item">
-                <div class="nav-link" ng-class="currentTab === 'pvpFast' ? 'active' : ''"
+                <div class="nav-link" ng-class="currentMovesTab === 'pvpFast' ? 'active' : ''"
                      ng-click="showTab('pvpFast')">PvP Fast</div>
             </li>
             <li class="nav-item">
-                <div class="nav-link" ng-class="currentTab === 'pveFast' ? 'active' : ''"
+                <div class="nav-link" ng-class="currentMovesTab === 'pveFast' ? 'active' : ''"
                      ng-click="showTab('pveFast')">PvE Fast</div>
             </li>
             <li class="nav-item">
-                <div class="nav-link" ng-class="currentTab === 'pvpCharge' ? 'active' : ''"
+                <div class="nav-link" ng-class="currentMovesTab === 'pvpCharge' ? 'active' : ''"
                      ng-click="showTab('pvpCharge')">PvP Charge</div>
             </li>
             <li class="nav-item">
-                <div class="nav-link" ng-class="currentTab === 'pveCharge' ? 'active' : ''"
+                <div class="nav-link" ng-class="currentMovesTab === 'pveCharge' ? 'active' : ''"
                      ng-click="showTab('pveCharge')">PvE Charge</div>
             </li>
         </ul>
@@ -54,7 +54,7 @@
     </div>
 
     <!-- pvp fast moves -->
-    <table class="table table-hover table-fixed" ng-show="currentTab === 'pvpFast'"
+    <table class="table table-hover table-fixed" ng-show="currentMovesTab === 'pvpFast'"
            st-table="displayedFastMoves"
            st-safe-src="fastMoves"
            st-persist="fastMovesTable"
@@ -119,7 +119,7 @@
     </table>
 
     <!-- pve fast moves -->
-    <table class="table table-hover table-fixed" ng-show="currentTab === 'pveFast'"
+    <table class="table table-hover table-fixed" ng-show="currentMovesTab === 'pveFast'"
            st-table="displayedFastMoves"
            st-safe-src="fastMoves"
            st-persist="fastMovesTable"
@@ -184,7 +184,7 @@
     </table>
 
     <!-- pvp charge moves -->
-    <table class="table table-hover table-fixed" ng-show="currentTab === 'pvpCharge'"
+    <table class="table table-hover table-fixed" ng-show="currentMovesTab === 'pvpCharge'"
            st-table="displayedChargeMoves"
            st-safe-src="chargeMoves"
            st-persist="chargeMovesTable"
@@ -244,7 +244,7 @@
     </table>
 
     <!-- pve charge moves -->
-    <table class="table table-hover table-fixed" ng-show="currentTab === 'pveCharge'"
+    <table class="table table-hover table-fixed" ng-show="currentMovesTab === 'pveCharge'"
            st-table="displayedChargeMoves"
            st-safe-src="chargeMoves"
            st-persist="chargeMovesTable"

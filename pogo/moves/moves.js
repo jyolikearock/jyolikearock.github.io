@@ -1,8 +1,8 @@
 'use strict';
 
-var currentTab = localStorage.getItem("pogoMovesCurrentTab");
-if (!currentTab) {
-    currentTab = "pvpFast";
+var currentMovesTab = localStorage.getItem("pogoCurrentMovesTab");
+if (!currentMovesTab) {
+    currentMovesTab = "pvpFast";
 }
 var moveTypeFilter = "";
 
@@ -18,16 +18,16 @@ angular.module('app.moves', ['ngRoute'])
 .controller('movesController', ['$scope', function($scope) {
 
     $scope.pageSize = pageSize;
-    $scope.currentTab = currentTab;
+    $scope.currentMovesTab = currentMovesTab;
 
     // apply type filter and load data to tables
     updateMoves();
 
     // for switching between pve/pvp tabs
     $scope.showTab = function(tab) {
-        currentTab = tab;
-        localStorage.setItem("pogoMovesCurrentTab", tab);
-        $scope.currentTab = tab;
+        currentMovesTab = tab;
+        localStorage.setItem("pogoCurrentMovesTab", tab);
+        $scope.currentMovesTab = tab;
     }
 
     $scope.updateMoves = function() {

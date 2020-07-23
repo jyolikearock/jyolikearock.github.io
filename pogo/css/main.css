@@ -10,6 +10,11 @@ html {
     font-size: 13px;
 }
 
+/* use default cursor when hovering tabs */
+.nav-tabs .nav-link {
+    cursor: default;
+}
+
 /* override bootstrap's default nav link color */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #343a40;
@@ -114,6 +119,7 @@ a:hover {
     overflow: scroll !important;
 }
 
+/* color utilities */
 .red {
     color: rgb(200, 33, 33);
 }
@@ -122,8 +128,44 @@ a:hover {
     color: rgb(25, 190, 135);
 }
 
+.bg-red {
+    background-color: #edb4b4;
+}
+
+.bg-dark-red {
+    background-color: #ed7b7b;
+}
+
+.bg-green {
+    background-color: #b6f0d2;
+}
+
+.bg-dark-green {
+    background-color: #7df0b4;
+}
+
+.bg-gray {
+    background-color: #343a40;
+}
+
 /* don't grey out disabled input forms */
 .form-control:disabled,
 .form-control[readonly] {
     background-color: #fff;
+}
+
+/* for making headers stick on scroll */
+.sticky {
+    position: sticky;
+    top: -1px;
+    z-index: 100;
+}
+
+/* strip outer borders from bordered-table */
+.table-bordered tr td:first-child{
+    border-left: none;
+}
+
+.table-bordered tr td:last-child{
+    border-right: none;
 }

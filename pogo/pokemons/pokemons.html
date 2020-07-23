@@ -6,7 +6,7 @@
             <input class="form-control" type="text" placeholder="Search Pokemon" ng-model="searchPokemon"
                    uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue | limitTo: 7"/>
             <div class="input-group-append">
-                <button class="btn btn-dark" ng-click="getPokemon(searchPokemon)">
+                <button class="btn btn-dark" ng-click="goToPokemon(searchPokemon)">
                     Go
                 </button>
             </div>
@@ -130,7 +130,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="pokemon in displayedPokemons track by pokemon.name"
-                ng-click="getPokemon(pokemon.name)">
+                ng-click="goToPokemon(pokemon.name)">
                 <td colspan="2" class="td-overflow">
                     {{pokemon.name}}
                 </td>

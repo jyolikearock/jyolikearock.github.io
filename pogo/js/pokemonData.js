@@ -8144,14 +8144,26 @@ var pokemonsMap = {};
 var pokemonNames = [];
 pokemons.forEach(
     function(pokemon) {
+
+        // compute max cp
         pokemon.maxCp = getMaxCp(pokemon);
 
+        // set type chart
+        if (pokemon.type.length === 1) {
+            pokemon.typeChart = typeChartByEffectiveness[pokemon.type];
+        }
+        else {
+            pokemon.typeChart = dualTypeChart[getKeyForDualType(pokemon.type[0], pokemon.type[1])];
+        }
+
+        // convert move lists to arrays
         let fastMoves = pokemon.fastMoves.split(",");
         pokemon.fastMoves = fastMoves;
 
         let chargeMoves = pokemon.chargeMoves.split(",");
         pokemon.chargeMoves = chargeMoves;
 
+        // store pokemon data in map
         let name = pokemon.name.toLowerCase();
         pokemonsMap[name] = pokemon;
         pokemonNames.push(pokemon.name);
