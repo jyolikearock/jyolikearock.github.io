@@ -8,7 +8,8 @@
                 </button>
             </div>
             <input class="form-control" type="text" placeholder="Search Pokemon" ng-model="searchPokemon"
-                   uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue | limitTo: 7"/>
+                   uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue | limitTo: 7"
+                   typeahead-on-select="goToPokemon($label)"/>
             <div class="input-group-append">
                 <button class="btn btn-dark" ng-click="goToPokemon(searchPokemon)">
                     Go
@@ -60,69 +61,6 @@
             <td>{{pokemon._bulk}}</td>
             <td>{{pokemon._total}}</td>
             <td>{{pokemon._cp}}</td>
-        </tr>
-    </table>
-
-    <table class="table table-fixed">
-        <!-- type chart -->
-        <tr>
-            <th class="text-center">Weak To (x2)</th>
-            <th>Weak To</th>
-            <th>Resists</th>
-            <th>Resists (x2)</th>
-            <th>Resists (x3)</th>
-        </tr>
-        <tr>
-            <td class="border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in pokemon.typeChart.defending[2.56]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in pokemon.typeChart.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in pokemon.typeChart.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in pokemon.typeChart.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in pokemon.typeChart.defending[0.244141]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                </div>
-            </td>
         </tr>
     </table>
 
@@ -183,14 +121,14 @@
                             <label class="input-group-text">ATK IV:</label>
                         </div>
                         <input class="form-control" type="number" ondblclick="this.select()" ng-model="atkIv"
-                               ng-change="validateAtkIv(); updatePokemonWithLevel()">
+                               ng-change="validateAtkIv(); updatePokemon(); updateScopeLevel()">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" ng-class="atkIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setAtkIv(0); updatePokemonWithLevel()">
+                                    ng-click="setAtkIv(0); updatePokemon(); updateScopeLevel()">
                                 Min
                             </button>
                             <button class="btn btn-secondary" ng-class="atkIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setAtkIv(15); updatePokemonWithLevel()">
+                                    ng-click="setAtkIv(15); updatePokemon(); updateScopeLevel()">
                                 Max
                             </button>
                         </div>
@@ -203,14 +141,14 @@
                             <label class="input-group-text">DEF IV:</label>
                         </div>
                         <input class="form-control" type="number" ondblclick="this.select()" ng-model="defIv"
-                               ng-change="validateDefIv(); updatePokemonWithLevel()">
+                               ng-change="validateDefIv(); updatePokemon(); updateScopeLevel()">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" ng-class="defIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setDefIv(0); updatePokemonWithLevel()">
+                                    ng-click="setDefIv(0); updatePokemon(); updateScopeLevel()">
                                 Min
                             </button>
                             <button class="btn btn-secondary" ng-class="defIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setDefIv(15); updatePokemonWithLevel()" >
+                                    ng-click="setDefIv(15); updatePokemon(); updateScopeLevel()" >
                                 Max
                             </button>
                         </div>
@@ -223,14 +161,14 @@
                             <label class="input-group-text">HP IV:</label>
                         </div>
                         <input class="form-control" type="number" ondblclick="this.select()" ng-model="hpIv"
-                               ng-change="validateHpIv(); updatePokemonWithLevel()">
+                               ng-change="validateHpIv(); updatePokemon(); updateScopeLevel()">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" ng-class="hpIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setHpIv(0); updatePokemonWithLevel()">
+                                    ng-click="setHpIv(0); updatePokemon(); updateScopeLevel()">
                                 Min
                             </button>
                             <button class="btn btn-secondary" ng-class="hpIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setHpIv(15); updatePokemonWithLevel()">
+                                    ng-click="setHpIv(15); updatePokemon(); updateScopeLevel()">
                                 Max
                             </button>
                         </div>
@@ -246,6 +184,75 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Type Chart</h5>
+    </div>
+
+    <table class="table table-fixed">
+        <!-- type chart -->
+        <tr>
+            <th class="text-center">Weak (x2)</th>
+            <th class="text-center">Weak To</th>
+            <th class="text-center">Resists</th>
+            <th class="text-center">Resists (x2)</th>
+            <th class="text-center">Resists (x3)</th>
+        </tr>
+        <tr>
+            <td class="border-bottom">
+                <div class="row pl-2 pr-3">
+                    <div ng-repeat="eType in pokemon.typeChart.defending[2.56]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-1 pr-3">
+                    <div ng-repeat="eType in pokemon.typeChart.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-1 pr-3">
+                    <div ng-repeat="eType in pokemon.typeChart.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-1 pr-3">
+                    <div ng-repeat="eType in pokemon.typeChart.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="border-left border-bottom">
+                <div class="row pl-1 pr-3">
+                    <div ng-repeat="eType in pokemon.typeChart.defending[0.244141]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                        <div class="icon" ng-class="eType.toLowerCase()">
+                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                 data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <!-- iv comparison -->

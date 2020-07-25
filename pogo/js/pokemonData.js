@@ -7944,7 +7944,7 @@ var pokemons =
 		"def": 215,
 		"hp": 189,
 		"fastMoves": "Dragon Breath,Dragon Tail",
-		"chargeMoves": "Fire Blast,Hydro Pump,Draco Meteor",
+		"chargeMoves": "Aqua Tail,Fire Blast,Hydro Pump,Draco Meteor",
 		"legendary": true
 	},{
 		"name": "Heatran",

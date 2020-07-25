@@ -90,11 +90,18 @@ a:hover {
     padding: .25rem 0;
 }
 
+.dropdown-menu>li>a {
+    /* light gray */
+    color: #a2adb8;
+}
+
 /* highlight typeahead dropdown options */
 .dropdown-menu>.active>a,
 .dropdown-menu>.active>a:focus,
 .dropdown-menu>.active>a:hover {
-    color: black;
+    /* dark gray */
+    color: #343a40;
+    font-weight: 500;
     text-decoration: none;
     outline: 0;
 }

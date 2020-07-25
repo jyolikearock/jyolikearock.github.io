@@ -1,6 +1,7 @@
-- remember last viewed pokemon when routing to 'pokemon' tab
-- implement level slider on single-pokemon page (now functional)
-- add types page and type data
-- cache pokemon IVs to local storage
-- add support for dual typing
-- add type chart to single-pokemon page
+- clean up type chart on pokemon page a bit
+- add filters to type chart page
+- move type chart on pokemon page below options
+- go directly to pokemon page when selecting from typeahead
+- fix bug where you couldn't route to another pokemon using url
+- automatically cap cp when iv is changed
+- differentiate hypothetical and realistic damage calculation for pve movesets

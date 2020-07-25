@@ -130,6 +130,7 @@ angular.module('app.movesets', ['ngRoute'])
                     moveset.chargeMove = cm.name;
                     moveset.cmType = cm.type;
 
+                    // pvp
                     if (isPvp) {
                         moveset.ttfa = Math.ceil(cm.pvpEnergy / fm.pvpEnergy) * fm.pvpTurns;
 
@@ -142,46 +143,61 @@ angular.module('app.movesets', ['ngRoute'])
                             let fmd = getMoveDamage(fm, pokemon, targetDummy);
                             let cmd = getMoveDamage(cm, pokemon, targetDummy);
                             let fmdt = cm.pvpEnergy / fm.pvpEnergy * fmd;
-                            moveset.total = round(cmd + fmdt);
-                            moveset.dps = round2(moveset.total / moveset.ttfa);
+                            let total = cmd + fmdt;
+                            moveset.total = "n/a";
+                            moveset.dps = round2(total / moveset.ttfa);
                             moveset.dmgDist = getDamageDistribution(fmdt, cmd);
                             moveset.charges = 1;
                         }
                     }
-                    else {
-                        let efmd = getMoveDamage(targetDummyFastMove, targetDummy, pokemon);
-                        let ecmd = getMoveDamage(targetDummyChargeMove, targetDummy, pokemon);
-                        let eatfa = Math.ceil(targetDummyChargeMove.pveEnergy / targetDummyFastMove.pveEnergy);
-                        let ettfa = eatfa * targetDummyFastMove.pveCooldown + targetDummyChargeMove.pveCooldown;
-                        let efmdpa = eatfa * efmd;
-                        let edpa = efmdpa + ecmd;
 
-                        let hp = pokemon._hp;
-                        let chargeMovesTaken = Math.floor(hp / edpa);
-                        let timeToDie = chargeMovesTaken * ettfa;
-                        hp = hp % edpa;
-                        if (hp < efmdpa) {
-                            timeToDie += Math.ceil(hp / efmd) * targetDummyFastMove.pveCooldown;
-                        }
-                        else {
-                            timeToDie += ettfa;
-                        }
-                        log("Total time survived: " + timeToDie);
+                    // pve
+                    else {
 
                         let fmd = getMoveDamage(fm, pokemon, targetDummy);
                         let cmd = getMoveDamage(cm, pokemon, targetDummy);
                         let atfa = Math.ceil(cm.pveEnergy / fm.pveEnergy);
                         let ttfa = atfa * fm.pveCooldown + cm.pveCooldown;
-                        let activations = Math.floor(timeToDie / ttfa);
 
-                        let cmdt = activations * cmd;
-                        let fmdt = Math.floor((timeToDie - activations * cm.pveCooldown) / fm.pveCooldown) * fmd;
-                        let total = cmdt + fmdt;
-                        moveset.ttfa = round1(ttfa);
-                        moveset.total = total;
-                        moveset.dps = round2(total / timeToDie);
-                        moveset.dmgDist = getDamageDistribution(fmdt, cmdt);
-                        moveset.charges = activations;
+                        if (actualDps) {
+                            let efmd = getMoveDamage(targetDummyFastMove, targetDummy, pokemon);
+                            let ecmd = getMoveDamage(targetDummyChargeMove, targetDummy, pokemon);
+                            let eatfa = Math.ceil(targetDummyChargeMove.pveEnergy / targetDummyFastMove.pveEnergy);
+                            let ettfa = eatfa * targetDummyFastMove.pveCooldown + targetDummyChargeMove.pveCooldown;
+                            let efmdpa = eatfa * efmd;
+                            let edpa = efmdpa + ecmd;
+
+                            let hp = pokemon._hp;
+                            let chargeMovesTaken = Math.floor(hp / edpa);
+                            let timeToDie = chargeMovesTaken * ettfa;
+                            hp = hp % edpa;
+                            if (hp < efmdpa) {
+                                timeToDie += Math.ceil(hp / efmd) * targetDummyFastMove.pveCooldown;
+                            }
+                            else {
+                                timeToDie += ettfa;
+                            }
+                            log("Total time survived: " + timeToDie);
+                            let activations = Math.floor(timeToDie / ttfa);
+
+                            let cmdt = activations * cmd;
+                            let fmdt = Math.floor((timeToDie - activations * cm.pveCooldown) / fm.pveCooldown) * fmd;
+                            let total = cmdt + fmdt;
+                            moveset.ttfa = round1(ttfa);
+                            moveset.total = total;
+                            moveset.dps = round2(total / timeToDie);
+                            moveset.dmgDist = getDamageDistribution(fmdt, cmdt);
+                            moveset.charges = activations;
+                        }
+                        else {
+                            let fmdt = cm.pveEnergy / fm.pveEnergy * fmd;
+                            let total = cmd + fmdt;
+                            moveset.total = "n/a";
+                            moveset.ttfa = ttfa;
+                            moveset.dps = round2(total / ttfa);
+                            moveset.dmgDist = getDamageDistribution(fmdt, cmd);
+                            moveset.charges = 1;
+                        }
                     }
                     movesets.push(moveset);
                     count++;

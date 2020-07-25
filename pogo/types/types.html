@@ -1,6 +1,6 @@
-<div class="card mt-3" ng-controller="optionsController">
+<div class="card mt-3">
 
-    <div class="card-body">
+    <div class="card-body" ng-controller="optionsController">
 
         <!-- title -->
         <div class="row">
@@ -12,6 +12,47 @@
             <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
                 Options
             </button>
+        </div>
+
+        <!-- options -->
+        <div ng-show="showOptions">
+
+            <!-- type filter -->
+            <div class="mt-3">
+                <label class="form-label mb-0">Selected Types: </label>
+            </div>
+            <div class="row mt-3">
+                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
+                <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="btn-group d-flex">
+                                    <button class="btn btn-secondary" ng-click="clearAllTypes()">
+                                        Clear All
+                                    </button>
+                                    <button class="btn btn-secondary" ng-click="selectAllTypes()">
+                                        Select All
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <div class="row">
+                                <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
+                                     ng-click="toggleType(type)">
+                                    <div class="icon"
+                                         ng-class="isTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                        <img ng-src="{{getIconPath(type)}}" title="{{type}}"
+                                             data-toggle="tooltip" data-placement="top">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -38,7 +79,7 @@
             <td class="bg-dark text-white border-left border-white sticky">Resists</td>
             <td class="bg-dark text-white border-left border-white sticky">Resists (x2)</td>
         </tr>
-        <tr ng-repeat="(type, effs) in typeChartByEffectiveness">
+        <tr ng-repeat="type in displayedTypes">
             <td class="align-middle border-bottom">
                 <div class="row">
                     <div class="icon ml-4" ng-class="type.toLowerCase()">
@@ -49,7 +90,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">
@@ -59,7 +100,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">
@@ -69,7 +110,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">
@@ -88,7 +129,7 @@
             <td class="bg-dark text-white border-left border-white sticky">Ineffective</td>
             <td class="bg-dark text-white border-left border-white sticky">Ineffective (x2)</td>
         </tr>
-        <tr ng-repeat="(type, effs) in typeChartByEffectiveness">
+        <tr ng-repeat="type in displayedTypes">
             <td class="align-middle border-bottom">
                 <div class="row">
                     <div class="icon ml-4" ng-class="type.toLowerCase()">
@@ -99,7 +140,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.attacking[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].attacking[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">
@@ -109,7 +150,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.attacking[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].attacking[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">
@@ -119,7 +160,7 @@
             </td>
             <td class="border-left border-bottom">
                 <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in effs.attacking[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                    <div ng-repeat="eType in typeChart[type].attacking[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
                         <div class="icon" ng-class="eType.toLowerCase()">
                             <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
                                  data-toggle="tooltip" data-placement="top">

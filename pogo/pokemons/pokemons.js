@@ -38,6 +38,9 @@ angular.module('app.pokemons', ['ngRoute'])
         console.log("Routing back to last viewed pokemon: %s", focusPokemon);
         goToPokemon(focusPokemon);
     }
+    else {
+        focusPokemon = $routeParams.pokemon;
+    }
 
     // update global variables with user-defined values in url query params
     let params = $location.search();
@@ -48,6 +51,11 @@ angular.module('app.pokemons', ['ngRoute'])
 
     // used for populating type-ahead dropdown
     $scope.pokemonNames = pokemonNames;
+
+    $scope.onSelect = function($item, $model, $label) {
+        console.log($item, $model, $label);
+        goToPokemon($label)
+    };
 
     // fetch latest pokemon data from data service
     $scope.pokemons = [];
