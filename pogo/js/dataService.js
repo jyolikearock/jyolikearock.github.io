@@ -5,13 +5,13 @@
 // given a pokemon name, updates the pokemon's stats with the current max cp and ivs
 // returns the pokemon object after it's been updated
 function getPokemonData(pokemonName) {
-    let pokemon = pokemonsMap[pokemonName];
+    let pokemon = pokemonsMap[pokemonName.toLowerCase()];
     evaluateStatsWithCpCap(pokemon, maxCp, atkIv, defIv, hpIv);
     return pokemon;
 }
 
 function getPokemonDataWithLevel(pokemonName) {
-    let pokemon = pokemonsMap[pokemonName];
+    let pokemon = pokemonsMap[pokemonName.toLowerCase()];
     evaluateStatsWithLevel(pokemon, level, atkIv, defIv, hpIv);
     return pokemon;
 }

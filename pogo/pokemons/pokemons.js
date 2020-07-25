@@ -7,7 +7,10 @@ if (!ivsMap) {
     setObject("pogoIvsMap", ivsMap);
 }
 var ivsId = 0;
-var focusPokemon = "";
+var focusPokemonName = "";
+
+var showTypeChart = false;
+var showEvolutionFamily = false;
 
 angular.module('app.pokemons', ['ngRoute'])
 
@@ -31,15 +34,15 @@ angular.module('app.pokemons', ['ngRoute'])
     $scope.currentMovesTab = currentMovesTab;
     $scope.types = types;
     $scope.ivsMap = ivsMap;
-    $scope.focusPokemon = focusPokemon;
+    $scope.focusPokemonName = focusPokemonName;
 
     // reroute to single view if there is a pokemon selected
-    if (focusPokemon && !$routeParams.pokemon) {
-        console.log("Routing back to last viewed pokemon: %s", focusPokemon);
-        goToPokemon(focusPokemon);
+    if (focusPokemonName && !$routeParams.pokemon) {
+        console.log("Routing back to last viewed pokemon: %s", focusPokemonName);
+        goToPokemon(focusPokemonName);
     }
     else {
-        focusPokemon = $routeParams.pokemon;
+        focusPokemonName = $routeParams.pokemon;
     }
 
     // update global variables with user-defined values in url query params
@@ -69,34 +72,77 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     // get pokemon name if provided in route
-    if (!focusPokemon && $routeParams.pokemon) {
-        focusPokemon = $routeParams.pokemon;
+    if (!focusPokemonName && $routeParams.pokemon) {
+        focusPokemonName = $routeParams.pokemon;
     }
-    if (focusPokemon) {
+    if (focusPokemonName) {
         updatePokemon();
     }
 
-    // stat fetching methods
+    // for updating pokemon stats based on max CP
     $scope.updatePokemon = function() {
         updatePokemon();
+        updateEvolutionFamily();
     }
 
     function updatePokemon() {
-        if (focusPokemon) {
-            let pokemon = getPokemonData(focusPokemon);
+        if (focusPokemonName) {
+            let pokemon = getPokemonData(focusPokemonName);
             level = pokemon._level;
-            $scope.pokemon = pokemon;
+            $scope.focusPokemon = pokemon;
         }
     }
 
+    // for updating pokemon stats based on level
     $scope.updatePokemonWithLevel = function() {
         updatePokemonWithLevel();
+        updateEvolutionFamily();
     }
 
     function updatePokemonWithLevel() {
-        if (focusPokemon) {
-            $scope.pokemon = getPokemonDataWithLevel(focusPokemon);
+        if (focusPokemonName) {
+            $scope.focusPokemon = getPokemonDataWithLevel(focusPokemonName);
         }
+    }
+
+    // for toggling type chart
+    $scope.showTypeChart = function() {
+        return showTypeChart;
+    }
+
+    $scope.toggleTypeChart = function() {
+        showTypeChart = !showTypeChart;
+    }
+
+    // for toggling evolution family
+    $scope.showEvolutionFamily = function() {
+        return showEvolutionFamily;
+    }
+
+    $scope.toggleEvolutionFamily = function() {
+        showEvolutionFamily = !showEvolutionFamily;
+    }
+
+    $scope.evolutionFamily = [];
+    if (focusPokemonName && $scope.focusPokemon.evolutionFamily) {
+        $scope.focusPokemon.evolutionFamily.forEach(
+            function(familyMemberName) {
+                if (familyMemberName.toLowerCase() !== focusPokemonName) {
+                    console.log("Getting stats for family member:", familyMemberName);
+                    let familyMember = getPokemonDataWithLevel(familyMemberName);
+                    $scope.evolutionFamily.push(familyMember);
+                }
+            }
+        );
+        console.log("Evolution family:", $scope.evolutionFamily);
+    }
+
+    function updateEvolutionFamily() {
+        $scope.evolutionFamily.forEach(
+            function(familyMember) {
+                evaluateStatsWithLevel(familyMember, level, atkIv, defIv, hpIv);
+            }
+        )
     }
 
     // routing methods
@@ -116,8 +162,8 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.seeAllPokemon = function() {
         console.log("Going back to pokemon table");
-        focusPokemon = "";
-        $scope.focusPokemon = "";
+        focusPokemonName = "";
+        $scope.focusPokemonName = "";
         go("/pokemon");
     }
 
@@ -128,8 +174,8 @@ angular.module('app.pokemons', ['ngRoute'])
     function goToPokemon(pokemonName) {
         console.log("Routing to: " + pokemonName);
         let name = pokemonName.toLowerCase();
-        focusPokemon = name;
-        $scope.focusPokemon = name;
+        focusPokemonName = name;
+        $scope.focusPokemonName = name;
 
         let params = getParams();
         console.log("with params: " + JSON.stringify(params));
@@ -150,14 +196,14 @@ angular.module('app.pokemons', ['ngRoute'])
         $location.path(path).search(params);
     }
 
-    // for iv comparison on single-pokemon view
+    // for iv comparison on focus pokemon
     $scope.showIvs = function() {
-        let ivs = $scope.ivsMap[$scope.pokemon.name];
+        let ivs = $scope.ivsMap[$scope.focusPokemon.name];
         return (ivs !== undefined && ivs.length > 0);
     }
 
     $scope.saveIvs = function() {
-        let name = $scope.pokemon.name;
+        let name = $scope.focusPokemon.name;
         let ivs = ivsMap[name];
         if (!ivs) {
             ivs = [];
@@ -171,13 +217,13 @@ angular.module('app.pokemons', ['ngRoute'])
         newIvs.atkIv = atkIv;
         newIvs.defIv = defIv;
         newIvs.hpIv = hpIv;
-        newIvs.level = $scope.pokemon._level;
-        newIvs.atk = $scope.pokemon._atk;
-        newIvs.def = $scope.pokemon._def;
-        newIvs.hp = $scope.pokemon._hp;
-        newIvs.bulk = $scope.pokemon._bulk;
-        newIvs.total = $scope.pokemon._total;
-        newIvs.cp = $scope.pokemon._cp;
+        newIvs.level = $scope.focusPokemon._level;
+        newIvs.atk = $scope.focusPokemon._atk;
+        newIvs.def = $scope.focusPokemon._def;
+        newIvs.hp = $scope.focusPokemon._hp;
+        newIvs.bulk = $scope.focusPokemon._bulk;
+        newIvs.total = $scope.focusPokemon._total;
+        newIvs.cp = $scope.focusPokemon._cp;
 
         ivs.push(newIvs);
         $scope.ivsMap = ivsMap;
@@ -185,7 +231,7 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     function updateIvs() {
-        let ivs = $scope.ivsMap[$scope.pokemon.name];
+        let ivs = $scope.ivsMap[$scope.focusPokemon.name];
         if (ivs && ivs.length > 0) {
             ivs.forEach(function(iv) {
                 // evaluateStatsWithCpCap();
@@ -194,7 +240,7 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     $scope.removeIvs = function(ivs) {
-        let name = $scope.pokemon.name;
+        let name = $scope.focusPokemon.name;
         let currentIvs = ivsMap[name];
         ivsMap[name] = currentIvs.filter(
             function(e) {
@@ -206,7 +252,7 @@ angular.module('app.pokemons', ['ngRoute'])
     }
 
     $scope.getIvs = function() {
-        return $scope.ivsMap[$scope.pokemon.name];
+        return $scope.ivsMap[$scope.focusPokemon.name];
     }
 
     // for fetching move data for single pokemon

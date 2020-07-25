@@ -176,3 +176,9 @@ a:hover {
 .table-bordered tr td:last-child{
     border-right: none;
 }
+
+/* icon sizing */
+.icon-12 {
+    height: 12px;
+    width: 12px;
+}

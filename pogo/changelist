@@ -1,7 +1,5 @@
-- clean up type chart on pokemon page a bit
-- add filters to type chart page
-- move type chart on pokemon page below options
-- go directly to pokemon page when selecting from typeahead
-- fix bug where you couldn't route to another pokemon using url
-- automatically cap cp when iv is changed
-- differentiate hypothetical and realistic damage calculation for pve movesets
+- don't glow icons on hover
+- move type chart on pokemon page below saved IVs
+- add evolution family to pokemon page
+- add toggles for displaying evolution family and type chart
+- import open-iconic icons
