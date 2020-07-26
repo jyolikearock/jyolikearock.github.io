@@ -14,10 +14,15 @@ function getStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
 
 }
 
-function evaluateLevelForMaxCp(pokemon, capCp, _atkIv, _defIv, _hpIv) {
+function evaluateLevelForMaxCp(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
     let _maxCp = getCp(pokemon, 40, _atkIv, _defIv, _hpIv);
-    let targetCpm = cpmMap[40] * Math.sqrt(capCp / _maxCp);
-    let _level = 1;
+    if (cpCap > _maxCp) {
+        pokemon._level = 40;
+        return 40;
+    }
+    // treat cp cap as almost +1 to prevent rounding errors caused by flooring
+    let targetCpm = cpmMap[40] * Math.sqrt((cpCap + 0.9) / _maxCp);
+    let _level = 40;
     for (let i = 40; i >= 1; i = i - 0.5) {
         if (targetCpm >= cpmMap[i]) {
             _level = i;
@@ -35,7 +40,7 @@ function getCp(pokemon, _level, _atkIv, _defIv, _hpIv) {
     let def = (pokemon.def + _defIv) * cpm;
     let hp = (pokemon.hp + _hpIv) * cpm;
 
-    let cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10)
+    let cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
     return cp;
 }
 

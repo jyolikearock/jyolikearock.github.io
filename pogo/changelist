@@ -1,5 +1,2 @@
-- don't glow icons on hover
-- move type chart on pokemon page below saved IVs
-- add evolution family to pokemon page
-- add toggles for displaying evolution family and type chart
-- import open-iconic icons
+- fix rounding issue for edge cases when computing level for given cp cap
+- add animations to toggleable sections on pokemon page

@@ -191,7 +191,7 @@
     <div class="card-body">
         <h5 class="card-title">Saved IVs</h5>
     </div>
-    <table class="table table-fixed">
+    <table class="table table-fixed table-hover">
         <tr>
             <th colspan="2">IVs</th>
             <th>ATK</th>
@@ -202,7 +202,7 @@
             <th>CP</th>
             <th></th>
         </tr>
-        <tr ng-repeat="ivs in getIvs()">
+        <tr ng-repeat="ivs in getIvs()" ng-click="loadIvs(ivs)">
             <td colspan="2">{{ivs.ivs}}</td>
             <td>{{ivs.atk}}</td>
             <td>{{ivs.def}}</td>
@@ -217,113 +217,114 @@
 
 <!-- evolution family -->
 <div class="card mt-3" ng-show="focusPokemon.evolutionFamily">
-    <div class="card-body d-flex justify-content-between" ng-click="toggleEvolutionFamily()">
+    <div class="card-body d-flex justify-content-between" slide-toggle="#evolutionFamily"
+         ng-click="toggleEvolutionFamily()" >
         <h5 class="card-title" >
             Evolution Family
         </h5>
         <div class="mt-1">
             <img class="icon-12" src="open-iconic/svg/chevron-bottom.svg"
-                 ng-show="!showEvolutionFamily()"/>
-            <img class="icon-12" src="open-iconic/svg/chevron-top.svg"
-                 ng-show="showEvolutionFamily()"/>
+                 ng-class="showEvolutionFamily() ? 'rotate-0' : 'rotate-180'"/>
         </div>
     </div>
 
-    <table class="table table-fixed table-hover" ng-show="showEvolutionFamily()">
-        <tr>
-            <th colspan="2"></th>
-            <th>ATK</th>
-            <th>DEF</th>
-            <th>HP</th>
-            <th>Tot</th>
-            <th>CP</th>
-        </tr>
-        <tr ng-repeat="familyMember in evolutionFamily" ng-click="goToPokemon(familyMember.name)">
-            <td colspan="2">{{familyMember.name}}</td>
-            <td>{{familyMember._atk}}</td>
-            <td>{{familyMember._def}}</td>
-            <td>{{familyMember._hp}}</td>
-            <td>{{familyMember._total}}</td>
-            <th>{{familyMember._cp}}</th>
-        </tr>
-    </table>
+    <div class="slideable" id="evolutionFamily">
+        <table class="table table-fixed table-hover">
+            <tr>
+                <th colspan="2"></th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>HP</th>
+                <th>Tot</th>
+                <th>CP</th>
+            </tr>
+            <tr ng-repeat="familyMember in evolutionFamily" ng-click="goToPokemon(familyMember.name)">
+                <td colspan="2">{{familyMember.name}}</td>
+                <td>{{familyMember._atk}}</td>
+                <td>{{familyMember._def}}</td>
+                <td>{{familyMember._hp}}</td>
+                <td>{{familyMember._total}}</td>
+                <th>{{familyMember._cp}}</th>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <!-- type chart -->
 <div class="card mt-3">
-    <div class="card-body d-flex justify-content-between" ng-click="toggleTypeChart()">
+    <div class="card-body d-flex justify-content-between" slide-toggle="#typeChart" ng-click="toggleTypeChart()">
         <h5 class="card-title">
             Type Chart
         </h5>
         <div class="mt-1">
             <img class="icon-12 ml-3" src="open-iconic/svg/chevron-bottom.svg"
-                 ng-show="!showTypeChart()"/>
-            <img class="icon-12 ml-3" src="open-iconic/svg/chevron-top.svg"
-                 ng-show="showTypeChart()"/>
+                 ng-class="showTypeChart() ? 'rotate-0' : 'rotate-180'"/>
         </div>
     </div>
 
-    <table class="table table-fixed" ng-show="showTypeChart()">
-        <tr>
-            <th class="text-center">Weak (x2)</th>
-            <th class="text-center">Weak To</th>
-            <th class="text-center">Resists</th>
-            <th class="text-center">Resists (x2)</th>
-            <th class="text-center">Resists (x3)</th>
-        </tr>
-        <tr>
-            <td class="border-bottom">
-                <div class="row pl-2 pr-3">
-                    <div ng-repeat="eType in focusPokemon.typeChart.defending[2.56]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
+    <div class="slideable" id="typeChart">
+        <table class="table table-fixed">
+            <tr>
+                <th class="text-center">Weak (x2)</th>
+                <th class="text-center">Weak To</th>
+                <th class="text-center">Resists</th>
+                <th class="text-center">Resists (x2)</th>
+                <th class="text-center">Resists (x3)</th>
+            </tr>
+            <tr>
+                <td class="border-bottom">
+                    <div class="row pl-2 pr-3">
+                        <div ng-repeat="eType in focusPokemon.typeChart.defending[2.56]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                            <div class="icon" ng-class="eType.toLowerCase()">
+                                <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                     data-toggle="tooltip" data-placement="top">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-1 pr-3">
-                    <div ng-repeat="eType in focusPokemon.typeChart.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
+                </td>
+                <td class="border-left border-bottom">
+                    <div class="row pl-1 pr-3">
+                        <div ng-repeat="eType in focusPokemon.typeChart.defending[1.6]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                            <div class="icon" ng-class="eType.toLowerCase()">
+                                <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                     data-toggle="tooltip" data-placement="top">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-1 pr-3">
-                    <div ng-repeat="eType in focusPokemon.typeChart.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
+                </td>
+                <td class="border-left border-bottom">
+                    <div class="row pl-1 pr-3">
+                        <div ng-repeat="eType in focusPokemon.typeChart.defending[0.625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                            <div class="icon" ng-class="eType.toLowerCase()">
+                                <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                     data-toggle="tooltip" data-placement="top">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-1 pr-3">
-                    <div ng-repeat="eType in focusPokemon.typeChart.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
+                </td>
+                <td class="border-left border-bottom">
+                    <div class="row pl-1 pr-3">
+                        <div ng-repeat="eType in focusPokemon.typeChart.defending[0.390625]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                            <div class="icon" ng-class="eType.toLowerCase()">
+                                <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                     data-toggle="tooltip" data-placement="top">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td class="border-left border-bottom">
-                <div class="row pl-1 pr-3">
-                    <div ng-repeat="eType in focusPokemon.typeChart.defending[0.244141]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
-                        <div class="icon" ng-class="eType.toLowerCase()">
-                            <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
-                                 data-toggle="tooltip" data-placement="top">
+                </td>
+                <td class="border-left border-bottom">
+                    <div class="row pl-1 pr-3">
+                        <div ng-repeat="eType in focusPokemon.typeChart.defending[0.244141]" class="col-5 col-md-4 col-lg-3 mt-2 mb-2">
+                            <div class="icon" ng-class="eType.toLowerCase()">
+                                <img ng-src="{{getIconPath(eType)}}" title="{{eType}}"
+                                     data-toggle="tooltip" data-placement="top">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <!-- moves -->

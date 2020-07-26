@@ -128,13 +128,11 @@ angular.module('app.pokemons', ['ngRoute'])
         $scope.focusPokemon.evolutionFamily.forEach(
             function(familyMemberName) {
                 if (familyMemberName.toLowerCase() !== focusPokemonName) {
-                    console.log("Getting stats for family member:", familyMemberName);
                     let familyMember = getPokemonDataWithLevel(familyMemberName);
                     $scope.evolutionFamily.push(familyMember);
                 }
             }
         );
-        console.log("Evolution family:", $scope.evolutionFamily);
     }
 
     function updateEvolutionFamily() {
@@ -224,10 +222,21 @@ angular.module('app.pokemons', ['ngRoute'])
         newIvs.bulk = $scope.focusPokemon._bulk;
         newIvs.total = $scope.focusPokemon._total;
         newIvs.cp = $scope.focusPokemon._cp;
+        newIvs.maxCp = maxCp;
 
         ivs.push(newIvs);
         $scope.ivsMap = ivsMap;
         setObject("pogoIvsMap", ivsMap);
+    }
+
+    $scope.loadIvs = function(ivs) {
+        console.log("Loading IVs:", ivs.ivs);
+        let params = $location.search();
+        params.maxCp = ivs.maxCp;
+        params.atkIv = ivs.atkIv;
+        params.defIv = ivs.defIv;
+        params.hpIv = ivs.hpIv;
+        $location.path("/pokemon/" + focusPokemonName).search(params);
     }
 
     function updateIvs() {
@@ -278,6 +287,7 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.showMovesTab = function(tab) {
         currentMovesTab = tab;
+        localStorage.setItem("pogoCurrentMovesTab", currentMovesTab);
         $scope.currentMovesTab = tab;
     }
 

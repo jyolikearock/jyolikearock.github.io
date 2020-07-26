@@ -97,6 +97,8 @@ app.controller('optionsController', function($scope) {
         return iv;
     }
 
+    $scope.loadIvs
+
     // toggles legendaries
     $scope.setShowLegendaries = function(bool) {
         showLegendaries = bool;

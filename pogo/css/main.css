@@ -182,3 +182,13 @@ a:hover {
     height: 12px;
     width: 12px;
 }
+
+.rotate-0 {
+    transform: rotate(0deg);
+    transition: transform 0.25s linear;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+    transition: transform 0.25s linear;
+}
