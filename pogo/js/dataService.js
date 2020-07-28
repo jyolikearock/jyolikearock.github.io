@@ -1,13 +1,8 @@
-// main service for fetching pokemon data
-// all controllers should get pokemon data through this service
-// controllers should NOT attempt to modify or access the pokemon data directly
+// Helper for fetching pokemon data
 
-// given a pokemon name, updates the pokemon's stats with the current max cp and ivs
-// returns the pokemon object after it's been updated
-function getPokemonData(pokemonName) {
-    let pokemon = pokemonsMap[pokemonName.toLowerCase()];
-    evaluateStatsWithCpCap(pokemon, maxCp, atkIv, defIv, hpIv);
-    return pokemon;
+// given pokemon name, return pokemon
+function getPokemon(pokemonName) {
+    return pokemonsMap[pokemonName.toLowerCase()];
 }
 
 function getPokemonDataWithLevel(pokemonName) {
@@ -16,17 +11,13 @@ function getPokemonDataWithLevel(pokemonName) {
     return pokemon;
 }
 
-// given an array of pokemon, updates each pokemon in the array with the current max cp and ivs
-function updatePokemonData(pokemonData) {
+// given an array, loads the array with the latest pokemon data
+function updateAllPokemon(pokemonData) {
+    console.log("Updating pokemon data with cp cap: %d, type filter: %o", cpCap, pokemonTypeFilter);
     clear(pokemonData);
 
     // apply filters
     applyPokemonFilters(pokemonData);
-
-    // evaluate stats using max cp and iv options
-    pokemonData.forEach(function(pokemon) {
-        evaluateStatsWithCpCap(pokemon, maxCp, atkIv, defIv, hpIv);
-    });
 }
 
 function clear(array) {

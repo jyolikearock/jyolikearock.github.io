@@ -115,7 +115,8 @@ var typeChartByEffectiveness =
         "defending": {
             "1.6": [
                 "Ice",
-                "Dragon"
+                "Dragon",
+                "Fairy"
             ],
             "0.625": [
                 "Fire",

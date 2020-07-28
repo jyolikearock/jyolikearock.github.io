@@ -1,2 +1,12 @@
-- fix rounding issue for edge cases when computing level for given cp cap
-- add animations to toggleable sections on pokemon page
+- remove animation from chevron arrows
+- fix bug where saved ivs from previous sessions could get deleted due to id collision
+- modify slideable directive to persist expanded state between pages
+- fix bug where fairy was not listed as a weakness of dragon
+- reduce number of calls to update pokemon data
+- fix flooring issues with pokemon stats
+- pre-compute optimal ivs and stats for all pokemon
+- refactor max cp into cp cap
+- refactor level and iv controls into focus pokemon controller
+- fix bug where table page could be higher than max number of pages
+- update pokemon and moves with GBL season 3 changes
+- allow routing to pokemon page from moveset page

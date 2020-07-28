@@ -1,16 +1,17 @@
 'use strict';
 
+var allPokemon = [];
+
 var ivsMap = getObject("pogoIvsMap");
 console.log("Fetching cached IVs from local storage:", ivsMap);
 if (!ivsMap) {
     ivsMap = {};
     setObject("pogoIvsMap", ivsMap);
 }
-var ivsId = 0;
 var focusPokemonName = "";
 
-var showTypeChart = false;
 var showEvolutionFamily = false;
+var showTypeChart = false;
 
 angular.module('app.pokemons', ['ngRoute'])
 
@@ -31,8 +32,11 @@ angular.module('app.pokemons', ['ngRoute'])
 
     // initialize page settings
     $scope.pageSize = pageSize;
-    $scope.currentMovesTab = currentMovesTab;
     $scope.types = types;
+    $scope.cpCap = cpCap;
+
+    // initialize vars for focus pokemon
+    $scope.currentMovesTab = currentMovesTab;
     $scope.ivsMap = ivsMap;
     $scope.focusPokemonName = focusPokemonName;
 
@@ -45,51 +49,83 @@ angular.module('app.pokemons', ['ngRoute'])
         focusPokemonName = $routeParams.pokemon;
     }
 
-    // update global variables with user-defined values in url query params
-    let params = $location.search();
-    maxCp = validateCP(params["maxCp"]);
-    atkIv = validateAtkIv(params["atkIv"]);
-    defIv = validateDefIv(params["defIv"]);
-    hpIv = validateHpIv(params["hpIv"]);
-
     // used for populating type-ahead dropdown
     $scope.pokemonNames = pokemonNames;
 
-    $scope.onSelect = function($item, $model, $label) {
-        console.log($item, $model, $label);
-        goToPokemon($label)
-    };
-
     // fetch latest pokemon data from data service
-    $scope.pokemons = [];
-    $scope.updatePokemons = function() {
-        updatePokemonData($scope.pokemons);
-        refreshTable();
+    if (allPokemon.length === 0) {
+        updateAllPokemon(allPokemon);
+        updateTableStats();
+        console.log("Loaded data for %d pokemon", allPokemon.length);
     }
-
-    function refreshTable() {
-        $scope.$broadcast("refreshTable");
-    }
+    $scope.allPokemon = allPokemon;
 
     // get pokemon name if provided in route
     if (!focusPokemonName && $routeParams.pokemon) {
         focusPokemonName = $routeParams.pokemon;
     }
+
+    // set focus pokemon in scope
     if (focusPokemonName) {
-        updatePokemon();
+
+        let focusPokemon = getPokemon(focusPokemonName);
+
+        // initialize focus pokemon stats if not available already
+        if (!focusPokemon.displayedStats) {
+            console.log("Using cp cap %d stats to initialize %s", cpCap, focusPokemonName);
+            focusPokemon.displayedStats = focusPokemon.stats[cpCap];
+        }
+        if (!focusPokemon.displayedIvs) {
+            let ivs = {};
+            ivs.atkIv = focusPokemon.bestIvs[cpCap].atkIv;
+            ivs.defIv = focusPokemon.bestIvs[cpCap].defIv;
+            ivs.hpIv = focusPokemon.bestIvs[cpCap].hpIv;
+            focusPokemon.displayedIvs = ivs;
+        }
+
+        $scope.focusPokemon = focusPokemon;
+        $scope.ivs = focusPokemon.displayedIvs;
+    }
+
+    /**
+     * BEGIN METHODS
+     */
+
+    // refresh displayed pokemon list based on current filters
+    $scope.updateAllPokemon = function() {
+        updateAllPokemon(allPokemon);
+    }
+
+    // updates stats displayed on table based on current cp cap
+    $scope.updateTableStats = function() {
+        updateTableStats();
+    }
+
+    function updateTableStats() {
+        allPokemon.forEach(
+            function(pokemon) {
+                pokemon.tableStats = pokemon.stats[cpCap];
+            }
+        )
+        refreshTable();
+    }
+
+    // forces smart-tables to be refreshed
+    // should be used when table content has changed, but length of table has not
+    function refreshTable() {
+        $scope.$broadcast("refreshTable");
     }
 
     // for updating pokemon stats based on max CP
-    $scope.updatePokemon = function() {
-        updatePokemon();
+    $scope.updatePokemonWithCpCap = function() {
+        updatePokemonWithCpCap();
         updateEvolutionFamily();
     }
 
-    function updatePokemon() {
+    function updatePokemonWithCpCap() {
         if (focusPokemonName) {
-            let pokemon = getPokemonData(focusPokemonName);
-            level = pokemon._level;
-            $scope.focusPokemon = pokemon;
+            let stats = getDetailedStatsWithCpCap($scope.focusPokemon, cpCap, $scope.focusPokemon.displayedIvs);
+            $scope.focusPokemon.displayedStats = stats;
         }
     }
 
@@ -101,8 +137,48 @@ angular.module('app.pokemons', ['ngRoute'])
 
     function updatePokemonWithLevel() {
         if (focusPokemonName) {
-            $scope.focusPokemon = getPokemonDataWithLevel(focusPokemonName);
+            let stats = getDetailedStatsWithLevel(
+                    $scope.focusPokemon,
+                    $scope.focusPokemon.displayedStats.level,
+                    $scope.focusPokemon.displayedIvs);
+            $scope.focusPokemon.displayedStats = stats;
         }
+    }
+
+    // for updating ivs
+    $scope.setAtkIv = function(atkIv) {
+        atkIv = validateIv(atkIv);
+        $scope.ivs.atkIv = atkIv;
+    }
+
+    $scope.setDefIv = function(defIv) {
+        defIv = validateIv(defIv);
+        $scope.ivs.defIv = defIv;
+    }
+
+    $scope.setHpIv = function(hpIv) {
+        hpIv = validateIv(hpIv);
+        $scope.ivs.hpIv = hpIv;
+    }
+
+    function validateIv(iv) {
+        if (iv < 0) {
+            return 0;
+        }
+        else if (iv > 15) {
+            return 15;
+        }
+        else {
+            return iv;
+        }
+    }
+
+    $scope.optimizeIvs = function() {
+        console.log("Optimizing IVs for pokemon %s and cp cap %d", focusPokemonName, cpCap);
+        $scope.ivs.atkIv = $scope.focusPokemon.bestIvs[cpCap].atkIv;
+        $scope.ivs.defIv = $scope.focusPokemon.bestIvs[cpCap].defIv;
+        $scope.ivs.hpIv = $scope.focusPokemon.bestIvs[cpCap].hpIv;
+        updatePokemonWithCpCap($scope.focusPokemon, cpCap, $scope.ivs.atkIv, $scope.ivs.defIv, $scope.ivs.hpIv);
     }
 
     // for toggling type chart
@@ -112,6 +188,9 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.toggleTypeChart = function() {
         showTypeChart = !showTypeChart;
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     }
 
     // for toggling evolution family
@@ -123,41 +202,32 @@ angular.module('app.pokemons', ['ngRoute'])
         showEvolutionFamily = !showEvolutionFamily;
     }
 
+    // initialize evolution family
     $scope.evolutionFamily = [];
     if (focusPokemonName && $scope.focusPokemon.evolutionFamily) {
         $scope.focusPokemon.evolutionFamily.forEach(
             function(familyMemberName) {
                 if (familyMemberName.toLowerCase() !== focusPokemonName) {
-                    let familyMember = getPokemonDataWithLevel(familyMemberName);
+                    let familyMember = getPokemon(familyMemberName);
                     $scope.evolutionFamily.push(familyMember);
                 }
             }
         );
+        updateEvolutionFamily();
     }
 
     function updateEvolutionFamily() {
         $scope.evolutionFamily.forEach(
             function(familyMember) {
-                evaluateStatsWithLevel(familyMember, level, atkIv, defIv, hpIv);
+                familyMember.familyStats = getDetailedStatsWithLevel(
+                        familyMember,
+                        $scope.focusPokemon.displayedStats.level,
+                        $scope.ivs);
             }
         )
     }
 
-    // routing methods
-    function getParams() {
-        let params = $location.search();
-        params.maxCp = maxCp;
-        params.atkIv = atkIv;
-        params.defIv = defIv;
-        params.hpIv = hpIv;
-        return params;
-    }
-
-    $scope.updateUrl = function() {
-        let params = getParams();
-        $location.search(params);
-    }
-
+    // route to all pokemon page
     $scope.seeAllPokemon = function() {
         console.log("Going back to pokemon table");
         focusPokemonName = "";
@@ -165,6 +235,7 @@ angular.module('app.pokemons', ['ngRoute'])
         go("/pokemon");
     }
 
+    // routes to focus pokemon page
     $scope.goToPokemon = function(pokemonName) {
         goToPokemon(pokemonName);
     }
@@ -174,24 +245,16 @@ angular.module('app.pokemons', ['ngRoute'])
         let name = pokemonName.toLowerCase();
         focusPokemonName = name;
         $scope.focusPokemonName = name;
-
-        let params = getParams();
-        console.log("with params: " + JSON.stringify(params));
         if (!pokemonsMap[name]) {
-            $location.path("/pokemon").search(params);
+            $location.path("/pokemon");
         }
         else {
-            $location.path("/pokemon/" + name).search(params);
+            $location.path("/pokemon/" + name);
         }
-    }
-
-    $scope.go = function(path) {
-        go(path);
     }
 
     function go(path) {
-        let params = getParams();
-        $location.path(path).search(params);
+        $location.path(path);
     }
 
     // for iv comparison on focus pokemon
@@ -209,43 +272,42 @@ angular.module('app.pokemons', ['ngRoute'])
         }
 
         let newIvs = {};
+        let ivsId = ivs.lastId + 1;
+        if (!ivsId) {
+            ivsId = 0;
+        }
         newIvs.id = ivsId;
-        ivsId++;
+
+        let atkIv = $scope.ivs.atkIv;
+        let defIv = $scope.ivs.defIv;
+        let hpIv = $scope.ivs.hpIv;
         newIvs.ivs = atkIv + " / " + defIv + " / " + hpIv;
         newIvs.atkIv = atkIv;
         newIvs.defIv = defIv;
         newIvs.hpIv = hpIv;
-        newIvs.level = $scope.focusPokemon._level;
-        newIvs.atk = $scope.focusPokemon._atk;
-        newIvs.def = $scope.focusPokemon._def;
-        newIvs.hp = $scope.focusPokemon._hp;
-        newIvs.bulk = $scope.focusPokemon._bulk;
-        newIvs.total = $scope.focusPokemon._total;
-        newIvs.cp = $scope.focusPokemon._cp;
-        newIvs.maxCp = maxCp;
+
+        newIvs.level = $scope.focusPokemon.displayedStats.level;
+        newIvs.atk = $scope.focusPokemon.displayedStats.displayedAtk;
+        newIvs.def = $scope.focusPokemon.displayedStats.displayedDef;
+        newIvs.hp = $scope.focusPokemon.displayedStats.displayedHp;
+        newIvs.bulk = $scope.focusPokemon.displayedStats.bulk;
+        newIvs.total = $scope.focusPokemon.displayedStats.total;
+        newIvs.cp = $scope.focusPokemon.displayedStats.cp;
+        newIvs.cpCap = cpCap;
 
         ivs.push(newIvs);
+        ivs.lastId = ivsId;
         $scope.ivsMap = ivsMap;
         setObject("pogoIvsMap", ivsMap);
     }
 
     $scope.loadIvs = function(ivs) {
         console.log("Loading IVs:", ivs.ivs);
-        let params = $location.search();
-        params.maxCp = ivs.maxCp;
-        params.atkIv = ivs.atkIv;
-        params.defIv = ivs.defIv;
-        params.hpIv = ivs.hpIv;
-        $location.path("/pokemon/" + focusPokemonName).search(params);
-    }
-
-    function updateIvs() {
-        let ivs = $scope.ivsMap[$scope.focusPokemon.name];
-        if (ivs && ivs.length > 0) {
-            ivs.forEach(function(iv) {
-                // evaluateStatsWithCpCap();
-            })
-        }
+        $scope.ivs.atkIv = ivs.atkIv;
+        $scope.ivs.defIv = ivs.defIv;
+        $scope.ivs.hpIv = ivs.hpIv;
+        cpCap = ivs.cpCap;
+        updatePokemonWithCpCap($scope.focusPokemon, cpCap, ivs.atkIv, ivs.defIv, ivs.hpIv);
     }
 
     $scope.removeIvs = function(ivs) {
@@ -256,6 +318,9 @@ angular.module('app.pokemons', ['ngRoute'])
                 return e.id !== ivs.id;
             }
         );
+        if (ivsMap[name].length === 0) {
+            delete ivsMap[name];
+        }
         $scope.ivsMap = ivsMap;
         setObject("pogoIvsMap", ivsMap);
     }
@@ -264,7 +329,7 @@ angular.module('app.pokemons', ['ngRoute'])
         return $scope.ivsMap[$scope.focusPokemon.name];
     }
 
-    // for fetching move data for single pokemon
+    // for fetching move data for focus pokemon
     $scope.getFastMoves = function(pokemon) {
         let fastMoves = [];
         pokemon.fastMoves.forEach(
@@ -293,30 +358,5 @@ angular.module('app.pokemons', ['ngRoute'])
 
     $scope.isPvp = function() {
         return $scope.currentMovesTab.includes('pvp');
-    }
-
-    // utility methods
-    function validateCP(cp) {
-        let _cp = Number.parseInt(cp);
-        _cp = 10 <= _cp && _cp <= 9999 ? _cp : maxCp;
-        return _cp;
-    }
-
-    function validateAtkIv(iv) {
-        let _iv = Number.parseInt(iv);
-        _iv = 0 <= _iv && _iv <= 15 ? _iv : atkIv;
-        return _iv;
-    }
-
-    function validateDefIv(iv) {
-        let _iv = Number.parseInt(iv);
-        _iv = 0 <= _iv && _iv <= 15 ? _iv : defIv;
-        return _iv;
-    }
-
-    function validateHpIv(iv) {
-        let _iv = Number.parseInt(iv);
-        _iv = 0 <= _iv && _iv <= 15 ? _iv : hpIv;
-        return _iv;
     }
 }]);

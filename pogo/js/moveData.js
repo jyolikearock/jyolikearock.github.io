@@ -234,10 +234,10 @@ var fastMoves =
 		"name": "Hex",
 		"type": "Ghost",
 		"pvpDamage": 6,
-		"pvpEnergy": 11,
+		"pvpEnergy": 12,
 		"pvpTurns": 3,
 		"pveDamage": 10,
-		"pveEnergy": 15,
+		"pveEnergy": 16,
 		"pveCooldown": 1.2
 	},
 	{
@@ -284,7 +284,7 @@ var fastMoves =
 		"name": "Infestation",
 		"type": "Bug",
 		"pvpDamage": 6,
-		"pvpEnergy": 11,
+		"pvpEnergy": 12,
 		"pvpTurns": 3,
 		"pveDamage": 10,
 		"pveEnergy": 14,
@@ -413,7 +413,7 @@ var fastMoves =
 	{
 		"name": "Powder Snow",
 		"type": "Ice",
-		"pvpDamage": 4,
+		"pvpDamage": 5,
 		"pvpEnergy": 8,
 		"pvpTurns": 2,
 		"pveDamage": 6,
@@ -916,7 +916,7 @@ var chargeMoves =
 	{
 		"name": "Blizzard",
 		"type": "Ice",
-		"pvpDamage": 130,
+		"pvpDamage": 140,
 		"pvpEnergy": 75,
 		"pvpEffectChance": "N/A",
 		"pvpEffectStat": "N/A",
@@ -981,13 +981,13 @@ var chargeMoves =
 	{
 		"name": "Brave Bird",
 		"type": "Flying",
-		"pvpDamage": 90,
+		"pvpDamage": 130,
 		"pvpEnergy": 55,
-		"pvpEffectChance": "N/A",
-		"pvpEffectStat": "N/A",
-		"pvpEffectDelta": "N/A",
-		"pvpEffectTarget": "N/A",
-		"pveDamage": 90,
+		"pvpEffectChance": 100,
+		"pvpEffectStat": "D",
+		"pvpEffectDelta": -3,
+		"pvpEffectTarget": "S",
+		"pveDamage": 130,
 		"pveEnergy": 100,
 		"pveCooldown": 2
 	},
@@ -1306,13 +1306,13 @@ var chargeMoves =
 	{
 		"name": "Drill Peck",
 		"type": "Flying",
-		"pvpDamage": 60,
+		"pvpDamage": 65,
 		"pvpEnergy": 40,
 		"pvpEffectChance": "N/A",
 		"pvpEffectStat": "N/A",
 		"pvpEffectDelta": "N/A",
 		"pvpEffectTarget": "N/A",
-		"pveDamage": 60,
+		"pveDamage": 65,
 		"pveEnergy": 33,
 		"pveCooldown": 2.3
 	},
@@ -1515,7 +1515,7 @@ var chargeMoves =
 		"name": "Flash Cannon",
 		"type": "Steel",
 		"pvpDamage": 110,
-		"pvpEnergy": 65,
+		"pvpEnergy": 70,
 		"pvpEffectChance": "N/A",
 		"pvpEffectStat": "N/A",
 		"pvpEffectDelta": "N/A",
@@ -1523,6 +1523,19 @@ var chargeMoves =
 		"pveDamage": 100,
 		"pveEnergy": 100,
 		"pveCooldown": 2.7
+	},
+	{
+		"name": "Fly",
+		"type": "Flying",
+		"pvpDamage": 80,
+		"pvpEnergy": 45,
+		"pvpEffectChance": "N/A",
+		"pvpEffectStat": "N/A",
+		"pvpEffectDelta": "N/A",
+		"pvpEffectTarget": "N/A",
+		"pveDamage": 80,
+		"pveEnergy": 50,
+		"pveCooldown": 1.8
 	},
 	{
 		"name": "Flying Press",
@@ -1540,7 +1553,7 @@ var chargeMoves =
 	{
 		"name": "Focus Blast",
 		"type": "Fighting",
-		"pvpDamage": 150,
+		"pvpDamage": 140,
 		"pvpEnergy": 75,
 		"pvpEffectChance": "N/A",
 		"pvpEffectStat": "N/A",

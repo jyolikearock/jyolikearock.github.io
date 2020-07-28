@@ -1,4 +1,4 @@
-<div class="card mt-3" ng-controller="optionsController">
+<div class="card mt-3">
     <div class="card-header">
         <!-- pokemon search bar -->
         <div class="input-group">
@@ -18,6 +18,7 @@
         </div>
     </div>
 
+    <!-- header -->
     <div class="card-body">
         <div class="row">
             <div class="col-6">
@@ -28,6 +29,32 @@
             <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
                 Options
             </button>
+        </div>
+
+        <!-- cp cap -->
+        <div class="input-group mt-3" ng-controller="optionsController">
+            <div class="input-group-prepend">
+                <label class="input-group-text">CP Cap:</label>
+            </div>
+            <input class="form-control" type="number" ng-model="cpCap" readonly>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" ng-click="setCpCap(1500); updatePokemonWithCpCap()"
+                        ng-class="cpCap <= 1500 ? 'btn-dark' : ''">
+                    1500
+                </button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary border-left" ng-click="setCpCap(2500); updatePokemonWithCpCap()"
+                        ng-class="cpCap > 1500 && cpCap <= 2500 ? 'btn-dark' : ''">
+                    2500
+                </button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary border-left" ng-click="setCpCap(9999); updatePokemonWithCpCap()"
+                        ng-class="cpCap > 2500 ? 'btn-dark' : ''">
+                    None
+                </button>
+            </div>
         </div>
     </div>
 
@@ -44,7 +71,7 @@
             <th>CP</th>
         </tr>
         <tr>
-            <td colspan="{{focusPokemon.type.length}}">
+            <td colspan="{{focusPokemon.type.length}}" class="border-bottom">
                 <div class="row">
                     <div class="ml-2"></div>
                     <div ng-repeat="type in focusPokemon.type" class="ml-3">
@@ -54,131 +81,111 @@
                     </div>
                 </div>
             </td>
-            <td>{{focusPokemon._level}}</td>
-            <td>{{focusPokemon._atk}}</td>
-            <td>{{focusPokemon._def}}</td>
-            <td>{{focusPokemon._hp}}</td>
-            <td>{{focusPokemon._bulk}}</td>
-            <td>{{focusPokemon._total}}</td>
-            <td>{{focusPokemon._cp}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.level}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.displayedAtk}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.displayedDef}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.displayedHp}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.bulk}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.total}}</td>
+            <td class="border-bottom">{{focusPokemon.displayedStats.cp}}</td>
         </tr>
     </table>
 
-    <div class="card-body" ng-show="showOptions">
-        <!-- options -->
-        <div>
-            <!-- max cp -->
-            <div class="input-group mt-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">Max CP:</label>
-                </div>
-                <input class="form-control" type="number" ng-model="maxCp" readonly>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-click="setMaxCp(1500); updatePokemon(); updateScopeLevel()"
-                            ng-class="maxCp <= 1500 ? 'btn-dark' : ''">
-                        1500
-                    </button>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-click="setMaxCp(2500); updatePokemon(); updateScopeLevel()"
-                            ng-class="maxCp > 1500 && maxCp <= 2500 ? 'btn-dark' : ''">
-                        2500
-                    </button>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-click="setMaxCp(9999); updatePokemon(); updateScopeLevel()"
-                            ng-class="maxCp > 2500 ? 'btn-dark' : ''">
-                        None
-                    </button>
+    <!-- options -->
+    <div class="card-body">
+        <!-- level -->
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Level:</label>
+                    </div>
+                    <input class="form-control" type="number" step="0.5" ondblclick="this.select()"
+                           ng-model="focusPokemon.displayedStats.level" ng-change="updatePokemonWithLevel()">
                 </div>
             </div>
-
-            <!-- level -->
-            <div class="row mt-3">
-                <div class="col-12 col-lg-4">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Level:</label>
-                        </div>
-                        <input class="form-control" type="number" step="0.5" ondblclick="this.select()"
-                               ng-model="level" ng-change="setLevel(); updatePokemonWithLevel()">
-                    </div>
+            <div class="col-12 col-lg-8">
+                <div class="pt-2">
+                    <input type="range" min="1" max="40" step="0.5" class="form-control-range"
+                           ng-model="focusPokemon.displayedStats.level" ng-change="updatePokemonWithLevel()">
                 </div>
-                <div class="col-12 col-lg-8">
-                    <div class="pt-2">
-                        <input type="range" min="1" max="40" step="0.5" class="form-control-range"
-                               ng-model="level" ng-change="setLevel(); updatePokemonWithLevel()">
+            </div>
+        </div>
+
+        <!-- ivs -->
+        <div class="row mt-3">
+            <!-- atk -->
+            <div class="col-12 col-lg-4">
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">ATK IV:</label>
+                    </div>
+                    <input class="form-control" type="number" min="0" max="15" ondblclick="this.select()"
+                           ng-model="ivs.atkIv"
+                           ng-change="updatePokemonWithCpCap()">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" ng-class="ivs.atkIv === 0 ? 'btn-dark' : ''"
+                                ng-click="setAtkIv(0); updatePokemonWithCpCap()">
+                            Min
+                        </button>
+                        <button class="btn btn-secondary border-left" ng-class="ivs.atkIv === 15 ? 'btn-dark' : ''"
+                                ng-click="setAtkIv(15); updatePokemonWithCpCap()">
+                            Max
+                        </button>
                     </div>
                 </div>
             </div>
-
-            <!-- ivs -->
-            <div class="row mt-3">
-                <!-- atk -->
-                <div class="col-12 col-lg-4">
-                    <div class="input-group mt-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">ATK IV:</label>
-                        </div>
-                        <input class="form-control" type="number" ondblclick="this.select()" ng-model="atkIv"
-                               ng-change="validateAtkIv(); updatePokemon(); updateScopeLevel()">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" ng-class="atkIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setAtkIv(0); updatePokemon(); updateScopeLevel()">
-                                Min
-                            </button>
-                            <button class="btn btn-secondary" ng-class="atkIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setAtkIv(15); updatePokemon(); updateScopeLevel()">
-                                Max
-                            </button>
-                        </div>
+            <!-- def -->
+            <div class="col-12 col-lg-4">
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">DEF IV:</label>
                     </div>
-                </div>
-                <!-- def -->
-                <div class="col-12 col-lg-4">
-                    <div class="input-group mt-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">DEF IV:</label>
-                        </div>
-                        <input class="form-control" type="number" ondblclick="this.select()" ng-model="defIv"
-                               ng-change="validateDefIv(); updatePokemon(); updateScopeLevel()">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" ng-class="defIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setDefIv(0); updatePokemon(); updateScopeLevel()">
-                                Min
-                            </button>
-                            <button class="btn btn-secondary" ng-class="defIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setDefIv(15); updatePokemon(); updateScopeLevel()" >
-                                Max
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- hp -->
-                <div class="col-12 col-lg-4">
-                    <div class="input-group mt-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">HP IV:</label>
-                        </div>
-                        <input class="form-control" type="number" ondblclick="this.select()" ng-model="hpIv"
-                               ng-change="validateHpIv(); updatePokemon(); updateScopeLevel()">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" ng-class="hpIv === 0 ? 'btn-dark' : ''"
-                                    ng-click="setHpIv(0); updatePokemon(); updateScopeLevel()">
-                                Min
-                            </button>
-                            <button class="btn btn-secondary" ng-class="hpIv === 15 ? 'btn-dark' : ''"
-                                    ng-click="setHpIv(15); updatePokemon(); updateScopeLevel()">
-                                Max
-                            </button>
-                        </div>
+                    <input class="form-control" type="number" min="0" max="15" ondblclick="this.select()"
+                           ng-model="ivs.defIv"
+                           ng-change="updatePokemonWithCpCap()">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" ng-class="ivs.defIv === 0 ? 'btn-dark' : ''"
+                                ng-click="setDefIv(0); updatePokemonWithCpCap()">
+                            Min
+                        </button>
+                        <button class="btn btn-secondary border-left" ng-class="ivs.defIv === 15 ? 'btn-dark' : ''"
+                                ng-click="setDefIv(15); updatePokemonWithCpCap()">
+                            Max
+                        </button>
                     </div>
                 </div>
             </div>
+            <!-- hp -->
+            <div class="col-12 col-lg-4">
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">HP IV:</label>
+                    </div>
+                    <input class="form-control" type="number" min="0" max="15" ondblclick="this.select()"
+                           ng-model="ivs.hpIv"
+                           ng-change="updatePokemonWithCpCap()">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" ng-class="ivs.hpIv === 0 ? 'btn-dark' : ''"
+                                ng-click="setHpIv(0); updatePokemonWithCpCap()">
+                            Min
+                        </button>
+                        <button class="btn btn-secondary border-left" ng-class="ivs.hpIv === 15 ? 'btn-dark' : ''"
+                                ng-click="setHpIv(15); updatePokemonWithCpCap()">
+                            Max
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- iv comparison button -->
-            <div class="row mt-3">
-                <button class="btn btn-dark ml-auto mr-3" ng-click="saveIvs()">
+        <!-- iv comparison button -->
+        <div class="row mt-3">
+            <div class="btn-group ml-auto mr-3">
+                <button class="btn btn-dark" ng-click="optimizeIvs()">
+                    Optimize IVs
+                </button>
+                <button class="btn btn-dark border-left" ng-click="saveIvs()">
                     Save IVs
                 </button>
             </div>
@@ -190,6 +197,7 @@
 <div class="card mt-3" ng-show="showIvs()">
     <div class="card-body">
         <h5 class="card-title">Saved IVs</h5>
+        <p class="card-subtitle text-muted">Click on a row to load that IV into the options</p>
     </div>
     <table class="table table-fixed table-hover">
         <tr>
@@ -218,13 +226,21 @@
 <!-- evolution family -->
 <div class="card mt-3" ng-show="focusPokemon.evolutionFamily">
     <div class="card-body d-flex justify-content-between" slide-toggle="#evolutionFamily"
-         ng-click="toggleEvolutionFamily()" >
-        <h5 class="card-title" >
-            Evolution Family
-        </h5>
+         ng-click="toggleEvolutionFamily()" current-state="{{showEvolutionFamily()}}">
+        <div>
+            <h5 class="card-title" >
+                Evolution Family
+            </h5>
+            <p class="card-subtitle text-muted" ng-show="showEvolutionFamily()">
+                The CP column shows the family member's CP which corresponds to {{focusPokemon.name}}'s
+                current stats. Click on a family member to go to their page.
+            </p>
+        </div>
         <div class="mt-1">
-            <img class="icon-12" src="open-iconic/svg/chevron-bottom.svg"
-                 ng-class="showEvolutionFamily() ? 'rotate-0' : 'rotate-180'"/>
+            <img class="icon-12 ml-3" src="open-iconic/svg/chevron-bottom.svg"
+                 ng-show="!showEvolutionFamily()"/>
+            <img class="icon-12 ml-3" src="open-iconic/svg/chevron-top.svg"
+                 ng-show="showEvolutionFamily()"/>
         </div>
     </div>
 
@@ -239,12 +255,12 @@
                 <th>CP</th>
             </tr>
             <tr ng-repeat="familyMember in evolutionFamily" ng-click="goToPokemon(familyMember.name)">
-                <td colspan="2">{{familyMember.name}}</td>
-                <td>{{familyMember._atk}}</td>
-                <td>{{familyMember._def}}</td>
-                <td>{{familyMember._hp}}</td>
-                <td>{{familyMember._total}}</td>
-                <th>{{familyMember._cp}}</th>
+                <th colspan="2">{{familyMember.name}}</th>
+                <td>{{familyMember.familyStats.displayedAtk}}</td>
+                <td>{{familyMember.familyStats.displayedDef}}</td>
+                <td>{{familyMember.familyStats.displayedHp}}</td>
+                <td>{{familyMember.familyStats.total}}</td>
+                <th>{{familyMember.familyStats.cp}}</th>
             </tr>
         </table>
     </div>
@@ -252,13 +268,16 @@
 
 <!-- type chart -->
 <div class="card mt-3">
-    <div class="card-body d-flex justify-content-between" slide-toggle="#typeChart" ng-click="toggleTypeChart()">
+    <div class="card-body d-flex justify-content-between" slide-toggle="#typeChart"
+         ng-click="toggleTypeChart()" current-state="{{showTypeChart()}}">
         <h5 class="card-title">
             Type Chart
         </h5>
         <div class="mt-1">
             <img class="icon-12 ml-3" src="open-iconic/svg/chevron-bottom.svg"
-                 ng-class="showTypeChart() ? 'rotate-0' : 'rotate-180'"/>
+                 ng-show="!showTypeChart()"/>
+            <img class="icon-12 ml-3" src="open-iconic/svg/chevron-top.svg"
+                 ng-show="showTypeChart()"/>
         </div>
     </div>
 

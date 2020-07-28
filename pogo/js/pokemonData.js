@@ -1,7 +1,3 @@
-// regex for CSV to JSON conversion:
-// find: ^(.+)\t(.+)\t(.+)\t(.+)\t(.+)\t(.+)\t(.+)\t(.+)$
-// replace: {\r\n\t"name": "$1",\r\n\t"id": $2,\r\n\t"type": "$3",\r\n\t"atk": $4,\r\n\t"def": $5,\r\n\t"hp": $6,\r\n\t"fastMoves": "$7",\r\n\t"chargeMoves": "$8"\r\n},
-
 var pokemons =
 [
     {
@@ -3685,7 +3681,7 @@ var pokemons =
 		"def": 174,
 		"hp": 155,
 		"fastMoves": "Wing Attack,Water Gun",
-		"chargeMoves": "Blizzard,Hydro Pump,Hurricane",
+		"chargeMoves": "Blizzard,Hydro Pump,Hurricane,Weather Ball Water",
 		"legendary": false
 	},{
 		"name": "Ralts",
@@ -4587,7 +4583,7 @@ var pokemons =
 		"def": 139,
 		"hp": 172,
 		"fastMoves": "Tackle,Powder Snow",
-		"chargeMoves": "Ice Beam,Blizzard,Weather Ball",
+		"chargeMoves": "Ice Beam,Blizzard,Weather Ball Ice",
 		"legendary": false
 	},{
 		"name": "Castform Sunny Form",
@@ -4599,7 +4595,7 @@ var pokemons =
 		"def": 139,
 		"hp": 172,
 		"fastMoves": "Ember,Tackle",
-		"chargeMoves": "Fire Blast,Solar Beam,Weather Ball",
+		"chargeMoves": "Fire Blast,Solar Beam,Weather Ball Fire",
 		"legendary": false
 	},{
 		"name": "Castform Rainy Form",
@@ -4611,7 +4607,7 @@ var pokemons =
 		"def": 139,
 		"hp": 172,
 		"fastMoves": "Tackle,Water Gun",
-		"chargeMoves": "Thunder,Hydro Pump,Weather Ball",
+		"chargeMoves": "Thunder,Hydro Pump,Weather Ball Water",
 		"legendary": false
 	},{
 		"name": "Castform",
@@ -5045,7 +5041,7 @@ var pokemons =
 		"def": 186,
 		"hp": 197,
 		"fastMoves": "Metal Claw,Waterfall",
-		"chargeMoves": "Flash Cannon,Blizzard,Hydro Pump,Hydro Cannon (CD)",
+		"chargeMoves": "Flash Cannon,Blizzard,Hydro Pump,Drill Peck,Hydro Cannon (CD)",
 		"legendary": false
 	},{
 		"name": "Starly",
@@ -5395,7 +5391,7 @@ var pokemons =
 		"def": 153,
 		"hp": 172,
 		"fastMoves": "Razor Leaf,Bullet Seed",
-		"chargeMoves": "Hyper Beam,Dazzling Gleam,Solar Beam,Weather Ball",
+		"chargeMoves": "Hyper Beam,Dazzling Gleam,Solar Beam,Weather Ball Fire",
 		"legendary": false
 	},{
 		"name": "Cherrim Overcast Form",
@@ -5922,7 +5918,7 @@ var pokemons =
 		"def": 158,
 		"hp": 207,
 		"fastMoves": "Razor Leaf,Powder Snow",
-		"chargeMoves": "Blizzard,Energy Ball,Outrage,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Blizzard,Energy Ball,Outrage,Weather Ball Ice,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Weavile",
@@ -7459,7 +7455,7 @@ var pokemons =
 		"def": 152,
 		"hp": 225,
 		"fastMoves": "Steel Wing,Air Slash",
-		"chargeMoves": "Heat Wave,Rock Slide,Brave Bird",
+		"chargeMoves": "Heat Wave,Rock Slide,Brave Bird,Close Combat",
 		"legendary": false
 	},{
 		"name": "Heatmor",
@@ -8382,11 +8378,27 @@ var evolutionFamilies =
 
 var pokemonsMap = {};
 var pokemonNames = [];
+
+// pre-compute a bunch of static data on page load
 pokemons.forEach(
     function(pokemon) {
 
         // compute max cp
         pokemon.maxCp = getMaxCp(pokemon);
+
+        // compute optimal ivs for each league
+        pokemon.bestIvs = {};
+        pokemon.bestIvs[1500] = getBestIvs(pokemon, 1500);
+        pokemon.bestIvs[2500] = getBestIvs(pokemon, 2500);
+        pokemon.bestIvs[9999] = getBestIvs(pokemon, 9999);
+
+        // compute optimal stats for each league
+        pokemon.stats = {};
+        pokemon.stats[1500] = getDetailedStatsWithCpCap(pokemon, 1500, pokemon.bestIvs[1500]);
+        pokemon.stats[2500] = getDetailedStatsWithCpCap(pokemon, 2500, pokemon.bestIvs[2500]);
+        pokemon.stats[9999] = getDetailedStatsWithCpCap(pokemon, 9999, pokemon.bestIvs[9999]);
+
+        pokemon.tableStats = pokemon.stats[9999];
 
         // set type chart
         if (pokemon.type.length === 1) {

@@ -15,22 +15,22 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text">Max CP:</label>
                 </div>
-                <input class="form-control" type="number" ng-model="maxCp" readonly>
+                <input class="form-control" type="number" ng-model="cpCap" readonly>
                 <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="maxCp <= 1500 ? 'btn-dark' : ''"
-                            ng-click="setMaxCp(1500); populateMovesets()">
+                    <button class="btn btn-secondary" ng-class="cpCap <= 1500 ? 'btn-dark' : ''"
+                            ng-click="setCpCap(1500); populateMovesets()">
                         1500
                     </button>
                 </div>
                 <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="maxCp > 1500 && maxCp <= 2500 ? 'btn-dark' : ''"
-                            ng-click="setMaxCp(2500); populateMovesets()">
+                    <button class="btn btn-secondary" ng-class="cpCap > 1500 && cpCap <= 2500 ? 'btn-dark' : ''"
+                            ng-click="setCpCap(2500); populateMovesets()">
                         2500
                     </button>
                 </div>
                 <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="maxCp > 2500 ? 'btn-dark' : ''"
-                            ng-click="setMaxCp(9999); populateMovesets()">
+                    <button class="btn btn-secondary" ng-class="cpCap > 2500 ? 'btn-dark' : ''"
+                            ng-click="setCpCap(9999); populateMovesets()">
                         None
                     </button>
                 </div>
@@ -151,7 +151,7 @@
 
     <!-- movesets -->
     <div class="table-responsive">
-        <table class="table"
+        <table class="table table-hover"
                st-table="displayedMovesets"
                st-safe-src="movesets"
                st-persist="movesetsTable">
@@ -187,7 +187,7 @@
                 <th class="sortable" st-sort="fmType">Type</th>
                 <th class="sortable" st-sort="chargeMove">CM</th>
                 <th class="sortable" st-sort="cmType">Type</th>
-                <th class="sortable" st-sort="dps">DPT</th>
+                <th class="sortable" st-sort="dps">{{isPvp ? 'DPT' : 'DPS'}}</th>
                 <th class="sortable" st-sort="ttfa"
                     data-toggle="tooltip" data-placement="top" title="Time to first charge move activation">TTFA</th>
                 <th class="sortable" st-sort="total"
@@ -198,7 +198,7 @@
             </tr>
 
             <!-- table body -->
-            <tr ng-repeat="moveset in displayedMovesets">
+            <tr ng-repeat="moveset in displayedMovesets" ng-click="goToPokemon(moveset.pokemon)">
                 <td colspan="2">{{moveset.pokemon}}</td>
                 <td>{{moveset.fastMove}}</td>
                 <td>

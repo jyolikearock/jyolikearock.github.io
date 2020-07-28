@@ -73,12 +73,14 @@ app.directive("refreshTable", function(){
         restrict: "A",
         link:function(scope,elem,attr,table){
             scope.$on("refreshTable", function() {
-                table.updateSafeCopy();
+                table.pipe();
             });
+        }
     }
-}});
+});
 
 // directive for making content slideable
+// thanks to https://github.com/EricWVGG/AngularSlideables
 app.directive('slideable', function () {
     return {
         restrict:'C',
@@ -93,7 +95,6 @@ app.directive('slideable', function () {
                 attrs.easing = (!attrs.easing) ? 'ease-in-out' : attrs.easing;
                 element.css({
                     'overflow': 'hidden',
-                    'height': '0px',
                     'transitionProperty': 'height',
                     'transitionDuration': attrs.duration,
                     'transitionTimingFunction': attrs.easing
@@ -107,19 +108,29 @@ app.directive('slideable', function () {
         restrict: 'A',
         link: function(scope, element, attrs) {
             var target = document.querySelector(attrs.slideToggle);
-            attrs.expanded = false;
-            element.bind('click', function() {
+            attrs.expanded = (attrs.currentState === "true");
+
+            let toggleContent = function() {
+                attrs.expanded = !attrs.expanded;
+                showContent(0);
+            }
+
+            let showContent = function(delay) {
                 var content = target.querySelector('.slideable_content');
-                if(!attrs.expanded) {
-                    content.style.border = '1px solid rgba(0,0,0,0)';
-                    var y = content.clientHeight;
-                    content.style.border = 0;
-                    target.style.height = y + 'px';
+                if(attrs.expanded) {
+                    setTimeout(function() {
+                        content.style.border = '1px solid rgba(0,0,0,0)';
+                        var y = content.clientHeight;
+                        content.style.border = 0;
+                        target.style.height = y + 'px';
+                    }, delay);
                 } else {
                     target.style.height = '0px';
                 }
-                attrs.expanded = !attrs.expanded;
-            });
+            }
+
+            showContent(100);
+            element.bind('click', toggleContent);
         }
     }
 });

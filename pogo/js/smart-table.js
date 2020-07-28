@@ -79,11 +79,6 @@ ng.module('smart-table').controller('stTableController', [
       return src ? [].concat(src) : [];
     }
 
-    // @jyolikearock: make updateSafeCopy public
-    this.updateSafeCopy = function() {
-        updateSafeCopy();
-    }
-
     function updateSafeCopy() {
       safeCopy = copyRefs(safeGetter($scope));
       if (pipeAfterSafeCopy === true) {
@@ -185,7 +180,8 @@ ng.module('smart-table').controller('stTableController', [
     };
 
     /**
-     * this will chain the operations of sorting and filtering based on the current table state (sort options, filtering, ect)
+     * this will chain the operations of sorting and filtering based on the current table state (sort options, filtering, etc)
+     * @jyolikearock: add optional arg (boolean) resetPage, which determines whether to reset to page 0
      */
     this.pipe = function pipe() {
       var pagination = tableState.pagination;
@@ -219,11 +215,12 @@ ng.module('smart-table').controller('stTableController', [
           pagination.numberOfPages = filtered.length > 0
             ? Math.ceil(filtered.length / pagination.number)
             : 1;
-          /* @jyolikearock: dont reset page on filter
-          pagination.start = pagination.start >= filtered.length
-            ? (pagination.numberOfPages - 1) * pagination.number
-            : pagination.start;
-          */
+          // @jyolikearock: only truncate pagination if content length is non-zero
+          if (filtered.length > 0) {
+              pagination.start = pagination.start >= filtered.length
+                ? (pagination.numberOfPages - 1) * pagination.number
+                : pagination.start;
+          }
           output = filtered.slice(
             pagination.start,
             pagination.start + parseInt(pagination.number)

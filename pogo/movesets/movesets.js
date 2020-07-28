@@ -1,20 +1,20 @@
-var greatLeagueTargetDummy = {
-    "_atk": 100,
-    "_def": 160,
-    "type": ["Dragon"]
-};
-
-var ultraLeagueTargetDummy = {
-    "_atk": 130,
-    "_def": 185,
-    "type": ["Dragon"]
-};
-
-var masterLeagueTargetDummy = {
-    "_atk": 220,
-    "_def": 185,
-    "type": ["Dragon"]
-};
+var targetDummy = {
+    "type": ["Dragon"],
+    "stats": {
+        1500: {
+            "atk": 100,
+            "def": 160
+        },
+        2500: {
+            "atk": 130,
+            "def": 185
+        },
+        9999: {
+            "atk": 220,
+            "def": 185
+        }
+    }
+}
 
 var targetDummyFastMove = {
     "type": "Dragon",
@@ -49,7 +49,7 @@ angular.module('app.movesets', ['ngRoute'])
   });
 }])
 
-.controller('movesetsController', ['$scope', function($scope) {
+.controller('movesetsController', ['$scope', '$location', function($scope, $location) {
 
     $scope.pageSize = pageSize;
     $scope.isPvp = isPvp;
@@ -84,27 +84,29 @@ angular.module('app.movesets', ['ngRoute'])
         $scope.currentTypeTab = currentTypeTab;
     }
 
+    $scope.goToPokemon = function(pokemonName) {
+        $location.path("pokemon/" + pokemonName.toLowerCase());
+    }
+
     var currentPokemon = "";
     var currentFm = "";
     var currentCm = "";
+
     function populateMovesets() {
 
         let movesets = [];
 
-        let pokemonsCopy = [];
-        updatePokemonData(pokemonsCopy);
+        let filteredPokemon = [];
+        updateAllPokemon(filteredPokemon);
 
-        let targetDummy = masterLeagueTargetDummy;
-        if (maxCp <= 2500) {
-            targetDummy = ultraLeagueTargetDummy;
-        }
-        if (maxCp <= 1500) {
-            targetDummy = greatLeagueTargetDummy;
+        let cpCutoff = cpCap * 0.933;
+        if (cpCap > 5000) {
+            cpCutoff = 2800;
         }
 
         let count = 0;
-        pokemonsCopy.forEach(function(pokemon) {
-            if (pokemon.maxCp < 1430) {
+        filteredPokemon.forEach(function(pokemon) {
+            if (pokemon.maxCp < cpCutoff) {
                 return;
             }
 
@@ -115,6 +117,9 @@ angular.module('app.movesets', ['ngRoute'])
                 currentFm = fm.name;
                 pokemon.chargeMoves.forEach(function(cmName) {
                     let cm = chargeMovesMap[cmName];
+                    if (cm === undefined) {
+                        console.log("Could not find charge move:", cmName);
+                    }
                     currentCm = cm.name;
 
                     if (moveTypeFilter) {
@@ -167,7 +172,7 @@ angular.module('app.movesets', ['ngRoute'])
                             let efmdpa = eatfa * efmd;
                             let edpa = efmdpa + ecmd;
 
-                            let hp = pokemon._hp;
+                            let hp = pokemon.stats[cpCap].displayedHp;
                             let chargeMovesTaken = Math.floor(hp / edpa);
                             let timeToDie = chargeMovesTaken * ettfa;
                             hp = hp % edpa;
@@ -219,13 +224,13 @@ angular.module('app.movesets', ['ngRoute'])
         let s1 = numShields;
         let s2 = numShields;
 
-        let a1 = pokemon._atk;
-        let d1 = pokemon._def;
-        let hp = pokemon._hp;
+        let a1 = pokemon.stats[cpCap].atk;
+        let d1 = pokemon.stats[cpCap].def;
+        let hp = pokemon.stats[cpCap].hp;
         let cms = 0;
 
-        let a2 = targetDummy._atk;
-        let d2 = targetDummy._def;
+        let a2 = targetDummy.stats[cpCap].atk;
+        let d2 = targetDummy.stats[cpCap].def;
 
         log("pokemon stats: " + a1 + ", " + d1);
         log("target dummy stats: " + a2 + ", " + d2);
@@ -281,29 +286,35 @@ angular.module('app.movesets', ['ngRoute'])
                     // apply buffs/debuffs
                     if (hasEffect && stage != 0 && stage != 8) {
                         stage += cm1.pvpEffectDelta;
+                        if (stage > 8) {
+                            stage = 8;
+                        }
+                        if (stage < 0) {
+                            stage = 0;
+                        }
                         let mult = statModifiers[stage];
                         if (cm1.pvpEffectTarget === "S") {
                             if (effectStat === "A") {
-                                a1 = Math.floor(pokemon._atk * mult);
+                                a1 = Math.floor(pokemon.stats[cpCap].atk * mult);
                             }
                             else if (effectStat === "D") {
-                                d1 = Math.floor(pokemon._def * mult);
+                                d1 = Math.floor(pokemon.stats[cpCap].def * mult);
                             }
                             else {
-                                a1 = Math.floor(pokemon._atk * mult);
-                                d1 = Math.floor(pokemon._def * mult);
+                                a1 = Math.floor(pokemon.stats[cpCap].atk * mult);
+                                d1 = Math.floor(pokemon.stats[cpCap].def * mult);
                             }
                         }
                         else {
                             if (effectStat === "A") {
-                                a2 = Math.floor(targetDummy._atk * mult);
+                                a2 = Math.floor(targetDummy.stats[cpCap].atk * mult);
                             }
                             else if (effectStat === "D") {
-                                d2 = Math.floor(targetDummy._def * mult);
+                                d2 = Math.floor(targetDummy.stats[cpCap].def * mult);
                             }
                             else {
-                                a2 = Math.floor(targetDummy._atk * mult);
-                                d2 = Math.floor(targetDummy._def * mult);
+                                a2 = Math.floor(targetDummy.stats[cpCap].atk * mult);
+                                d2 = Math.floor(targetDummy.stats[cpCap].def * mult);
                             }
                         }
                         log("Buffs applied; pokemon stats: " + a1 + ", " + d1);
@@ -388,7 +399,7 @@ angular.module('app.movesets', ['ngRoute'])
     function getMoveDamage(move, atkPokemon, defPokemon) {
         let movePower = isPvp ? move.pvpDamage : move.pveDamage;
         let stab = atkPokemon.type.includes(move.type) ? 1.2 : 1.0;
-        return Math.floor(0.5 * movePower * atkPokemon._atk / defPokemon._def * stab * 1.3) + 1;
+        return Math.floor(0.5 * movePower * atkPokemon.stats[cpCap].atk / defPokemon.stats[cpCap].def * stab * 1.3) + 1;
     }
 
     function getDamageDistribution(fmd, cmd) {

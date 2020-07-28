@@ -159,6 +159,8 @@ a:hover {
 .form-control:disabled,
 .form-control[readonly] {
     background-color: #fff;
+    cursor: default;
+    pointer-events: none;
 }
 
 /* for making headers stick on scroll */

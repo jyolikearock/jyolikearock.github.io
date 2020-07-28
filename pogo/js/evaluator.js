@@ -5,73 +5,152 @@ function getMaxCp(pokemon) {
 }
 
 function evaluateStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
-    let _level = evaluateLevelForMaxCp(pokemon, cpCap, _atkIv, _defIv, _hpIv);
+    let _level = getLevelForCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv);
     evaluateStatsWithLevel(pokemon, _level, _atkIv, _defIv, _hpIv);
 }
 
-// same as evaluateStatsWithCpCap(), but returns a new object instead of mutating original pokemon
-function getStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
+// given a pokemon and a cp cap, return a set of ivs that maximizes the pokemon's stat product
+function getBestIvs(pokemon, cpCap) {
+    let atkIv = 15;
+    let defIv = 15;
+    let hpIv = 15;
+    let bestStatProduct = 0;
+    if (cpCap < pokemon.maxCp) {
 
+        // find a reasonable atk iv to start at
+        atkIv = 12;
+        while (atkIv > 0) {
+            atkIv = atkIv - 4;
+            let maxCp = getCp(pokemon, 40, atkIv, defIv, hpIv);
+            if (maxCp < cpCap) {
+                break;
+            }
+        }
+
+        // iterate through all possible ivs within 5 of the current
+        for (let a = atkIv; a < Math.max(atkIv + 5, 15); a++) {
+            for (let d = defIv; d > defIv - 5; d--) {
+                for (let h = hpIv; h > hpIv - 5; h--) {
+                    let stats = getStatsWithCpCap(pokemon, cpCap, a, d, h);
+                    let tot = stats.atk * stats.def * stats.hp;
+                    if (tot > bestStatProduct) {
+                        bestStatProduct = tot;
+                        atkIv = a;
+                        defIv = d;
+                        hpIv = h;
+                    }
+                }
+            }
+        }
+    }
+
+    return {
+        "atkIv": atkIv,
+        "defIv": defIv,
+        "hpIv": hpIv
+    };
 }
 
-function evaluateLevelForMaxCp(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
+// given a pokemon, a cp cap, and ivs, compute and return basic stats (lv, a, d, h) for that pokemon
+function getStatsWithCpCap(pokemon, cpCap, atkIv, defIv, hpIv) {
+    let level = getLevelForCpCap(pokemon, cpCap, atkIv, defIv, hpIv);
+    return getStatsWithLevel(pokemon, level, atkIv, defIv, hpIv);
+}
+
+// given a pokemon, a cp cap, and ivs, compute and return detailed stats (lv, a, d, h, bulk, total, cp) for that pokemon
+function getDetailedStatsWithCpCap(pokemon, cpCap, ivs) {
+    let level = getLevelForCpCap(pokemon, cpCap, ivs.atkIv, ivs.defIv, ivs.hpIv);
+    return getDetailedStatsWithLevel(pokemon, level, ivs);
+}
+
+// given a pokemon, a cp cap, and ivs, return the highest level the pokemon can be while staying under the cp cap
+function getLevelForCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
     let _maxCp = getCp(pokemon, 40, _atkIv, _defIv, _hpIv);
     if (cpCap > _maxCp) {
         pokemon._level = 40;
         return 40;
     }
-    // treat cp cap as almost +1 to prevent rounding errors caused by flooring
-    let targetCpm = cpmMap[40] * Math.sqrt((cpCap + 0.9) / _maxCp);
-    let _level = 40;
-    for (let i = 40; i >= 1; i = i - 0.5) {
+    let targetCpm = cpmMap[40] * Math.sqrt((cpCap) / _maxCp);
+
+    // try to get close to the target level to minimize iterations needed for finding target level
+    let a = 2.076455157;
+    let b = 3.714290078;
+    let c = 1.1;
+    let _level = Math.floor(a * Math.exp(b * targetCpm) + c);
+
+    for (let i = _level; i >= 1; i = i - 0.5) {
         if (targetCpm >= cpmMap[i]) {
             _level = i;
             break;
         }
     }
 
+    // sanity check to make sure level is not undershot
+    if (getCp(pokemon, _level + 1, _atkIv, _defIv, _hpIv) <= cpCap) {
+       _level = _level + 1;
+    }
+
     pokemon._level = _level;
     return _level;
 }
 
-function getCp(pokemon, _level, _atkIv, _defIv, _hpIv) {
-    let cpm = cpmMap[_level];
-    let atk = (pokemon.atk + _atkIv) * cpm;
-    let def = (pokemon.def + _defIv) * cpm;
-    let hp = (pokemon.hp + _hpIv) * cpm;
+// given a pokemon, level, and ivs, compute and return detailed stats (lv, a, d, h, cp) for that pokemon
+function getDetailedStatsWithLevel(pokemon, level, ivs) {
+    let stats = getStatsWithLevel(pokemon, level, ivs.atkIv, ivs.defIv, ivs.hpIv);
+    let atk = stats.atk;
+    let def = stats.def;
+    let hp = stats.hp;
+
+    stats.cp = getCpForStats(atk, def, hp);
+    stats.bulk = getBulkForStats(def, hp);
+    stats.total = getStatTotal(atk, def, hp);
+
+    stats.displayedAtk = Math.floor(atk);
+    stats.displayedDef = Math.floor(def);
+    stats.displayedHp = Math.floor(hp);
+
+    return stats;
+}
+
+// given a pokemon, level, and ivs, compute and return basic stats (lv, a, d, h) for that pokemon
+function getStatsWithLevel(pokemon, level, atkIv, defIv, hpIv) {
+    let cpm = cpmMap[level];
+
+    let atk = cpm * (pokemon.atk + atkIv);
+    let def = cpm * (pokemon.def + defIv);
+    let hp = cpm * (pokemon.hp + hpIv);
+
+    return {
+        "level": level,
+        "atk": atk,
+        "def": def,
+        "hp": hp,
+    }
+}
+
+// given atk, def, and hp, return cp
+function getCpForStats(atk, def, hp) {
+    return Math.floor(atk * Math.sqrt(def * hp) / 10);
+}
+
+// geometric mean of def and hp
+function getBulkForStats(def, hp) {
+    return Math.floor(Math.sqrt(def * hp));
+}
+
+// geometric mean of atk, def, and hp
+function getStatTotal(atk, def, hp) {
+    return round(Math.pow(atk * def * hp, 1.0/3.0));
+}
+
+function getCp(pokemon, level, atkIv, defIv, hpIv) {
+    let cpm = cpmMap[level];
+    let atk = (pokemon.atk + atkIv) * cpm;
+    let def = (pokemon.def + defIv) * cpm;
+    let hp = (pokemon.hp + hpIv) * cpm;
 
     let cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
     return cp;
-}
-
-function evaluateMaxStatsForAll(pokemons) {
-    pokemons.forEach(function(pokemon) {
-        evaluateStatsWithLevel(pokemon, 40, 15, 15, 15);
-    });
-}
-
-function evaluateStatsWithLevel(pokemon, _level, _atkIv, _defIv, _hpIv) {
-    if (_level < 1) {
-        _level = 1;
-    }
-    if (_level > 40) {
-        _level = 40;
-    }
-    pokemon._level = _level;
-    let cpm = cpmMap[_level];
-
-    let atk = cpm * (pokemon.atk + _atkIv);
-    let def = cpm * (pokemon.def + _defIv);
-    let hp = cpm * (pokemon.hp + _hpIv);
-
-    pokemon._atk = Math.floor(atk);
-    pokemon._def = Math.floor(def);
-    pokemon._hp = Math.floor(hp);
-
-    pokemon._bulk = Math.floor(Math.sqrt(def * hp));
-    pokemon._combat = Math.floor(Math.sqrt(atk * def));
-    pokemon._total = Math.floor(Math.pow(atk * def * hp, 1.0/3.0));
-    pokemon._cp = Math.floor(atk * Math.sqrt(def) * Math.sqrt(hp) / 10);
 }
 
 function round6(n) {

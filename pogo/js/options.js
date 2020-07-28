@@ -1,10 +1,9 @@
 var showOptions = true;
 
-var maxCp = 9999;
-var level = 40;
-var atkIv = 15;
-var defIv = 15;
-var hpIv = 15;
+var cpCap = parseInt(localStorage.getItem("pogoCpCap"));
+if (!cpCap) {
+    cpCap = 9999;
+}
 var showLegendaries = true;
 
 var pokemonTypeFilter = [];
@@ -16,11 +15,7 @@ var moveTypeFilter = "";
 // instead, it is used on several pages which require the 'Options' dropdown
 app.controller('optionsController', function($scope) {
 
-    $scope.maxCp = maxCp;
-    $scope.level = level;
-    $scope.atkIv = atkIv;
-    $scope.defIv = defIv;
-    $scope.hpIv = hpIv;
+    $scope.cpCap = cpCap;
     $scope.showLegendaries = showLegendaries;
     $scope.types = types;
     $scope.showOptions = showOptions;
@@ -30,74 +25,12 @@ app.controller('optionsController', function($scope) {
         $scope.showOptions = showOptions;
     }
 
-    // for controlling max cp
-    $scope.setMaxCp = function(_maxCp) {
-        maxCp = _maxCp;
-        $scope.maxCp = maxCp;
+    // for controlling cp cap
+    $scope.setCpCap = function(_cpCap) {
+        cpCap = _cpCap;
+        $scope.cpCap = cpCap;
+        localStorage.setItem("pogoCpCap", _cpCap);
     }
-
-    // for controlling level
-    $scope.setLevel = function() {
-        level = $scope.level;
-    }
-
-    $scope.updateScopeLevel = function() {
-        $scope.level = level;
-    }
-
-    // for controlling ivs
-    $scope.setAtkIv = function(iv) {
-        atkIv = iv;
-        $scope.atkIv = iv;
-    }
-
-    $scope.setDefIv = function(iv) {
-        defIv = iv;
-        $scope.defIv = iv;
-    }
-
-    $scope.setHpIv = function(iv) {
-        hpIv = iv;
-        $scope.hpIv = iv;
-    }
-
-    $scope.validateMaxCp = function() {
-        let maxCp = $scope.maxCp;
-        if (maxCp < 0) {
-            maxCp = 10;
-        }
-        else if (maxCp > 9999) {
-            maxCp = 9999;
-        }
-        $scope.setMaxCp(maxCp);
-    }
-
-    $scope.validateAtkIv = function() {
-        let iv = validateIv($scope.atkIv);
-        $scope.setAtkIv(iv);
-    }
-
-    $scope.validateDefIv = function() {
-        let iv = validateIv($scope.defIv);
-        $scope.setDefIv(iv);
-    }
-
-    $scope.validateHpIv = function() {
-        let iv = validateIv($scope.hpIv);
-        $scope.setHpIv(iv);
-    }
-
-    function validateIv(iv) {
-        if (iv < 0) {
-            iv = 0;
-        }
-        else if (iv > 15) {
-            iv = 15;
-        }
-        return iv;
-    }
-
-    $scope.loadIvs
 
     // toggles legendaries
     $scope.setShowLegendaries = function(bool) {
