@@ -246,6 +246,7 @@
 
     <div class="slideable" id="evolutionFamily">
         <table class="table table-fixed table-hover">
+            <thead>
             <tr>
                 <th colspan="2"></th>
                 <th>ATK</th>
@@ -254,6 +255,7 @@
                 <th>Tot</th>
                 <th>CP</th>
             </tr>
+            </thead>
             <tr ng-repeat="familyMember in evolutionFamily" ng-click="goToPokemon(familyMember.name)">
                 <th colspan="2">{{familyMember.name}}</th>
                 <td>{{familyMember.familyStats.displayedAtk}}</td>

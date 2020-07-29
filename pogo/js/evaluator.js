@@ -4,11 +4,6 @@ function getMaxCp(pokemon) {
     return getCp(pokemon, 40, 15, 15, 15);
 }
 
-function evaluateStatsWithCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
-    let _level = getLevelForCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv);
-    evaluateStatsWithLevel(pokemon, _level, _atkIv, _defIv, _hpIv);
-}
-
 // given a pokemon and a cp cap, return a set of ivs that maximizes the pokemon's stat product
 function getBestIvs(pokemon, cpCap) {
     let atkIv = 15;
@@ -86,8 +81,8 @@ function getLevelForCpCap(pokemon, cpCap, _atkIv, _defIv, _hpIv) {
     }
 
     // sanity check to make sure level is not undershot
-    if (getCp(pokemon, _level + 1, _atkIv, _defIv, _hpIv) <= cpCap) {
-       _level = _level + 1;
+    if (getCp(pokemon, _level + 0.5, _atkIv, _defIv, _hpIv) <= cpCap) {
+       _level = _level + 0.5;
     }
 
     pokemon._level = _level;
