@@ -10,6 +10,7 @@ if (!ivsMap) {
 }
 var focusPokemonName = "";
 
+var showStats = true;
 var showEvolutionFamily = false;
 var showTypeChart = false;
 
@@ -51,6 +52,10 @@ angular.module('app.pokemons', ['ngRoute'])
 
     // used for populating type-ahead dropdown
     $scope.pokemonNames = pokemonNames;
+
+    $scope.startsWith = function(actual, expected) {
+        return actual.toLowerCase().startsWith(expected.toLowerCase());
+    }
 
     // fetch latest pokemon data from data service
     if (allPokemon.length === 0) {
@@ -116,35 +121,6 @@ angular.module('app.pokemons', ['ngRoute'])
         $scope.$broadcast("refreshTable");
     }
 
-    // for updating pokemon stats based on max CP
-    $scope.updatePokemonWithCpCap = function() {
-        updatePokemonWithCpCap();
-        updateEvolutionFamily();
-    }
-
-    function updatePokemonWithCpCap() {
-        if (focusPokemonName) {
-            let stats = getDetailedStatsWithCpCap($scope.focusPokemon, cpCap, $scope.focusPokemon.displayedIvs);
-            $scope.focusPokemon.displayedStats = stats;
-        }
-    }
-
-    // for updating pokemon stats based on level
-    $scope.updatePokemonWithLevel = function() {
-        updatePokemonWithLevel();
-        updateEvolutionFamily();
-    }
-
-    function updatePokemonWithLevel() {
-        if (focusPokemonName) {
-            let stats = getDetailedStatsWithLevel(
-                    $scope.focusPokemon,
-                    $scope.focusPokemon.displayedStats.level,
-                    $scope.focusPokemon.displayedIvs);
-            $scope.focusPokemon.displayedStats = stats;
-        }
-    }
-
     // for updating ivs
     $scope.setAtkIv = function(atkIv) {
         atkIv = validateIv(atkIv);
@@ -173,12 +149,61 @@ angular.module('app.pokemons', ['ngRoute'])
         }
     }
 
+    // for updating pokemon stats based on max CP
+    $scope.updatePokemonWithCpCap = function() {
+
+        updatePokemonWithCpCap();
+        updateEvolutionFamily();
+    }
+
+    function updatePokemonWithCpCap() {
+        if (focusPokemonName) {
+            let stats = getDetailedStatsWithCpCap($scope.focusPokemon, cpCap, $scope.focusPokemon.displayedIvs);
+            $scope.focusPokemon.displayedStats = stats;
+        }
+    }
+
+    // for updating pokemon stats based on level
+    $scope.updatePokemonWithLevel = function() {
+        updatePokemonWithLevel();
+        updateEvolutionFamily();
+    }
+
+    function updatePokemonWithLevel() {
+        if (focusPokemonName) {
+            let stats = getDetailedStatsWithLevel(
+                    $scope.focusPokemon,
+                    $scope.focusPokemon.displayedStats.level,
+                    $scope.focusPokemon.displayedIvs);
+            $scope.focusPokemon.displayedStats = stats;
+        }
+    }
+
     $scope.optimizeIvs = function() {
         console.log("Optimizing IVs for pokemon %s and cp cap %d", focusPokemonName, cpCap);
         $scope.ivs.atkIv = $scope.focusPokemon.bestIvs[cpCap].atkIv;
         $scope.ivs.defIv = $scope.focusPokemon.bestIvs[cpCap].defIv;
         $scope.ivs.hpIv = $scope.focusPokemon.bestIvs[cpCap].hpIv;
-        updatePokemonWithCpCap($scope.focusPokemon, cpCap, $scope.ivs.atkIv, $scope.ivs.defIv, $scope.ivs.hpIv);
+        updatePokemonWithCpCap();
+        updateEvolutionFamily();
+    }
+
+    // for toggling statsa
+    $scope.showStats = function() {
+        return showStats;
+    }
+
+    $scope.toggleStats = function() {
+        showStats = !showStats;
+    }
+
+    // for toggling evolution family
+    $scope.showEvolutionFamily = function() {
+        return showEvolutionFamily;
+    }
+
+    $scope.toggleEvolutionFamily = function() {
+        showEvolutionFamily = !showEvolutionFamily;
     }
 
     // for toggling type chart
@@ -191,15 +216,6 @@ angular.module('app.pokemons', ['ngRoute'])
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
-    }
-
-    // for toggling evolution family
-    $scope.showEvolutionFamily = function() {
-        return showEvolutionFamily;
-    }
-
-    $scope.toggleEvolutionFamily = function() {
-        showEvolutionFamily = !showEvolutionFamily;
     }
 
     // initialize evolution family
@@ -272,7 +288,7 @@ angular.module('app.pokemons', ['ngRoute'])
         }
 
         let newIvs = {};
-        let ivsId = ivs.lastId + 1;
+        let ivsId = ivsMap.lastId + 1;
         if (!ivsId) {
             ivsId = 0;
         }
@@ -296,21 +312,25 @@ angular.module('app.pokemons', ['ngRoute'])
         newIvs.cpCap = cpCap;
 
         ivs.push(newIvs);
-        ivs.lastId = ivsId;
+        console.log("Saved new IV profile for pokemon %s with ID %d", name, ivsId);
+        ivsMap.lastId = ivsId;
         $scope.ivsMap = ivsMap;
         setObject("pogoIvsMap", ivsMap);
     }
 
     $scope.loadIvs = function(ivs) {
         console.log("Loading IVs:", ivs.ivs);
+        $scope.focusPokemon.displayedStats.level = ivs.level;
         $scope.ivs.atkIv = ivs.atkIv;
         $scope.ivs.defIv = ivs.defIv;
         $scope.ivs.hpIv = ivs.hpIv;
         cpCap = ivs.cpCap;
-        updatePokemonWithCpCap($scope.focusPokemon, cpCap, ivs.atkIv, ivs.defIv, ivs.hpIv);
+        updatePokemonWithLevel();
+        updateEvolutionFamily();
     }
 
     $scope.removeIvs = function(ivs) {
+        console.log("Deleting IV profile with ID %d", ivs.id);
         let name = $scope.focusPokemon.name;
         let currentIvs = ivsMap[name];
         ivsMap[name] = currentIvs.filter(

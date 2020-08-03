@@ -20,6 +20,10 @@ app.controller('optionsController', function($scope) {
     $scope.types = types;
     $scope.showOptions = showOptions;
 
+    $scope.getShowOptions = function() {
+        return showOptions;
+    }
+
     $scope.toggleOptions = function() {
         showOptions = !showOptions;
         $scope.showOptions = showOptions;

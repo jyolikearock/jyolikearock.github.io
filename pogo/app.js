@@ -1,7 +1,7 @@
 'use strict';
 
 // set default global values
-var pageSize = 9;
+var pageSize = 10;
 
 // enables tooltips
 $(function () {

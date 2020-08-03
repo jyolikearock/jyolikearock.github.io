@@ -1,114 +1,148 @@
 <div class="card mt-3">
-    <div class="card-body" ng-controller="optionsController">
-        <div class="row">
-            <h5 class="col-6 card-title">Movesets</h5>
-            <button class="btn btn-secondary ml-auto mr-3" ng-click="toggleOptions()">
-                Options
-            </button>
+    <div class="card-body">
+        <h5 class="card-title">Movesets</h5>
+
+        <!-- cp cap -->
+        <div class="input-group mt-3" ng-controller="optionsController">
+            <div class="input-group-prepend">
+                <label class="input-group-text">CP Cap:</label>
+            </div>
+            <input class="form-control" type="number" ng-model="cpCap" readonly>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" ng-class="cpCap <= 1500 ? 'btn-dark' : ''"
+                        ng-click="setCpCap(1500); populateMovesets()"
+                        ng-disabled="getCurrentMovesetsTab() !== 'pvp'">
+                    1500
+                </button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary border-left" ng-class="cpCap > 1500 && cpCap <= 2500 ? 'btn-dark' : ''"
+                        ng-click="setCpCap(2500); populateMovesets()"
+                        ng-disabled="getCurrentMovesetsTab() !== 'pvp'">
+                    2500
+                </button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary border-left" ng-class="cpCap > 2500 ? 'btn-dark' : ''"
+                        ng-click="setCpCap(9999); populateMovesets()"
+                        ng-disabled="getCurrentMovesetsTab() !== 'pvp'">
+                    None
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3">
+
+    <!-- tab nav -->
+    <div class="card-header">
+        <ul class="nav nav-tabs nav-fill card-header-tabs">
+            <li class="nav-item">
+                <div class="nav-link" ng-class="getCurrentMovesetsTab() === 'pvp' ? 'active' : ''"
+                     ng-click="showTab('pvp')">PvP</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="getCurrentMovesetsTab() === 'raid' ? 'active' : ''"
+                     ng-click="showTab('raid')">Raids</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" ng-class="getCurrentMovesetsTab() === 'gym' ? 'active' : ''"
+                     ng-click="showTab('gym')">Gyms</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body">
+
+        <!-- toggler -->
+        <div class="d-flex justify-content-between" slide-toggle="#movesetOptions" ng-controller="optionsController"
+             ng-click="toggleOptions()" current-state="{{getShowOptions()}}">
+            <div>
+                <h5 class="card-title" >
+                    Options
+                </h5>
+            </div>
+            <div class="mt-1">
+                <img class="icon-12 ml-3" src="open-iconic/svg/chevron-bottom.svg"
+                     ng-show="!getShowOptions()"/>
+                <img class="icon-12 ml-3" src="open-iconic/svg/chevron-top.svg"
+                     ng-show="getShowOptions()"/>
+            </div>
         </div>
 
         <!-- options -->
-        <form ng-show="showOptions">
+        <div class="slideable mt-3" id="movesetOptions">
 
-            <!-- max cp -->
-            <div class="input-group mt-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">Max CP:</label>
-                </div>
-                <input class="form-control" type="number" ng-model="cpCap" readonly>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="cpCap <= 1500 ? 'btn-dark' : ''"
-                            ng-click="setCpCap(1500); populateMovesets()">
-                        1500
-                    </button>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="cpCap > 1500 && cpCap <= 2500 ? 'btn-dark' : ''"
-                            ng-click="setCpCap(2500); populateMovesets()">
-                        2500
-                    </button>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" ng-class="cpCap > 2500 ? 'btn-dark' : ''"
-                            ng-click="setCpCap(9999); populateMovesets()">
-                        None
-                    </button>
-                </div>
-            </div>
-
-            <!-- type filter -->
-            <div>
-                <label class="form-label mt-2 mb-3">Type Filters: </label>
-            </div>
-            <div class="row mb-4">
-                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
-                <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs nav-fill card-header-tabs">
-                                <li class="nav-item">
-                                    <div class="nav-link" ng-class="currentTypeTab === 'pokemonTypes' ? 'active' : ''"
-                                         ng-click="setCurrentTypeTab('pokemonTypes')">Pokemon Types</div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-link" ng-class="currentTypeTab === 'moveTypes' ? 'active' : ''"
-                                         ng-click="setCurrentTypeTab('moveTypes')">Move Types</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <!-- pokemon type filters -->
-                            <div class="row" ng-show="currentTypeTab === 'pokemonTypes'">
-                                <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
-                                     ng-click="updatePokemonTypeFilter(type); populateMovesets()">
-                                    <div class="icon"
-                                         ng-class="isPokemonTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
-                                        <img ng-src="{{getIconPath(type)}}" title="{{type}}"
-                                             data-toggle="tooltip" data-placement="top" >
+            <div ng-controller="optionsController">
+                <!-- type filter -->
+                <label class="form-label mt-2 mb-3">Type Filters</label>
+                <div class="row mb-4">
+                    <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
+                    <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs nav-fill card-header-tabs">
+                                    <li class="nav-item">
+                                        <div class="nav-link" ng-class="currentTypeTab === 'pokemonTypes' ? 'active' : ''"
+                                             ng-click="setCurrentTypeTab('pokemonTypes')">Pokemon Types</div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="nav-link" ng-class="currentTypeTab === 'moveTypes' ? 'active' : ''"
+                                             ng-click="setCurrentTypeTab('moveTypes')">Move Types</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <!-- pokemon type filters -->
+                                <div class="row" ng-show="currentTypeTab === 'pokemonTypes'">
+                                    <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
+                                         ng-click="updatePokemonTypeFilter(type); populateMovesets()">
+                                        <div class="icon"
+                                             ng-class="isPokemonTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                            <img ng-src="{{getIconPath(type)}}" title="{{type}}"
+                                                 data-toggle="tooltip" data-placement="top" >
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- move type filters -->
-                            <div class="row" ng-show="currentTypeTab === 'moveTypes'">
-                                <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
-                                     ng-click="updateMoveTypeFilter(type); populateMovesets()">
-                                    <div class="icon"
-                                         ng-class="isMoveTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
-                                        <img ng-src="{{getIconPath(type)}}" title="{{type}}"
-                                             data-toggle="tooltip" data-placement="top" >
+                                <!-- move type filters -->
+                                <div class="row" ng-show="currentTypeTab === 'moveTypes'">
+                                    <div ng-repeat="type in types" class="col-2 mt-2 pl-0 pr-0"
+                                         ng-click="updateMoveTypeFilter(type); populateMovesets()">
+                                        <div class="icon"
+                                             ng-class="isMoveTypeActive(type) ? '{{type.toLowerCase()}}' : 'icon-inactive'">
+                                            <img ng-src="{{getIconPath(type)}}" title="{{type}}"
+                                                 data-toggle="tooltip" data-placement="top" >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
                 </div>
-                <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
             </div>
 
-            <!-- shields -->
-            <div class="btn-toolbar mb-3">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text">Shields</label>
-                    </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setShields(0); populateMovesets()"
-                                ng-class="shields === 0 ? 'btn-dark' : ''">0</button>
-                    </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setShields(1); populateMovesets()"
-                                ng-class="shields === 1 ? 'btn-dark' : ''">1</button>
-                    </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setShields(2); populateMovesets()"
-                                ng-class="shields === 2 ? 'btn-dark' : ''">2</button>
-                    </div>
+            <!-- enemy -->
+            <div class="row mt-3">
+                <div class="col-4">
+                    <label>Enemy</label>
+                    <input class="form-control" type="search" placeholder="Search Pokemon" ng-model="enemyPokemonName"
+                           uib-typeahead="pokemonName for pokemonName in pokemonNames | filter: $viewValue : startsWith | limitTo: 4"
+                           typeahead-on-select="setEnemyPokemon($label)"/>
+                </div>
+                <div class="col-8">
+                    <label>Moveset</label>
+                    <select class="form-control" ng-model="enemyMoveset"
+                            ng-options="moveset.name for moveset in enemyMovesets"
+                            ng-change="setEnemyMoveset(enemyMoveset)">
+                    </select>
                 </div>
             </div>
 
             <!-- legendary toggle -->
-            <div class="btn-toolbar mb-3 justify-content-between">
+            <div class="btn-toolbar mt-5" ng-controller="optionsController">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <label class="input-group-text">Include Legendaries</label>
@@ -118,35 +152,40 @@
                                 ng-class="showLegendaries ? 'btn-dark' : ''">Yes</button>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setShowLegendaries(false); populateMovesets()"
+                        <button class="btn btn-secondary border-left" ng-click="setShowLegendaries(false); populateMovesets()"
                                 ng-class="showLegendaries ? '' : 'btn-dark'">No</button>
                     </div>
                 </div>
             </div>
 
-            <!-- simulation type -->
-            <div class="btn-toolbar mb-3 justify-content-between">
+            <!-- shields -->
+            <div class="btn-toolbar mt-3 mb-3 justify-content-between">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <label class="input-group-text">Simulation</label>
+                        <label class="input-group-text">Shields</label>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setActualDps(true); populateMovesets()"
-                                ng-class="actualDps ? 'btn-dark' : ''">Realistic</button>
+                        <button class="btn btn-secondary" ng-disabled="getCurrentMovesetsTab() !== 'pvp'"
+                                ng-click="setShields(0); populateMovesets()"
+                                ng-class="shields === 0 ? 'btn-dark' : ''">0</button>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" ng-click="setActualDps(false); populateMovesets()"
-                                ng-class="!actualDps ? 'btn-dark' : ''">Hypothetical</button>
+                        <button class="btn btn-secondary border-left" ng-disabled="getCurrentMovesetsTab() !== 'pvp'"
+                                ng-click="setShields(1); populateMovesets()"
+                                ng-class="shields === 1 ? 'btn-dark' : ''">1</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary border-left" ng-disabled="getCurrentMovesetsTab() !== 'pvp'"
+                                ng-click="setShields(2); populateMovesets()"
+                                ng-class="shields === 2 ? 'btn-dark' : ''">2</button>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <button class="btn btn-secondary" role="group" ng-class="isPvp ? 'btn-dark' : ''"
-                            ng-click="setPvp(true); populateMovesets()">PvP</button>
-                    <button class="btn btn-secondary" role="group" ng-class="isPvp ? '' : 'btn-dark'"
-                            ng-click="setPvp(false); populateMovesets()">PvE</button>
-                </div>
+
+                <button class="btn btn-dark" ng-click="populateMovesets()">
+                    Refresh
+                </button>
             </div>
-        </form>
+        </div>
     </div>
 
     <!-- movesets -->
@@ -156,50 +195,45 @@
                st-safe-src="movesets"
                st-persist="movesetsTable">
 
+            <thead>
             <!-- search bar -->
             <tr>
                 <th colspan="2">
                     <input placeholder="Pokemon" class="form-control" type="search"
                            ng-model="searchPokemon" st-search="pokemon" />
                 </th>
-                <th colspan="2">
+                <th colspan="3">
                     <input placeholder="Fast Moves" class="form-control" type="search"
                            ng-model="searchFastMoves" st-search="fastMove" />
                 </th>
-                <th colspan="3">
+                <th colspan="4">
                     <input placeholder="Charge Moves" class="form-control" type="search"
                            ng-model="searchChargeMoves" st-search="chargeMove" />
-                </th>
-                <th colspan="2">
-                    <input placeholder="TTFA" class="form-control" type="search"
-                           ng-model="searchTtfa" st-search="ttfa" />
-                </th>
-                <th colspan="2">
-                    <input placeholder="# Charges" class="form-control" type="search"
-                           ng-model="searchCharges" st-search="charges" />
                 </th>
             </tr>
 
             <!-- headers -->
             <tr>
-                <th class="sortable" colspan="2" st-sort="pokemon">Pokemon</th>
+                <th class="sortable" colspan="1" st-sort="pokemon">Pokemon</th>
                 <th class="sortable" st-sort="fastMove">FM</th>
                 <th class="sortable" st-sort="fmType">Type</th>
                 <th class="sortable" st-sort="chargeMove">CM</th>
                 <th class="sortable" st-sort="cmType">Type</th>
-                <th class="sortable" st-sort="dps">{{isPvp ? 'DPT' : 'DPS'}}</th>
-                <th class="sortable" st-sort="ttfa"
+                <th class="sortable" st-sort="ttfa" ng-show="isPvp()"
                     data-toggle="tooltip" data-placement="top" title="Time to first charge move activation">TTFA</th>
+                <th class="sortable" st-sort="time" ng-show="!isPvp()"
+                    data-toggle="tooltip" data-placement="top" title="Time until victory (or death, for raids)">Time</th>
                 <th class="sortable" st-sort="total"
                     data-toggle="tooltip" data-placement="top" title="Total damage dealt before dying">Tot</th>
-                <th class="sortable" st-sort="charges"
-                    data-toggle="tooltip" data-placement="top" title="Number of charge attacks fired">CAs</th>
-                <th>FM/CM</th>
+                <th class="sortable" st-sort="dps">{{isPvp() ? 'DPT' : 'DPS'}}</th>
+                <th class="sortable" st-sort="score">Score</th>
             </tr>
+            </thead>
 
             <!-- table body -->
+            <tbody>
             <tr ng-repeat="moveset in displayedMovesets" ng-click="goToPokemon(moveset.pokemon)">
-                <td colspan="2">{{moveset.pokemon}}</td>
+                <td colspan="1">{{moveset.pokemon}}</td>
                 <td>{{moveset.fastMove}}</td>
                 <td>
                     <div class="icon ml-1" ng-class="moveset.fmType.toLowerCase()">
@@ -214,19 +248,22 @@
                              data-toggle="tooltip" data-placement="top" title="{{moveset.cmType}}">
                     </div>
                 </td>
-                <td>{{moveset.dps}}</td>
-                <td>{{moveset.ttfa}}</td>
+                <td ng-show="isPvp()">{{moveset.ttfa}}</td>
+                <td ng-show="!isPvp()">{{moveset.time}}</td>
                 <td>{{moveset.total}}</td>
-                <td>{{moveset.charges}}</td>
-                <td>{{moveset.dmgDist}}</td>
+                <td>{{moveset.dps}}</td>
+                <td>{{moveset.score}}</td>
             </tr>
+            </tbody>
 
             <!-- pagination -->
+            <tfoot>
             <tr>
-                <td class="text-center" colspan="11">
+                <td class="text-center" colspan="9">
                     <div st-pagination="" st-items-by-page="pageSize" st-displayed-pages="5"></div>
                 </td>
             </tr>
+            </tfoot>
         </table>
     </div>
 

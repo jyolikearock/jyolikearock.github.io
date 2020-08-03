@@ -1,12 +1,12 @@
-- remove animation from chevron arrows
-- fix bug where saved ivs from previous sessions could get deleted due to id collision
-- modify slideable directive to persist expanded state between pages
-- fix bug where fairy was not listed as a weakness of dragon
-- reduce number of calls to update pokemon data
-- fix flooring issues with pokemon stats
-- pre-compute optimal ivs and stats for all pokemon
-- refactor max cp into cp cap
-- refactor level and iv controls into focus pokemon controller
-- fix bug where table page could be higher than max number of pages
-- update pokemon and moves with GBL season 3 changes
-- allow routing to pokemon page from moveset page
+- fix bug where fairy was appearing twice in dragon type chart
+- only match prefixes when searching for pokemon names
+- reorganize panels on pokemon pages
+- use panels to change overall UI structure of all pages
+- restructure moveset page into 3 tabs
+- when IVs are loaded into stats, update the evolution family as well
+- add sirfetch'd to evolution family
+- impose limits on pokemon ivs
+- completely revamp battle simulation logic to account for pve
+- change naming convention of alolan/galarian pokemon
+- fix bug where multiple saved ivs could get deleted at once
+- implement evaluation heuristics for each battle mode

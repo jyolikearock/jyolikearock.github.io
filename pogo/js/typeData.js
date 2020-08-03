@@ -106,7 +106,6 @@ var typeChartByEffectiveness =
             ],
             "0.625": [
                 "Steel",
-                "Fairy"
             ],
             "0.390625": [
                 "Fairy"
@@ -563,6 +562,8 @@ var typeChartByEffectiveness =
 
 var typeChartByDefender =
 {
+    "None": {
+    },
     "Bug": {
         "Grass": 1.6,
         "Psychic": 1.6,
@@ -750,7 +751,11 @@ for (i = 0; i < types.length; i++) {
                 if (!dEffs[newEff]) {
                     dEffs[newEff] = [];
                 }
+                // add eType to new effectiveness bucket
                 dEffs[newEff].push(eType);
+
+                // add new effectiveness to type chart
+                typeChartByDefender[eType][getKeyForDualType(t1, t2)] = newEff;
 
                 checkedTypes.push(eType);
             }
@@ -776,7 +781,11 @@ for (i = 0; i < types.length; i++) {
                 if (!dEffs[newEff]) {
                     dEffs[newEff] = [];
                 }
+                // add eType to new effectiveness bucket
                 dEffs[newEff].push(eType);
+
+                // add new effectiveness to type chart
+                typeChartByDefender[eType][getKeyForDualType(t1, t2)] = newEff;
             }
         }
 

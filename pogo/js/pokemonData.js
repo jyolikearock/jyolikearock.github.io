@@ -240,7 +240,7 @@ var pokemons =
 		"chargeMoves": "Dig,Hyper Fang,Body Slam,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Alolan Rattata",
+		"name": "Rattata (Alolan)",
 		"id": 19,
 		"type": [
 			"Dark",
@@ -253,7 +253,7 @@ var pokemons =
 		"chargeMoves": "Shadow Ball,Hyper Fang,Crunch",
 		"legendary": false
 	},{
-		"name": "Alolan Raticate",
+		"name": "Raticate (Alolan)",
 		"id": 20,
 		"type": [
 			"Dark",
@@ -364,7 +364,7 @@ var pokemons =
 		"chargeMoves": "Discharge,Wild Charge,Thunderbolt,Fly",
 		"legendary": false
 	},{
-		"name": "Alolan Raichu",
+		"name": "Raichu (Alolan)",
 		"id": 26,
 		"type": [
 			"Electric",
@@ -389,7 +389,7 @@ var pokemons =
 		"chargeMoves": "Thunder Punch,Brick Break,Wild Charge,Skull Bash",
 		"legendary": false
 	},{
-		"name": "Alolan Sandshrew",
+		"name": "Sandshrew (Alolan)",
 		"id": 27,
 		"type": [
 			"Ground"
@@ -414,7 +414,7 @@ var pokemons =
 		"chargeMoves": "Dig,Rock Slide,Sand Tomb,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Alolan Sandslash",
+		"name": "Sandslash (Alolan)",
 		"id": 28,
 		"type": [
 			"Ice",
@@ -537,7 +537,7 @@ var pokemons =
 		"chargeMoves": "Dazzling Gleam,Moonblast,Psychic,Meteor Mash",
 		"legendary": false
 	},{
-		"name": "Alolan Vulpix",
+		"name": "Vulpix (Alolan)",
 		"id": 37,
 		"type": [
 			"Ice"
@@ -561,7 +561,7 @@ var pokemons =
 		"chargeMoves": "Flamethrower,Flame Charge,Body Slam",
 		"legendary": false
 	},{
-		"name": "Alolan Ninetales",
+		"name": "Ninetales (Alolan)",
 		"id": 38,
 		"type": [
 			"Fire"
@@ -728,7 +728,7 @@ var pokemons =
 		"chargeMoves": "Bug Buzz,Poison Fang,Psychic,Silver Wind,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Alolan Diglett",
+		"name": "Diglett (Alolan)",
 		"id": 50,
 		"type": [
 			"Ground",
@@ -753,7 +753,7 @@ var pokemons =
 		"chargeMoves": "Dig,Rock Tomb,Mud Bomb",
 		"legendary": false
 	},{
-		"name": "Alolan Dugtrio",
+		"name": "Dugtrio (Alolan)",
 		"id": 51,
 		"type": [
 			"Ground",
@@ -778,7 +778,7 @@ var pokemons =
 		"chargeMoves": "Earthquake,Stone Edge,Mud Bomb",
 		"legendary": false
 	},{
-		"name": "Alolan Meowth",
+		"name": "Meowth (Alolan)",
 		"id": 52,
 		"type": [
 			"Dark"
@@ -802,7 +802,7 @@ var pokemons =
 		"chargeMoves": "Dark Pulse,Night Slash,Foul Play,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Galarian Meowth",
+		"name": "Meowth (Galarian)",
 		"id": 52,
 		"type": [
 			"Steel"
@@ -814,7 +814,7 @@ var pokemons =
 		"chargeMoves": "Night Slash,Gyro Ball,Dig",
 		"legendary": false
 	},{
-		"name": "Alolan Persian",
+		"name": "Persian (Alolan)",
 		"id": 53,
 		"type": [
 			"Dark"
@@ -1084,7 +1084,7 @@ var pokemons =
 		"chargeMoves": "Blizzard,Sludge Wave,Hydro Pump,Acid Spray",
 		"legendary": false
 	},{
-		"name": "Alolan Geodude",
+		"name": "Geodude (Alolan)",
 		"id": 74,
 		"type": [
 			"Rock",
@@ -1110,7 +1110,7 @@ var pokemons =
 		"chargeMoves": "Dig,Rock Tomb,Rock Slide",
 		"legendary": false
 	},{
-		"name": "Alolan Graveler",
+		"name": "Graveler (Alolan)",
 		"id": 75,
 		"type": [
 			"Rock",
@@ -1136,7 +1136,7 @@ var pokemons =
 		"chargeMoves": "Dig,Stone Edge,Rock Blast",
 		"legendary": false
 	},{
-		"name": "Alolan Golem",
+		"name": "Golem (Alolan)",
 		"id": 76,
 		"type": [
 			"Rock",
@@ -1251,7 +1251,7 @@ var pokemons =
 		"chargeMoves": "Aerial Ace,Leaf Blade,Air Cutter",
 		"legendary": false
 	},{
-		"name": "Galarian Farfetch'd",
+		"name": "Farfetch'd (Galarian)",
 		"id": 83,
 		"type": [
 			"Fighting"
@@ -1314,7 +1314,7 @@ var pokemons =
 		"chargeMoves": "Blizzard,Water Pulse,Aurora Beam,Aqua Jet (Legacy),Icy Wind (Legacy)",
 		"legendary": false
 	},{
-		"name": "Alolan Grimer",
+		"name": "Grimer (Alolan)",
 		"id": 88,
 		"type": [
 			"Poison",
@@ -1339,7 +1339,7 @@ var pokemons =
 		"chargeMoves": "Sludge,Sludge Bomb,Mud Bomb,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Alolan Muk",
+		"name": "Muk (Alolan)",
 		"id": 89,
 		"type": [
 			"Poison",
@@ -1526,7 +1526,7 @@ var pokemons =
 		"chargeMoves": "Seed Bomb,Ancient Power,Psychic",
 		"legendary": false
 	},{
-		"name": "Alolan Exeggutor",
+		"name": "Exeggutor (Alolan)",
 		"id": 103,
 		"type": [
 			"Grass",
@@ -1564,7 +1564,7 @@ var pokemons =
 		"chargeMoves": "Dig,Bone Club,Bulldoze,Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
-		"name": "Alolan Marowak",
+		"name": "Marowak (Alolan)",
 		"id": 105,
 		"type": [
 			"Fire",
@@ -1649,7 +1649,7 @@ var pokemons =
 		"chargeMoves": "Dark Pulse,Shadow Ball,Thunderbolt,Sludge Bomb",
 		"legendary": false
 	},{
-		"name": "Galarian Weezing",
+		"name": "Weezing (Galarian)",
 		"id": 110,
 		"type": [
 			"Poison",
@@ -3455,7 +3455,7 @@ var pokemons =
 		"chargeMoves": "Dig,Thunderbolt,Grass Knot",
 		"legendary": false
 	},{
-		"name": "Galarian Zigzagoon",
+		"name": "Zigzagoon (Galarian)",
 		"id": 263,
 		"type": [
 			"Dark",
@@ -3480,7 +3480,7 @@ var pokemons =
 		"chargeMoves": "Dig,Thunder,Grass Knot",
 		"legendary": false
 	},{
-		"name": "Galarian Linoone",
+		"name": "Linoone (Galarian)",
 		"id": 264,
 		"type": [
 			"Dark",
@@ -6759,7 +6759,7 @@ var pokemons =
 		"chargeMoves": "Flame Charge,Fire Punch",
 		"legendary": false
 	},{
-		"name": "Galarian Darumaka",
+		"name": "Darumaka (Galarian)",
 		"id": 554,
 		"type": [
 			"Ice"
@@ -6783,7 +6783,7 @@ var pokemons =
 		"chargeMoves": "Rock Slide,Psychic,Focus Blast,Overheat",
 		"legendary": false
 	},{
-		"name": "Galarian Darmanitan",
+		"name": "Darmanitan (Galarian)",
 		"id": 555,
 		"type": [
 			"Ice"
@@ -7393,7 +7393,7 @@ var pokemons =
 		"chargeMoves": "Discharge,Mud Bomb,Muddy Water",
 		"legendary": false
 	},{
-		"name": "Galarian Stunfisk",
+		"name": "Stunfisk (Galarian)",
 		"id": 618,
 		"type": [
 			"Ground",
@@ -8145,27 +8145,27 @@ var evolutionFamilies =
 	["Weedle","Kakuna","Beedrill"],
 	["Pidgey","Pidgeotto","Pidgeot"],
 	["Rattata","Raticate"],
-	["Alolan Rattata","Alolan Raticate"],
+	["Rattata (Alolan)","Raticate (Alolan)"],
 	["Spearow","Fearow"],
 	["Ekans","Arbok"],
 	["Pichu","Pikachu","Raichu"],
 	["Sandshrew","Sandslash"],
-	["Alolan Sandshrew","Alolan Sandslash"],
+	["Sandshrew (Alolan)","Sandslash (Alolan)"],
 	["Nidoran Female","Nidorina","Nidoqueen"],
 	["Nidoran Male","Nidorino","Nidoking"],
 	["Cleffa","Clefairy","Clefable"],
 	["Vulpix","Ninetales"],
-	["Alolan Vulpix","Alolan Ninetales"],
+	["Vulpix (Alolan)","Ninetales (Alolan)"],
 	["Igglybuff","Jigglypuff","Wigglytuff"],
 	["Zubat","Golbat","Crobat"],
 	["Oddish","Gloom","Vileplume","Bellossom"],
 	["Paras","Parasect"],
 	["Venonat","Venomoth"],
 	["Diglett","Dugtrio"],
-	["Alolan Diglett","Alolan Dugtrio"],
+	["Diglett (Alolan)","Dugtrio (Alolan)"],
 	["Meowth","Persian"],
-	["Alolan Meowth","Alolan Persian"],
-	["Galarian Meowth","Perrserker"],
+	["Meowth (Alolan)","Persian (Alolan)"],
+	["Meowth (Galarian)","Perrserker"],
 	["Psyduck","Golduck"],
 	["Mankey","Primeape"],
 	["Growlithe","Arcanine"],
@@ -8175,14 +8175,14 @@ var evolutionFamilies =
 	["Bellsprout","Weepinbell","Victreebel"],
 	["Tentacool","Tentacruel"],
 	["Geodude","Graveler","Golem"],
-	["Alolan Geodude","Alolan Graveler","Alolan Golem"],
+	["Geodude (Alolan)","Graveler (Alolan)","Golem (Alolan)"],
 	["Ponyta","Rapidash"],
 	["Slowpoke","Slowbro","Slowking"],
 	["Magnemite","Magneton","Magnezone"],
 	["Doduo","Dodrio"],
 	["Seel","Dewgong"],
 	["Grimer","Muk"],
-	["Alolan Grimer","Alolan Muk"],
+	["Grimer (Alolan)","Muk (Alolan)"],
 	["Shellder","Cloyster"],
 	["Gastly","Haunter","Gengar"],
 	["Onix","Steelix"],
@@ -8250,7 +8250,7 @@ var evolutionFamilies =
 	["Mudkip","Marshtomp","Swampert"],
 	["Poochyena","Mightyena"],
 	["Zigzagoon","Linoone"],
-	["Galarian Zigzagoon","Galarian Linoone","Obstagoon"],
+	["Zigzagoon (Galarian)","Linoone (Galarian)","Obstagoon"],
 	["Wurmple","Silcoon","Beautifly","Cascoon","Dustox"],
 	["Lotad","Lombre","Ludicolo"],
 	["Seedot","Nuzleaf","Shiftry"],
@@ -8341,7 +8341,7 @@ var evolutionFamilies =
 	["Petilil","Lilligant"],
 	["Sandile","Krokorok","Krookodile"],
 	["Darumaka","Darmanitan"],
-	["Galarian Darumaka","Galarian Darmanitan"],
+	["Darumaka (Galarian)","Darmanitan (Galarian)"],
 	["Dwebble","Crustle"],
 	["Scraggy","Scrafty"],
 	["Yamask","Cofagrigus"],
@@ -8373,7 +8373,8 @@ var evolutionFamilies =
 	["Vullaby","Mandibuzz"],
 	["Deino","Zweilous","Hydreigon"],
 	["Larvesta","Volcarona"],
-	["Meltan","Melmetal"]
+	["Meltan","Melmetal"],
+	["Farfetch'd (Galarian)", "Sirfetch'd"]
 ];
 
 var pokemonsMap = {};
@@ -8397,6 +8398,7 @@ pokemons.forEach(
         pokemon.stats[1500] = getDetailedStatsWithCpCap(pokemon, 1500, pokemon.bestIvs[1500]);
         pokemon.stats[2500] = getDetailedStatsWithCpCap(pokemon, 2500, pokemon.bestIvs[2500]);
         pokemon.stats[9999] = getDetailedStatsWithCpCap(pokemon, 9999, pokemon.bestIvs[9999]);
+        pokemon.stats[35] = getDetailedStatsWithLevel(pokemon, 35, pokemon.bestIvs[9999]);
 
         pokemon.tableStats = pokemon.stats[9999];
 
