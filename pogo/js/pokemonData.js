@@ -392,7 +392,8 @@ var pokemons =
 		"name": "Sandshrew (Alolan)",
 		"id": 27,
 		"type": [
-			"Ground"
+			"Ice",
+			"Steel"
 		],
 		"atk": 125,
 		"def": 129,
@@ -404,8 +405,7 @@ var pokemons =
 		"name": "Sandshrew",
 		"id": 27,
 		"type": [
-			"Ice",
-			"Steel"
+			"Ground"
 		],
 		"atk": 126,
 		"def": 120,
@@ -564,7 +564,8 @@ var pokemons =
 		"name": "Ninetales (Alolan)",
 		"id": 38,
 		"type": [
-			"Fire"
+			"Ice",
+			"Fairy"
 		],
 		"atk": 170,
 		"def": 193,
@@ -1530,7 +1531,7 @@ var pokemons =
 		"id": 103,
 		"type": [
 			"Grass",
-			"Psychic"
+			"Dragon"
 		],
 		"atk": 230,
 		"def": 153,
@@ -1543,7 +1544,7 @@ var pokemons =
 		"id": 103,
 		"type": [
 			"Grass",
-			"Dragon"
+			"Psychic"
 		],
 		"atk": 233,
 		"def": 149,
@@ -1906,7 +1907,7 @@ var pokemons =
 		"def": 186,
 		"hp": 216,
 		"fastMoves": "Bite,Dragon Breath,Waterfall",
-		"chargeMoves": "Twister,Hydro Pump,Outrage,Crunch,Frustration (Shadow),Return (Shadow)",
+		"chargeMoves": "Twister,Hydro Pump,Outrage,Crunch,Aqua Tail (CD),Frustration (Shadow),Return (Shadow)",
 		"legendary": false
 	},{
 		"name": "Lapras",
@@ -6660,6 +6661,45 @@ var pokemons =
 		"chargeMoves": "Low Sweep,Body Slam,Focus Blast",
 		"legendary": false
 	},{
+		"name": "Sewaddle",
+		"id": 540,
+		"type": [
+			"Bug",
+			"Grass"
+		],
+		"atk": 96,
+		"def": 124,
+		"hp": 128,
+		"fastMoves": "Bug Bite,Struggle Bug",
+		"chargeMoves": "Seed Bomb,Energy Ball,Silver Wind",
+		"legendary": false
+	},{
+		"name": "Swadloon",
+		"id": 541,
+		"type": [
+			"Bug",
+			"Grass"
+		],
+		"atk": 115,
+		"def": 162,
+		"hp": 146,
+		"fastMoves": "Bug Bite,Struggle Bug",
+		"chargeMoves": "Bug Buzz,Energy Ball,Silver Wind",
+		"legendary": false
+	},{
+		"name": "Leavanny",
+		"id": 542,
+		"type": [
+			"Bug",
+			"Grass"
+		],
+		"atk": 205,
+		"def": 165,
+		"hp": 181,
+		"fastMoves": "Bug Bite,Razor Leaf",
+		"chargeMoves": "Leaf Blade,X-Scissor,Silver Wind",
+		"legendary": false
+	},{
 		"name": "Venipede",
 		"id": 543,
 		"type": [
@@ -6697,6 +6737,32 @@ var pokemons =
 		"hp": 155,
 		"fastMoves": "Bug Bite,Poison Jab",
 		"chargeMoves": "Megahorn,Sludge Bomb,X-Scissor,Gyro Ball",
+		"legendary": false
+	},{
+		"name": "Cottonee",
+		"id": 546,
+		"type": [
+			"Grass",
+			"Fairy"
+		],
+		"atk": 71,
+		"def": 111,
+		"hp": 120,
+		"fastMoves": "Charm,Razor Leaf",
+		"chargeMoves": "Grass Knot,Seed Bomb,Energy Ball",
+		"legendary": false
+	},{
+		"name": "Whimsicott",
+		"id": 547,
+		"type": [
+			"Grass",
+			"Fairy"
+		],
+		"atk": 164,
+		"def": 176,
+		"hp": 155,
+		"fastMoves": "Charm,Razor Leaf",
+		"chargeMoves": "Hurricane,Grass Knot,Moonblast",
 		"legendary": false
 	},{
 		"name": "Petilil",
@@ -7094,6 +7160,19 @@ var pokemons =
 		"chargeMoves": "Ice Beam,Bubble Beam,Hurricane",
 		"legendary": false
 	},{
+		"name": "Emolga",
+		"id": 587,
+		"type": [
+			"Electric",
+			"Flying"
+		],
+		"atk": 158,
+		"def": 127,
+		"hp": 146,
+		"fastMoves": "Thunder Shock,Quick Attack",
+		"chargeMoves": "Thunderbolt,Discharge,Aerial Ace",
+		"legendary": false
+	},{
 		"name": "Karrablast",
 		"id": 588,
 		"type": [
@@ -7243,6 +7322,30 @@ var pokemons =
 		"hp": 155,
 		"fastMoves": "Thunder Shock,Charge Beam",
 		"chargeMoves": "Hyper Beam,Flash Cannon,Zap Cannon,Mirror Shot",
+		"legendary": false
+	},{
+		"name": "Elgyem",
+		"id": 605,
+		"type": [
+			"Psychic"
+		],
+		"atk": 148,
+		"def": 100,
+		"hp": 146,
+		"fastMoves": "Confusion,Astonish",
+		"chargeMoves": "Psybeam,Dark Pulse,Psychic",
+		"legendary": false
+	},{
+		"name": "Beheeyem",
+		"id": 606,
+		"type": [
+			"Psychic"
+		],
+		"atk": 221,
+		"def": 163,
+		"hp": 181,
+		"fastMoves": "Confusion,Astonish",
+		"chargeMoves": "Rock Slide,Dark Pulse,Psychic",
 		"legendary": false
 	},{
 		"name": "Litwick",
@@ -7430,6 +7533,18 @@ var pokemons =
 		"hp": 205,
 		"fastMoves": "Mud Slap,Astonish",
 		"chargeMoves": "Shadow Punch,Dynamic Punch,Earth Power",
+		"legendary": false
+	},{
+		"name": "Bouffalant",
+		"id": 626,
+		"type": [
+			"Normal"
+		],
+		"atk": 195,
+		"def": 182,
+		"hp": 216,
+		"fastMoves": "Mud Shot,Zen Headbutt",
+		"chargeMoves": "Megahorn,Skull Bash,Earthquake,Stomp",
 		"legendary": false
 	},{
 		"name": "Rufflet",

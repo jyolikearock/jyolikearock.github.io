@@ -126,35 +126,6 @@ a:hover {
     overflow: scroll !important;
 }
 
-/* color utilities */
-.red {
-    color: rgb(200, 33, 33);
-}
-
-.green {
-    color: rgb(25, 190, 135);
-}
-
-.bg-red {
-    background-color: #edb4b4;
-}
-
-.bg-dark-red {
-    background-color: #ed7b7b;
-}
-
-.bg-green {
-    background-color: #b6f0d2;
-}
-
-.bg-dark-green {
-    background-color: #7df0b4;
-}
-
-.bg-gray {
-    background-color: #343a40;
-}
-
 /* don't grey out disabled input forms */
 .form-control:disabled,
 .form-control[readonly] {

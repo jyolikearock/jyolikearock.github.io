@@ -42,6 +42,7 @@ var targetDummyChargeMove = {
     "pveEnergy": 50,
     "pveCooldown": 3
 }
+pokemonNames.push("Target Dummy");
 
 var currentMovesetsTab = "pvp";
 var pvp = true;
@@ -70,7 +71,6 @@ angular.module('app.movesets', ['ngRoute'])
 
     $scope.pageSize = pageSize;
     $scope.pokemonNames = pokemonNames;
-    $scope.pokemonNames.push("Target Dummy");
 
     $scope.enemyPokemonName = enemyPokemonName;
     $scope.enemyPokemon = enemyPokemon;
@@ -342,7 +342,7 @@ angular.module('app.movesets', ['ngRoute'])
         else {
             // if enemy is target dummy, score is just based on total damage dealt
             if (state2.initialHp >= 9999) {
-                score += round1(100 * totalDamageDealt / 467);
+                score += round1(100 * totalDamageDealt / 304);
             }
             else {
                 timeSurvived = state2.initialHp / dps;

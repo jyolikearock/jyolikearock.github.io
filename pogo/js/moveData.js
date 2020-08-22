@@ -849,6 +849,19 @@ var chargeMoves =
 		"pveCooldown": 1.9
 	},
 	{
+		"name": "Aqua Tail (CD)",
+		"type": "Water",
+		"pvpDamage": 50,
+		"pvpEnergy": 35,
+		"pvpEffectChance": "N/A",
+		"pvpEffectStat": "N/A",
+		"pvpEffectDelta": "N/A",
+		"pvpEffectTarget": "N/A",
+		"pveDamage": 50,
+		"pveEnergy": 33,
+		"pveCooldown": 1.9
+	},
+	{
 		"name": "Aura Sphere",
 		"type": "Fighting",
 		"pvpDamage": 100,

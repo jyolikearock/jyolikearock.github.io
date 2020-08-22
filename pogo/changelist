@@ -1,3 +1,9 @@
+Aug 22, 2020:
+- fix bug where alolan/galar pokemons types were flipped with their original forms
+- add aqua tail as community day move for Gyarados
+- add new Unova pokemon
+
+Aug 3, 2020:
 - fix bug where fairy was appearing twice in dragon type chart
 - only match prefixes when searching for pokemon names
 - reorganize panels on pokemon pages
